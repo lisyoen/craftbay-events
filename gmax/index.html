@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas - 지막스 막둥이 여러분께</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a0a0a 0%, #2d1515 50%, #1a0a0a 100%);
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* 떨어지는 눈송이 */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -20px;
+            color: #ffd700;
+            font-size: 1rem;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        .snowflake.white {
+            color: #fffef0;
+            opacity: 0.6;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 반짝이는 별 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .star {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        /* 카드 */
+        .card {
+            background: rgba(26, 10, 10, 0.85);
+            border: 2px solid rgba(255, 215, 0, 0.3);
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        inset 0 0 60px rgba(255, 215, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, rgba(255, 215, 0, 0.1) 0%, transparent 50%);
+            animation: shimmer 8s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(180deg); }
+        }
+
+        /* 장식 아이콘 */
+        .decorations {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 5;
+        }
+
+        .decoration-icon {
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .decoration-icon:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .decoration-icon:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* 연도 */
+        .year-top {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            color: #ffd700;
+            letter-spacing: 0.5em;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 마이크 아이콘 */
+        .mic-container {
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .mic-icon {
+            width: 80px;
+            height: 80px;
+            filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.5));
+        }
+
+        /* 음파 애니메이션 */
+        .sound-waves {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 4px;
+            margin-bottom: 30px;
+            height: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .wave-bar {
+            width: 4px;
+            background: linear-gradient(to top, #ff6b6b, #ffd700);
+            border-radius: 2px;
+            animation: wave 1.2s ease-in-out infinite;
+        }
+
+        .wave-bar:nth-child(1) { height: 20px; animation-delay: 0s; }
+        .wave-bar:nth-child(2) { height: 35px; animation-delay: 0.1s; }
+        .wave-bar:nth-child(3) { height: 25px; animation-delay: 0.2s; }
+        .wave-bar:nth-child(4) { height: 40px; animation-delay: 0.3s; }
+        .wave-bar:nth-child(5) { height: 30px; animation-delay: 0.4s; }
+        .wave-bar:nth-child(6) { height: 35px; animation-delay: 0.5s; }
+        .wave-bar:nth-child(7) { height: 20px; animation-delay: 0.6s; }
+
+        @keyframes wave {
+            0%, 100% { transform: scaleY(0.5); opacity: 0.5; }
+            50% { transform: scaleY(1); opacity: 1; }
+        }
+
+        /* 제목 */
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #ffd700 0%, #fffef0 50%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 5;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+        }
+
+        /* 부제 */
+        .subtitle {
+            font-size: 1.3rem;
+            color: #ffd700;
+            margin-bottom: 35px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* 본문 */
+        .message {
+            color: #fffef0;
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 5;
+        }
+
+        .message p {
+            margin-bottom: 20px;
+        }
+
+        .message .highlight {
+            color: #ffd700;
+            font-weight: 500;
+        }
+
+        /* 푸터 */
+        .footer {
+            position: relative;
+            z-index: 5;
+        }
+
+        .from {
+            font-size: 1.2rem;
+            color: #ff6b6b;
+            margin-bottom: 20px;
+        }
+
+        .year-bottom {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: rgba(255, 254, 240, 0.6);
+            letter-spacing: 0.2em;
+        }
+
+        /* 헤드폰 장식 */
+        .headphone-left, .headphone-right {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1.5rem;
+            color: #ffd700;
+            opacity: 0.6;
+        }
+
+        .headphone-left {
+            left: 30px;
+        }
+
+        .headphone-right {
+            right: 30px;
+        }
+
+        /* 반응형 */
+        @media (max-width: 600px) {
+            .card {
+                padding: 40px 25px;
+                margin: 20px;
+            }
+
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .message {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 떨어지는 눈송이 -->
+    <div class="snowflakes" id="snowflakes"></div>
+
+    <!-- 반짝이는 별 -->
+    <div class="stars" id="stars"></div>
+
+    <div class="container">
+        <div class="card">
+            <!-- 장식 -->
+            <div class="decorations">
+                <span class="decoration-icon">&#10084;</span>
+                <span class="decoration-icon">&#9733;</span>
+                <span class="decoration-icon">&#10084;</span>
+            </div>
+
+            <!-- 연도 -->
+            <div class="year-top">&#10022; 2 0 2 5 &#10022;</div>
+
+            <!-- 마이크 아이콘 -->
+            <div class="mic-container">
+                <svg class="mic-icon" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="micGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ffd700"/>
+                            <stop offset="100%" style="stop-color:#ff6b6b"/>
+                        </linearGradient>
+                    </defs>
+                    <!-- 마이크 헤드 -->
+                    <rect x="35" y="15" width="30" height="45" rx="15" fill="url(#micGradient)"/>
+                    <!-- 마이크 그릴 라인 -->
+                    <line x1="40" y1="25" x2="60" y2="25" stroke="#1a0a0a" stroke-width="2" opacity="0.3"/>
+                    <line x1="40" y1="32" x2="60" y2="32" stroke="#1a0a0a" stroke-width="2" opacity="0.3"/>
+                    <line x1="40" y1="39" x2="60" y2="39" stroke="#1a0a0a" stroke-width="2" opacity="0.3"/>
+                    <line x1="40" y1="46" x2="60" y2="46" stroke="#1a0a0a" stroke-width="2" opacity="0.3"/>
+                    <!-- 마이크 스탠드 곡선 -->
+                    <path d="M25 45 Q25 70 50 70 Q75 70 75 45" stroke="url(#micGradient)" stroke-width="4" fill="none"/>
+                    <!-- 마이크 스탠드 -->
+                    <line x1="50" y1="70" x2="50" y2="85" stroke="url(#micGradient)" stroke-width="4"/>
+                    <!-- 마이크 베이스 -->
+                    <ellipse cx="50" cy="88" rx="15" ry="4" fill="url(#micGradient)"/>
+                </svg>
+            </div>
+
+            <!-- 음파 애니메이션 -->
+            <div class="sound-waves">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+
+            <!-- 제목 -->
+            <h1 class="title">Merry Christmas</h1>
+
+            <!-- 부제 -->
+            <p class="subtitle">막둥이 여러분께 &#128155;</p>
+
+            <!-- 본문 -->
+            <div class="message">
+                <p>한 해 동안 지막스와 함께해주셔서 감사합니다</p>
+                <p>매주 변함없이 웃음과 이야기를 전해주신<br>
+                <span class="highlight">제니</span>와 <span class="highlight">복숭아</span>님께 맹렬히 감사드립니다! &#127908;</p>
+                <p>두 분의 꾸준한 열정과 노력 덕분에<br>
+                우리 막둥이들의 한 주가 더 따뜻했습니다</p>
+            </div>
+
+            <!-- 푸터 -->
+            <div class="footer">
+                <p class="from">From. 막둥이 드림 &#127911;</p>
+                <p class="year-bottom">Christmas 2025 &#8594; 2026</p>
+                <p class="year-bottom" style="margin-top: 10px; opacity: 0.5;"><a href="https://craftbay.io" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">CraftBay</a></p>
+            </div>
+
+            <!-- 헤드폰 장식 -->
+            <span class="headphone-left">&#127911;</span>
+            <span class="headphone-right">&#127911;</span>
+        </div>
+    </div>
+
+    <script>
+        // 눈송이 생성
+        function createSnowflakes() {
+            const container = document.getElementById('snowflakes');
+            const snowflakeChars = ['*', '+', '.'];
+
+            for (let i = 0; i < 50; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake' + (Math.random() > 0.5 ? ' white' : '');
+                snowflake.textContent = snowflakeChars[Math.floor(Math.random() * snowflakeChars.length)];
+                snowflake.style.left = Math.random() * 100 + '%';
+                snowflake.style.fontSize = (Math.random() * 0.8 + 0.6) + 'rem';
+                snowflake.style.animationDuration = (Math.random() * 5 + 5) + 's';
+                snowflake.style.animationDelay = (Math.random() * 10) + 's';
+                container.appendChild(snowflake);
+            }
+        }
+
+        // 별 생성
+        function createStars() {
+            const container = document.getElementById('stars');
+
+            for (let i = 0; i < 30; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = (Math.random() * 3) + 's';
+                star.style.animationDuration = (Math.random() * 2 + 1) + 's';
+                container.appendChild(star);
+            }
+        }
+
+        createSnowflakes();
+        createStars();
+    </script>
+</body>
+</html>
