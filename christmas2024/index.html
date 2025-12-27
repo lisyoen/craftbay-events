@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Christmas 2024 - CraftBay Events</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a472a 0%, #2d5a3f 50%, #1a472a 100%);
+            min-height: 100vh;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        .snowflakes { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 1; }
+        .snowflake { position: absolute; color: #fff; font-size: 1.5rem; animation: fall linear infinite; opacity: 0.8; }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) rotate(0deg); }
+            100% { transform: translateY(110vh) rotate(360deg); }
+        }
+        .content { position: relative; z-index: 2; max-width: 600px; }
+        h1 { font-size: 3rem; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+        .tree { font-size: 8rem; margin: 20px 0; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+        p { font-size: 1.2rem; line-height: 1.8; color: #d4edda; margin-bottom: 30px; }
+        .message {
+            background: rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px 0;
+            backdrop-filter: blur(10px);
+        }
+        .back { color: #98d4a6; text-decoration: none; margin-top: 40px; display: inline-block; }
+        .back:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="snowflakes" id="snowflakes"></div>
+    <div class="content">
+        <div class="tree">🎄</div>
+        <h1>Merry Christmas!</h1>
+        <div class="message">
+            <p>
+                2024년 한 해도 CraftBay와 함께해 주셔서 감사합니다.<br>
+                따뜻하고 행복한 크리스마스 보내세요! 🎁
+            </p>
+        </div>
+        <a href="/" class="back">← 이벤트 목록으로</a>
+    </div>
+    <script>
+        const container = document.getElementById('snowflakes');
+        const flakes = ['❄', '❅', '❆', '✻', '✼'];
+        for (let i = 0; i < 50; i++) {
+            const flake = document.createElement('div');
+            flake.className = 'snowflake';
+            flake.textContent = flakes[Math.floor(Math.random() * flakes.length)];
+            flake.style.left = Math.random() * 100 + 'vw';
+            flake.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            flake.style.animationDelay = Math.random() * 5 + 's';
+            flake.style.fontSize = (Math.random() * 1 + 0.8) + 'rem';
+            container.appendChild(flake);
+        }
+    </script>
+</body>
+</html>
