@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDI Uploader - CraftBay</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .card h2 {
+            color: #4ecdc4;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .file-list {
+            list-style: none;
+        }
+        .file-list li {
+            padding: 15px 20px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .file-name {
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+        .file-desc {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .download-btn {
+            background: #4ecdc4;
+            color: #1a1a2e;
+            padding: 8px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        .download-btn:hover {
+            background: #45b7aa;
+            transform: translateY(-2px);
+        }
+        .usage {
+            background: #0d1117;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: monospace;
+            overflow-x: auto;
+        }
+        .usage code {
+            color: #79c0ff;
+        }
+        .usage .comment {
+            color: #8b949e;
+        }
+        .warning {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .warning-title {
+            color: #ffc107;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+        }
+        footer a {
+            color: #4ecdc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📤 VDI Uploader</h1>
+        <p class="subtitle">WebSocket 기반 파일 전송 클라이언트</p>
+        
+        <div class="card">
+            <h2>📥 다운로드</h2>
+            <ul class="file-list">
+                <li>
+                    <div>
+                        <div class="file-name">Test-WebSocket.ps1</div>
+                        <div class="file-desc">연결 테스트 스크립트</div>
+                    </div>
+                    <a href="Test-WebSocket.ps1" class="download-btn" download>Download</a>
+                </li>
+                <li>
+                    <div>
+                        <div class="file-name">Upload-ToCraftBay.ps1</div>
+                        <div class="file-desc">파일 업로드 클라이언트</div>
+                    </div>
+                    <a href="Upload-ToCraftBay.ps1" class="download-btn" download>Download</a>
+                </li>
+            </ul>
+        </div>
+        
+        <div class="card">
+            <h2>🚀 사용법</h2>
+            <div class="usage">
+                <div class="comment"># 1. 먼저 연결 테스트</div>
+                <code>powershell -ExecutionPolicy Bypass -File .\Test-WebSocket.ps1</code>
+                <br><br>
+                <div class="comment"># 2. 파일 업로드 (GUI)</div>
+                <code>powershell -ExecutionPolicy Bypass -File .\Upload-ToCraftBay.ps1</code>
+                <br><br>
+                <div class="comment"># 3. 특정 파일 직접 업로드</div>
+                <code>powershell -ExecutionPolicy Bypass -File .\Upload-ToCraftBay.ps1 -FilePath "C:\data\file.zip"</code>
+            </div>
+            
+            <div class="warning">
+                <div class="warning-title">⚠️ 실행 정책 오류 시</div>
+                반드시 <code>-ExecutionPolicy Bypass</code> 옵션과 함께 실행하세요.
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>📋 특징</h2>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>HTTP POST 차단 환경에서도 동작 (WebSocket 사용)</li>
+                <li>대용량 파일 지원 (청크 전송)</li>
+                <li>전송 속도 및 진행률 표시</li>
+                <li>GUI 파일/폴더 선택 다이얼로그</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <a href="https://craftbay.io">CraftBay.io</a> &copy; 2025
+        </footer>
+    </div>
+</body>
+</html>
