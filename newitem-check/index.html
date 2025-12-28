@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신상업뎃확인 앱 기획서</title>
+    <style>
+        :root {
+            --bg: #1a1a2e;
+            --card: #16213e;
+            --accent: #e94560;
+            --text: #eaeaea;
+            --muted: #a0a0a0;
+            --border: #0f3460;
+            --yellow: #f9ed69;
+            --green: #6bf178;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            padding: 2rem;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 2.2rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 0.5rem;
+        }
+        .version {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+        }
+        h2 {
+            font-size: 1.5rem;
+            color: var(--yellow);
+            margin: 2.5rem 0 1rem;
+            padding-left: 0.5rem;
+            border-left: 4px solid var(--yellow);
+        }
+        h3 {
+            font-size: 1.2rem;
+            color: var(--green);
+            margin: 1.5rem 0 0.8rem;
+        }
+        p { margin-bottom: 1rem; }
+        ul, ol {
+            margin: 1rem 0 1rem 1.5rem;
+        }
+        li { margin-bottom: 0.5rem; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 0.7rem;
+            text-align: left;
+        }
+        th {
+            background: var(--border);
+            color: var(--yellow);
+        }
+        tr:nth-child(even) { background: rgba(255,255,255,0.03); }
+        code {
+            background: var(--card);
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+        }
+        pre {
+            background: var(--card);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1rem 0;
+            border: 1px solid var(--border);
+        }
+        pre code {
+            background: none;
+            padding: 0;
+        }
+        .highlight {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+        .checkbox-list {
+            list-style: none;
+            margin-left: 0;
+        }
+        .checkbox-list li::before {
+            content: "☐ ";
+            color: var(--accent);
+        }
+        .section-review {
+            background: linear-gradient(135deg, #2d1f3d 0%, #1a1a2e 100%);
+            border: 2px solid var(--accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+        .section-review h2 {
+            color: var(--accent);
+            border-left-color: var(--accent);
+            margin-top: 0;
+        }
+        .color-box {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 4px;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+        .color-yellow { background: #fff3b0; }
+        .color-red { background: #ff6b6b; }
+        .color-white { background: #ffffff; border: 1px solid #ccc; }
+        .ascii-box {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+        footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.85rem;
+            text-align: center;
+        }
+        a { color: var(--accent); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📦 신상업뎃확인 앱 기획서</h1>
+        <p class="version">문서 버전: v0.2 (2025-12-28) | 원본: v0.1 (2025-05-24) | 상태: <strong>초안 - 검토 필요</strong></p>
+
+        <h2>1. 개요</h2>
+        
+        <h3>1.1 서비스 목적</h3>
+        <p>타오바오/알리바바 판매처들의 <strong>신상품 업데이트 여부</strong>를 자동으로 확인하고, 날짜 및 상태를 알림으로 표시하는 Windows 데스크탑 앱</p>
+
+        <h3>1.2 핵심 가치</h3>
+        <ul>
+            <li>300개 이상의 판매처를 <strong>한 번에 자동 체크</strong></li>
+            <li>신상품 업데이트 시 <strong>즉시 알림</strong></li>
+            <li>바탕화면에 항상 띄워놓고 사용 (메모장처럼)</li>
+        </ul>
+
+        <h3>1.3 대상 사용자</h3>
+        <ul>
+            <li>중국 도매 상품을 취급하는 국내 셀러</li>
+            <li>타오바오/알리바바에서 소싱하는 사업자</li>
+        </ul>
+
+        <h2>2. 주요 기능</h2>
+
+        <h3>2.1 기능 목록</h3>
+        <table>
+            <thead>
+                <tr><th>No</th><th>기능</th><th>설명</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>①</td><td>신상확인</td><td>등록된 모든 판매처 URL을 순차 호출하여 신상품 여부 체크</td></tr>
+                <tr><td>②</td><td>삭제 버튼</td><td>해당 판매처 행 삭제 (URL, 정보 모두 제거)</td></tr>
+                <tr><td>③</td><td>판매처명</td><td>클릭 시 수정 팝업, 우클릭 시 상단고정</td></tr>
+                <tr><td>④</td><td>최신신상날짜</td><td>자동 갱신, 날짜순 정렬, 클릭 시 해당 페이지 오픈</td></tr>
+                <tr><td>⑤</td><td>확인체크박스</td><td>선택 시 필드 색상 변경 (확인 완료 표시)</td></tr>
+                <tr><td>⑥</td><td>스크롤바</td><td>300개+ 판매처 지원 (가상 리스트 또는 페이지네이션)</td></tr>
+                <tr><td>⑦</td><td>추가 버튼</td><td>신규 판매처 등록 팝업 호출</td></tr>
+                <tr><td>⑧</td><td>저장 버튼</td><td>등록 정보 저장 (자동 저장 검토 필요)</td></tr>
+                <tr><td>⑨</td><td>팝업 & 엑셀추가</td><td>단일 등록 + 엑셀 일괄 등록 (중복 제외)</td></tr>
+                <tr><td>⑩</td><td>자동신상체크</td><td>스케줄링 기반 백그라운드 체크 + Push/카톡 알림</td></tr>
+            </tbody>
+        </table>
+
+        <h3>2.2 상태별 색상 표시</h3>
+        <table>
+            <thead>
+                <tr><th>상태</th><th>색상</th><th>설명</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>신상 업데이트 감지</td><td><span class="color-box color-yellow"></span>레몬색</td><td>마지막 확인보다 최신 날짜 감지</td></tr>
+                <tr><td>체크 실패</td><td><span class="color-box color-red"></span>레드</td><td>신상은 있는데 파싱 실패</td></tr>
+                <tr><td>확인 완료</td><td><span class="color-box color-white"></span>화이트</td><td>사용자가 체크박스 선택</td></tr>
+            </tbody>
+        </table>
+
+        <h2>3. 화면 구성</h2>
+
+        <h3>3.1 메인 화면 레이아웃</h3>
+        <pre class="ascii-box"><code>┌─────────────────────────────────────────┐
+│ ☰  NEW-ITEM CHECK APP    [신상확인]     │
+├─────────────────────────────────────────┤
+│    판매처명        최신신상날짜    확인  │
+├─────────────────────────────────────────┤
+│ x  TINA           25/05/24        ☐    │
+│ x  The South Nan  25/05/14        ☐    │
+│ x  LUCY           25/05/10        ☐    │
+│ x  Rosebanks      25/04/18        ☐    │
+│                                    ▼    │ ← 스크롤
+├─────────────────────────────────────────┤
+│ [추가]  [저장]              🔔 자동체크  │
+└─────────────────────────────────────────┘</code></pre>
+
+        <h3>3.2 팝업 - 판매처 등록</h3>
+        <pre class="ascii-box"><code>┌─────────────────────────┐
+│  판매처명 [          ]  │
+│  URL      [          ]  │
+│  [엑셀추가]    [확인]   │
+└─────────────────────────┘</code></pre>
+
+        <h3>3.3 팝업 - 자동신상체크 설정</h3>
+        <pre class="ascii-box"><code>┌─────────────────────────┐
+│  자동신상체크           │
+│  시간 [09:00] [오전 ▼]  │
+│            [확인]       │
+└─────────────────────────┘</code></pre>
+
+        <h2>4. 데이터 구조</h2>
+
+        <h3>4.1 판매처 정보</h3>
+        <table>
+            <thead>
+                <tr><th>필드</th><th>타입</th><th>설명</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>id</td><td>INT</td><td>고유 ID (PK)</td></tr>
+                <tr><td>name</td><td>VARCHAR(100)</td><td>판매처명</td></tr>
+                <tr><td>url</td><td>VARCHAR(500)</td><td>판매처 URL</td></tr>
+                <tr><td>latest_date</td><td>DATE</td><td>최신 신상 날짜</td></tr>
+                <tr><td>last_checked</td><td>DATETIME</td><td>마지막 체크 시각</td></tr>
+                <tr><td>is_pinned</td><td>BOOLEAN</td><td>상단고정 여부</td></tr>
+                <tr><td>is_confirmed</td><td>BOOLEAN</td><td>확인 체크박스 상태</td></tr>
+                <tr><td>status</td><td>ENUM</td><td>normal/updated/failed</td></tr>
+                <tr><td>created_at</td><td>DATETIME</td><td>등록일</td></tr>
+            </tbody>
+        </table>
+
+        <h3>4.2 체크 이력 (선택)</h3>
+        <table>
+            <thead>
+                <tr><th>필드</th><th>타입</th><th>설명</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>id</td><td>INT</td><td>고유 ID</td></tr>
+                <tr><td>seller_id</td><td>INT</td><td>판매처 FK</td></tr>
+                <tr><td>check_date</td><td>DATETIME</td><td>체크 시각</td></tr>
+                <tr><td>detected_date</td><td>DATE</td><td>감지된 신상 날짜</td></tr>
+                <tr><td>success</td><td>BOOLEAN</td><td>성공 여부</td></tr>
+            </tbody>
+        </table>
+
+        <h2>5. 기술 요구사항</h2>
+
+        <h3>5.1 플랫폼</h3>
+        <ul>
+            <li>Windows 데스크탑 앱</li>
+            <li>항상 위 (Always on Top) 옵션 지원</li>
+            <li>시스템 트레이 최소화</li>
+        </ul>
+
+        <h3>5.2 외부 연동</h3>
+        <ul>
+            <li><strong>네이버 웨일</strong>: 신상 페이지 열기 (기본 브라우저 대체 가능)</li>
+            <li><strong>Push 알림</strong>: Windows 알림 센터</li>
+            <li><strong>카카오톡 알림</strong>: 카카오 비즈메시지 API (선택)</li>
+        </ul>
+
+        <h3>5.3 성능 요구사항</h3>
+        <ul>
+            <li>300개+ 판매처 목록 부드러운 스크롤</li>
+            <li>순차 체크 시 진행률 표시</li>
+            <li>백그라운드 체크 시 CPU/메모리 최소화</li>
+        </ul>
+
+        <h2>6. 예시 판매처 URL</h2>
+        <pre><code>https://shop31jq640778315.1688.com/?spm=0.0.wp_pc_common_topnav_38229151.0</code></pre>
+        <p>판매처 페이지 내 신상 카테고리 예시:</p>
+        <ul>
+            <li>2025년 여름 신상 (221)</li>
+            <li>2025 봄여름 신상 (79)</li>
+            <li>여름 신상/5.24 (2)</li>
+            <li>여름 신상/5.23 (5)</li>
+        </ul>
+
+        <div class="section-review">
+            <h2>📋 검토 필요 사항</h2>
+            <p>아래 항목들은 기획 확정을 위해 추가 논의가 필요합니다.</p>
+
+            <h3>A. 핵심 로직 - 신상품 감지 방법</h3>
+            <p><strong>A.1 파싱 방식</strong></p>
+            <ul class="checkbox-list">
+                <li>타오바오/알리바바 페이지의 <strong>어떤 요소</strong>에서 신상품 정보를 추출하는가?</li>
+                <li>HTML 파싱? 특정 API 호출? JavaScript 렌더링 후 파싱?</li>
+                <li>예시 이미지의 "여름 신상/5.24" 텍스트 위치와 CSS 선택자</li>
+            </ul>
+            <p><strong>A.2 인증 요구사항</strong></p>
+            <ul class="checkbox-list">
+                <li>판매처 페이지 접근에 로그인 필요 여부</li>
+                <li>세션/쿠키 관리 방법</li>
+            </ul>
+            <p><strong>A.3 크롤링 제한 대응</strong></p>
+            <ul class="checkbox-list">
+                <li>IP 차단 대응 방안 (프록시, 딜레이 등)</li>
+                <li>Rate Limiting 정책</li>
+            </ul>
+
+            <h3>B. 알림 기능 상세</h3>
+            <p><strong>B.1 Push 알림</strong></p>
+            <ul class="checkbox-list">
+                <li>Windows 시스템 알림 vs 앱 내 알림창</li>
+                <li>알림 클릭 시 동작 (앱 포커스? 해당 판매처로 이동?)</li>
+            </ul>
+            <p><strong>B.2 카카오톡 알림</strong></p>
+            <ul class="checkbox-list">
+                <li>카카오 비즈메시지 API 사용 여부</li>
+                <li>알림톡 템플릿 승인 필요 여부</li>
+                <li>비용 발생 시 과금 정책</li>
+            </ul>
+            <p><strong>B.3 알림 조건</strong></p>
+            <ul class="checkbox-list">
+                <li>신상 감지 즉시 개별 알림?</li>
+                <li>일정 주기로 요약 알림?</li>
+                <li>알림 빈도 제한 (예: 동일 판매처 1일 1회)</li>
+            </ul>
+
+            <h3>C. 엑셀 추가 기능</h3>
+            <p><strong>C.1 파일 포맷</strong></p>
+            <ul class="checkbox-list">
+                <li>지원 확장자: xlsx, xls, csv?</li>
+                <li>필수 컬럼: 판매처명, URL</li>
+                <li>선택 컬럼: 메모, 카테고리 등</li>
+            </ul>
+            <p><strong>C.2 중복 처리</strong></p>
+            <ul class="checkbox-list">
+                <li>중복 판단 기준: URL만? 판매처명+URL?</li>
+                <li>중복 시 동작: 무시? 업데이트? 사용자 확인?</li>
+            </ul>
+
+            <h3>D. 예외 처리</h3>
+            <p><strong>D.1 체크 실패 시</strong></p>
+            <ul class="checkbox-list">
+                <li>자동 재시도 횟수</li>
+                <li>재시도 간격</li>
+                <li>연속 실패 시 알림 여부</li>
+            </ul>
+            <p><strong>D.2 URL 형식 변경</strong></p>
+            <ul class="checkbox-list">
+                <li>판매처 URL 리디렉션 대응</li>
+                <li>페이지 구조 변경 감지 및 알림</li>
+            </ul>
+            <p><strong>D.3 네트워크 오류</strong></p>
+            <ul class="checkbox-list">
+                <li>오프라인 모드 동작</li>
+                <li>네트워크 복구 시 자동 재개</li>
+            </ul>
+
+            <h3>E. 저장 기능 관련</h3>
+            <p><strong>E.1 자동 저장</strong></p>
+            <ul class="checkbox-list">
+                <li>원본 문서 질문: "이 기능 없이 자동 저장 가능한가요??"</li>
+                <li>자동 저장 주기 또는 트리거 조건</li>
+            </ul>
+            <p><strong>E.2 데이터 백업</strong></p>
+            <ul class="checkbox-list">
+                <li>로컬 백업 주기</li>
+                <li>클라우드 동기화 필요 여부</li>
+            </ul>
+
+            <h3>F. 비즈니스/운영</h3>
+            <p><strong>F.1 사용 범위</strong></p>
+            <ul class="checkbox-list">
+                <li>개인용 도구? 팀 공유 기능?</li>
+                <li>멀티 디바이스 동기화?</li>
+            </ul>
+            <p><strong>F.2 수익화</strong></p>
+            <ul class="checkbox-list">
+                <li>내부 업무용 도구로 종료?</li>
+                <li>외부 서비스로 확장 시 과금 모델?</li>
+            </ul>
+            <p><strong>F.3 언어 지원</strong></p>
+            <ul class="checkbox-list">
+                <li>한국어 전용?</li>
+                <li>중국어 UI 지원 필요?</li>
+            </ul>
+        </div>
+
+        <h2>변경 이력</h2>
+        <table>
+            <thead>
+                <tr><th>버전</th><th>날짜</th><th>변경 내용</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>v0.1</td><td>2025-05-24</td><td>원본 PDF 작성</td></tr>
+                <tr><td>v0.2</td><td>2025-12-28</td><td>마크다운 기획서 변환, 검토 필요 사항 정리</td></tr>
+            </tbody>
+        </table>
+
+        <footer>
+            <p>CraftBay Events | <a href="https://craftbay.io">craftbay.io</a></p>
+        </footer>
+    </div>
+</body>
+</html>
