@@ -3,17 +3,14 @@
     Upload files to CraftBay server via WebSocket
 .DESCRIPTION
     Bypasses HTTP POST restrictions using WebSocket protocol.
-    Supports large files with chunked transfer.
+    Supports multiple files and large files with chunked transfer.
 .EXAMPLE
     powershell -ExecutionPolicy Bypass -File .\Upload-ToCraftBay.ps1
-    # Opens file selection dialog
-.EXAMPLE
-    powershell -ExecutionPolicy Bypass -File .\Upload-ToCraftBay.ps1 -FilePath "C:\data\archive.zip"
-    # Upload specific file directly
+    # Opens file selection dialog (multi-select enabled)
 #>
 
 param(
-    [string]$FilePath,
+    [string[]]$FilePaths,
     [string]$TargetFolder = "",
     [string]$ServerUrl = "wss://upload.craftbay.io"
 )
@@ -59,17 +56,17 @@ function Test-WebSocketConnection {
     return $null
 }
 
-# File selection dialog
-function Select-FileToUpload {
+# File selection dialog (multi-select)
+function Select-FilesToUpload {
     Add-Type -AssemblyName System.Windows.Forms
     
     $dialog = New-Object System.Windows.Forms.OpenFileDialog
-    $dialog.Title = "Select file to upload"
+    $dialog.Title = "Select files to upload (Ctrl+Click for multiple)"
     $dialog.Filter = "All Files (*.*)|*.*"
-    $dialog.Multiselect = $false
+    $dialog.Multiselect = $true
     
     if ($dialog.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
-        return $dialog.FileName
+        return $dialog.FileNames
     }
     return $null
 }
@@ -129,11 +126,9 @@ function Select-TargetFolder {
     $form.AcceptButton = $okButton
     
     if ($form.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
-        # Custom folder takes priority
         if ($customTextBox.Text.Trim() -ne "") {
             return $customTextBox.Text.Trim()
         }
-        # Otherwise use selected from list
         $selectedIndex = $listBox.SelectedIndex
         if ($selectedIndex -ge 0 -and $selectedIndex -lt $folders.Count) {
             return $folders[$selectedIndex].Value
@@ -152,7 +147,7 @@ function Format-FileSize {
     return "$([math]::Round($Bytes/1GB, 2)) GB"
 }
 
-# Upload file via WebSocket
+# Upload single file via WebSocket
 function Send-FileViaWebSocket {
     param(
         [string]$FilePath,
@@ -169,8 +164,7 @@ function Send-FileViaWebSocket {
     try {
         $ws = New-Object System.Net.WebSockets.ClientWebSocket
         $cts = New-Object System.Threading.CancellationTokenSource
-        # Timeout: 30 minutes for large files
-        $cts.CancelAfter(1800000)
+        $cts.CancelAfter(1800000)  # 30 min timeout
         
         $uri = [System.Uri]::new($ServerUrl)
         Write-Host "[..] Connecting to server..." -ForegroundColor Yellow
@@ -238,19 +232,16 @@ function Send-FileViaWebSocket {
         # Close connection
         $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, "", $cts.Token).Wait()
         
-        Write-Host "`n[OK] Upload complete!" -ForegroundColor Green
+        Write-Host "[OK] Upload complete!" -ForegroundColor Green
         Write-Host "   File: $fileName" -ForegroundColor Gray
         Write-Host "   Size: $(Format-FileSize -Bytes $totalSent)" -ForegroundColor Gray
         Write-Host "   Time: $([math]::Round($elapsed.TotalSeconds, 1)) seconds" -ForegroundColor Gray
         Write-Host "   Speed: $(Format-FileSize -Bytes $avgSpeed)/s" -ForegroundColor Gray
-        if ($TargetFolder) {
-            Write-Host "   Folder: $TargetFolder" -ForegroundColor Gray
-        }
         
         return $true
     }
     catch {
-        Write-Host "`n[FAIL] Upload failed: $($_.Exception.Message)" -ForegroundColor Red
+        Write-Host "[FAIL] Upload failed: $($_.Exception.Message)" -ForegroundColor Red
         return $false
     }
     finally {
@@ -264,8 +255,8 @@ function Send-FileViaWebSocket {
 Write-Host @"
 
 +------------------------------------------+
-|     CraftBay File Uploader v1.1          |
-|     WebSocket-based file transfer        |
+|     CraftBay File Uploader v1.2          |
+|     Multi-file WebSocket transfer        |
 +------------------------------------------+
 
 "@ -ForegroundColor Cyan
@@ -276,31 +267,28 @@ $testResult = Test-WebSocketConnection -Url $ServerUrl
 
 if ($testResult) {
     Write-Host "[OK] WebSocket connection successful!" -ForegroundColor Green
-    $responseObj = $testResult | ConvertFrom-Json -ErrorAction SilentlyContinue
-    if ($responseObj.message) {
-        Write-Host "   Server: $($responseObj.message)" -ForegroundColor Gray
-    }
 }
 else {
     Write-Host "[FAIL] WebSocket connection failed!" -ForegroundColor Red
     Write-Host "   Server URL: $ServerUrl" -ForegroundColor Gray
-    Write-Host "`n   WebSocket may be blocked in this network." -ForegroundColor Yellow
     Read-Host "`nPress Enter to exit"
     exit 1
 }
 
 # File selection
-if (-not $FilePath) {
-    $FilePath = Select-FileToUpload
-    if (-not $FilePath) {
+if (-not $FilePaths -or $FilePaths.Count -eq 0) {
+    $FilePaths = Select-FilesToUpload
+    if (-not $FilePaths -or $FilePaths.Count -eq 0) {
         Write-Host "`nCancelled." -ForegroundColor Yellow
         exit 0
     }
 }
 
-if (-not (Test-Path $FilePath)) {
-    Write-Host "`n[FAIL] File not found: $FilePath" -ForegroundColor Red
-    exit 1
+# Show selected files
+Write-Host "`n[i] Selected $($FilePaths.Count) file(s):" -ForegroundColor Cyan
+foreach ($f in $FilePaths) {
+    $size = Format-FileSize -Bytes (Get-Item $f).Length
+    Write-Host "   - $([System.IO.Path]::GetFileName($f)) ($size)" -ForegroundColor Gray
 }
 
 # Folder selection
@@ -312,11 +300,53 @@ if (-not $TargetFolder) {
     }
 }
 
-# Execute upload
-$result = Send-FileViaWebSocket -FilePath $FilePath -TargetFolder $TargetFolder -ServerUrl $ServerUrl
+if ($TargetFolder) {
+    Write-Host "`n[i] Target folder: $TargetFolder" -ForegroundColor Cyan
+} else {
+    Write-Host "`n[i] Target folder: (root)" -ForegroundColor Cyan
+}
 
-if ($result) {
-    Write-Host "`n[SUCCESS] File saved to server." -ForegroundColor Green
+# Upload each file
+$successCount = 0
+$failCount = 0
+$totalFiles = $FilePaths.Count
+
+Write-Host "`n========================================" -ForegroundColor White
+Write-Host "Starting upload of $totalFiles file(s)" -ForegroundColor White
+Write-Host "========================================" -ForegroundColor White
+
+for ($i = 0; $i -lt $FilePaths.Count; $i++) {
+    $filePath = $FilePaths[$i]
+    Write-Host "`n[$($i+1)/$totalFiles] " -NoNewline -ForegroundColor White
+    
+    if (-not (Test-Path $filePath)) {
+        Write-Host "File not found: $filePath" -ForegroundColor Red
+        $failCount++
+        continue
+    }
+    
+    $result = Send-FileViaWebSocket -FilePath $filePath -TargetFolder $TargetFolder -ServerUrl $ServerUrl
+    
+    if ($result) {
+        $successCount++
+    } else {
+        $failCount++
+    }
+    
+    # Small delay between files
+    if ($i -lt $FilePaths.Count - 1) {
+        Start-Sleep -Seconds 1
+    }
+}
+
+# Summary
+Write-Host "`n========================================" -ForegroundColor White
+Write-Host "Upload Summary" -ForegroundColor White
+Write-Host "========================================" -ForegroundColor White
+Write-Host "   Total:   $totalFiles file(s)" -ForegroundColor Gray
+Write-Host "   Success: $successCount" -ForegroundColor Green
+if ($failCount -gt 0) {
+    Write-Host "   Failed:  $failCount" -ForegroundColor Red
 }
 
 Read-Host "`nPress Enter to exit"
