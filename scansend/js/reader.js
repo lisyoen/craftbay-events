@@ -6,12 +6,10 @@ let sessionId = null;
 let filename = null;
 let totalChunks = 0;
 let receivedChunks = new Set();
-let scanHistory = [];
 
 // DOM Elements
-const cameraPreview = document.getElementById('camera-preview');
-const transferStatus = document.getElementById('transfer-status');
-const transferProgress = document.getElementById('transfer-progress');
+const statusIdle = document.getElementById('status-idle');
+const progressSection = document.getElementById('progress-section');
 const fileNameEl = document.getElementById('file-name');
 const progressText = document.getElementById('progress-text');
 const progressFill = document.getElementById('progress-fill');
@@ -21,7 +19,6 @@ const scanList = document.getElementById('scan-list');
 const pendingInfo = document.getElementById('pending-info');
 const pendingList = document.getElementById('pending-list');
 const completionSection = document.getElementById('completion-section');
-const btnToggleCamera = document.getElementById('btn-toggle-camera');
 const btnNewScan = document.getElementById('btn-new-scan');
 
 // Initialize
@@ -30,8 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     loadSession();
 });
 
-btnToggleCamera.addEventListener('click', toggleCamera);
-btnNewScan.addEventListener('click', resetSession);
+if (btnNewScan) btnNewScan.addEventListener('click', resetSession);
 
 async function initScanner() {
     try {
@@ -50,20 +46,20 @@ async function initScanner() {
             onScanFailure
         );
         
+        console.log('Scanner started');
+        
     } catch (error) {
         console.error('Camera init error:', error);
-        transferStatus.innerHTML = `
-            <div class="status-error">
-                <span class="status-icon">⚠️</span>
-                <span class="status-text">카메라 접근 실패: ${error.message}</span>
-            </div>
-        `;
+        alert('카메라 접근 실패: ' + error.message);
     }
 }
 
 async function onScanSuccess(decodedText) {
+    console.log('QR Scanned:', decodedText.substring(0, 100));
+    
     try {
         const data = JSON.parse(decodedText);
+        console.log('Parsed data:', data.t, data.i);
         
         if (data.t === 'chunk') {
             await handleChunk(data);
@@ -73,25 +69,29 @@ async function onScanSuccess(decodedText) {
         
     } catch (error) {
         console.error('Scan parse error:', error);
+        addScanResult('parse', false, error.message);
     }
 }
 
 function onScanFailure(error) {
-    // Ignore scan failures (no QR detected)
+    // Ignore - no QR detected
 }
 
 async function handleChunk(data) {
     // Skip if already received
     if (receivedChunks.has(data.i)) {
+        console.log('Skip duplicate chunk:', data.i);
         return;
     }
     
     // Initialize session if first chunk
-    if (!sessionId) {
+    if (!filename) {
         filename = data.f;
         totalChunks = data.n;
         showProgress();
     }
+    
+    console.log('Sending chunk:', data.i);
     
     try {
         const response = await fetch(`${API_BASE}/api/chunk`, {
@@ -103,7 +103,10 @@ async function handleChunk(data) {
             })
         });
         
+        console.log('Response status:', response.status);
+        
         const result = await response.json();
+        console.log('Result:', result);
         
         if (result.success) {
             sessionId = result.sessionId;
@@ -117,15 +120,17 @@ async function handleChunk(data) {
         
     } catch (error) {
         console.error('Chunk send error:', error);
-        addScanResult(data.i, false, error.message);
+        addScanResult(data.i, false, 'Network: ' + error.message);
     }
 }
 
 async function handleFinal(data) {
     if (!sessionId) {
-        addScanResult('final', false, '청크가 먼저 전송되어야 합니다');
+        addScanResult('final', false, '청크 먼저 전송 필요');
         return;
     }
+    
+    console.log('Sending final');
     
     try {
         const response = await fetch(`${API_BASE}/api/finalize`, {
@@ -140,7 +145,7 @@ async function handleFinal(data) {
         const result = await response.json();
         
         if (result.success) {
-            showCompletion(true);
+            showCompletion();
             clearSession();
         } else {
             addScanResult('final', false, result.error);
@@ -156,19 +161,19 @@ async function handleFinal(data) {
 }
 
 function showProgress() {
-    transferStatus.style.display = 'none';
-    transferProgress.style.display = 'block';
-    fileNameEl.textContent = filename;
-    pagesTotal.textContent = totalChunks + 1;
+    if (statusIdle) statusIdle.style.display = 'none';
+    if (progressSection) progressSection.style.display = 'block';
+    if (fileNameEl) fileNameEl.textContent = filename;
+    if (pagesTotal) pagesTotal.textContent = totalChunks + 1;
 }
 
 function updateProgress(result) {
     const received = result.received ? result.received.length : receivedChunks.size;
     const percent = Math.round((received / totalChunks) * 100);
     
-    progressFill.style.width = percent + '%';
-    progressText.textContent = percent + '%';
-    pagesSent.textContent = received;
+    if (progressFill) progressFill.style.width = percent + '%';
+    if (progressText) progressText.textContent = percent + '%';
+    if (pagesSent) pagesSent.textContent = received;
     
     if (result.missing && result.missing.length > 0) {
         updatePendingList(result.missing);
@@ -176,24 +181,25 @@ function updateProgress(result) {
 }
 
 function updatePendingList(missing) {
-    pendingInfo.innerHTML = `<span class="pending-count">${missing.length}</span>개 페이지 미전송`;
-    pendingList.innerHTML = missing.map(i => `
+    if (pendingInfo) pendingInfo.innerHTML = `<span class="pending-count">${missing.length}</span>개 미전송`;
+    if (pendingList) pendingList.innerHTML = missing.slice(0, 10).map(i => `
         <li class="pending-item">페이지 ${i + 1}</li>
     `).join('');
 }
 
 function addScanResult(index, success, error = null) {
+    if (!scanList) return;
+    
     const item = document.createElement('li');
     item.className = `scan-item ${success ? 'scan-success' : 'scan-fail'}`;
     
     const icon = success ? '✓' : '✗';
-    const text = index === 'final' ? '완료 QR' : `페이지 ${index + 1}`;
+    const text = index === 'final' ? '완료 QR' : (index === 'parse' ? '파싱 오류' : `페이지 ${index + 1}`);
     const errorText = error ? ` - ${error}` : '';
     
     item.innerHTML = `
         <span class="scan-icon">${icon}</span>
         <span class="scan-text">${text}${errorText}</span>
-        <span class="scan-time">방금</span>
     `;
     
     // Remove empty state
@@ -202,29 +208,33 @@ function addScanResult(index, success, error = null) {
     
     scanList.insertBefore(item, scanList.firstChild);
     
-    // Keep only last 10
-    while (scanList.children.length > 10) {
+    // Keep only last 5
+    while (scanList.children.length > 5) {
         scanList.removeChild(scanList.lastChild);
     }
 }
 
-function showCompletion(success) {
+function showCompletion() {
     if (html5QrCode) {
-        html5QrCode.stop();
+        html5QrCode.stop().catch(e => console.log(e));
     }
     
-    completionSection.style.display = 'block';
-    document.getElementById('stat-total').textContent = totalChunks + 1;
-    document.getElementById('stat-success').textContent = receivedChunks.size;
+    if (completionSection) {
+        completionSection.style.display = 'block';
+        document.getElementById('stat-total').textContent = totalChunks + 1;
+        document.getElementById('stat-success').textContent = receivedChunks.size;
+    }
 }
 
 function saveSession() {
-    localStorage.setItem('scansend_session', JSON.stringify({
-        sessionId,
-        filename,
-        totalChunks,
-        receivedChunks: Array.from(receivedChunks)
-    }));
+    try {
+        localStorage.setItem('scansend_session', JSON.stringify({
+            sessionId,
+            filename,
+            totalChunks,
+            receivedChunks: Array.from(receivedChunks)
+        }));
+    } catch (e) {}
 }
 
 function loadSession() {
@@ -237,14 +247,12 @@ function loadSession() {
             totalChunks = data.totalChunks;
             receivedChunks = new Set(data.receivedChunks);
             
-            if (sessionId) {
+            if (sessionId && filename) {
                 showProgress();
                 updateProgress({ received: data.receivedChunks });
             }
         }
-    } catch (e) {
-        console.error('Load session error:', e);
-    }
+    } catch (e) {}
 }
 
 function clearSession() {
@@ -258,21 +266,12 @@ function resetSession() {
     totalChunks = 0;
     receivedChunks = new Set();
     
-    transferStatus.style.display = 'block';
-    transferProgress.style.display = 'none';
-    completionSection.style.display = 'none';
-    scanList.innerHTML = '<li class="scan-item scan-empty"><span class="scan-icon">🔍</span><span class="scan-text">스캔 기록이 없습니다</span></li>';
-    pendingList.innerHTML = '';
-    pendingInfo.innerHTML = '<span class="pending-count">0</span>개 페이지 대기 중';
+    if (statusIdle) statusIdle.style.display = 'block';
+    if (progressSection) progressSection.style.display = 'none';
+    if (completionSection) completionSection.style.display = 'none';
+    if (scanList) scanList.innerHTML = '<li class="scan-item scan-empty"><span class="scan-icon">🔍</span><span class="scan-text">스캔 기록 없음</span></li>';
+    if (pendingList) pendingList.innerHTML = '';
+    if (pendingInfo) pendingInfo.innerHTML = '<span class="pending-count">0</span>개 미전송';
     
     initScanner();
-}
-
-async function toggleCamera() {
-    // Toggle between front and back camera
-    if (html5QrCode) {
-        await html5QrCode.stop();
-        // Re-init with opposite camera
-        initScanner();
-    }
 }
