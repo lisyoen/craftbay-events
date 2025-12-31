@@ -5,133 +5,238 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="theme-color" content="#1a1a2e">
     <title>ScanSend Reader - QR Scanner</title>
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 15px;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+        h1 { font-size: 1.3rem; }
+        .header-link {
+            color: #4da6ff;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        #camera-preview {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #000;
+            min-height: 300px;
+        }
+        .section {
+            background: #252542;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .section-title {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .status-idle {
+            text-align: center;
+            padding: 20px;
+            color: #888;
+        }
+        .status-icon { font-size: 2rem; display: block; margin-bottom: 10px; }
+        .progress-section { display: none; }
+        .file-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .file-name {
+            font-weight: bold;
+            color: #4da6ff;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 70%;
+        }
+        .progress-bar {
+            background: #333;
+            border-radius: 10px;
+            height: 20px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            background: linear-gradient(90deg, #4da6ff, #7b68ee);
+            height: 100%;
+            transition: width 0.3s;
+            border-radius: 10px;
+        }
+        .transfer-details {
+            text-align: center;
+            margin-top: 10px;
+            color: #888;
+        }
+        .scan-list {
+            list-style: none;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+        .scan-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid #333;
+        }
+        .scan-item:last-child { border-bottom: none; }
+        .scan-success .scan-icon { color: #4caf50; }
+        .scan-fail .scan-icon { color: #f44336; }
+        .scan-icon { margin-right: 10px; font-weight: bold; }
+        .scan-text { flex: 1; font-size: 0.9rem; }
+        .scan-time { color: #666; font-size: 0.8rem; }
+        .scan-empty { color: #666; justify-content: center; }
+        .pending-info {
+            text-align: center;
+            padding: 10px;
+            color: #ff9800;
+        }
+        .pending-count { font-weight: bold; font-size: 1.2rem; }
+        .pending-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        .pending-item {
+            background: #ff9800;
+            color: #000;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        .completion-section {
+            display: none;
+            text-align: center;
+            padding: 30px 15px;
+        }
+        .completion-icon {
+            font-size: 4rem;
+            color: #4caf50;
+        }
+        .completion-title {
+            font-size: 1.5rem;
+            margin: 15px 0;
+        }
+        .completion-stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .stat-item { text-align: center; }
+        .stat-value {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4da6ff;
+        }
+        .stat-label { font-size: 0.8rem; color: #888; }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .btn:hover { opacity: 0.8; }
+        .btn-primary {
+            background: #4da6ff;
+            color: #fff;
+            width: 100%;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+        }
+        footer a { color: #4da6ff; text-decoration: none; }
+    </style>
 </head>
-<body class="reader-body">
-    <div class="reader-container">
-        <!-- Header -->
-        <header class="reader-header">
-            <h1 class="reader-title">ScanSend Reader</h1>
-            <a href="https://craftbay.io/" class="header-link" target="_blank" rel="noopener">CraftBay</a>
+<body>
+    <div class="container">
+        <header>
+            <h1>📷 ScanSend Reader</h1>
+            <a href="https://craftbay.io/" class="header-link" target="_blank">CraftBay</a>
         </header>
 
-        <!-- Camera Viewfinder -->
-        <section class="viewfinder-section">
-            <div class="viewfinder">
-                <video id="camera-preview" autoplay playsinline></video>
-                <div class="viewfinder-overlay">
-                    <div class="scan-frame"></div>
-                </div>
-                <div class="viewfinder-hint">QR 코드를 프레임 안에 맞춰주세요</div>
-            </div>
-            <div class="camera-controls">
-                <button id="btn-toggle-camera" class="btn btn-secondary">
-                    <span class="btn-icon">&#128247;</span>
-                    카메라 전환
-                </button>
-                <button id="btn-toggle-flash" class="btn btn-secondary">
-                    <span class="btn-icon">&#9889;</span>
-                    플래시
-                </button>
-            </div>
-        </section>
+        <div id="camera-preview"></div>
 
-        <!-- Transfer Status -->
-        <section class="status-section">
+        <div class="section" id="status-section">
             <h2 class="section-title">전송 상태</h2>
-            <div class="transfer-status" id="transfer-status">
-                <div class="status-idle">
-                    <span class="status-icon">&#128196;</span>
-                    <span class="status-text">대기 중...</span>
-                </div>
+            <div class="status-idle" id="status-idle">
+                <span class="status-icon">📄</span>
+                <span>QR 코드를 스캔하세요</span>
             </div>
-            <div class="transfer-progress" id="transfer-progress" style="display: none;">
+            <div class="progress-section" id="progress-section">
                 <div class="file-info">
-                    <span class="file-name" id="file-name">document_001.pdf</span>
-                    <span class="file-progress-text" id="progress-text">0%</span>
+                    <span class="file-name" id="file-name">-</span>
+                    <span id="progress-text">0%</span>
                 </div>
                 <div class="progress-bar">
-                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                    <div class="progress-fill" id="progress-fill"></div>
                 </div>
                 <div class="transfer-details">
                     <span id="pages-sent">0</span> / <span id="pages-total">0</span> 페이지
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Recent Scans -->
-        <section class="recent-section">
-            <h2 class="section-title">최근 스캔 결과</h2>
+        <div class="section">
+            <h2 class="section-title">최근 스캔</h2>
             <ul class="scan-list" id="scan-list">
                 <li class="scan-item scan-empty">
-                    <span class="scan-icon">&#128269;</span>
+                    <span class="scan-icon">🔍</span>
                     <span class="scan-text">스캔 기록이 없습니다</span>
                 </li>
-                <!-- Example items (will be populated by JS)
-                <li class="scan-item scan-success">
-                    <span class="scan-icon">&#10004;</span>
-                    <span class="scan-text">page_001.png</span>
-                    <span class="scan-time">방금 전</span>
-                </li>
-                <li class="scan-item scan-fail">
-                    <span class="scan-icon">&#10008;</span>
-                    <span class="scan-text">page_002.png - 전송 실패</span>
-                    <span class="scan-time">1분 전</span>
-                </li>
-                -->
             </ul>
-        </section>
+        </div>
 
-        <!-- Pending Pages -->
-        <section class="pending-section">
+        <div class="section">
             <h2 class="section-title">미전송 페이지</h2>
             <div class="pending-info" id="pending-info">
                 <span class="pending-count">0</span>개 페이지 대기 중
             </div>
-            <ul class="pending-list" id="pending-list">
-                <!-- Will be populated by JS
-                <li class="pending-item">
-                    <span class="pending-name">page_003.png</span>
-                    <button class="btn btn-small btn-retry">재시도</button>
-                </li>
-                -->
-            </ul>
-            <button id="btn-retry-all" class="btn btn-primary btn-full" style="display: none;">
-                모두 재전송
-            </button>
-        </section>
+            <ul class="pending-list" id="pending-list"></ul>
+        </div>
 
-        <!-- Completion Message -->
-        <section class="completion-section" id="completion-section" style="display: none;">
-            <div class="completion-message">
-                <span class="completion-icon">&#10004;</span>
-                <h2 class="completion-title">전송 완료!</h2>
-                <p class="completion-text">모든 페이지가 성공적으로 전송되었습니다.</p>
-                <div class="completion-stats">
-                    <div class="stat-item">
-                        <span class="stat-value" id="stat-total">0</span>
-                        <span class="stat-label">전체 페이지</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value" id="stat-success">0</span>
-                        <span class="stat-label">성공</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-value" id="stat-time">0s</span>
-                        <span class="stat-label">소요 시간</span>
-                    </div>
+        <div class="completion-section" id="completion-section">
+            <div class="completion-icon">✓</div>
+            <h2 class="completion-title">전송 완료!</h2>
+            <p>모든 페이지가 성공적으로 전송되었습니다.</p>
+            <div class="completion-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-total">0</span>
+                    <span class="stat-label">전체</span>
                 </div>
-                <button id="btn-new-scan" class="btn btn-primary btn-full">
-                    새로운 스캔 시작
-                </button>
+                <div class="stat-item">
+                    <span class="stat-value" id="stat-success">0</span>
+                    <span class="stat-label">성공</span>
+                </div>
             </div>
-        </section>
+            <button class="btn btn-primary" id="btn-new-scan">새로운 스캔</button>
+        </div>
 
-        <!-- Footer -->
-        <footer class="reader-footer">
-            <a href="https://craftbay.io/" class="footer-link" target="_blank" rel="noopener">
-                Powered by CraftBay
-            </a>
+        <footer>
+            <a href="https://craftbay.io/" target="_blank">Powered by CraftBay</a>
         </footer>
     </div>
 
