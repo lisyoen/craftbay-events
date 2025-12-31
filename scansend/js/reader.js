@@ -1,6 +1,6 @@
-// ScanSend Reader v2.0 - 2025-01-01 00:25:30
+// ScanSend Reader v2.2 - 세션 관리 개선
 const API_BASE = 'https://scansend.craftbay.io';
-const VERSION = 'v2.1';
+const VERSION = 'v2.2';
 
 let html5QrCode = null;
 let sessionId = null;
@@ -36,13 +36,12 @@ const btnNewScan = document.getElementById('btn-new-scan');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    // 버전 표시
     const header = document.querySelector('h1');
     if (header) header.textContent = '📷 ScanSend ' + VERSION;
     
     serverLog('Reader loaded', { version: VERSION });
     initScanner();
-    loadSession();
+    // 세션 로드 제거 - 항상 새로 시작
 });
 
 if (btnNewScan) btnNewScan.addEventListener('click', resetSession);
@@ -73,11 +72,20 @@ async function initScanner() {
 }
 
 async function onScanSuccess(decodedText) {
-    serverLog('QR scanned', { len: decodedText.length, preview: decodedText.substring(0, 50) });
+    serverLog('QR scanned', { len: decodedText.length });
     
     try {
         const data = JSON.parse(decodedText);
         serverLog('Parsed', { type: data.t, index: data.i, file: data.f });
+        
+        // 파일명이 바뀌면 세션 리셋
+        if (filename && data.f !== filename) {
+            serverLog('New file detected, resetting session');
+            sessionId = null;
+            filename = null;
+            totalChunks = 0;
+            receivedChunks = new Set();
+        }
         
         if (data.t === 'chunk') {
             await handleChunk(data);
@@ -128,9 +136,8 @@ async function handleChunk(data) {
         serverLog('Result', result);
         
         if (result.success) {
-            sessionId = result.sessionId;
+            sessionId = result.sessionId;  // 서버에서 받은 sessionId 저장
             receivedChunks.add(data.i);
-            saveSession();
             updateProgress(result);
             addScanResult(data.i, true);
         } else {
@@ -144,9 +151,11 @@ async function handleChunk(data) {
 }
 
 async function handleFinal(data) {
+    serverLog('handleFinal', { sessionId, filename: data.f });
+    
     if (!sessionId) {
         serverLog('Final without session');
-        addScanResult('final', false, '청크 먼저 전송 필요');
+        addScanResult('final', false, '청크를 먼저 스캔하세요');
         return;
     }
     
@@ -167,7 +176,6 @@ async function handleFinal(data) {
         
         if (result.success) {
             showCompletion();
-            clearSession();
         } else {
             addScanResult('final', false, result.error);
             if (result.missing && result.missing.length > 0) {
@@ -186,6 +194,9 @@ function showProgress() {
     if (progressSection) progressSection.style.display = 'block';
     if (fileNameEl) fileNameEl.textContent = filename;
     if (pagesTotal) pagesTotal.textContent = totalChunks + 1;
+    if (pagesSent) pagesSent.textContent = '0';
+    if (progressFill) progressFill.style.width = '0%';
+    if (progressText) progressText.textContent = '0%';
 }
 
 function updateProgress(result) {
@@ -216,7 +227,7 @@ function addScanResult(index, success, error = null) {
     
     const icon = success ? '✓' : '✗';
     const text = index === 'final' ? '완료' : (index === 'parse' ? '파싱오류' : `p${index + 1}`);
-    const errorText = error ? `: ${error.substring(0, 20)}` : '';
+    const errorText = error ? `: ${error.substring(0, 30)}` : '';
     
     item.innerHTML = `<span class="scan-icon">${icon}</span><span class="scan-text">${text}${errorText}</span>`;
     
@@ -235,42 +246,16 @@ function showCompletion() {
     if (completionSection) {
         completionSection.style.display = 'block';
         document.getElementById('stat-total').textContent = totalChunks + 1;
-        document.getElementById('stat-success').textContent = receivedChunks.size;
+        document.getElementById('stat-success').textContent = receivedChunks.size + 1;
     }
-}
-
-function saveSession() {
-    try {
-        localStorage.setItem('scansend_session', JSON.stringify({
-            sessionId, filename, totalChunks,
-            receivedChunks: Array.from(receivedChunks)
-        }));
-    } catch (e) {}
-}
-
-function loadSession() {
-    try {
-        const saved = localStorage.getItem('scansend_session');
-        if (saved) {
-            const data = JSON.parse(saved);
-            sessionId = data.sessionId;
-            filename = data.filename;
-            totalChunks = data.totalChunks;
-            receivedChunks = new Set(data.receivedChunks);
-            if (sessionId && filename) {
-                showProgress();
-                updateProgress({ received: data.receivedChunks });
-            }
-        }
-    } catch (e) {}
-}
-
-function clearSession() {
-    localStorage.removeItem('scansend_session');
+    // 세션 리셋
+    sessionId = null;
+    filename = null;
+    totalChunks = 0;
+    receivedChunks = new Set();
 }
 
 function resetSession() {
-    clearSession();
     sessionId = null;
     filename = null;
     totalChunks = 0;
