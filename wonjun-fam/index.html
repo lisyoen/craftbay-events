@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎊 2026 원준팸 새해 인사</title>
+  <meta property="og:title" content="🎊 2026 원준팸 새해 인사">
+  <meta property="og:description" content="원준팸 식구들, 2026년에도 각자 행복하자! 🎉">
+  <meta property="og:url" content="https://events.craftbay.io/wonjun-fam/">
+  <meta property="og:site_name" content="CraftBay Events">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      overflow-x: hidden;
+    }
+    
+    .container {
+      min-height: 100vh;
+      padding: 40px 20px;
+      position: relative;
+    }
+    
+    /* 폭죽/불꽃 효과 */
+    .firework {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: firework 1.5s ease-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes firework {
+      0% { transform: translateY(100vh) scale(1); opacity: 1; }
+      50% { opacity: 1; }
+      100% { transform: translateY(-20vh) scale(0); opacity: 0; }
+    }
+    
+    /* 반짝이 효과 */
+    .sparkle {
+      position: fixed;
+      width: 4px;
+      height: 4px;
+      background: white;
+      border-radius: 50%;
+      animation: sparkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1); }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .year-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #FFD700, #FFA500);
+      color: #333;
+      font-size: 1.2rem;
+      font-weight: 900;
+      padding: 10px 30px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
+      animation: bounce 2s ease-in-out infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .main-emoji {
+      font-size: 5rem;
+      margin: 20px 0;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(-5deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+    
+    .title {
+      font-size: 2.5rem;
+      color: white;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      margin-bottom: 15px;
+      font-weight: 900;
+    }
+    
+    .subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+    }
+    
+    .family-name {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      padding: 15px 40px;
+      border-radius: 40px;
+      color: white;
+      font-size: 1.8rem;
+      font-weight: 700;
+      border: 2px solid rgba(255,255,255,0.3);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    }
+    
+    .message-box {
+      max-width: 600px;
+      margin: 50px auto;
+      background: rgba(255,255,255,0.95);
+      border-radius: 30px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+      transform: perspective(1000px) rotateX(2deg);
+    }
+    
+    .message-box::before {
+      content: '💌';
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 3rem;
+    }
+    
+    .message-title {
+      font-size: 1.5rem;
+      color: #764ba2;
+      margin-bottom: 25px;
+      font-weight: 700;
+    }
+    
+    .message-content {
+      font-size: 1.3rem;
+      color: #333;
+      line-height: 2;
+      margin-bottom: 30px;
+    }
+    
+    .highlight {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      font-weight: 900;
+    }
+    
+    .members {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    
+    .member {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .member-emoji {
+      font-size: 3rem;
+      animation: wave 2s ease-in-out infinite;
+    }
+    
+    .member:nth-child(2) .member-emoji {
+      animation-delay: 0.3s;
+    }
+    
+    .member:nth-child(3) .member-emoji {
+      animation-delay: 0.6s;
+    }
+    
+    @keyframes wave {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(20deg); }
+      75% { transform: rotate(-20deg); }
+    }
+    
+    .member-name {
+      color: #764ba2;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .footer-emoji {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      display: inline-block;
+      animation: spin 4s linear infinite;
+    }
+    
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    
+    .footer-text {
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+    
+    .footer-link {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      margin-top: 10px;
+      display: inline-block;
+    }
+    
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+    
+    /* 모바일 최적화 */
+    @media (max-width: 480px) {
+      .title {
+        font-size: 1.8rem;
+      }
+      .family-name {
+        font-size: 1.4rem;
+        padding: 12px 30px;
+      }
+      .message-box {
+        padding: 40px 25px;
+        margin: 30px 15px;
+      }
+      .message-content {
+        font-size: 1.1rem;
+      }
+      .main-emoji {
+        font-size: 4rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="year-badge">🎊 HAPPY NEW YEAR 🎊</div>
+      <div class="main-emoji">🎉</div>
+      <h1 class="title">2026년 새해 복 많이 받으세요!</h1>
+      <p class="subtitle">카카오톡 단체방 원준팸에서 보내는 새해 인사</p>
+      <div class="family-name">👨‍👩‍👦 원준팸</div>
+    </header>
+    
+    <div class="message-box">
+      <h2 class="message-title">✨ To. 사랑하는 원준팸 식구들 ✨</h2>
+      <p class="message-content">
+        2025년도 수고 많았어요!<br><br>
+        <span class="highlight">2026년에도</span><br>
+        <span class="highlight">각자의 자리에서</span><br>
+        <span class="highlight">행복하자! 💪</span><br><br>
+        건강하고, 웃을 일 많고,<br>
+        좋은 일만 가득한 한 해 되길! 🍀
+      </p>
+      
+      <div class="members">
+        <div class="member">
+          <span class="member-emoji">👨</span>
+          <span class="member-name">아빠</span>
+        </div>
+        <div class="member">
+          <span class="member-emoji">👩</span>
+          <span class="member-name">엄마</span>
+        </div>
+        <div class="member">
+          <span class="member-emoji">👦</span>
+          <span class="member-name">원준</span>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="footer-emoji">🎆</div>
+      <p class="footer-text">원준팸 화이팅! 🎊</p>
+      <a href="https://craftbay.io/" class="footer-link">CraftBay.io</a>
+    </footer>
+  </div>
+  
+  <script>
+    // 폭죽 효과 생성
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = Math.random() * 100 + 'vw';
+      firework.style.background = `hsl(${Math.random() * 360}, 100%, 70%)`;
+      firework.style.animationDuration = (1 + Math.random()) + 's';
+      firework.style.animationDelay = Math.random() + 's';
+      document.body.appendChild(firework);
+      
+      setTimeout(() => firework.remove(), 3000);
+    }
+    
+    // 반짝이 효과 생성
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    
+    // 주기적으로 효과 생성
+    setInterval(createFirework, 500);
+    setInterval(createSparkle, 300);
+    
+    // 초기 효과
+    for(let i = 0; i < 20; i++) {
+      setTimeout(createSparkle, i * 100);
+    }
+  </script>
+</body>
+</html>
