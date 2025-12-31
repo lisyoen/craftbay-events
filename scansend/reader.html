@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a1a2e">
+    <title>ScanSend Reader - QR Scanner</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="reader-body">
+    <div class="reader-container">
+        <!-- Header -->
+        <header class="reader-header">
+            <h1 class="reader-title">ScanSend Reader</h1>
+            <a href="https://craftbay.io/" class="header-link" target="_blank" rel="noopener">CraftBay</a>
+        </header>
+
+        <!-- Camera Viewfinder -->
+        <section class="viewfinder-section">
+            <div class="viewfinder">
+                <video id="camera-preview" autoplay playsinline></video>
+                <div class="viewfinder-overlay">
+                    <div class="scan-frame"></div>
+                </div>
+                <div class="viewfinder-hint">QR 코드를 프레임 안에 맞춰주세요</div>
+            </div>
+            <div class="camera-controls">
+                <button id="btn-toggle-camera" class="btn btn-secondary">
+                    <span class="btn-icon">&#128247;</span>
+                    카메라 전환
+                </button>
+                <button id="btn-toggle-flash" class="btn btn-secondary">
+                    <span class="btn-icon">&#9889;</span>
+                    플래시
+                </button>
+            </div>
+        </section>
+
+        <!-- Transfer Status -->
+        <section class="status-section">
+            <h2 class="section-title">전송 상태</h2>
+            <div class="transfer-status" id="transfer-status">
+                <div class="status-idle">
+                    <span class="status-icon">&#128196;</span>
+                    <span class="status-text">대기 중...</span>
+                </div>
+            </div>
+            <div class="transfer-progress" id="transfer-progress" style="display: none;">
+                <div class="file-info">
+                    <span class="file-name" id="file-name">document_001.pdf</span>
+                    <span class="file-progress-text" id="progress-text">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+                </div>
+                <div class="transfer-details">
+                    <span id="pages-sent">0</span> / <span id="pages-total">0</span> 페이지
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Scans -->
+        <section class="recent-section">
+            <h2 class="section-title">최근 스캔 결과</h2>
+            <ul class="scan-list" id="scan-list">
+                <li class="scan-item scan-empty">
+                    <span class="scan-icon">&#128269;</span>
+                    <span class="scan-text">스캔 기록이 없습니다</span>
+                </li>
+                <!-- Example items (will be populated by JS)
+                <li class="scan-item scan-success">
+                    <span class="scan-icon">&#10004;</span>
+                    <span class="scan-text">page_001.png</span>
+                    <span class="scan-time">방금 전</span>
+                </li>
+                <li class="scan-item scan-fail">
+                    <span class="scan-icon">&#10008;</span>
+                    <span class="scan-text">page_002.png - 전송 실패</span>
+                    <span class="scan-time">1분 전</span>
+                </li>
+                -->
+            </ul>
+        </section>
+
+        <!-- Pending Pages -->
+        <section class="pending-section">
+            <h2 class="section-title">미전송 페이지</h2>
+            <div class="pending-info" id="pending-info">
+                <span class="pending-count">0</span>개 페이지 대기 중
+            </div>
+            <ul class="pending-list" id="pending-list">
+                <!-- Will be populated by JS
+                <li class="pending-item">
+                    <span class="pending-name">page_003.png</span>
+                    <button class="btn btn-small btn-retry">재시도</button>
+                </li>
+                -->
+            </ul>
+            <button id="btn-retry-all" class="btn btn-primary btn-full" style="display: none;">
+                모두 재전송
+            </button>
+        </section>
+
+        <!-- Completion Message -->
+        <section class="completion-section" id="completion-section" style="display: none;">
+            <div class="completion-message">
+                <span class="completion-icon">&#10004;</span>
+                <h2 class="completion-title">전송 완료!</h2>
+                <p class="completion-text">모든 페이지가 성공적으로 전송되었습니다.</p>
+                <div class="completion-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-total">0</span>
+                        <span class="stat-label">전체 페이지</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-success">0</span>
+                        <span class="stat-label">성공</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="stat-time">0s</span>
+                        <span class="stat-label">소요 시간</span>
+                    </div>
+                </div>
+                <button id="btn-new-scan" class="btn btn-primary btn-full">
+                    새로운 스캔 시작
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="reader-footer">
+            <a href="https://craftbay.io/" class="footer-link" target="_blank" rel="noopener">
+                Powered by CraftBay
+            </a>
+        </footer>
+    </div>
+
+    <script src="js/lib/html5-qrcode.min.js"></script>
+    <script src="js/reader.js"></script>
+</body>
+</html>
