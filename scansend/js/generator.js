@@ -1,5 +1,5 @@
 // ScanSend Generator
-const CHUNK_SIZE = 1024; // bytes per chunk
+const CHUNK_SIZE = 500; // bytes per chunk
 
 let file = null;
 let chunks = [];
