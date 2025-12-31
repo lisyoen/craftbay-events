@@ -1,6 +1,6 @@
 // ScanSend Reader v2.0 - 2025-01-01 00:25:30
 const API_BASE = 'https://scansend.craftbay.io';
-const VERSION = 'v2.0 (2025-01-01 00:25:30)';
+const VERSION = 'v2.1';
 
 let html5QrCode = null;
 let sessionId = null;
@@ -37,8 +37,8 @@ const btnNewScan = document.getElementById('btn-new-scan');
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
     // 버전 표시
-    const footer = document.querySelector('footer a');
-    if (footer) footer.textContent = `CraftBay - ${VERSION}`;
+    const header = document.querySelector('h1');
+    if (header) header.textContent = '📷 ScanSend ' + VERSION;
     
     serverLog('Reader loaded', { version: VERSION });
     initScanner();
