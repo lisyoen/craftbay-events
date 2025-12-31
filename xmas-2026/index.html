@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🎊 2026년 새해 복 많이 받으세요!</title>
+  <meta property="og:title" content="🎊 2026년 새해 복 많이 받으세요!">
+  <meta property="og:description" content="창연 가족이 보내는 2026년 새해 인사 💝">
+  <meta property="og:url" content="https://events.craftbay.io/xmas-2026/">
+  <meta property="og:site_name" content="CraftBay">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      min-height: 100vh;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    /* 폭죽 효과 */
+    .firework {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      animation: firework 1.5s ease-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes firework {
+      0% { transform: scale(0); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.8; }
+      100% { transform: scale(0); opacity: 0; }
+    }
+    
+    .sparkle {
+      position: fixed;
+      font-size: 1.5rem;
+      animation: sparkle 2s ease-in-out infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes sparkle {
+      0%, 100% { opacity: 0.3; transform: scale(1) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.2) rotate(180deg); }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    
+    @keyframes glow {
+      0%, 100% { text-shadow: 0 0 20px rgba(255,215,0,0.5); }
+      50% { text-shadow: 0 0 40px rgba(255,215,0,0.8), 0 0 60px rgba(255,215,0,0.4); }
+    }
+    
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .year-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(240,147,251,0.4);
+    }
+    
+    .main-emoji {
+      font-size: 5rem;
+      animation: float 3s ease-in-out infinite;
+      display: block;
+      margin: 20px 0;
+    }
+    
+    .title {
+      font-size: 2.5rem;
+      color: #fff;
+      margin: 20px 0;
+      animation: glow 2s ease-in-out infinite;
+    }
+    
+    .subtitle {
+      color: rgba(255,255,255,0.7);
+      font-size: 1.1rem;
+    }
+    
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .card-wrapper {
+      perspective: 1000px;
+      cursor: pointer;
+      height: 320px;
+    }
+    
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .card-front {
+      background: linear-gradient(145deg, #e94560 0%, #c41e3a 100%);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 3px solid rgba(255,215,0,0.4);
+    }
+    
+    .card-front .emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    
+    .card-front h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .card-front .tap-hint {
+      margin-top: 20px;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.9rem;
+    }
+    
+    .card-front .star {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    
+    .card-front .gift {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-size: 1.2rem;
+    }
+    
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, #fffef0 0%, #fff8dc 100%);
+      padding: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      border: 3px solid rgba(139,0,0,0.3);
+    }
+    
+    .card-back .letter-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    
+    .card-back h3 {
+      color: #c41e3a;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    
+    .card-back .message {
+      color: #333;
+      font-size: 1.1rem;
+      text-align: center;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+    
+    .card-back .from {
+      margin-top: 25px;
+      color: #c41e3a;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+    
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .footer-emoji {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    
+    .footer-link {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+    
+    .footer-link:hover {
+      color: rgba(255,255,255,0.9);
+      text-decoration: underline;
+    }
+    
+    @media (max-width: 480px) {
+      .title { font-size: 1.8rem; }
+      .card-wrapper { height: 280px; }
+      .card-front .emoji { font-size: 3rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- 폭죽 효과 -->
+  <div id="fireworks"></div>
+  <div id="sparkles"></div>
+  
+  <div class="header">
+    <div class="year-badge">🎊 HAPPY NEW YEAR 2026 🎊</div>
+    <span class="main-emoji">🎆</span>
+    <h1 class="title">새해 복 많이 받으세요!</h1>
+    <p class="subtitle">창연 가족이 보내는 2026년 새해 인사 💝</p>
+  </div>
+  
+  <div class="cards-container" id="cards"></div>
+  
+  <footer class="footer">
+    <div class="footer-emoji">🎉 🧧 🎊 🎇 🎆</div>
+    <a href="https://craftbay.io" class="footer-link">CraftBay.io</a>
+  </footer>
+  
+  <script>
+    const family = [
+      { id: 'parents', name: '아버지, 어머니', message: '항상 건강하시고\n2026년에도 행복한 일만 가득하시길\n사랑합니다 💕', emoji: '👨‍👩‍👦' },
+      { id: 'brother', name: '범연', message: '동생아, 2025년 수고했어!\n2026년엔 더 좋은 일만 가득하길 🍀', emoji: '👦' },
+      { id: 'seyoung', name: '세영', message: '우리 가족 챙겨줘서 고마워요\n행복한 새해 보내세요 🎁', emoji: '👩' },
+      { id: 'wonjun', name: '원준', message: '아들! 2026년에도\n하고 싶은 거 다 이루고\n건강하게 지내자 💪', emoji: '👨' },
+    ];
+    
+    const cardsContainer = document.getElementById('cards');
+    
+    family.forEach(member => {
+      const cardWrapper = document.createElement('div');
+      cardWrapper.className = 'card-wrapper';
+      cardWrapper.innerHTML = `
+        <div class="card" onclick="this.classList.toggle('flipped')">
+          <div class="card-front">
+            <span class="emoji">${member.emoji}</span>
+            <h2>${member.name}</h2>
+            <div class="tap-hint">👆 탭하여 열기</div>
+            <span class="star">⭐</span>
+            <span class="gift">🧧</span>
+          </div>
+          <div class="card-back">
+            <span class="letter-emoji">💌</span>
+            <h3>To. ${member.name}</h3>
+            <p class="message">${member.message}</p>
+            <div class="from">From. 창연 🎊</div>
+          </div>
+        </div>
+      `;
+      cardsContainer.appendChild(cardWrapper);
+    });
+    
+    // 폭죽 효과
+    const fireworksContainer = document.getElementById('fireworks');
+    const colors = ['#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#54a0ff', '#5f27cd'];
+    
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = Math.random() * 100 + 'vw';
+      firework.style.top = Math.random() * 60 + 'vh';
+      firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      firework.style.animationDelay = Math.random() * 2 + 's';
+      firework.style.animationDuration = (Math.random() * 1 + 1) + 's';
+      fireworksContainer.appendChild(firework);
+      
+      setTimeout(() => firework.remove(), 3000);
+    }
+    
+    // 반짝이 효과
+    const sparklesContainer = document.getElementById('sparkles');
+    const sparkleEmojis = ['✨', '⭐', '💫', '🌟'];
+    
+    function createSparkle() {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.textContent = sparkleEmojis[Math.floor(Math.random() * sparkleEmojis.length)];
+      sparkle.style.left = Math.random() * 100 + 'vw';
+      sparkle.style.top = Math.random() * 100 + 'vh';
+      sparkle.style.animationDelay = Math.random() * 2 + 's';
+      sparklesContainer.appendChild(sparkle);
+      
+      setTimeout(() => sparkle.remove(), 4000);
+    }
+    
+    // 효과 생성
+    setInterval(createFirework, 500);
+    setInterval(createSparkle, 800);
+    
+    // 초기 효과
+    for(let i = 0; i < 10; i++) {
+      setTimeout(createFirework, i * 100);
+      setTimeout(createSparkle, i * 150);
+    }
+  </script>
+</body>
+</html>
