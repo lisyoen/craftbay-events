@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>과학과사람들 - Happy New Year 2026</title>
+    <meta name="description" content="과학과사람들 2026년 신년 인사">
+    <meta property="og:title" content="🎆 과학과사람들 - Happy New Year 2026">
+    <meta property="og:description" content="새해 복 많이 받으세요! 과학의 눈으로 세상을 바라보는 커뮤니티">
+    <meta property="og:url" content="https://events.craftbay.io/sciencepeople-newyear-2026/">
+    <meta property="og:site_name" content="과학과사람들">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cosmic-deep: #0a0a1a;
+            --nebula-purple: #1a0a3e;
+            --sunrise-gold: #ffd700;
+            --sunrise-orange: #ff6b35;
+            --aurora-cyan: #00d4ff;
+            --aurora-green: #00ff88;
+            --frost-white: #f0f8ff;
+            --warm-red: #ff4757;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(180deg,
+                var(--cosmic-deep) 0%,
+                var(--nebula-purple) 25%,
+                #1a1040 50%,
+                #2d1b4e 75%,
+                #3d2066 100%);
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* 격자 패턴 배경 */
+        .grid-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                linear-gradient(rgba(255, 107, 53, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 107, 53, 0.02) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* 별 컨테이너 */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .star {
+            position: absolute;
+            background: var(--frost-white);
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--min-opacity); transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 불꽃놀이 */
+        .fireworks-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 3;
+            overflow: hidden;
+        }
+
+        .firework {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: fireworkExplode 2s ease-out infinite;
+        }
+
+        @keyframes fireworkExplode {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .firework-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            animation: particleFly var(--duration) ease-out infinite;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes particleFly {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--tx), var(--ty)) scale(0);
+                opacity: 0;
+            }
+        }
+
+        /* DNA 이중나선 */
+        .dna-container {
+            position: fixed;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 400px;
+            z-index: 4;
+        }
+
+        .dna-strand {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dna-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            animation: dnaRotate 4s ease-in-out infinite;
+        }
+
+        .dna-node.left {
+            background: var(--sunrise-orange);
+            box-shadow: 0 0 10px var(--sunrise-orange);
+            left: 0;
+        }
+
+        .dna-node.right {
+            background: var(--sunrise-gold);
+            box-shadow: 0 0 10px var(--sunrise-gold);
+            right: 0;
+        }
+
+        .dna-bridge {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, var(--sunrise-orange), var(--sunrise-gold));
+            opacity: 0.5;
+            left: 12px;
+            width: 36px;
+        }
+
+        @keyframes dnaRotate {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(24px); }
+        }
+
+        .dna-node.right {
+            animation: dnaRotateRight 4s ease-in-out infinite;
+        }
+
+        @keyframes dnaRotateRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-24px); }
+        }
+
+        /* 원자 궤도 */
+        .atom-container {
+            position: fixed;
+            right: 50px;
+            bottom: 50px;
+            width: 150px;
+            height: 150px;
+            z-index: 4;
+        }
+
+        .atom-nucleus {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: var(--warm-red);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--warm-red);
+        }
+
+        .atom-orbit {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            border: 1px solid rgba(255, 107, 53, 0.3);
+            border-radius: 50%;
+            transform-origin: center;
+        }
+
+        .atom-orbit:nth-child(2) {
+            width: 80px;
+            height: 80px;
+            margin: -40px 0 0 -40px;
+            animation: orbitRotate1 3s linear infinite;
+        }
+
+        .atom-orbit:nth-child(3) {
+            width: 110px;
+            height: 110px;
+            margin: -55px 0 0 -55px;
+            transform: rotate(60deg);
+            animation: orbitRotate2 4s linear infinite;
+        }
+
+        .atom-orbit:nth-child(4) {
+            width: 140px;
+            height: 140px;
+            margin: -70px 0 0 -70px;
+            transform: rotate(-60deg);
+            animation: orbitRotate3 5s linear infinite;
+        }
+
+        .electron {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: var(--sunrise-gold);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--sunrise-gold);
+            top: -4px;
+            left: 50%;
+            margin-left: -4px;
+        }
+
+        @keyframes orbitRotate1 {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes orbitRotate2 {
+            from { transform: rotate(60deg); }
+            to { transform: rotate(420deg); }
+        }
+
+        @keyframes orbitRotate3 {
+            from { transform: rotate(-60deg); }
+            to { transform: rotate(300deg); }
+        }
+
+        /* 2026 숫자 SVG */
+        .year-crystal {
+            position: fixed;
+            top: 40px;
+            right: 60px;
+            width: 120px;
+            height: 60px;
+            z-index: 4;
+            animation: yearGlow 3s ease-in-out infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes yearGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.8)); }
+        }
+
+        /* 메인 컨텐츠 */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .year-badge {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.5rem;
+            color: var(--sunrise-orange);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px rgba(255, 107, 53, 0.5);
+        }
+
+        .year-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 15vw, 10rem);
+            font-weight: 600;
+            background: linear-gradient(135deg,
+                var(--sunrise-gold) 0%,
+                var(--sunrise-orange) 30%,
+                var(--warm-red) 60%,
+                var(--sunrise-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.4));
+            animation: yearPulse 4s ease-in-out infinite;
+        }
+
+        @keyframes yearPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        .title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 300;
+            color: var(--frost-white);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(240, 248, 255, 0.3);
+        }
+
+        .subtitle {
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            color: var(--sunrise-gold);
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        /* 분자 구조 태양 SVG */
+        .sun-container {
+            margin: 30px 0;
+        }
+
+        .sun-container svg {
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.4));
+        }
+
+        .message {
+            max-width: 600px;
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--frost-white);
+            margin: 30px 0;
+            font-weight: 300;
+            opacity: 0.9;
+        }
+
+        .formula {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--sunrise-gold);
+            margin: 20px 0;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .community {
+            font-size: 1.5rem;
+            letter-spacing: 0.8rem;
+            color: var(--sunrise-orange);
+            margin: 30px 0;
+            font-weight: 500;
+            text-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        .footer {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1rem;
+            color: var(--frost-white);
+            opacity: 0.6;
+            margin-top: 40px;
+            letter-spacing: 0.3rem;
+        }
+
+        /* 금빛 파티클 */
+        .golden-particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .golden-particle {
+            position: absolute;
+            background: var(--sunrise-gold);
+            border-radius: 50%;
+            animation: floatUp var(--duration) ease-out infinite;
+            animation-delay: var(--delay);
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 0.8;
+            }
+            80% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-10vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .dna-container {
+                left: 10px;
+                width: 40px;
+                height: 300px;
+            }
+
+            .atom-container {
+                right: 20px;
+                bottom: 20px;
+                width: 100px;
+                height: 100px;
+            }
+
+            .year-crystal {
+                top: 20px;
+                right: 20px;
+                width: 80px;
+                height: 40px;
+            }
+
+            .community {
+                letter-spacing: 0.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 격자 패턴 -->
+    <div class="grid-pattern"></div>
+
+    <!-- 별 -->
+    <div class="stars-container" id="stars"></div>
+
+    <!-- 불꽃놀이 -->
+    <div class="fireworks-container" id="fireworks"></div>
+
+    <!-- 금빛 파티클 -->
+    <div class="golden-particles" id="golden-particles"></div>
+
+    <!-- DNA 이중나선 -->
+    <div class="dna-container">
+        <div class="dna-strand" id="dna"></div>
+    </div>
+
+    <!-- 원자 궤도 -->
+    <div class="atom-container">
+        <div class="atom-nucleus"></div>
+        <div class="atom-orbit"><div class="electron"></div></div>
+        <div class="atom-orbit"><div class="electron"></div></div>
+        <div class="atom-orbit"><div class="electron"></div></div>
+    </div>
+
+    <!-- 2026 -->
+    <svg class="year-crystal" viewBox="0 0 120 40">
+        <text x="60" y="32" text-anchor="middle" fill="none" stroke="#ffd700" stroke-width="1" font-family="Cormorant Garamond" font-size="30" font-weight="600">2026</text>
+    </svg>
+
+    <!-- 메인 컨텐츠 -->
+    <div class="main-content">
+        <div class="year-badge">✦ NEW YEAR ✦</div>
+
+        <h1 class="year-number">2026</h1>
+        <h2 class="title">Happy New Year</h2>
+        <p class="subtitle">새해 복 많이 받으세요</p>
+
+        <!-- 분자 구조 떠오르는 태양 SVG -->
+        <div class="sun-container">
+            <svg width="200" height="200" viewBox="0 0 200 200">
+                <!-- 태양 광선 (분자 결합) -->
+                <g stroke="#ff6b35" stroke-width="2" fill="none" opacity="0.6">
+                    <line x1="100" y1="100" x2="100" y2="30"/>
+                    <line x1="100" y1="100" x2="149" y2="51"/>
+                    <line x1="100" y1="100" x2="170" y2="100"/>
+                    <line x1="100" y1="100" x2="149" y2="149"/>
+                    <line x1="100" y1="100" x2="100" y2="170"/>
+                    <line x1="100" y1="100" x2="51" y2="149"/>
+                    <line x1="100" y1="100" x2="30" y2="100"/>
+                    <line x1="100" y1="100" x2="51" y2="51"/>
+                </g>
+                <!-- 외부 광선 노드 -->
+                <g fill="#ffd700">
+                    <circle cx="100" cy="30" r="6"/>
+                    <circle cx="149" cy="51" r="5"/>
+                    <circle cx="170" cy="100" r="6"/>
+                    <circle cx="149" cy="149" r="5"/>
+                    <circle cx="100" cy="170" r="6"/>
+                    <circle cx="51" cy="149" r="5"/>
+                    <circle cx="30" cy="100" r="6"/>
+                    <circle cx="51" cy="51" r="5"/>
+                </g>
+                <!-- 중간 궤도 -->
+                <circle cx="100" cy="100" r="45" stroke="#ff6b35" stroke-width="1" fill="none" opacity="0.4"/>
+                <!-- 중간 노드 -->
+                <g fill="#ff6b35">
+                    <circle cx="100" cy="55" r="4"/>
+                    <circle cx="132" cy="78" r="4"/>
+                    <circle cx="145" cy="100" r="4"/>
+                    <circle cx="132" cy="122" r="4"/>
+                    <circle cx="100" cy="145" r="4"/>
+                    <circle cx="68" cy="122" r="4"/>
+                    <circle cx="55" cy="100" r="4"/>
+                    <circle cx="68" cy="78" r="4"/>
+                </g>
+                <!-- 중심 태양 (핵) -->
+                <circle cx="100" cy="100" r="25" fill="url(#sunGradient)"/>
+                <defs>
+                    <radialGradient id="sunGradient" cx="40%" cy="40%">
+                        <stop offset="0%" stop-color="#fff"/>
+                        <stop offset="40%" stop-color="#ffd700"/>
+                        <stop offset="100%" stop-color="#ff6b35"/>
+                    </radialGradient>
+                </defs>
+                <!-- 중심 광채 -->
+                <circle cx="100" cy="100" r="30" fill="none" stroke="#ffd700" stroke-width="2" opacity="0.5">
+                    <animate attributeName="r" values="30;35;30" dur="2s" repeatCount="indefinite"/>
+                    <animate attributeName="opacity" values="0.5;0.3;0.5" dur="2s" repeatCount="indefinite"/>
+                </circle>
+            </svg>
+        </div>
+
+        <p class="message">
+            지구가 태양을 한 바퀴 돌아<br>
+            새로운 궤도가 시작됩니다.<br><br>
+            31,536,000초의 새로운 가능성,<br>
+            과학의 눈으로 함께 탐구할<br>
+            경이로운 한 해가 되길 바랍니다
+        </p>
+
+        <div class="formula">ΔE = hν × 2026 🌅</div>
+
+        <div class="community">과 학 과 사 람 들</div>
+
+        <div class="footer">January 2026</div>
+        <div class="footer" style="margin-top: 10px; opacity: 0.4;"><a href="https://craftbay.io" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">CraftBay</a></div>
+    </div>
+
+    <script>
+        // 별 생성 (150개)
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 150; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            star.style.setProperty('--min-opacity', Math.random() * 0.3 + 0.2);
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starsContainer.appendChild(star);
+        }
+
+        // 불꽃놀이 생성
+        const fireworksContainer = document.getElementById('fireworks');
+        const fireworkColors = ['#ffd700', '#ff6b35', '#ff4757', '#00d4ff', '#00ff88'];
+        
+        function createFirework() {
+            const x = Math.random() * 80 + 10; // 10-90%
+            const y = Math.random() * 40 + 10; // 10-50%
+            const color = fireworkColors[Math.floor(Math.random() * fireworkColors.length)];
+            
+            // 중심점
+            const firework = document.createElement('div');
+            firework.className = 'firework';
+            firework.style.left = x + '%';
+            firework.style.top = y + '%';
+            firework.style.background = color;
+            firework.style.boxShadow = '0 0 10px ' + color;
+            fireworksContainer.appendChild(firework);
+            
+            // 파티클들
+            for (let i = 0; i < 12; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'firework-particle';
+                particle.style.left = x + '%';
+                particle.style.top = y + '%';
+                particle.style.background = color;
+                particle.style.boxShadow = '0 0 5px ' + color;
+                
+                const angle = (i / 12) * 360;
+                const distance = 50 + Math.random() * 50;
+                const tx = Math.cos(angle * Math.PI / 180) * distance + 'px';
+                const ty = Math.sin(angle * Math.PI / 180) * distance + 'px';
+                
+                particle.style.setProperty('--tx', tx);
+                particle.style.setProperty('--ty', ty);
+                particle.style.setProperty('--duration', (1.5 + Math.random()) + 's');
+                particle.style.setProperty('--delay', (Math.random() * 0.3) + 's');
+                
+                fireworksContainer.appendChild(particle);
+                
+                setTimeout(() => particle.remove(), 3000);
+            }
+            
+            setTimeout(() => firework.remove(), 2000);
+        }
+        
+        // 불꽃놀이 주기적 생성
+        setInterval(createFirework, 1500);
+        setTimeout(createFirework, 500);
+        setTimeout(createFirework, 1000);
+
+        // 금빛 파티클
+        const goldenContainer = document.getElementById('golden-particles');
+        for (let i = 0; i < 30; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'golden-particle';
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.width = particle.style.height = (Math.random() * 4 + 2) + 'px';
+            particle.style.setProperty('--duration', (Math.random() * 10 + 8) + 's');
+            particle.style.setProperty('--delay', Math.random() * 10 + 's');
+            goldenContainer.appendChild(particle);
+        }
+
+        // DNA 이중나선 생성
+        const dnaContainer = document.getElementById('dna');
+        const nodeCount = 15;
+        for (let i = 0; i < nodeCount; i++) {
+            const yPos = (i / (nodeCount - 1)) * 100;
+
+            const leftNode = document.createElement('div');
+            leftNode.className = 'dna-node left';
+            leftNode.style.top = yPos + '%';
+            leftNode.style.animationDelay = (i * 0.2) + 's';
+            dnaContainer.appendChild(leftNode);
+
+            const rightNode = document.createElement('div');
+            rightNode.className = 'dna-node right';
+            rightNode.style.top = yPos + '%';
+            rightNode.style.animationDelay = (i * 0.2) + 's';
+            dnaContainer.appendChild(rightNode);
+
+            if (i % 2 === 0) {
+                const bridge = document.createElement('div');
+                bridge.className = 'dna-bridge';
+                bridge.style.top = yPos + '%';
+                dnaContainer.appendChild(bridge);
+            }
+        }
+    </script>
+</body>
+</html>
