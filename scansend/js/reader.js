@@ -7,6 +7,18 @@ let filename = null;
 let totalChunks = 0;
 let receivedChunks = new Set();
 
+// 서버 로그 전송
+async function serverLog(msg, data = {}) {
+    try {
+        await fetch(`${API_BASE}/api/log`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ msg, ...data, ts: Date.now() })
+        });
+    } catch (e) {}
+    console.log(msg, data);
+}
+
 // DOM Elements
 const statusIdle = document.getElementById('status-idle');
 const progressSection = document.getElementById('progress-section');
@@ -23,6 +35,7 @@ const btnNewScan = document.getElementById('btn-new-scan');
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    serverLog('Reader loaded');
     initScanner();
     loadSession();
 });
@@ -30,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 if (btnNewScan) btnNewScan.addEventListener('click', resetSession);
 
 async function initScanner() {
+    serverLog('initScanner start');
     try {
         html5QrCode = new Html5Qrcode("camera-preview");
         
@@ -46,20 +60,19 @@ async function initScanner() {
             onScanFailure
         );
         
-        console.log('Scanner started');
+        serverLog('Scanner started OK');
         
     } catch (error) {
-        console.error('Camera init error:', error);
-        alert('카메라 접근 실패: ' + error.message);
+        serverLog('Camera error', { error: error.message });
     }
 }
 
 async function onScanSuccess(decodedText) {
-    console.log('QR Scanned:', decodedText.substring(0, 100));
+    serverLog('QR scanned', { len: decodedText.length, preview: decodedText.substring(0, 50) });
     
     try {
         const data = JSON.parse(decodedText);
-        console.log('Parsed data:', data.t, data.i);
+        serverLog('Parsed', { type: data.t, index: data.i, file: data.f });
         
         if (data.t === 'chunk') {
             await handleChunk(data);
@@ -68,7 +81,7 @@ async function onScanSuccess(decodedText) {
         }
         
     } catch (error) {
-        console.error('Scan parse error:', error);
+        serverLog('Parse error', { error: error.message });
         addScanResult('parse', false, error.message);
     }
 }
@@ -80,7 +93,7 @@ function onScanFailure(error) {
 async function handleChunk(data) {
     // Skip if already received
     if (receivedChunks.has(data.i)) {
-        console.log('Skip duplicate chunk:', data.i);
+        serverLog('Skip dup', { index: data.i });
         return;
     }
     
@@ -89,9 +102,10 @@ async function handleChunk(data) {
         filename = data.f;
         totalChunks = data.n;
         showProgress();
+        serverLog('Session init', { file: filename, total: totalChunks });
     }
     
-    console.log('Sending chunk:', data.i);
+    serverLog('Sending chunk', { index: data.i, sessionId });
     
     try {
         const response = await fetch(`${API_BASE}/api/chunk`, {
@@ -103,10 +117,10 @@ async function handleChunk(data) {
             })
         });
         
-        console.log('Response status:', response.status);
+        serverLog('Response', { status: response.status, ok: response.ok });
         
         const result = await response.json();
-        console.log('Result:', result);
+        serverLog('Result', result);
         
         if (result.success) {
             sessionId = result.sessionId;
@@ -119,18 +133,19 @@ async function handleChunk(data) {
         }
         
     } catch (error) {
-        console.error('Chunk send error:', error);
-        addScanResult(data.i, false, 'Network: ' + error.message);
+        serverLog('Fetch error', { error: error.message, name: error.name });
+        addScanResult(data.i, false, error.message);
     }
 }
 
 async function handleFinal(data) {
     if (!sessionId) {
+        serverLog('Final without session');
         addScanResult('final', false, '청크 먼저 전송 필요');
         return;
     }
     
-    console.log('Sending final');
+    serverLog('Sending final', { sessionId });
     
     try {
         const response = await fetch(`${API_BASE}/api/finalize`, {
@@ -143,6 +158,7 @@ async function handleFinal(data) {
         });
         
         const result = await response.json();
+        serverLog('Final result', result);
         
         if (result.success) {
             showCompletion();
@@ -155,7 +171,7 @@ async function handleFinal(data) {
         }
         
     } catch (error) {
-        console.error('Finalize error:', error);
+        serverLog('Final error', { error: error.message });
         addScanResult('final', false, error.message);
     }
 }
@@ -194,31 +210,23 @@ function addScanResult(index, success, error = null) {
     item.className = `scan-item ${success ? 'scan-success' : 'scan-fail'}`;
     
     const icon = success ? '✓' : '✗';
-    const text = index === 'final' ? '완료 QR' : (index === 'parse' ? '파싱 오류' : `페이지 ${index + 1}`);
-    const errorText = error ? ` - ${error}` : '';
+    const text = index === 'final' ? '완료' : (index === 'parse' ? '파싱오류' : `p${index + 1}`);
+    const errorText = error ? `: ${error.substring(0, 20)}` : '';
     
-    item.innerHTML = `
-        <span class="scan-icon">${icon}</span>
-        <span class="scan-text">${text}${errorText}</span>
-    `;
+    item.innerHTML = `<span class="scan-icon">${icon}</span><span class="scan-text">${text}${errorText}</span>`;
     
-    // Remove empty state
     const emptyItem = scanList.querySelector('.scan-empty');
     if (emptyItem) emptyItem.remove();
     
     scanList.insertBefore(item, scanList.firstChild);
     
-    // Keep only last 5
     while (scanList.children.length > 5) {
         scanList.removeChild(scanList.lastChild);
     }
 }
 
 function showCompletion() {
-    if (html5QrCode) {
-        html5QrCode.stop().catch(e => console.log(e));
-    }
-    
+    if (html5QrCode) html5QrCode.stop().catch(e => {});
     if (completionSection) {
         completionSection.style.display = 'block';
         document.getElementById('stat-total').textContent = totalChunks + 1;
@@ -229,9 +237,7 @@ function showCompletion() {
 function saveSession() {
     try {
         localStorage.setItem('scansend_session', JSON.stringify({
-            sessionId,
-            filename,
-            totalChunks,
+            sessionId, filename, totalChunks,
             receivedChunks: Array.from(receivedChunks)
         }));
     } catch (e) {}
@@ -246,7 +252,6 @@ function loadSession() {
             filename = data.filename;
             totalChunks = data.totalChunks;
             receivedChunks = new Set(data.receivedChunks);
-            
             if (sessionId && filename) {
                 showProgress();
                 updateProgress({ received: data.receivedChunks });
@@ -265,13 +270,11 @@ function resetSession() {
     filename = null;
     totalChunks = 0;
     receivedChunks = new Set();
-    
     if (statusIdle) statusIdle.style.display = 'block';
     if (progressSection) progressSection.style.display = 'none';
     if (completionSection) completionSection.style.display = 'none';
     if (scanList) scanList.innerHTML = '<li class="scan-item scan-empty"><span class="scan-icon">🔍</span><span class="scan-text">스캔 기록 없음</span></li>';
     if (pendingList) pendingList.innerHTML = '';
     if (pendingInfo) pendingInfo.innerHTML = '<span class="pending-count">0</span>개 미전송';
-    
     initScanner();
 }
