@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎍 2026 새해 복 많이 받으세요!</title>
+  <meta property="og:title" content="🎍 2026 새해 복 많이 받으세요!">
+  <meta property="og:description" content="기연형님 가족에게 드리는 새해 인사입니다">
+  <meta property="og:url" content="https://events.craftbay.io/newyear-kiyeon/">
+  <meta property="og:site_name" content="CraftBay Events">
+  <meta property="og:type" content="website">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      font-family: 'Noto Sans KR', sans-serif;
+      padding: 40px 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes sparkle {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+    @keyframes snow {
+      0% { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0.3; }
+    }
+    .snowflake {
+      position: fixed;
+      color: #fff;
+      font-size: 1rem;
+      pointer-events: none;
+      animation: snow linear infinite;
+      opacity: 0.7;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    .header-emoji {
+      font-size: 4rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      color: #ffd700;
+      margin: 20px 0;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+    .header p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 1.1rem;
+    }
+    .cards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .card-wrapper {
+      perspective: 1000px;
+      cursor: pointer;
+      height: 350px;
+    }
+    .card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .card.flipped {
+      transform: rotateY(180deg);
+    }
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    }
+    .card-front {
+      background: linear-gradient(145deg, #e63946 0%, #9d0208 100%);
+      border: 3px solid rgba(255, 215, 0, 0.4);
+    }
+    .card-front .emoji {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    .card-front h2 {
+      color: #fff;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    .card-front .tap-hint {
+      margin-top: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+    .card-front .star {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 1.5rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+    .card-front .gift {
+      position: absolute;
+      bottom: 15px;
+      left: 15px;
+      font-size: 1.2rem;
+    }
+    .card-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(145deg, #fff8e1 0%, #ffe082 100%);
+      border: 3px solid rgba(157, 2, 8, 0.3);
+      padding: 30px;
+    }
+    .card-back .letter-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+    .card-back h3 {
+      color: #9d0208;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+    .card-back .message {
+      color: #333;
+      font-size: 1rem;
+      text-align: center;
+      line-height: 1.8;
+      white-space: pre-line;
+    }
+    .card-back .from {
+      margin-top: 25px;
+      color: #9d0208;
+      font-size: 0.95rem;
+      font-style: italic;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 50px;
+      position: relative;
+      z-index: 2;
+    }
+    .footer .decoration {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    .footer .year {
+      font-size: 3rem;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      font-weight: bold;
+    }
+    .footer .snake {
+      font-size: 4rem;
+      margin: 20px 0;
+      animation: float 2s ease-in-out infinite;
+    }
+    .footer a {
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.8rem;
+      text-decoration: none;
+      margin-top: 30px;
+      display: block;
+    }
+    .footer a:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="header-emoji">🎍</div>
+    <h1>2026 새해 복 많이 받으세요!</h1>
+    <p>카드를 클릭해서 메시지를 확인하세요 ✨</p>
+  </div>
+
+  <div class="cards-container">
+    <!-- 기연형, 형수님 카드 -->
+    <div class="card-wrapper">
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-front">
+          <span class="star">⭐</span>
+          <div class="emoji">👫</div>
+          <h2>기연형님, 형수님</h2>
+          <div class="tap-hint">👆 탭하여 열기</div>
+          <span class="gift">🎁</span>
+        </div>
+        <div class="card-back">
+          <div class="letter-emoji">💌</div>
+          <h3>To. 기연형님, 형수님</h3>
+          <p class="message">형님, 형수님 새해 복 많이 받으세요! 🎉
+
+은퇴 축하드려요!
+이제 형수님과 함께 여행도 많이 다니시고
+행복한 시간 보내세요 ✈️🌏
+
+건강하시고 늘 웃음 가득한
+2026년이 되시길 바랍니다 💕</p>
+          <div class="from">From. 창연 드림 🐍</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 정명이 카드 -->
+    <div class="card-wrapper">
+      <div class="card" onclick="this.classList.toggle('flipped')">
+        <div class="card-front">
+          <span class="star">⭐</span>
+          <div class="emoji">👨‍🎓</div>
+          <h2>정명</h2>
+          <div class="tap-hint">👆 탭하여 열기</div>
+          <span class="gift">🎁</span>
+        </div>
+        <div class="card-back">
+          <div class="letter-emoji">💌</div>
+          <h3>To. 정명</h3>
+          <p class="message">정명아, 새해 복 많이 받아! 🎉
+
+제대하고 고생 많았어!
+공부도 열심히 하는 거 알아 💪
+
+하고 싶은 것 다 이루고
+멋진 2026년 보내길 바랄게!
+화이팅! 🔥📚</p>
+          <div class="from">From. 창연 삼촌 🐍</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="decoration">🧧 🏮 🎊</div>
+    <div class="year">2026</div>
+    <div class="snake">🐍</div>
+    <p style="color: rgba(255,255,255,0.7);">푸른 뱀의 해</p>
+    <a href="https://craftbay.io/" target="_blank">CraftBay</a>
+  </div>
+
+  <script>
+    // 눈 효과 생성
+    function createSnow() {
+      const snowflakes = ['❄', '✨', '⭐'];
+      for (let i = 0; i < 30; i++) {
+        const snow = document.createElement('div');
+        snow.className = 'snowflake';
+        snow.textContent = snowflakes[Math.floor(Math.random() * snowflakes.length)];
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = (Math.random() * 3 + 5) + 's';
+        snow.style.animationDelay = (Math.random() * 5) + 's';
+        document.body.appendChild(snow);
+      }
+    }
+    createSnow();
+  </script>
+</body>
+</html>
