@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Generator - ScanSend</title>
+
+    <!-- OG Tags -->
+    <meta property="og:title" content="QR Generator - ScanSend">
+    <meta property="og:description" content="파일을 QR 코드로 변환하여 간편하게 전송하세요.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://craftbay.io/scansend/generator.html">
+    <meta property="og:image" content="https://craftbay.io/scansend/images/og-image.png">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-text">ScanSend</span>
+            </a>
+            <nav class="nav">
+                <a href="index.html">Home</a>
+                <a href="generator.html" class="active">Generator</a>
+                <a href="reader.html">Reader</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main generator-main">
+        <div class="container">
+            <h1 class="page-title">QR Generator</h1>
+
+            <!-- 파일 선택 영역 -->
+            <section class="file-section">
+                <div class="dropzone" id="dropzone">
+                    <div class="dropzone-content">
+                        <svg viewBox="0 0 24 24" width="64" height="64" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        <p class="dropzone-text">파일을 여기에 드래그하거나 클릭하여 선택</p>
+                        <p class="dropzone-hint">지원 형식: 모든 파일 형식</p>
+                    </div>
+                    <input type="file" id="fileInput" class="file-input" hidden>
+                </div>
+            </section>
+
+            <!-- 파일 정보 표시 -->
+            <section class="file-info" id="fileInfo" style="display: none;">
+                <div class="file-info-card">
+                    <div class="file-icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                        </svg>
+                    </div>
+                    <div class="file-details">
+                        <p class="file-name" id="fileName">-</p>
+                        <p class="file-meta">
+                            <span id="fileSize">-</span>
+                            <span class="separator">|</span>
+                            <span id="fileType">-</span>
+                        </p>
+                    </div>
+                    <button class="btn-remove" id="removeFile" title="파일 제거">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- QR 코드 표시 영역 -->
+            <section class="qr-section" id="qrSection" style="display: none;">
+                <div class="qr-display">
+                    <div class="qr-container" id="qrContainer">
+                        <!-- QR 코드가 여기에 렌더링됩니다 -->
+                        <div class="qr-placeholder">
+                            <p>QR 코드 생성 중...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 페이지 네비게이션 -->
+                <div class="qr-navigation">
+                    <button class="btn-nav" id="prevPage" disabled>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                        <span>이전</span>
+                    </button>
+
+                    <div class="page-indicator">
+                        <input type="number" id="currentPageInput" class="page-input" value="1" min="1">
+                        <span class="page-separator">/</span>
+                        <span class="total-pages" id="totalPages">1</span>
+                    </div>
+
+                    <button class="btn-nav" id="nextPage" disabled>
+                        <span>다음</span>
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- 진행 상태 -->
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <p class="progress-text" id="progressText">준비됨</p>
+            </section>
+
+            <!-- 컨트롤 버튼 -->
+            <section class="controls" id="controls" style="display: none;">
+                <button class="btn btn-primary" id="generateBtn">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                    </svg>
+                    QR 코드 생성
+                </button>
+                <button class="btn btn-secondary" id="autoPlayBtn" disabled>
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+                        <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                    </svg>
+                    자동 재생
+                </button>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 <a href="https://craftbay.io/">CraftBay</a>. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/generator.js"></script>
+</body>
+</html>
