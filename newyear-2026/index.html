@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🚀 2026 새해 복 많이 받으세요! - 이창연</title>
+    <meta property="og:title" content="🚀 2026 새해 복 많이 받으세요! - 이창연">
+    <meta property="og:description" content="지난 한 해동안 관심과 사랑으로 지켜봐주셔서 감사합니다. 2026년 대박을 기원합니다!">
+    <meta property="og:url" content="https://events.craftbay.io/newyear-2026/">
+    <meta property="og:site_name" content="CraftBay">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --terminal-green: #00ff88;
+            --code-blue: #58a6ff;
+            --code-purple: #d2a8ff;
+            --code-orange: #ffa657;
+            --gold: #ffd700;
+            --soft-gold: #ffe4a0;
+            --white: #f0f6fc;
+            --gray: #8b949e;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            min-height: 100vh;
+            background: var(--bg-dark);
+            font-family: 'Noto Sans KR', sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* 코드 비 효과 */
+        .code-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .code-drop {
+            position: absolute;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--terminal-green);
+            opacity: 0.15;
+            animation: codeFall var(--duration) linear infinite;
+            text-shadow: 0 0 10px var(--terminal-green);
+        }
+        @keyframes codeFall {
+            0% { transform: translateY(-100%); opacity: 0.2; }
+            50% { opacity: 0.15; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+        
+        /* 별 효과 */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .star {
+            position: absolute;
+            background: var(--white);
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: var(--min-opacity); transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.3); }
+        }
+        
+        /* 메인 컨텐츠 */
+        .main-content {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        /* 터미널 스타일 카드 */
+        .terminal-card {
+            background: var(--bg-card);
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid #30363d;
+            overflow: hidden;
+        }
+        
+        .terminal-header {
+            background: linear-gradient(180deg, #2d333b 0%, #22272e 100%);
+            padding: 12px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #30363d;
+        }
+        
+        .terminal-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .terminal-btn.red { background: #ff5f56; }
+        .terminal-btn.yellow { background: #ffbd2e; }
+        .terminal-btn.green { background: #27c93f; }
+        
+        .terminal-title {
+            margin-left: 10px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .terminal-body {
+            padding: 30px;
+        }
+        
+        /* 연도 디스플레이 */
+        .year-display {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .year-command {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+        .year-command .prompt {
+            color: var(--terminal-green);
+        }
+        .year-command .cmd {
+            color: var(--code-blue);
+        }
+        
+        .year-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(4rem, 15vw, 7rem);
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--gold) 0%, var(--soft-gold) 50%, var(--code-orange) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4));
+            letter-spacing: 0.05em;
+            animation: yearPulse 3s ease-in-out infinite;
+        }
+        @keyframes yearPulse {
+            0%, 100% { filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.4)); }
+            50% { filter: drop-shadow(0 0 50px rgba(255, 215, 0, 0.7)); }
+        }
+        
+        .year-label {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--terminal-green);
+            font-size: 1.2rem;
+            letter-spacing: 0.3em;
+            margin-top: 5px;
+        }
+        
+        /* 메시지 영역 */
+        .message-section {
+            margin: 30px 0;
+            padding: 25px;
+            background: rgba(0, 255, 136, 0.05);
+            border-left: 3px solid var(--terminal-green);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .message-title {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--code-purple);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .message-content {
+            color: var(--white);
+            font-size: 1.1rem;
+            line-height: 2;
+            font-weight: 300;
+        }
+        
+        .message-content .highlight {
+            color: var(--gold);
+            font-weight: 500;
+        }
+        
+        .message-content .code-inline {
+            font-family: 'JetBrains Mono', monospace;
+            background: rgba(88, 166, 255, 0.1);
+            color: var(--code-blue);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        
+        /* 코드 블록 스타일 감사 메시지 */
+        .code-block {
+            background: #0d1117;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 1px solid #30363d;
+            overflow-x: auto;
+        }
+        
+        .code-block pre {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+        
+        .code-comment { color: var(--gray); }
+        .code-keyword { color: var(--code-purple); }
+        .code-string { color: var(--terminal-green); }
+        .code-function { color: var(--code-blue); }
+        .code-number { color: var(--code-orange); }
+        .code-variable { color: var(--white); }
+        
+        /* 수식 영역 */
+        .formula-section {
+            text-align: center;
+            margin: 25px 0;
+            padding: 20px;
+        }
+        
+        .formula {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.3rem;
+            color: var(--code-blue);
+            text-shadow: 0 0 20px rgba(88, 166, 255, 0.5);
+            letter-spacing: 0.05em;
+        }
+        
+        .formula .gold { color: var(--gold); }
+        
+        /* 서명 */
+        .signature {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #30363d;
+        }
+        
+        .signature-name {
+            font-size: 1.3rem;
+            color: var(--white);
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+        
+        .signature-title {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+        
+        .signature-icon {
+            font-size: 2rem;
+            margin-top: 15px;
+            animation: rocketFloat 2s ease-in-out infinite;
+        }
+        @keyframes rocketFloat {
+            0%, 100% { transform: translateY(0) rotate(-45deg); }
+            50% { transform: translateY(-10px) rotate(-45deg); }
+        }
+        
+        /* 푸터 */
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .footer-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .footer-link {
+            color: var(--code-blue);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer-link:hover {
+            color: var(--terminal-green);
+        }
+        
+        /* 반응형 */
+        @media (max-width: 600px) {
+            .terminal-body { padding: 20px 15px; }
+            .message-section { padding: 15px; }
+            .code-block { padding: 15px; }
+            .code-block pre { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="code-rain" id="codeRain"></div>
+    <div class="stars" id="stars"></div>
+    
+    <div class="main-content">
+        <div class="terminal-card">
+            <div class="terminal-header">
+                <div class="terminal-btn red"></div>
+                <div class="terminal-btn yellow"></div>
+                <div class="terminal-btn green"></div>
+                <span class="terminal-title">newyear-2026.sh — bash</span>
+            </div>
+            
+            <div class="terminal-body">
+                <div class="year-display">
+                    <div class="year-command">
+                        <span class="prompt">$</span> <span class="cmd">date</span> +%Y
+                    </div>
+                    <div class="year-number">2026</div>
+                    <div class="year-label">HAPPY NEW YEAR</div>
+                </div>
+                
+                <div class="message-section">
+                    <div class="message-title">/* 여러분께 드리는 새해 인사 */</div>
+                    <div class="message-content">
+                        지난 한 해 동안<br>
+                        <span class="highlight">관심과 사랑</span>으로 지켜봐주셔서<br>
+                        진심으로 감사드립니다.<br><br>
+                        2026년에는 여러분 모두에게<br>
+                        <span class="code-inline">SUCCESS</span>와 <span class="code-inline">HAPPINESS</span>가<br>
+                        <span class="highlight">무한 루프</span>되기를 기원합니다! 🎊
+                    </div>
+                </div>
+                
+                <div class="code-block">
+<pre><span class="code-comment">// 2026년 새해 소망</span>
+<span class="code-keyword">const</span> <span class="code-variable">yourYear</span> = {
+  <span class="code-function">health</span>: <span class="code-string">"MAX"</span>,
+  <span class="code-function">happiness</span>: <span class="code-number">Infinity</span>,
+  <span class="code-function">success</span>: <span class="code-keyword">true</span>,
+  <span class="code-function">dreams</span>: <span class="code-string">"achieved"</span>
+};
+
+<span class="code-keyword">while</span> (<span class="code-variable">year</span> === <span class="code-number">2026</span>) {
+  <span class="code-variable">yourYear</span>.<span class="code-function">대박</span>++;  <span class="code-comment">// 🎯</span>
+}</pre>
+                </div>
+                
+                <div class="formula-section">
+                    <div class="formula">
+                        <span class="gold">Success</span> = ∫<sub>2026</sub> (노력 × 기회) dt
+                    </div>
+                </div>
+                
+                <div class="signature">
+                    <div class="signature-name">이창연</div>
+                    <div class="signature-title">// Developer since 2003</div>
+                    <div class="signature-icon">🚀</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <div class="footer-text">
+                2025 → 2026 | <a href="https://craftbay.io" class="footer-link" target="_blank">CraftBay.io</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // 코드 비 효과
+        const codeRain = document.getElementById('codeRain');
+        const codeChars = ['0', '1', '{', '}', '(', ')', ';', '/', '*', '+', '=', '<', '>', 'if', 'for', 'let', 'const', 'return', 'true', '2026', '🚀', '✨'];
+        
+        for (let i = 0; i < 30; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'code-drop';
+            drop.textContent = codeChars[Math.floor(Math.random() * codeChars.length)];
+            drop.style.left = Math.random() * 100 + '%';
+            drop.style.setProperty('--duration', (Math.random() * 10 + 10) + 's');
+            drop.style.animationDelay = Math.random() * 10 + 's';
+            codeRain.appendChild(drop);
+        }
+        
+        // 별 효과
+        const starsContainer = document.getElementById('stars');
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.width = star.style.height = (Math.random() * 2 + 1) + 'px';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            star.style.setProperty('--min-opacity', Math.random() * 0.3 + 0.2);
+            star.style.animationDelay = Math.random() * 5 + 's';
+            starsContainer.appendChild(star);
+        }
+    </script>
+</body>
+</html>
