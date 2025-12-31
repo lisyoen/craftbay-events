@@ -249,6 +249,25 @@
             font-size: 0.85rem;
             margin-top: 0.5rem;
         }
+        
+        .usecase-box {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(59, 130, 246, 0.1));
+            border: 1px solid var(--accent-purple);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .usecase-box h3 {
+            color: var(--accent-purple);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .usecase-box p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -257,6 +276,11 @@
             <h1>🤖 Claude Code on the Web vs ClaudeQ</h1>
             <p class="subtitle">Anthropic의 클라우드 코딩 에이전트와 자체 구축 태스크 큐 시스템 비교</p>
         </header>
+        
+        <div class="usecase-box">
+            <h3>🚇 실제 사용 사례</h3>
+            <p>출근길 지하철에서 Claude 챗으로 새 프로젝트 지시서를 작성하면, 사무실 도착 전에 ClaudeQ 워커가 개발을 완료해놓습니다. 두 시스템 모두 모바일에서 작업 지시가 가능하지만, 접근 방식과 가능한 작업 범위에 차이가 있습니다.</p>
+        </div>
         
         <div class="comparison-grid">
             <div class="card claude-code">
@@ -296,6 +320,10 @@
                         <span class="feature-label">네트워크</span>
                         <span class="feature-value">제한적 (허용 도메인만)</span>
                     </li>
+                    <li class="feature-item">
+                        <span class="feature-label">모바일</span>
+                        <span class="feature-value">✅ iOS 앱 + 웹</span>
+                    </li>
                 </ul>
             </div>
             
@@ -318,7 +346,7 @@
                     </li>
                     <li class="feature-item">
                         <span class="feature-label">실행 환경</span>
-                        <span class="feature-value">서버 전체 접근 가능 (--dangerously-skip-permissions)</span>
+                        <span class="feature-value">서버 전체 접근 (--dangerously-skip-permissions)</span>
                     </li>
                     <li class="feature-item">
                         <span class="feature-label">작업 관리</span>
@@ -326,7 +354,7 @@
                     </li>
                     <li class="feature-item">
                         <span class="feature-label">결과물</span>
-                        <span class="feature-value">직접 파일 수정, PM2 재시작 등</span>
+                        <span class="feature-value">직접 파일 수정, PM2 재시작, DB 작업</span>
                     </li>
                     <li class="feature-item">
                         <span class="feature-label">비용</span>
@@ -335,6 +363,10 @@
                     <li class="feature-item">
                         <span class="feature-label">네트워크</span>
                         <span class="feature-value">자유로움 (제한 없음)</span>
+                    </li>
+                    <li class="feature-item">
+                        <span class="feature-label">모바일</span>
+                        <span class="feature-value">✅ Claude 챗으로 지시서 작성</span>
                     </li>
                 </ul>
             </div>
@@ -349,6 +381,16 @@
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>모바일 작업 지시</td>
+                    <td>✅ iOS 앱에서 직접</td>
+                    <td>✅ Claude 챗 → MCP로 지시서 생성</td>
+                </tr>
+                <tr>
+                    <td>초기 설정</td>
+                    <td>✅ GitHub 연결만</td>
+                    <td>✅ 이미 구축 완료 (바로 사용)</td>
+                </tr>
                 <tr>
                     <td>DB 접근</td>
                     <td>❌ 불가</td>
@@ -365,45 +407,58 @@
                     <td>✅ PM2 restart 가능</td>
                 </tr>
                 <tr>
-                    <td>모바일 접근</td>
-                    <td>✅ iOS 앱 지원</td>
-                    <td>⚠️ 웹 UI로 확인만</td>
-                </tr>
-                <tr>
-                    <td>설정 복잡도</td>
-                    <td>✅ GitHub 연결만</td>
-                    <td>⚠️ 서버 구축 필요</td>
+                    <td>실시간 배포</td>
+                    <td>⚠️ PR 머지 후 CI/CD 필요</td>
+                    <td>✅ 즉시 빌드 & 배포</td>
                 </tr>
                 <tr>
                     <td>워크플로우 커스터마이징</td>
                     <td>⚠️ 제한적</td>
                     <td>✅ 완전한 자유도</td>
                 </tr>
+                <tr>
+                    <td>작업 완료 알림</td>
+                    <td>✅ 웹/앱 알림</td>
+                    <td>✅ 텔레그램 알림</td>
+                </tr>
             </tbody>
         </table>
         
         <div class="highlight-section">
             <h2>✨ ClaudeQ의 강점</h2>
-            <p>ClaudeQ는 자체 인프라 기반으로 Anthropic 제품의 안전 제한을 넘어선 실제 운영 작업이 가능합니다.</p>
+            <p>이미 구축된 인프라로 Claude 챗만 있으면 어디서든 바로 사용 가능. 출근길에 지시서 작성 → 도착하면 개발 완료!</p>
             <ul>
-                <li>PoliLog, IP Search 등 실서비스 배포 및 관리</li>
+                <li>PoliLog, IP Search 등 실서비스 즉시 배포 및 관리</li>
                 <li>DB 마이그레이션, 스키마 변경</li>
                 <li>PM2 프로세스 관리 (restart, reload, logs)</li>
                 <li>Cloudflare Tunnel 설정 변경</li>
                 <li>마크다운 기반 지시서로 세밀한 워크플로우 정의</li>
                 <li>작업 완료 시 텔레그램 알림</li>
+                <li>GitHub 없이도 작동 (로컬 파일시스템 기반)</li>
             </ul>
         </div>
         
         <div class="highlight-section" style="border-left-color: var(--accent-orange);">
             <h2 style="color: var(--accent-orange);">☁️ Claude Code on the Web의 강점</h2>
-            <p>설정 없이 바로 사용할 수 있고, 어디서나 접근 가능합니다.</p>
+            <p>서버 구축 없이 누구나 바로 시작할 수 있는 SaaS 형태의 서비스입니다.</p>
             <ul>
-                <li>GitHub 연결만으로 즉시 시작</li>
-                <li>iOS 앱으로 모바일에서도 코딩 가능</li>
+                <li>서버 구축/관리 불필요</li>
+                <li>전용 iOS 앱으로 네이티브 경험</li>
                 <li>병렬 태스크로 여러 작업 동시 진행</li>
                 <li>자동 PR 생성으로 코드 리뷰 용이</li>
-                <li>안전한 샌드박스 환경</li>
+                <li>안전한 샌드박스 환경 (보안 강화)</li>
+                <li>GitHub 기반 협업에 최적화</li>
+            </ul>
+        </div>
+        
+        <div class="highlight-section" style="border-left-color: var(--accent-blue);">
+            <h2 style="color: var(--accent-blue);">🎯 결론: 어떤 걸 선택할까?</h2>
+            <p></p>
+            <ul>
+                <li><strong>GitHub 중심 워크플로우 + 팀 협업</strong> → Claude Code on the Web</li>
+                <li><strong>자체 서버 운영 + 실서비스 배포/관리</strong> → ClaudeQ</li>
+                <li><strong>서버 구축 역량이 있고 완전한 자유도 원함</strong> → ClaudeQ</li>
+                <li><strong>빠르게 시작하고 싶고 GitHub만 사용</strong> → Claude Code on the Web</li>
             </ul>
         </div>
         
