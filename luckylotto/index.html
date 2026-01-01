@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>럭키로또 - QR 스캐너</title>
+    
+    <!-- OG Tags -->
+    <meta property="og:title" content="🍀 럭키로또 - QR 스캐너">
+    <meta property="og:description" content="로또 용지의 QR 코드를 스캔하여 구매 번호를 확인하세요">
+    <meta property="og:url" content="https://events.craftbay.io/luckylotto/">
+    <meta property="og:site_name" content="CraftBay">
+    <meta property="og:type" content="website">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4ade80;
+        }
+        
+        .logo span {
+            color: #fbbf24;
+        }
+        
+        .camera-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 10px;
+        }
+        
+        #reader {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        #reader video {
+            width: 100% !important;
+            border-radius: 16px;
+        }
+        
+        /* html5-qrcode 기본 UI 숨김 */
+        #reader__scan_region {
+            border-radius: 16px !important;
+        }
+        
+        #reader__dashboard {
+            display: none !important;
+        }
+        
+        .instruction-section {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+        
+        .instruction-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .instruction-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #e2e8f0;
+        }
+        
+        .instruction-text {
+            font-size: 0.95rem;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+        
+        .result-section {
+            display: none;
+            padding: 20px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 2px solid #4ade80;
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+        
+        .result-section.show {
+            display: block;
+        }
+        
+        .result-section.error {
+            background: rgba(248, 113, 113, 0.1);
+            border-color: #f87171;
+        }
+        
+        .result-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .result-round {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 10px;
+        }
+        
+        .game-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .game-row:last-child {
+            border-bottom: none;
+        }
+        
+        .game-label {
+            font-weight: 600;
+            color: #94a3b8;
+            width: 20px;
+        }
+        
+        .numbers {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .number.n1-10 { background: #fbc400; color: #000; }
+        .number.n11-20 { background: #69c8f2; color: #000; }
+        .number.n21-30 { background: #ff7272; }
+        .number.n31-40 { background: #aaaaaa; }
+        .number.n41-45 { background: #b0d840; color: #000; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-primary {
+            background: #4ade80;
+            color: #000;
+        }
+        
+        .btn-primary:hover {
+            background: #22c55e;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        
+        .error-message {
+            color: #f87171;
+            text-align: center;
+            padding: 10px;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.85rem;
+        }
+        
+        footer a {
+            color: #4ade80;
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #4ade80;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .permission-error {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .permission-error h3 {
+            color: #f87171;
+            margin-bottom: 15px;
+        }
+        
+        .permission-error p {
+            color: #94a3b8;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">🍀 Lucky<span>Lotto</span></div>
+        </header>
+        
+        <section class="camera-section">
+            <div id="reader"></div>
+            
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>카메라 연결 중...</p>
+            </div>
+            
+            <div id="permission-error" class="permission-error" style="display: none;">
+                <h3>📷 카메라 권한 필요</h3>
+                <p>QR 코드를 스캔하려면 카메라 접근 권한이 필요합니다.<br>
+                   브라우저 설정에서 카메라 권한을 허용해주세요.</p>
+                <button class="btn btn-primary" onclick="location.reload()">다시 시도</button>
+            </div>
+        </section>
+        
+        <section class="instruction-section" id="instruction">
+            <div class="instruction-icon">📱</div>
+            <h3 class="instruction-title">로또 용지의 QR 코드를 촬영하세요</h3>
+            <p class="instruction-text">
+                용지 하단의 QR 코드를<br>
+                카메라 화면 중앙에 맞춰주세요
+            </p>
+        </section>
+        
+        <section class="result-section" id="result">
+            <div class="result-title">
+                <span>✅</span>
+                <span>스캔 완료!</span>
+            </div>
+            <div class="result-round" id="result-round"></div>
+            <div id="result-games"></div>
+            <div class="button-group">
+                <button class="btn btn-secondary" onclick="resetScanner()">다시 스캔</button>
+            </div>
+        </section>
+        
+        <footer>
+            <a href="https://craftbay.io/" target="_blank">CraftBay</a> &copy; 2026
+        </footer>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script>
+        let html5QrCode = null;
+        let isScanning = false;
+        
+        // QR 코드 파싱 함수
+        function parseQRCode(url) {
+            try {
+                const urlObj = new URL(url);
+                const vParam = urlObj.searchParams.get('v');
+                
+                if (!vParam) {
+                    throw new Error('v 파라미터가 없습니다');
+                }
+                
+                const parts = vParam.split('q');
+                const round = parseInt(parts[0], 10);
+                
+                if (isNaN(round) || round < 1) {
+                    throw new Error('유효하지 않은 회차 정보');
+                }
+                
+                const games = parts.slice(1).map(gameStr => {
+                    const numbers = [];
+                    for (let i = 0; i < 12; i += 2) {
+                        const num = parseInt(gameStr.substring(i, i + 2), 10);
+                        if (num >= 1 && num <= 45) {
+                            numbers.push(num);
+                        }
+                    }
+                    return numbers;
+                }).filter(game => game.length === 6);
+                
+                if (games.length === 0) {
+                    throw new Error('유효한 게임 정보가 없습니다');
+                }
+                
+                return { round, games };
+            } catch (e) {
+                console.error('QR 파싱 오류:', e);
+                return null;
+            }
+        }
+        
+        // 번호 색상 클래스
+        function getNumberClass(num) {
+            if (num <= 10) return 'n1-10';
+            if (num <= 20) return 'n11-20';
+            if (num <= 30) return 'n21-30';
+            if (num <= 40) return 'n31-40';
+            return 'n41-45';
+        }
+        
+        // 결과 표시
+        function showResult(data) {
+            const resultSection = document.getElementById('result');
+            const instructionSection = document.getElementById('instruction');
+            const resultRound = document.getElementById('result-round');
+            const resultGames = document.getElementById('result-games');
+            
+            resultRound.textContent = `제 ${data.round}회`;
+            
+            const gameLabels = ['A', 'B', 'C', 'D', 'E'];
+            resultGames.innerHTML = data.games.map((game, idx) => `
+                <div class="game-row">
+                    <span class="game-label">${gameLabels[idx]}</span>
+                    <div class="numbers">
+                        ${game.map(num => `
+                            <span class="number ${getNumberClass(num)}">${num}</span>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            instructionSection.style.display = 'none';
+            resultSection.classList.add('show');
+        }
+        
+        // 에러 표시
+        function showError(message) {
+            const resultSection = document.getElementById('result');
+            const instructionSection = document.getElementById('instruction');
+            
+            resultSection.innerHTML = `
+                <div class="result-title" style="color: #f87171;">
+                    <span>❌</span>
+                    <span>스캔 실패</span>
+                </div>
+                <p class="error-message">${message}</p>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="resetScanner()">다시 스캔</button>
+                </div>
+            `;
+            resultSection.classList.add('show', 'error');
+            instructionSection.style.display = 'none';
+        }
+        
+        // 스캐너 리셋
+        function resetScanner() {
+            const resultSection = document.getElementById('result');
+            const instructionSection = document.getElementById('instruction');
+            
+            resultSection.classList.remove('show', 'error');
+            resultSection.innerHTML = `
+                <div class="result-title">
+                    <span>✅</span>
+                    <span>스캔 완료!</span>
+                </div>
+                <div class="result-round" id="result-round"></div>
+                <div id="result-games"></div>
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="resetScanner()">다시 스캔</button>
+                </div>
+            `;
+            instructionSection.style.display = 'block';
+            
+            if (html5QrCode && !isScanning) {
+                startScanner();
+            }
+        }
+        
+        // 스캔 성공 콜백
+        function onScanSuccess(decodedText, decodedResult) {
+            console.log('스캔 결과:', decodedText);
+            
+            // 로또 QR 코드인지 확인
+            if (!decodedText.includes('dhlottery.co.kr') && !decodedText.includes('method=winQr')) {
+                console.log('로또 QR 코드가 아님');
+                return; // 로또 QR이 아니면 무시하고 계속 스캔
+            }
+            
+            // 스캔 중지
+            if (html5QrCode && isScanning) {
+                isScanning = false;
+                html5QrCode.stop().then(() => {
+                    const data = parseQRCode(decodedText);
+                    if (data) {
+                        showResult(data);
+                    } else {
+                        showError('QR 코드를 해석할 수 없습니다.');
+                        startScanner();
+                    }
+                }).catch(err => {
+                    console.error('스캐너 중지 오류:', err);
+                });
+            }
+        }
+        
+        // 스캐너 시작
+        function startScanner() {
+            const loadingEl = document.getElementById('loading');
+            const permissionError = document.getElementById('permission-error');
+            
+            loadingEl.style.display = 'flex';
+            permissionError.style.display = 'none';
+            
+            const config = {
+                fps: 10,
+                qrbox: { width: 250, height: 250 },
+                aspectRatio: 1.0,
+                formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE]
+            };
+            
+            // 후면 카메라 우선 사용
+            html5QrCode.start(
+                { facingMode: "environment" },
+                config,
+                onScanSuccess,
+                (errorMessage) => {
+                    // 스캔 중 오류는 무시 (QR 코드가 없을 때 계속 발생)
+                }
+            ).then(() => {
+                isScanning = true;
+                loadingEl.style.display = 'none';
+            }).catch((err) => {
+                console.error('카메라 시작 오류:', err);
+                loadingEl.style.display = 'none';
+                
+                // 후면 카메라 실패 시 전면 카메라 시도
+                html5QrCode.start(
+                    { facingMode: "user" },
+                    config,
+                    onScanSuccess,
+                    (errorMessage) => {}
+                ).then(() => {
+                    isScanning = true;
+                }).catch((err2) => {
+                    console.error('전면 카메라도 실패:', err2);
+                    permissionError.style.display = 'block';
+                });
+            });
+        }
+        
+        // 초기화
+        document.addEventListener('DOMContentLoaded', function() {
+            html5QrCode = new Html5Qrcode("reader");
+            startScanner();
+        });
+    </script>
+</body>
+</html>
