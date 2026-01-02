@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>럭키로또 - QR 스캐너</title>
+    
+    <meta property="og:title" content="🍀 럭키로또 - QR 스캐너">
+    <meta property="og:description" content="로또 용지의 QR 코드를 스캔하여 구매 번호를 확인하세요">
+    <meta property="og:url" content="https://luckylotto.craftbay.io/scan.html">
+    <meta property="og:site_name" content="CraftBay">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Black+Han+Sans&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            color: #fff;
+        }
+        
+        .container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0 20px;
+        }
+        
+        .back-btn {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            padding: 5px 10px;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ade80;
+        }
+        
+        .logo span { color: #fbbf24; }
+        
+        .spacer { width: 40px; }
+        
+        .camera-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding-top: 10px;
+        }
+        
+        #reader {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        #reader video { width: 100% !important; border-radius: 16px; }
+        #reader__dashboard { display: none !important; }
+        
+        .instruction-section {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            margin-top: 20px;
+        }
+        
+        .instruction-icon { font-size: 3rem; margin-bottom: 15px; }
+        .instruction-title { font-size: 1.2rem; font-weight: 600; margin-bottom: 10px; color: #e2e8f0; }
+        .instruction-text { font-size: 0.95rem; color: #94a3b8; line-height: 1.6; }
+        
+        /* 로또 용지 스타일 */
+        .lotto-ticket {
+            display: none;
+            background: #fff;
+            border-radius: 4px;
+            padding: 12px 14px;
+            margin-top: 20px;
+            color: #000;
+            font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            aspect-ratio: 2.2 / 3;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .lotto-ticket.show { display: block; }
+        
+        .ticket-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+        
+        .ticket-logo { display: flex; flex-direction: column; }
+        .ticket-logo-top { font-size: 0.55rem; color: #000; letter-spacing: 0.5px; }
+        .ticket-logo-main {
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #000;
+            font-style: italic;
+            letter-spacing: -1px;
+        }
+        .ticket-logo-main span {
+            font-size: 0.75rem;
+            font-style: normal;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: normal;
+        }
+        
+        .ticket-round { font-size: 0.9rem; font-weight: bold; color: #000; }
+        .ticket-qr { width: 55px; height: 55px; }
+        .ticket-qr canvas { width: 100%; height: 100%; }
+        
+        .ticket-info {
+            font-size: 0.6rem;
+            color: #000;
+            margin-bottom: 4px;
+            line-height: 1.5;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .ticket-info-left { display: flex; flex-direction: column; }
+        .ticket-info-right { text-align: right; font-size: 0.6rem; }
+        
+        .ticket-games {
+            margin: 8px 0;
+            border-top: 1px dashed #999;
+            border-bottom: 1px dashed #999;
+            padding: 6px 0;
+        }
+        
+        .ticket-game-row { display: flex; align-items: center; padding: 4px 0; }
+        .game-label { font-weight: bold; font-size: 0.75rem; width: 18px; color: #000; }
+        .game-type { font-size: 0.55rem; color: #666; width: 22px; }
+        .game-numbers { display: flex; gap: 10px; flex: 1; justify-content: flex-start; padding-left: 5px; }
+        .game-number { font-size: 0.85rem; font-weight: bold; color: #000; width: 22px; text-align: center; }
+        
+        .ticket-footer { margin-top: 6px; }
+        .ticket-price { display: flex; justify-content: space-between; align-items: center; font-size: 0.7rem; margin-bottom: 8px; }
+        .ticket-price-label { color: #000; }
+        .ticket-price-value { font-weight: bold; font-size: 0.8rem; color: #000; }
+        
+        .ticket-barcode { text-align: center; padding: 5px 0; }
+        .ticket-barcode canvas { width: 100%; height: 30px; }
+        .barcode-number { font-size: 0.5rem; color: #000; letter-spacing: 1px; margin-top: 3px; font-family: 'Courier New', monospace; }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.2s;
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.2); }
+        
+        .button-group { display: flex; gap: 10px; margin-top: 20px; justify-content: center; }
+        
+        footer { text-align: center; padding: 20px; color: #64748b; font-size: 0.85rem; }
+        footer a { color: #4ade80; text-decoration: none; }
+        
+        .loading {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            color: #94a3b8;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 3px solid rgba(255, 255, 255, 0.1);
+            border-top-color: #4ade80;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 15px;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .permission-error { text-align: center; padding: 40px 20px; }
+        .permission-error h3 { color: #f87171; margin-bottom: 15px; }
+        .permission-error p { color: #94a3b8; margin-bottom: 20px; line-height: 1.6; }
+        .btn-primary { background: #4ade80; color: #000; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="index.html" class="back-btn">←</a>
+            <div class="logo">🍀 Lucky<span>Lotto</span></div>
+            <div class="spacer"></div>
+        </header>
+        
+        <section class="camera-section">
+            <div id="reader"></div>
+            
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>카메라 연결 중...</p>
+            </div>
+            
+            <div id="permission-error" class="permission-error" style="display: none;">
+                <h3>📷 카메라 권한 필요</h3>
+                <p>QR 코드를 스캔하려면 카메라 접근 권한이 필요합니다.<br>
+                   브라우저 설정에서 카메라 권한을 허용해주세요.</p>
+                <button class="btn btn-primary" onclick="location.reload()">다시 시도</button>
+            </div>
+        </section>
+        
+        <section class="instruction-section" id="instruction">
+            <div class="instruction-icon">📱</div>
+            <h3 class="instruction-title">로또 용지의 QR 코드를 촬영하세요</h3>
+            <p class="instruction-text">용지 하단의 QR 코드를<br>카메라 화면 중앙에 맞춰주세요</p>
+        </section>
+        
+        <div class="lotto-ticket" id="lotto-ticket">
+            <div class="ticket-header">
+                <div class="ticket-logo">
+                    <div class="ticket-logo-top">동행복권</div>
+                    <div class="ticket-logo-main">Lotto <span>6/45</span></div>
+                </div>
+                <div class="ticket-round" id="ticket-round">제 0000 회</div>
+                <div class="ticket-qr"><canvas id="qr-canvas" width="55" height="55"></canvas></div>
+            </div>
+            
+            <div class="ticket-info">
+                <div class="ticket-info-left">
+                    <div>발 행 일 : <span id="ticket-date">0000/00/00 (월)</span> <span id="ticket-time">00:00:00</span></div>
+                    <div>추 첨 일 : <span id="ticket-draw-date">0000/00/00 (토)</span></div>
+                    <div>지급기한 : <span id="ticket-expire-date">0000/00/00</span></div>
+                </div>
+                <div class="ticket-info-right"><div id="ticket-serial">TR:0000000000</div></div>
+            </div>
+            
+            <div class="ticket-games" id="ticket-games"></div>
+            
+            <div class="ticket-footer">
+                <div class="ticket-price">
+                    <span class="ticket-price-label">금 액</span>
+                    <span class="ticket-price-value">￦<span id="ticket-amount">5,000</span></span>
+                </div>
+                <div class="ticket-barcode">
+                    <canvas id="barcode-canvas" width="280" height="30"></canvas>
+                    <div class="barcode-number" id="barcode-number">00000 00000 00000 00000 00000 00000</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="button-group" id="button-group" style="display: none;">
+            <button class="btn btn-secondary" onclick="resetScanner()">다시 스캔</button>
+        </div>
+        
+        <footer><a href="https://craftbay.io/" target="_blank">CraftBay</a> &copy; 2026</footer>
+    </div>
+
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script>
+        let html5QrCode = null;
+        let isScanning = false;
+        
+        function parseQRCode(url) {
+            try {
+                const urlObj = new URL(url);
+                const vParam = urlObj.searchParams.get('v');
+                if (!vParam) throw new Error('v 파라미터가 없습니다');
+                
+                const parts = vParam.split('q');
+                const round = parseInt(parts[0], 10);
+                if (isNaN(round) || round < 1) throw new Error('유효하지 않은 회차 정보');
+                
+                const games = parts.slice(1).map(gameStr => {
+                    const numbers = [];
+                    for (let i = 0; i < 12; i += 2) {
+                        const num = parseInt(gameStr.substring(i, i + 2), 10);
+                        if (num >= 1 && num <= 45) numbers.push(num);
+                    }
+                    return numbers;
+                }).filter(game => game.length === 6);
+                
+                if (games.length === 0) throw new Error('유효한 게임 정보가 없습니다');
+                return { round, games, rawV: vParam };
+            } catch (e) {
+                console.error('QR 파싱 오류:', e);
+                return null;
+            }
+        }
+        
+        function drawQRCode(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, size, size);
+            ctx.fillStyle = '#000';
+            
+            function drawFinderPattern(x, y) {
+                ctx.fillRect(x, y, 14, 14);
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(x + 2, y + 2, 10, 10);
+                ctx.fillStyle = '#000';
+                ctx.fillRect(x + 4, y + 4, 6, 6);
+            }
+            
+            drawFinderPattern(2, 2);
+            drawFinderPattern(size - 16, 2);
+            drawFinderPattern(2, size - 16);
+            
+            for (let i = 16; i < size - 16; i += 4) {
+                ctx.fillRect(i, 8, 2, 2);
+                ctx.fillRect(8, i, 2, 2);
+            }
+            
+            for (let y = 2; y < size - 2; y += 2) {
+                for (let x = 2; x < size - 2; x += 2) {
+                    if ((x < 18 && y < 18) || (x > size - 20 && y < 18) || (x < 18 && y > size - 20)) continue;
+                    if (Math.random() > 0.45) ctx.fillRect(x, y, 2, 2);
+                }
+            }
+        }
+        
+        function drawBarcode(canvas) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#000';
+            
+            let x = 10;
+            while (x < width - 10) {
+                const barWidth = 1 + Math.floor(Math.random() * 2);
+                if (Math.random() > 0.4) ctx.fillRect(x, 2, barWidth, height - 4);
+                x += barWidth + (Math.random() > 0.5 ? 1 : 0);
+            }
+        }
+        
+        function getDayName(date) { return ['일', '월', '화', '수', '목', '금', '토'][date.getDay()]; }
+        
+        function getNextSaturday(date) {
+            const result = new Date(date);
+            const daysUntilSaturday = (6 - result.getDay() + 7) % 7 || 7;
+            result.setDate(result.getDate() + daysUntilSaturday);
+            return result;
+        }
+        
+        function getExpireDate(drawDate) {
+            const result = new Date(drawDate);
+            result.setFullYear(result.getFullYear() + 1);
+            return result;
+        }
+        
+        function formatDate(date, withDay = true) {
+            const y = date.getFullYear();
+            const m = String(date.getMonth() + 1).padStart(2, '0');
+            const d = String(date.getDate()).padStart(2, '0');
+            return withDay ? `${y}/${m}/${d} (${getDayName(date)})` : `${y}/${m}/${d}`;
+        }
+        
+        function formatTime(date) {
+            return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}:${String(date.getSeconds()).padStart(2, '0')}`;
+        }
+        
+        function generateSerial() { return 'TR:' + Math.floor(1000000000 + Math.random() * 9000000000); }
+        
+        function showResult(data) {
+            const ticket = document.getElementById('lotto-ticket');
+            const instruction = document.getElementById('instruction');
+            const buttonGroup = document.getElementById('button-group');
+            
+            document.getElementById('ticket-round').textContent = `제 ${data.round} 회`;
+            
+            const now = new Date();
+            const drawDate = getNextSaturday(now);
+            const expireDate = getExpireDate(drawDate);
+            
+            document.getElementById('ticket-date').textContent = formatDate(now);
+            document.getElementById('ticket-time').textContent = formatTime(now);
+            document.getElementById('ticket-draw-date').textContent = formatDate(drawDate);
+            document.getElementById('ticket-expire-date').textContent = formatDate(expireDate, false);
+            document.getElementById('ticket-serial').textContent = generateSerial();
+            
+            const gamesContainer = document.getElementById('ticket-games');
+            const gameLabels = ['A', 'B', 'C', 'D', 'E'];
+            gamesContainer.innerHTML = data.games.map((game, idx) => `
+                <div class="ticket-game-row">
+                    <span class="game-label">${gameLabels[idx]}</span>
+                    <span class="game-type">자동</span>
+                    <div class="game-numbers">
+                        ${game.map(num => `<span class="game-number">${String(num).padStart(2, '0')}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('ticket-amount').textContent = (data.games.length * 1000).toLocaleString();
+            
+            drawQRCode(document.getElementById('qr-canvas'));
+            drawBarcode(document.getElementById('barcode-canvas'));
+            document.getElementById('barcode-number').textContent = data.rawV.substring(0, 30).replace(/(.{5})/g, '$1 ').trim();
+            
+            instruction.style.display = 'none';
+            ticket.classList.add('show');
+            buttonGroup.style.display = 'flex';
+        }
+        
+        function resetScanner() {
+            document.getElementById('lotto-ticket').classList.remove('show');
+            document.getElementById('instruction').style.display = 'block';
+            document.getElementById('button-group').style.display = 'none';
+            if (html5QrCode && !isScanning) startScanner();
+        }
+        
+        function onScanSuccess(decodedText) {
+            if (!decodedText.includes('dhlottery.co.kr') && !decodedText.includes('method=winQr')) return;
+            
+            if (html5QrCode && isScanning) {
+                isScanning = false;
+                html5QrCode.stop().then(() => {
+                    const data = parseQRCode(decodedText);
+                    if (data) showResult(data);
+                    else { alert('QR 코드를 해석할 수 없습니다.'); startScanner(); }
+                }).catch(err => console.error(err));
+            }
+        }
+        
+        function startScanner() {
+            const loadingEl = document.getElementById('loading');
+            const permissionError = document.getElementById('permission-error');
+            
+            loadingEl.style.display = 'flex';
+            permissionError.style.display = 'none';
+            
+            const config = { fps: 10, qrbox: { width: 250, height: 250 }, aspectRatio: 1.0, formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE] };
+            
+            html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess, () => {})
+            .then(() => { isScanning = true; loadingEl.style.display = 'none'; })
+            .catch(() => {
+                html5QrCode.start({ facingMode: "user" }, config, onScanSuccess, () => {})
+                .then(() => { isScanning = true; loadingEl.style.display = 'none'; })
+                .catch(() => { loadingEl.style.display = 'none'; permissionError.style.display = 'block'; });
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            html5QrCode = new Html5Qrcode("reader");
+            startScanner();
+        });
+    </script>
+</body>
+</html>
