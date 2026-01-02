@@ -13,6 +13,8 @@
     <meta property="og:type" content="website">
     
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&family=Black+Han+Sans&display=swap');
+        
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +22,7 @@
         }
         
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             color: #fff;
@@ -100,16 +102,20 @@
             line-height: 1.6;
         }
         
-        /* 로또 용지 스타일 */
+        /* 로또 용지 스타일 - 실제 비율 반영 */
         .lotto-ticket {
             display: none;
             background: #fff;
-            border-radius: 8px;
-            padding: 15px;
+            border-radius: 4px;
+            padding: 12px 14px;
             margin-top: 20px;
             color: #000;
-            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            font-family: 'Nanum Gothic', 'Malgun Gothic', sans-serif;
             box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            aspect-ratio: 2.2 / 3;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .lotto-ticket.show {
@@ -120,9 +126,7 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
         
         .ticket-logo {
@@ -131,172 +135,142 @@
         }
         
         .ticket-logo-top {
-            font-size: 0.7rem;
-            color: #666;
-            letter-spacing: 1px;
+            font-size: 0.55rem;
+            color: #000;
+            letter-spacing: 0.5px;
         }
         
         .ticket-logo-main {
-            font-size: 1.5rem;
+            font-family: 'Black Han Sans', sans-serif;
+            font-size: 1.3rem;
             font-weight: bold;
-            color: #e31837;
+            color: #000;
             font-style: italic;
+            letter-spacing: -1px;
         }
         
         .ticket-logo-main span {
-            font-size: 0.9rem;
-            color: #333;
+            font-size: 0.75rem;
             font-style: normal;
+            font-family: 'Nanum Gothic', sans-serif;
+            font-weight: normal;
         }
         
         .ticket-round {
-            text-align: center;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             font-weight: bold;
-            border: 2px solid #000;
-            padding: 3px 15px;
-            border-radius: 3px;
+            color: #000;
         }
         
         .ticket-qr {
-            width: 60px;
-            height: 60px;
-            background: #fff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 55px;
+            height: 55px;
         }
         
-        .ticket-qr svg {
+        .ticket-qr canvas {
             width: 100%;
             height: 100%;
         }
         
         .ticket-info {
+            font-size: 0.6rem;
+            color: #000;
+            margin-bottom: 4px;
+            line-height: 1.5;
             display: flex;
             justify-content: space-between;
-            font-size: 0.75rem;
-            color: #666;
-            margin-bottom: 8px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid #eee;
         }
         
-        .ticket-info-left div, .ticket-info-right div {
-            margin-bottom: 2px;
+        .ticket-info-left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .ticket-info-right {
+            text-align: right;
+            font-size: 0.6rem;
         }
         
         .ticket-games {
-            margin: 10px 0;
+            margin: 8px 0;
+            border-top: 1px dashed #999;
+            border-bottom: 1px dashed #999;
+            padding: 6px 0;
         }
         
         .ticket-game-row {
             display: flex;
             align-items: center;
-            padding: 6px 0;
-            border-bottom: 1px dotted #ddd;
-        }
-        
-        .ticket-game-row:last-child {
-            border-bottom: none;
+            padding: 4px 0;
         }
         
         .game-label {
             font-weight: bold;
-            font-size: 0.85rem;
-            width: 25px;
-            color: #333;
+            font-size: 0.75rem;
+            width: 18px;
+            color: #000;
         }
         
         .game-type {
-            font-size: 0.7rem;
-            color: #888;
-            width: 30px;
+            font-size: 0.55rem;
+            color: #666;
+            width: 22px;
         }
         
         .game-numbers {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             flex: 1;
-            justify-content: center;
+            justify-content: flex-start;
+            padding-left: 5px;
         }
         
         .game-number {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: bold;
             color: #000;
-            background: #f5f5f5;
-            border-radius: 50%;
+            width: 22px;
+            text-align: center;
         }
         
         .ticket-footer {
-            margin-top: 10px;
-            padding-top: 10px;
-            border-top: 1px dashed #ccc;
+            margin-top: 6px;
         }
         
         .ticket-price {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            margin-bottom: 8px;
         }
         
         .ticket-price-label {
-            color: #666;
+            color: #000;
         }
         
         .ticket-price-value {
             font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        .ticket-price-value span {
             font-size: 0.8rem;
-            font-weight: normal;
+            color: #000;
         }
         
         .ticket-barcode {
             text-align: center;
-            padding: 10px 0;
+            padding: 5px 0;
         }
         
-        .barcode-lines {
-            display: flex;
-            justify-content: center;
-            gap: 1px;
-            height: 35px;
-            margin-bottom: 5px;
-        }
-        
-        .barcode-line {
-            background: #000;
-            height: 100%;
+        .ticket-barcode canvas {
+            width: 100%;
+            height: 30px;
         }
         
         .barcode-number {
-            font-size: 0.65rem;
-            color: #333;
-            letter-spacing: 2px;
-        }
-        
-        .ticket-brand {
-            display: flex;
-            justify-content: flex-end;
-            margin-top: 5px;
-        }
-        
-        .ticket-brand-logo {
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: #e31837;
-            font-style: italic;
+            font-size: 0.5rem;
+            color: #000;
+            letter-spacing: 1px;
+            margin-top: 3px;
+            font-family: 'Courier New', monospace;
         }
         
         .btn {
@@ -311,15 +285,6 @@
             cursor: pointer;
             border: none;
             transition: all 0.2s;
-        }
-        
-        .btn-primary {
-            background: #4ade80;
-            color: #000;
-        }
-        
-        .btn-primary:hover {
-            background: #22c55e;
         }
         
         .btn-secondary {
@@ -349,10 +314,6 @@
         footer a {
             color: #4ade80;
             text-decoration: none;
-        }
-        
-        footer a:hover {
-            text-decoration: underline;
         }
         
         .loading {
@@ -392,6 +353,11 @@
             color: #94a3b8;
             margin-bottom: 20px;
             line-height: 1.6;
+        }
+        
+        .btn-primary {
+            background: #4ade80;
+            color: #000;
         }
     </style>
 </head>
@@ -434,18 +400,19 @@
                     <div class="ticket-logo-main">Lotto <span>6/45</span></div>
                 </div>
                 <div class="ticket-round" id="ticket-round">제 0000 회</div>
-                <div class="ticket-qr" id="ticket-qr">
-                    <!-- QR 코드 SVG -->
+                <div class="ticket-qr">
+                    <canvas id="qr-canvas" width="55" height="55"></canvas>
                 </div>
             </div>
             
             <div class="ticket-info">
                 <div class="ticket-info-left">
-                    <div>발 행 일 : <span id="ticket-date">0000/00/00 (월)</span></div>
+                    <div>발 행 일 : <span id="ticket-date">0000/00/00 (월)</span> <span id="ticket-time">00:00:00</span></div>
                     <div>추 첨 일 : <span id="ticket-draw-date">0000/00/00 (토)</span></div>
+                    <div>지급기한 : <span id="ticket-expire-date">0000/00/00</span></div>
                 </div>
                 <div class="ticket-info-right">
-                    <div id="ticket-time">00:00:00</div>
+                    <div id="ticket-serial">TR:0000000000</div>
                 </div>
             </div>
             
@@ -456,18 +423,12 @@
             <div class="ticket-footer">
                 <div class="ticket-price">
                     <span class="ticket-price-label">금 액</span>
-                    <span class="ticket-price-value"><span>₩</span><span id="ticket-amount">5,000</span></span>
+                    <span class="ticket-price-value">￦<span id="ticket-amount">5,000</span></span>
                 </div>
                 
                 <div class="ticket-barcode">
-                    <div class="barcode-lines" id="barcode-lines">
-                        <!-- 바코드 라인들 -->
-                    </div>
-                    <div class="barcode-number" id="barcode-number">0000 00000 00000 00000 00000 00000 00000</div>
-                </div>
-                
-                <div class="ticket-brand">
-                    <span class="ticket-brand-logo">Lotto 6/45</span>
+                    <canvas id="barcode-canvas" width="280" height="30"></canvas>
+                    <div class="barcode-number" id="barcode-number">00000 00000 00000 00000 00000 00000</div>
                 </div>
             </div>
         </div>
@@ -492,31 +453,23 @@
                 const urlObj = new URL(url);
                 const vParam = urlObj.searchParams.get('v');
                 
-                if (!vParam) {
-                    throw new Error('v 파라미터가 없습니다');
-                }
+                if (!vParam) throw new Error('v 파라미터가 없습니다');
                 
                 const parts = vParam.split('q');
                 const round = parseInt(parts[0], 10);
                 
-                if (isNaN(round) || round < 1) {
-                    throw new Error('유효하지 않은 회차 정보');
-                }
+                if (isNaN(round) || round < 1) throw new Error('유효하지 않은 회차 정보');
                 
                 const games = parts.slice(1).map(gameStr => {
                     const numbers = [];
                     for (let i = 0; i < 12; i += 2) {
                         const num = parseInt(gameStr.substring(i, i + 2), 10);
-                        if (num >= 1 && num <= 45) {
-                            numbers.push(num);
-                        }
+                        if (num >= 1 && num <= 45) numbers.push(num);
                     }
                     return numbers;
                 }).filter(game => game.length === 6);
                 
-                if (games.length === 0) {
-                    throw new Error('유효한 게임 정보가 없습니다');
-                }
+                if (games.length === 0) throw new Error('유효한 게임 정보가 없습니다');
                 
                 return { round, games, rawV: vParam };
             } catch (e) {
@@ -525,63 +478,79 @@
             }
         }
         
-        // 간단한 QR 코드 패턴 생성
-        function generateQRPattern() {
-            let svg = '<svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">';
-            // 모서리 패턴
-            svg += '<rect x="2" y="2" width="12" height="12" fill="none" stroke="#000" stroke-width="2"/>';
-            svg += '<rect x="5" y="5" width="6" height="6" fill="#000"/>';
-            svg += '<rect x="36" y="2" width="12" height="12" fill="none" stroke="#000" stroke-width="2"/>';
-            svg += '<rect x="39" y="5" width="6" height="6" fill="#000"/>';
-            svg += '<rect x="2" y="36" width="12" height="12" fill="none" stroke="#000" stroke-width="2"/>';
-            svg += '<rect x="5" y="39" width="6" height="6" fill="#000"/>';
-            // 랜덤 패턴
-            for (let i = 0; i < 80; i++) {
-                const x = 16 + Math.floor(Math.random() * 18);
-                const y = 2 + Math.floor(Math.random() * 46);
-                if (Math.random() > 0.5) {
-                    svg += `<rect x="${x}" y="${y}" width="2" height="2" fill="#000"/>`;
+        // QR 코드 비트맵 생성 (밀집된 패턴)
+        function drawQRCode(canvas) {
+            const ctx = canvas.getContext('2d');
+            const size = canvas.width;
+            const moduleSize = 2;
+            
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, size, size);
+            ctx.fillStyle = '#000';
+            
+            // 위치 탐지 패턴 (3개 모서리)
+            function drawFinderPattern(x, y) {
+                // 외곽
+                ctx.fillRect(x, y, 14, 14);
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(x + 2, y + 2, 10, 10);
+                ctx.fillStyle = '#000';
+                ctx.fillRect(x + 4, y + 4, 6, 6);
+            }
+            
+            drawFinderPattern(2, 2);
+            drawFinderPattern(size - 16, 2);
+            drawFinderPattern(2, size - 16);
+            
+            // 타이밍 패턴
+            for (let i = 16; i < size - 16; i += 4) {
+                ctx.fillRect(i, 8, 2, 2);
+                ctx.fillRect(8, i, 2, 2);
+            }
+            
+            // 데이터 영역 (밀집된 랜덤 패턴)
+            for (let y = 2; y < size - 2; y += 2) {
+                for (let x = 2; x < size - 2; x += 2) {
+                    // 위치 탐지 패턴 영역 제외
+                    if ((x < 18 && y < 18) || (x > size - 20 && y < 18) || (x < 18 && y > size - 20)) continue;
+                    if (Math.random() > 0.45) {
+                        ctx.fillRect(x, y, 2, 2);
+                    }
                 }
             }
-            for (let i = 0; i < 40; i++) {
-                const x = 2 + Math.floor(Math.random() * 12);
-                const y = 16 + Math.floor(Math.random() * 18);
-                if (Math.random() > 0.5) {
-                    svg += `<rect x="${x}" y="${y}" width="2" height="2" fill="#000"/>`;
-                }
-            }
-            for (let i = 0; i < 40; i++) {
-                const x = 36 + Math.floor(Math.random() * 12);
-                const y = 16 + Math.floor(Math.random() * 18);
-                if (Math.random() > 0.5) {
-                    svg += `<rect x="${x}" y="${y}" width="2" height="2" fill="#000"/>`;
-                }
-            }
-            svg += '</svg>';
-            return svg;
         }
         
-        // 바코드 생성
-        function generateBarcode() {
-            const container = document.getElementById('barcode-lines');
-            container.innerHTML = '';
-            const widths = [2, 1, 1, 2, 1, 3, 1, 1, 2, 1, 1, 1, 2, 1, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 2, 3, 1, 1, 2, 1, 1, 2, 1, 1, 3, 1, 2, 1, 1, 2, 1, 1, 1, 2, 1, 1, 3, 1, 2, 1, 1, 1, 2, 1, 3, 1, 1, 2, 1, 1, 2];
-            widths.forEach((w, i) => {
-                const line = document.createElement('div');
-                line.className = 'barcode-line';
-                line.style.width = w + 'px';
-                if (i % 2 === 1) line.style.background = '#fff';
-                container.appendChild(line);
-            });
+        // 바코드 비트맵 생성 (실제 로또 스타일)
+        function drawBarcode(canvas, data) {
+            const ctx = canvas.getContext('2d');
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.fillStyle = '#fff';
+            ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = '#000';
+            
+            // 비트맵 스타일 바코드 (불규칙한 두께)
+            let x = 10;
+            const pattern = data.split('').map(c => c.charCodeAt(0));
+            
+            while (x < width - 10) {
+                const barWidth = 1 + Math.floor(Math.random() * 2);
+                const isBlack = Math.random() > 0.4;
+                
+                if (isBlack) {
+                    ctx.fillRect(x, 2, barWidth, height - 4);
+                }
+                x += barWidth + (Math.random() > 0.5 ? 1 : 0);
+            }
         }
         
-        // 요일 구하기
+        // 요일
         function getDayName(date) {
-            const days = ['일', '월', '화', '수', '목', '금', '토'];
-            return days[date.getDay()];
+            return ['일', '월', '화', '수', '목', '금', '토'][date.getDay()];
         }
         
-        // 다음 토요일 구하기
+        // 다음 토요일
         function getNextSaturday(date) {
             const result = new Date(date);
             const day = result.getDay();
@@ -590,12 +559,19 @@
             return result;
         }
         
+        // 지급기한 (추첨일 + 1년)
+        function getExpireDate(drawDate) {
+            const result = new Date(drawDate);
+            result.setFullYear(result.getFullYear() + 1);
+            return result;
+        }
+        
         // 날짜 포맷
-        function formatDate(date) {
+        function formatDate(date, withDay = true) {
             const y = date.getFullYear();
             const m = String(date.getMonth() + 1).padStart(2, '0');
             const d = String(date.getDate()).padStart(2, '0');
-            return `${y}/${m}/${d} (${getDayName(date)})`;
+            return withDay ? `${y}/${m}/${d} (${getDayName(date)})` : `${y}/${m}/${d}`;
         }
         
         // 시간 포맷
@@ -604,6 +580,11 @@
             const m = String(date.getMinutes()).padStart(2, '0');
             const s = String(date.getSeconds()).padStart(2, '0');
             return `${h}:${m}:${s}`;
+        }
+        
+        // 랜덤 시리얼
+        function generateSerial() {
+            return 'TR:' + Math.floor(1000000000 + Math.random() * 9000000000);
         }
         
         // 결과 표시
@@ -617,9 +598,14 @@
             
             // 날짜/시간
             const now = new Date();
+            const drawDate = getNextSaturday(now);
+            const expireDate = getExpireDate(drawDate);
+            
             document.getElementById('ticket-date').textContent = formatDate(now);
-            document.getElementById('ticket-draw-date').textContent = formatDate(getNextSaturday(now));
             document.getElementById('ticket-time').textContent = formatTime(now);
+            document.getElementById('ticket-draw-date').textContent = formatDate(drawDate);
+            document.getElementById('ticket-expire-date').textContent = formatDate(expireDate, false);
+            document.getElementById('ticket-serial').textContent = generateSerial();
             
             // 게임 번호
             const gamesContainer = document.getElementById('ticket-games');
@@ -638,11 +624,11 @@
             document.getElementById('ticket-amount').textContent = (data.games.length * 1000).toLocaleString();
             
             // QR 코드
-            document.getElementById('ticket-qr').innerHTML = generateQRPattern();
+            drawQRCode(document.getElementById('qr-canvas'));
             
             // 바코드
-            generateBarcode();
-            const barcodeNum = data.rawV.substring(0, 28).replace(/(.{5})/g, '$1 ').trim();
+            drawBarcode(document.getElementById('barcode-canvas'), data.rawV);
+            const barcodeNum = data.rawV.substring(0, 30).replace(/(.{5})/g, '$1 ').trim();
             document.getElementById('barcode-number').textContent = barcodeNum;
             
             instruction.style.display = 'none';
@@ -660,32 +646,23 @@
             instruction.style.display = 'block';
             buttonGroup.style.display = 'none';
             
-            if (html5QrCode && !isScanning) {
-                startScanner();
-            }
+            if (html5QrCode && !isScanning) startScanner();
         }
         
-        // 스캔 성공 콜백
-        function onScanSuccess(decodedText, decodedResult) {
-            console.log('스캔 결과:', decodedText);
-            
-            if (!decodedText.includes('dhlottery.co.kr') && !decodedText.includes('method=winQr')) {
-                return;
-            }
+        // 스캔 성공
+        function onScanSuccess(decodedText) {
+            if (!decodedText.includes('dhlottery.co.kr') && !decodedText.includes('method=winQr')) return;
             
             if (html5QrCode && isScanning) {
                 isScanning = false;
                 html5QrCode.stop().then(() => {
                     const data = parseQRCode(decodedText);
-                    if (data) {
-                        showResult(data);
-                    } else {
+                    if (data) showResult(data);
+                    else {
                         alert('QR 코드를 해석할 수 없습니다.');
                         startScanner();
                     }
-                }).catch(err => {
-                    console.error('스캐너 중지 오류:', err);
-                });
+                }).catch(err => console.error(err));
             }
         }
         
@@ -704,33 +681,17 @@
                 formatsToSupport: [Html5QrcodeSupportedFormats.QR_CODE]
             };
             
-            html5QrCode.start(
-                { facingMode: "environment" },
-                config,
-                onScanSuccess,
-                () => {}
-            ).then(() => {
+            html5QrCode.start({ facingMode: "environment" }, config, onScanSuccess, () => {})
+            .then(() => {
                 isScanning = true;
                 loadingEl.style.display = 'none';
-            }).catch((err) => {
-                console.error('카메라 시작 오류:', err);
-                loadingEl.style.display = 'none';
-                
-                html5QrCode.start(
-                    { facingMode: "user" },
-                    config,
-                    onScanSuccess,
-                    () => {}
-                ).then(() => {
-                    isScanning = true;
-                }).catch((err2) => {
-                    console.error('전면 카메라도 실패:', err2);
-                    permissionError.style.display = 'block';
-                });
+            }).catch(() => {
+                html5QrCode.start({ facingMode: "user" }, config, onScanSuccess, () => {})
+                .then(() => { isScanning = true; loadingEl.style.display = 'none'; })
+                .catch(() => { loadingEl.style.display = 'none'; permissionError.style.display = 'block'; });
             });
         }
         
-        // 초기화
         document.addEventListener('DOMContentLoaded', function() {
             html5QrCode = new Html5Qrcode("reader");
             startScanner();
