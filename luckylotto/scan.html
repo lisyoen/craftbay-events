@@ -127,7 +127,20 @@
         }
         
         .ticket-round { font-size: 0.9rem; font-weight: bold; color: #000; }
-        .ticket-qr { width: 55px; height: 55px; }
+        .ticket-qr { 
+            width: 55px; 
+            height: 55px; 
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border-radius: 4px;
+        }
+        .ticket-qr:hover {
+            transform: scale(1.05);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+        .ticket-qr:active {
+            transform: scale(0.98);
+        }
         .ticket-qr canvas { width: 100%; height: 100%; }
         
         .ticket-info {
@@ -215,6 +228,84 @@
         .permission-error h3 { color: #f87171; margin-bottom: 15px; }
         .permission-error p { color: #94a3b8; margin-bottom: 20px; line-height: 1.6; }
         .btn-primary { background: #4ade80; color: #000; }
+        
+        /* QR 모달 스타일 */
+        .qr-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .qr-modal.show {
+            display: flex;
+        }
+        
+        .qr-modal-content {
+            background: #fff;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            max-width: 320px;
+            width: 100%;
+            animation: modalIn 0.3s ease;
+        }
+        
+        @keyframes modalIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        .qr-modal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+        
+        .qr-modal-canvas {
+            width: 240px;
+            height: 240px;
+            margin: 0 auto 16px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+        }
+        
+        .qr-modal-hint {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 20px;
+        }
+        
+        .qr-modal-close {
+            background: #1a1a2e;
+            color: #fff;
+            border: none;
+            padding: 12px 32px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .qr-modal-close:hover {
+            background: #2d2d4a;
+        }
     </style>
 </head>
 <body>
@@ -254,7 +345,7 @@
                     <div class="ticket-logo-main">Lotto <span>6/45</span></div>
                 </div>
                 <div class="ticket-round" id="ticket-round">제 0000 회</div>
-                <div class="ticket-qr"><canvas id="qr-canvas" width="55" height="55"></canvas></div>
+                <div class="ticket-qr" onclick="showQRModal()" title="클릭하여 QR 코드 확대"><canvas id="qr-canvas" width="55" height="55"></canvas></div>
             </div>
             
             <div class="ticket-info">
@@ -286,11 +377,23 @@
         
         <footer><a href="https://craftbay.io/" target="_blank">CraftBay</a> &copy; 2026</footer>
     </div>
+    
+    <!-- QR 확대 모달 -->
+    <div class="qr-modal" id="qr-modal" onclick="closeQRModal(event)">
+        <div class="qr-modal-content" onclick="event.stopPropagation()">
+            <div class="qr-modal-title">🔍 QR 코드</div>
+            <canvas id="qr-modal-canvas" class="qr-modal-canvas" width="240" height="240"></canvas>
+            <p class="qr-modal-hint">이 QR 코드로 당첨 확인이 가능합니다</p>
+            <button class="qr-modal-close" onclick="closeQRModal()">닫기</button>
+        </div>
+    </div>
 
     <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
     <script>
         let html5QrCode = null;
         let isScanning = false;
+        let currentQRUrl = null;
         
         function parseQRCode(url) {
             try {
@@ -312,42 +415,69 @@
                 }).filter(game => game.length === 6);
                 
                 if (games.length === 0) throw new Error('유효한 게임 정보가 없습니다');
-                return { round, games, rawV: vParam };
+                return { round, games, rawV: vParam, originalUrl: url };
             } catch (e) {
                 console.error('QR 파싱 오류:', e);
                 return null;
             }
         }
         
-        function drawQRCode(canvas) {
+        function drawQRCode(canvas, size) {
             const ctx = canvas.getContext('2d');
-            const size = canvas.width;
             ctx.fillStyle = '#fff';
             ctx.fillRect(0, 0, size, size);
             ctx.fillStyle = '#000';
             
+            const scale = size / 55;
+            
             function drawFinderPattern(x, y) {
-                ctx.fillRect(x, y, 14, 14);
+                const s = 14 * scale;
+                const offset = 2 * scale;
+                const inner = 10 * scale;
+                const center = 6 * scale;
+                const centerOffset = 4 * scale;
+                
+                ctx.fillRect(x * scale, y * scale, s, s);
                 ctx.fillStyle = '#fff';
-                ctx.fillRect(x + 2, y + 2, 10, 10);
+                ctx.fillRect(x * scale + offset, y * scale + offset, inner, inner);
                 ctx.fillStyle = '#000';
-                ctx.fillRect(x + 4, y + 4, 6, 6);
+                ctx.fillRect(x * scale + centerOffset, y * scale + centerOffset, center, center);
             }
             
             drawFinderPattern(2, 2);
-            drawFinderPattern(size - 16, 2);
-            drawFinderPattern(2, size - 16);
+            drawFinderPattern(size/scale - 16, 2);
+            drawFinderPattern(2, size/scale - 16);
             
-            for (let i = 16; i < size - 16; i += 4) {
-                ctx.fillRect(i, 8, 2, 2);
-                ctx.fillRect(8, i, 2, 2);
+            for (let i = 16; i < size/scale - 16; i += 4) {
+                ctx.fillRect(i * scale, 8 * scale, 2 * scale, 2 * scale);
+                ctx.fillRect(8 * scale, i * scale, 2 * scale, 2 * scale);
             }
             
-            for (let y = 2; y < size - 2; y += 2) {
-                for (let x = 2; x < size - 2; x += 2) {
-                    if ((x < 18 && y < 18) || (x > size - 20 && y < 18) || (x < 18 && y > size - 20)) continue;
-                    if (Math.random() > 0.45) ctx.fillRect(x, y, 2, 2);
+            for (let y = 2; y < size/scale - 2; y += 2) {
+                for (let x = 2; x < size/scale - 2; x += 2) {
+                    if ((x < 18 && y < 18) || (x > size/scale - 20 && y < 18) || (x < 18 && y > size/scale - 20)) continue;
+                    if (Math.random() > 0.45) ctx.fillRect(x * scale, y * scale, 2 * scale, 2 * scale);
                 }
+            }
+        }
+        
+        function drawRealQRCode(canvas, url) {
+            if (typeof QRCode !== 'undefined' && url) {
+                QRCode.toCanvas(canvas, url, {
+                    width: canvas.width,
+                    margin: 2,
+                    color: {
+                        dark: '#000000',
+                        light: '#ffffff'
+                    }
+                }, function(error) {
+                    if (error) {
+                        console.error('QR 생성 오류:', error);
+                        drawQRCode(canvas, canvas.width);
+                    }
+                });
+            } else {
+                drawQRCode(canvas, canvas.width);
             }
         }
         
@@ -395,10 +525,33 @@
         
         function generateSerial() { return 'TR:' + Math.floor(1000000000 + Math.random() * 9000000000); }
         
+        function showQRModal() {
+            const modal = document.getElementById('qr-modal');
+            const modalCanvas = document.getElementById('qr-modal-canvas');
+            
+            if (currentQRUrl) {
+                drawRealQRCode(modalCanvas, currentQRUrl);
+            } else {
+                drawQRCode(modalCanvas, 240);
+            }
+            
+            modal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeQRModal(event) {
+            if (event && event.target !== document.getElementById('qr-modal')) return;
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('show');
+            document.body.style.overflow = '';
+        }
+        
         function showResult(data) {
             const ticket = document.getElementById('lotto-ticket');
             const instruction = document.getElementById('instruction');
             const buttonGroup = document.getElementById('button-group');
+            
+            currentQRUrl = data.originalUrl;
             
             document.getElementById('ticket-round').textContent = `제 ${data.round} 회`;
             
@@ -426,7 +579,9 @@
             
             document.getElementById('ticket-amount').textContent = (data.games.length * 1000).toLocaleString();
             
-            drawQRCode(document.getElementById('qr-canvas'));
+            const smallCanvas = document.getElementById('qr-canvas');
+            drawRealQRCode(smallCanvas, currentQRUrl);
+            
             drawBarcode(document.getElementById('barcode-canvas'));
             document.getElementById('barcode-number').textContent = data.rawV.substring(0, 30).replace(/(.{5})/g, '$1 ').trim();
             
@@ -439,6 +594,7 @@
             document.getElementById('lotto-ticket').classList.remove('show');
             document.getElementById('instruction').style.display = 'block';
             document.getElementById('button-group').style.display = 'none';
+            currentQRUrl = null;
             if (html5QrCode && !isScanning) startScanner();
         }
         
@@ -472,6 +628,13 @@
                 .catch(() => { loadingEl.style.display = 'none'; permissionError.style.display = 'block'; });
             });
         }
+        
+        // ESC 키로 모달 닫기
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQRModal();
+            }
+        });
         
         document.addEventListener('DOMContentLoaded', function() {
             html5QrCode = new Html5Qrcode("reader");
