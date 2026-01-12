@@ -5,6 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeLens v1.0.0 - CraftBay</title>
     <style>
+        :root {
+            --bg-primary: #0d1117;
+            --bg-secondary: #161b22;
+            --bg-tertiary: #21262d;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #79b8ff;
+            --warning: #d29922;
+            --border: #30363d;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,15 +24,15 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-            color: #e4e4e7;
-            min-height: 100vh;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
+            min-height: 100vh;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -28,99 +40,136 @@
         header {
             text-align: center;
             margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid var(--border);
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #ffffff;
+            font-weight: 600;
             margin-bottom: 10px;
-            font-weight: 700;
         }
 
-        .subtitle {
-            font-size: 1.2rem;
-            color: #94a3b8;
-            margin-bottom: 20px;
-        }
-
-        .warning {
-            background: rgba(234, 179, 8, 0.15);
-            border: 1px solid rgba(234, 179, 8, 0.4);
-            border-radius: 8px;
-            padding: 16px 20px;
-            margin: 30px 0;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .warning-icon {
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .warning-text {
-            color: #fbbf24;
+        .version {
+            color: var(--accent);
             font-weight: 500;
         }
 
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .warning-box {
+            background-color: rgba(210, 153, 34, 0.1);
+            border: 1px solid var(--warning);
+            border-radius: 8px;
+            padding: 16px 20px;
+            display: inline-block;
+            max-width: 600px;
+        }
+
+        .warning-box .icon {
+            margin-right: 8px;
+        }
+
+        .warning-box p {
+            color: var(--warning);
+            font-size: 0.95rem;
+        }
+
+        .sections {
+            display: grid;
+            gap: 24px;
+        }
+
         .section {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 24px;
-            margin-bottom: 24px;
-            transition: transform 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s ease;
         }
 
         .section:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--accent);
         }
 
         .section-header {
             display: flex;
             align-items: center;
-            gap: 12px;
             margin-bottom: 16px;
         }
 
         .section-icon {
             font-size: 1.5rem;
+            margin-right: 12px;
         }
 
-        .section-title {
-            font-size: 1.3rem;
-            color: #ffffff;
+        .section h2 {
+            font-size: 1.25rem;
             font-weight: 600;
         }
 
-        .section-content {
-            color: #94a3b8;
+        .section-description {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .download-list {
+            list-style: none;
+        }
+
+        .download-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            background-color: var(--bg-tertiary);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .download-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .download-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .download-name {
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .download-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         .badge {
-            display: inline-block;
-            background: rgba(59, 130, 246, 0.2);
-            color: #60a5fa;
-            padding: 4px 12px;
+            background-color: var(--bg-primary);
+            color: var(--text-secondary);
+            padding: 6px 12px;
             border-radius: 20px;
             font-size: 0.85rem;
-            font-weight: 500;
-            margin-top: 12px;
+            border: 1px solid var(--border);
         }
 
         .badge.coming-soon {
-            background: rgba(168, 85, 247, 0.2);
-            color: #c084fc;
+            color: var(--warning);
+            border-color: var(--warning);
         }
 
         footer {
             text-align: center;
             margin-top: 60px;
             padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #64748b;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
@@ -133,8 +182,18 @@
                 font-size: 1rem;
             }
 
+            .container {
+                padding: 24px 16px;
+            }
+
             .section {
                 padding: 20px;
+            }
+
+            .download-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
             }
         }
     </style>
@@ -142,47 +201,86 @@
 <body>
     <div class="container">
         <header>
-            <h1>CodeLens v1.0.0</h1>
+            <h1>CodeLens <span class="version">v1.0.0</span></h1>
             <p class="subtitle">대용량 소스코드 AST 분석 시스템</p>
+            <div class="warning-box">
+                <p><span class="icon">Warning</span> 폐쇄망 환경용 - 패키지 다운로드 후 내부망에 반입하세요</p>
+            </div>
         </header>
 
-        <div class="warning">
-            <span class="warning-icon">&#9888;</span>
-            <span class="warning-text">폐쇄망 환경용 - 패키지 다운로드 후 내부망에 반입하세요</span>
+        <div class="sections">
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-icon">Package</span>
+                    <h2>서버 패키지</h2>
+                </div>
+                <p class="section-description">CodeLens 분석 서버 - Docker 이미지 및 설치 스크립트</p>
+                <ul class="download-list">
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">codelens-server-1.0.0.tar.gz</span>
+                            <span class="download-meta">Docker 이미지 + 설정 파일</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-icon">Terminal</span>
+                    <h2>클라이언트 CLI</h2>
+                </div>
+                <p class="section-description">소스코드 분석 요청 및 결과 조회 CLI 도구</p>
+                <ul class="download-list">
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">codelens-cli-linux-amd64</span>
+                            <span class="download-meta">Linux x86_64</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">codelens-cli-darwin-arm64</span>
+                            <span class="download-meta">macOS Apple Silicon</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">codelens-cli-windows-amd64.exe</span>
+                            <span class="download-meta">Windows x86_64</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-icon">Book</span>
+                    <h2>문서</h2>
+                </div>
+                <p class="section-description">설치 가이드, API 문서 및 사용 예제</p>
+                <ul class="download-list">
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">installation-guide.pdf</span>
+                            <span class="download-meta">설치 및 구성 가이드</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">api-reference.pdf</span>
+                            <span class="download-meta">REST API 레퍼런스</span>
+                        </div>
+                        <span class="badge coming-soon">준비 중</span>
+                    </li>
+                </ul>
+            </section>
         </div>
-
-        <section class="section">
-            <div class="section-header">
-                <span class="section-icon">&#128230;</span>
-                <h2 class="section-title">서버 패키지</h2>
-            </div>
-            <div class="section-content">
-                <p>CodeLens 서버 컴포넌트로, AST 분석 엔진과 API 서버를 포함합니다.</p>
-                <span class="badge coming-soon">준비 중</span>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="section-header">
-                <span class="section-icon">&#128187;</span>
-                <h2 class="section-title">클라이언트 CLI</h2>
-            </div>
-            <div class="section-content">
-                <p>명령줄 인터페이스 도구로, 로컬에서 코드 분석 및 서버 연동을 지원합니다.</p>
-                <span class="badge coming-soon">준비 중</span>
-            </div>
-        </section>
-
-        <section class="section">
-            <div class="section-header">
-                <span class="section-icon">&#128214;</span>
-                <h2 class="section-title">문서</h2>
-            </div>
-            <div class="section-content">
-                <p>설치 가이드, API 레퍼런스, 사용 예제 등 상세 문서를 제공합니다.</p>
-                <span class="badge coming-soon">준비 중</span>
-            </div>
-        </section>
 
         <footer>
             <p>&copy; 2026 CraftBay</p>
