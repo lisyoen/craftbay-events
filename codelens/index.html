@@ -164,6 +164,28 @@
             border-color: var(--warning);
         }
 
+        .btn-download {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .file-size {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
         footer {
             text-align: center;
             margin-top: 60px;
@@ -220,8 +242,17 @@
                         <div class="download-info">
                             <span class="download-name">codelens-server-1.0.0.tar.gz</span>
                             <span class="download-meta">Docker 이미지 + 설정 파일</span>
+                            <span class="file-size">4.0 MB</span>
                         </div>
-                        <span class="badge coming-soon">준비 중</span>
+                        <a href="server/codelens-server-1.0.0.tar.gz" class="btn-download">다운로드</a>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">install-linux.sh</span>
+                            <span class="download-meta">Linux 설치 스크립트</span>
+                            <span class="file-size">1.3 KB</span>
+                        </div>
+                        <a href="server/install-linux.sh" class="btn-download">다운로드</a>
                     </li>
                 </ul>
             </section>
@@ -233,6 +264,14 @@
                 </div>
                 <p class="section-description">소스코드 분석 요청 및 결과 조회 CLI 도구</p>
                 <ul class="download-list">
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">codelens-cli-1.0.0-linux-arm64.tar.gz</span>
+                            <span class="download-meta">Linux ARM64 (DGX Spark 등)</span>
+                            <span class="file-size">11 MB</span>
+                        </div>
+                        <a href="client/codelens-cli-1.0.0-linux-arm64.tar.gz" class="btn-download">다운로드</a>
+                    </li>
                     <li class="download-item">
                         <div class="download-info">
                             <span class="download-name">codelens-cli-linux-amd64</span>
@@ -266,17 +305,17 @@
                 <ul class="download-list">
                     <li class="download-item">
                         <div class="download-info">
-                            <span class="download-name">installation-guide.pdf</span>
-                            <span class="download-meta">설치 및 구성 가이드</span>
+                            <span class="download-name">quickstart.md</span>
+                            <span class="download-meta">빠른 시작 가이드</span>
                         </div>
-                        <span class="badge coming-soon">준비 중</span>
+                        <a href="docs/quickstart.md" class="btn-download">보기</a>
                     </li>
                     <li class="download-item">
                         <div class="download-info">
-                            <span class="download-name">api-reference.pdf</span>
-                            <span class="download-meta">REST API 레퍼런스</span>
+                            <span class="download-name">checksums.txt</span>
+                            <span class="download-meta">패키지 체크섬 (SHA256)</span>
                         </div>
-                        <span class="badge coming-soon">준비 중</span>
+                        <a href="checksums.txt" class="btn-download">보기</a>
                     </li>
                 </ul>
             </section>

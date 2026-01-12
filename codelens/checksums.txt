@@ -1,0 +1,2 @@
+b9719ea3d897bb5036040710836b1b4e9893db2cba7b8888aa64a3dbd3c60441  codelens-server-1.0.0.tar.gz
+d42b43f23a9daa094f5d9fdac3b4a5a6ba1fd31259fa49c08764219ede659c95  codelens-cli-1.0.0-linux-arm64.tar.gz
