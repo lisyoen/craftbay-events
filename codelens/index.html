@@ -14,14 +14,11 @@
             --accent: #58a6ff;
             --accent-hover: #79b8ff;
             --warning: #d29922;
+            --success: #3fb950;
             --border: #30363d;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial, sans-serif;
@@ -31,11 +28,7 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 40px 20px; }
 
         header {
             text-align: center;
@@ -44,21 +37,25 @@
             border-bottom: 1px solid var(--border);
         }
 
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 600;
-            margin-bottom: 10px;
+        h1 { font-size: 2.5rem; font-weight: 600; margin-bottom: 10px; }
+        .version { color: var(--accent); font-weight: 500; }
+        .subtitle { color: var(--text-secondary); font-size: 1.2rem; margin-bottom: 15px; }
+
+        .lang-badges {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
-        .version {
-            color: var(--accent);
-            font-weight: 500;
-        }
-
-        .subtitle {
+        .lang-badge {
+            background-color: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 16px;
+            font-size: 0.85rem;
             color: var(--text-secondary);
-            font-size: 1.2rem;
-            margin-bottom: 25px;
         }
 
         .warning-box {
@@ -70,19 +67,9 @@
             max-width: 600px;
         }
 
-        .warning-box .icon {
-            margin-right: 8px;
-        }
+        .warning-box p { color: var(--warning); font-size: 0.95rem; }
 
-        .warning-box p {
-            color: var(--warning);
-            font-size: 0.95rem;
-        }
-
-        .sections {
-            display: grid;
-            gap: 24px;
-        }
+        .sections { display: grid; gap: 24px; }
 
         .section {
             background-color: var(--bg-secondary);
@@ -92,34 +79,14 @@
             transition: border-color 0.2s ease;
         }
 
-        .section:hover {
-            border-color: var(--accent);
-        }
+        .section:hover { border-color: var(--accent); }
 
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 16px;
-        }
+        .section-header { display: flex; align-items: center; margin-bottom: 16px; }
+        .section-icon { font-size: 1.5rem; margin-right: 12px; }
+        .section h2 { font-size: 1.25rem; font-weight: 600; }
+        .section-description { color: var(--text-secondary); margin-bottom: 16px; }
 
-        .section-icon {
-            font-size: 1.5rem;
-            margin-right: 12px;
-        }
-
-        .section h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .section-description {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .download-list {
-            list-style: none;
-        }
+        .download-list { list-style: none; }
 
         .download-item {
             display: flex;
@@ -131,24 +98,13 @@
             margin-bottom: 8px;
         }
 
-        .download-item:last-child {
-            margin-bottom: 0;
-        }
+        .download-item:last-child { margin-bottom: 0; }
+        .download-item.highlight { border: 1px solid var(--success); }
 
-        .download-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .download-name {
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .download-meta {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
+        .download-info { display: flex; flex-direction: column; }
+        .download-name { font-weight: 500; margin-bottom: 4px; }
+        .download-meta { font-size: 0.85rem; color: var(--text-secondary); }
+        .file-size { font-size: 0.8rem; color: var(--text-secondary); margin-top: 4px; }
 
         .badge {
             background-color: var(--bg-primary);
@@ -159,10 +115,8 @@
             border: 1px solid var(--border);
         }
 
-        .badge.coming-soon {
-            color: var(--warning);
-            border-color: var(--warning);
-        }
+        .badge.new { color: var(--success); border-color: var(--success); }
+        .badge.recommended { color: var(--accent); border-color: var(--accent); }
 
         .btn-download {
             display: inline-block;
@@ -176,14 +130,23 @@
             transition: background-color 0.2s ease;
         }
 
-        .btn-download:hover {
-            background-color: var(--accent-hover);
+        .btn-download:hover { background-color: var(--accent-hover); }
+
+        .btn-external {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            border: 1px solid var(--border);
         }
 
-        .file-size {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
+        .btn-external:hover { border-color: var(--accent); }
+
+        .note-box {
+            background-color: rgba(88, 166, 255, 0.1);
+            border: 1px solid var(--accent);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 16px;
+            font-size: 0.9rem;
         }
 
         footer {
@@ -196,22 +159,10 @@
         }
 
         @media (max-width: 600px) {
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .subtitle {
-                font-size: 1rem;
-            }
-
-            .container {
-                padding: 24px 16px;
-            }
-
-            .section {
-                padding: 20px;
-            }
-
+            h1 { font-size: 1.8rem; }
+            .subtitle { font-size: 1rem; }
+            .container { padding: 24px 16px; }
+            .section { padding: 20px; }
             .download-item {
                 flex-direction: column;
                 align-items: flex-start;
@@ -225,23 +176,30 @@
         <header>
             <h1>CodeLens <span class="version">v1.0.0</span></h1>
             <p class="subtitle">대용량 소스코드 AST 분석 시스템</p>
+            <div class="lang-badges">
+                <span class="lang-badge">JavaScript</span>
+                <span class="lang-badge">TypeScript</span>
+                <span class="lang-badge">Java</span>
+                <span class="lang-badge">HTML</span>
+            </div>
             <div class="warning-box">
-                <p><span class="icon">Warning</span> 폐쇄망 환경용 - 패키지 다운로드 후 내부망에 반입하세요</p>
+                <p>⚠️ 폐쇄망 환경용 - 패키지 다운로드 후 내부망에 반입하세요</p>
             </div>
         </header>
 
         <div class="sections">
+            <!-- 서버 패키지 -->
             <section class="section">
                 <div class="section-header">
-                    <span class="section-icon">Package</span>
-                    <h2>서버 패키지</h2>
+                    <span class="section-icon">📦</span>
+                    <h2>서버 패키지 (LLM 서버에 설치)</h2>
                 </div>
-                <p class="section-description">CodeLens 분석 서버 - Docker 이미지 및 설치 스크립트</p>
+                <p class="section-description">AST 파싱 및 LLM 분석 서버 - DGX Spark 등 Linux ARM64 환경</p>
                 <ul class="download-list">
                     <li class="download-item">
                         <div class="download-info">
                             <span class="download-name">codelens-server-1.0.0.tar.gz</span>
-                            <span class="download-meta">Docker 이미지 + 설정 파일</span>
+                            <span class="download-meta">Linux ARM64 (Python wheel 포함)</span>
                             <span class="file-size">4.0 MB</span>
                         </div>
                         <a href="server/codelens-server-1.0.0.tar.gz" class="btn-download">다운로드</a>
@@ -249,59 +207,91 @@
                     <li class="download-item">
                         <div class="download-info">
                             <span class="download-name">install-linux.sh</span>
-                            <span class="download-meta">Linux 설치 스크립트</span>
-                            <span class="file-size">1.3 KB</span>
+                            <span class="download-meta">설치 스크립트</span>
                         </div>
                         <a href="server/install-linux.sh" class="btn-download">다운로드</a>
                     </li>
                 </ul>
             </section>
 
+            <!-- 클라이언트 -->
             <section class="section">
                 <div class="section-header">
-                    <span class="section-icon">Terminal</span>
-                    <h2>클라이언트 CLI</h2>
+                    <span class="section-icon">💻</span>
+                    <h2>클라이언트 (개발자 PC에 설치)</h2>
                 </div>
-                <p class="section-description">소스코드 분석 요청 및 결과 조회 CLI 도구</p>
+                <p class="section-description">소스코드 분석 요청 CLI - Windows/Linux 공용</p>
                 <ul class="download-list">
+                    <li class="download-item highlight">
+                        <div class="download-info">
+                            <span class="download-name">codelens-client-1.0.0.zip</span>
+                            <span class="download-meta">Python 스크립트 (Windows/Linux 공용)</span>
+                            <span class="file-size">22 KB</span>
+                        </div>
+                        <div style="display: flex; gap: 8px; align-items: center;">
+                            <span class="badge recommended">권장</span>
+                            <a href="client/codelens-client-1.0.0.zip" class="btn-download">다운로드</a>
+                        </div>
+                    </li>
                     <li class="download-item">
                         <div class="download-info">
                             <span class="download-name">codelens-cli-1.0.0-linux-arm64.tar.gz</span>
-                            <span class="download-meta">Linux ARM64 (DGX Spark 등)</span>
+                            <span class="download-meta">Linux ARM64 바이너리 (Spark 테스트용)</span>
                             <span class="file-size">13 MB</span>
                         </div>
                         <a href="client/codelens-cli-1.0.0-linux-arm64.tar.gz" class="btn-download">다운로드</a>
                     </li>
-                    <li class="download-item">
-                        <div class="download-info">
-                            <span class="download-name">codelens-cli-linux-amd64</span>
-                            <span class="download-meta">Linux x86_64</span>
-                        </div>
-                        <span class="badge coming-soon">준비 중</span>
-                    </li>
-                    <li class="download-item">
-                        <div class="download-info">
-                            <span class="download-name">codelens-cli-darwin-arm64</span>
-                            <span class="download-meta">macOS Apple Silicon</span>
-                        </div>
-                        <span class="badge coming-soon">준비 중</span>
-                    </li>
-                    <li class="download-item">
-                        <div class="download-info">
-                            <span class="download-name">codelens-cli-windows-amd64.exe</span>
-                            <span class="download-meta">Windows x86_64</span>
-                        </div>
-                        <span class="badge coming-soon">준비 중</span>
-                    </li>
                 </ul>
+                <div class="note-box">
+                    <strong>💡 Python 클라이언트 사용법:</strong><br>
+                    1. 압축 해제 → <code>cd codelens-client</code><br>
+                    2. <code>pip install -r requirements.txt</code><br>
+                    3. <code>config.yaml</code>에서 서버 주소 설정<br>
+                    4. <code>python codelens.py analyze /path/to/file.java</code>
+                </div>
             </section>
 
+            <!-- Python 설치 -->
             <section class="section">
                 <div class="section-header">
-                    <span class="section-icon">Book</span>
+                    <span class="section-icon">🐍</span>
+                    <h2>Python 설치 (클라이언트 필수)</h2>
+                </div>
+                <p class="section-description">Python 3.8 이상 필요 - 폐쇄망 반입용 오프라인 설치 패키지</p>
+                <ul class="download-list">
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">python-3.11.9-amd64.exe</span>
+                            <span class="download-meta">Windows x64 설치 파일</span>
+                        </div>
+                        <a href="https://www.python.org/ftp/python/3.11.9/python-3.11.9-amd64.exe" class="btn-download btn-external" target="_blank">공식 다운로드 ↗</a>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">python-3.11.9-arm64.exe</span>
+                            <span class="download-meta">Windows ARM64 설치 파일</span>
+                        </div>
+                        <a href="https://www.python.org/ftp/python/3.11.9/python-3.11.9-arm64.exe" class="btn-download btn-external" target="_blank">공식 다운로드 ↗</a>
+                    </li>
+                    <li class="download-item">
+                        <div class="download-info">
+                            <span class="download-name">Python 공식 다운로드 페이지</span>
+                            <span class="download-meta">모든 버전 및 플랫폼</span>
+                        </div>
+                        <a href="https://www.python.org/downloads/" class="btn-download btn-external" target="_blank">python.org ↗</a>
+                    </li>
+                </ul>
+                <div class="note-box">
+                    <strong>⚠️ 설치 시 주의:</strong> "Add Python to PATH" 체크 필수!
+                </div>
+            </section>
+
+            <!-- 문서 -->
+            <section class="section">
+                <div class="section-header">
+                    <span class="section-icon">📖</span>
                     <h2>문서</h2>
                 </div>
-                <p class="section-description">설치 가이드, API 문서 및 사용 예제</p>
                 <ul class="download-list">
                     <li class="download-item">
                         <div class="download-info">
