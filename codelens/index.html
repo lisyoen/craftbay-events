@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeLens v1.0.0 - CraftBay</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #e4e4e7;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #94a3b8;
+            margin-bottom: 20px;
+        }
+
+        .warning {
+            background: rgba(234, 179, 8, 0.15);
+            border: 1px solid rgba(234, 179, 8, 0.4);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .warning-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .warning-text {
+            color: #fbbf24;
+            font-weight: 500;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .section-icon {
+            font-size: 1.5rem;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .section-content {
+            color: #94a3b8;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 12px;
+        }
+
+        .badge.coming-soon {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c084fc;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CodeLens v1.0.0</h1>
+            <p class="subtitle">대용량 소스코드 AST 분석 시스템</p>
+        </header>
+
+        <div class="warning">
+            <span class="warning-icon">&#9888;</span>
+            <span class="warning-text">폐쇄망 환경용 - 패키지 다운로드 후 내부망에 반입하세요</span>
+        </div>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">&#128230;</span>
+                <h2 class="section-title">서버 패키지</h2>
+            </div>
+            <div class="section-content">
+                <p>CodeLens 서버 컴포넌트로, AST 분석 엔진과 API 서버를 포함합니다.</p>
+                <span class="badge coming-soon">준비 중</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">&#128187;</span>
+                <h2 class="section-title">클라이언트 CLI</h2>
+            </div>
+            <div class="section-content">
+                <p>명령줄 인터페이스 도구로, 로컬에서 코드 분석 및 서버 연동을 지원합니다.</p>
+                <span class="badge coming-soon">준비 중</span>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <span class="section-icon">&#128214;</span>
+                <h2 class="section-title">문서</h2>
+            </div>
+            <div class="section-content">
+                <p>설치 가이드, API 레퍼런스, 사용 예제 등 상세 문서를 제공합니다.</p>
+                <span class="badge coming-soon">준비 중</span>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 CraftBay</p>
+        </footer>
+    </div>
+</body>
+</html>
