@@ -13,9 +13,26 @@
             color: #fff;
             padding: 40px 20px;
         }
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 900px; margin: 0 auto; }
         h1 { text-align: center; margin-bottom: 10px; font-size: 2.5rem; }
-        .subtitle { text-align: center; color: #888; margin-bottom: 40px; }
+        .subtitle { text-align: center; color: #888; margin-bottom: 30px; }
+        
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 12px 24px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .tab:hover { background: rgba(255,255,255,0.1); }
+        .tab.active { background: #4ecdc4; color: #1a1a2e; }
+        
         .card {
             background: rgba(255,255,255,0.05);
             border-radius: 16px;
@@ -24,6 +41,7 @@
             border: 1px solid rgba(255,255,255,0.1);
         }
         .card h2 { color: #4ecdc4; margin-bottom: 20px; font-size: 1.3rem; }
+        
         .file-list { list-style: none; }
         .file-list li {
             padding: 15px 20px;
@@ -36,18 +54,25 @@
         }
         .file-name { font-family: monospace; font-size: 1.1rem; }
         .file-desc { color: #888; font-size: 0.9rem; }
-        .download-btn {
-            background: #4ecdc4;
-            color: #1a1a2e;
+        .file-meta { color: #666; font-size: 0.8rem; margin-top: 4px; }
+        
+        .btn {
             padding: 8px 20px;
             border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
             transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
         }
-        .download-btn:hover { background: #45b7aa; transform: translateY(-2px); }
-        .download-btn.primary { background: #ff6b6b; }
-        .download-btn.primary:hover { background: #ee5a5a; }
+        .btn-primary { background: #4ecdc4; color: #1a1a2e; }
+        .btn-primary:hover { background: #45b7aa; transform: translateY(-2px); }
+        .btn-danger { background: #ff6b6b; color: #fff; }
+        .btn-danger:hover { background: #ee5a5a; }
+        .btn-secondary { background: rgba(255,255,255,0.1); color: #fff; }
+        .btn-secondary:hover { background: rgba(255,255,255,0.2); }
+        
         .usage {
             background: #0d1117;
             padding: 20px;
@@ -57,6 +82,7 @@
         }
         .usage code { color: #79c0ff; }
         .usage .comment { color: #8b949e; }
+        
         .note {
             background: rgba(78, 205, 196, 0.1);
             border: 1px solid rgba(78, 205, 196, 0.3);
@@ -65,79 +91,326 @@
             margin-top: 20px;
         }
         .note-title { color: #4ecdc4; font-weight: bold; margin-bottom: 5px; }
+        
+        /* Files Tab */
+        .files-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .files-table th, .files-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        .files-table th {
+            background: rgba(0,0,0,0.3);
+            color: #4ecdc4;
+            font-weight: 600;
+        }
+        .files-table tr:hover {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .pagination button {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border: none;
+            border-radius: 6px;
+            color: #fff;
+            cursor: pointer;
+        }
+        .pagination button:hover:not(:disabled) { background: rgba(255,255,255,0.2); }
+        .pagination button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .pagination .current { background: #4ecdc4; color: #1a1a2e; }
+        
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        .empty-state .icon { font-size: 4rem; margin-bottom: 20px; }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            background: #22c55e;
+            color: #fff;
+        }
+        .status-badge.offline { background: #ef4444; }
+        
         footer { text-align: center; margin-top: 40px; color: #666; }
         footer a { color: #4ecdc4; }
+        
+        .hidden { display: none; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>📤 VDI Uploader</h1>
-        <p class="subtitle">WebSocket 기반 파일 전송 클라이언트</p>
+        <p class="subtitle">WebSocket 기반 파일 전송 · <span id="server-status" class="status-badge">확인중...</span></p>
         
-        <div class="card">
-            <h2>📥 다운로드</h2>
+        <div class="tabs">
+            <div class="tab active" onclick="showTab('files')">📁 업로드된 파일</div>
+            <div class="tab" onclick="showTab('upload')">⬆️ 업로드 방법</div>
+            <div class="tab" onclick="showTab('download')">📥 클라이언트 다운로드</div>
+        </div>
+        
+        <!-- Files Tab -->
+        <div id="tab-files" class="card">
+            <h2>📁 업로드된 파일 목록</h2>
+            <div id="files-loading" class="loading">파일 목록 로딩 중...</div>
+            <div id="files-empty" class="empty-state hidden">
+                <div class="icon">📭</div>
+                <p>아직 업로드된 파일이 없습니다.</p>
+            </div>
+            <table id="files-table" class="files-table hidden">
+                <thead>
+                    <tr>
+                        <th>파일명</th>
+                        <th>크기</th>
+                        <th>업로드 일시</th>
+                        <th>다운로드</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="files-body"></tbody>
+            </table>
+            <div id="pagination" class="pagination hidden"></div>
+        </div>
+        
+        <!-- Upload Tab -->
+        <div id="tab-upload" class="card hidden">
+            <h2>⬆️ 파일 업로드 방법</h2>
+            <div class="usage">
+                <div class="comment"># 1. 클라이언트 파일 다운로드 (아래 탭에서)</div>
+                <br>
+                <div class="comment"># 2. Upload.bat 더블클릭</div>
+                <br>
+                <div class="comment"># 3. 파일 선택 (Ctrl+클릭으로 여러 파일 선택 가능)</div>
+                <br>
+                <div class="comment"># 4. 폴더는 자동으로 지정됨 (선택 불필요)</div>
+                <br>
+                <div class="comment"># 5. 업로드 완료 후 이 페이지에서 다운로드</div>
+            </div>
+            
+            <div class="note">
+                <div class="note-title">💡 참고</div>
+                업로드된 파일은 UUID로 저장되어 파일명 중복 걱정이 없습니다.<br>
+                원본 파일명은 보존되며, 다운로드 시 원본 이름으로 받을 수 있습니다.
+            </div>
+        </div>
+        
+        <!-- Download Tab -->
+        <div id="tab-download" class="card hidden">
+            <h2>📥 클라이언트 다운로드</h2>
             <ul class="file-list">
                 <li>
                     <div>
                         <div class="file-name">Upload.bat</div>
                         <div class="file-desc">파일 업로드 (더블클릭으로 실행)</div>
                     </div>
-                    <a href="Upload.bat" class="download-btn primary" download>Download</a>
-                </li>
-                <li>
-                    <div>
-                        <div class="file-name">Test.bat</div>
-                        <div class="file-desc">연결 테스트 (더블클릭으로 실행)</div>
-                    </div>
-                    <a href="Test.bat" class="download-btn" download>Download</a>
+                    <a href="Upload.bat" class="btn btn-primary" download>Download</a>
                 </li>
                 <li>
                     <div>
                         <div class="file-name">Upload-ToCraftBay.ps1</div>
                         <div class="file-desc">업로드 스크립트 본체</div>
                     </div>
-                    <a href="Upload-ToCraftBay.ps1" class="download-btn" download>Download</a>
+                    <a href="Upload-ToCraftBay.ps1" class="btn btn-secondary" download>Download</a>
+                </li>
+                <li>
+                    <div>
+                        <div class="file-name">Test.bat</div>
+                        <div class="file-desc">연결 테스트 (더블클릭으로 실행)</div>
+                    </div>
+                    <a href="Test.bat" class="btn btn-secondary" download>Download</a>
                 </li>
                 <li>
                     <div>
                         <div class="file-name">Test-WebSocket.ps1</div>
                         <div class="file-desc">테스트 스크립트 본체</div>
                     </div>
-                    <a href="Test-WebSocket.ps1" class="download-btn" download>Download</a>
+                    <a href="Test-WebSocket.ps1" class="btn btn-secondary" download>Download</a>
                 </li>
             </ul>
             
             <div class="note">
                 <div class="note-title">💡 필요한 파일</div>
-                <strong>Upload.bat</strong> + <strong>Upload-ToCraftBay.ps1</strong> 두 파일을 같은 폴더에 저장하세요.<br>
-                테스트용은 <strong>Test.bat</strong> + <strong>Test-WebSocket.ps1</strong>
+                <strong>Upload.bat</strong> + <strong>Upload-ToCraftBay.ps1</strong> 두 파일을 같은 폴더에 저장하세요.
             </div>
-        </div>
-        
-        <div class="card">
-            <h2>🚀 사용법</h2>
-            <div class="usage">
-                <div class="comment"># 1. 4개 파일을 같은 폴더에 저장</div>
-                <br>
-                <div class="comment"># 2. Test.bat 더블클릭 → 연결 확인</div>
-                <br>
-                <div class="comment"># 3. Upload.bat 더블클릭 → 파일 선택 → 업로드</div>
-            </div>
-        </div>
-        
-        <div class="card">
-            <h2>📋 특징</h2>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li>HTTP POST 차단 환경에서도 동작 (WebSocket 사용)</li>
-                <li>대용량 파일 지원 (청크 전송)</li>
-                <li>전송 속도 및 진행률 표시</li>
-                <li>GUI 파일/폴더 선택 다이얼로그</li>
-            </ul>
         </div>
         
         <footer>
             <a href="https://craftbay.io">CraftBay.io</a> &copy; 2025
         </footer>
     </div>
+    
+    <script>
+        const API_BASE = 'https://upload.craftbay.io/api';
+        let currentPage = 1;
+        const pageSize = 10;
+        
+        // Tab switching
+        function showTab(name) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('[id^="tab-"]').forEach(t => t.classList.add('hidden'));
+            
+            event.target.classList.add('active');
+            document.getElementById('tab-' + name).classList.remove('hidden');
+            
+            if (name === 'files') {
+                loadFiles();
+            }
+        }
+        
+        // Check server status
+        async function checkStatus() {
+            const badge = document.getElementById('server-status');
+            try {
+                const res = await fetch(API_BASE + '/status');
+                if (res.ok) {
+                    const data = await res.json();
+                    badge.textContent = `온라인 (${data.totalFiles}개 파일)`;
+                    badge.classList.remove('offline');
+                } else {
+                    throw new Error();
+                }
+            } catch (e) {
+                badge.textContent = '오프라인';
+                badge.classList.add('offline');
+            }
+        }
+        
+        // Load files
+        async function loadFiles() {
+            const loading = document.getElementById('files-loading');
+            const empty = document.getElementById('files-empty');
+            const table = document.getElementById('files-table');
+            const pagination = document.getElementById('pagination');
+            
+            loading.classList.remove('hidden');
+            empty.classList.add('hidden');
+            table.classList.add('hidden');
+            pagination.classList.add('hidden');
+            
+            try {
+                const res = await fetch(`${API_BASE}/files?page=${currentPage}&limit=${pageSize}`);
+                const data = await res.json();
+                
+                loading.classList.add('hidden');
+                
+                if (data.files.length === 0) {
+                    empty.classList.remove('hidden');
+                    return;
+                }
+                
+                table.classList.remove('hidden');
+                pagination.classList.remove('hidden');
+                
+                const tbody = document.getElementById('files-body');
+                tbody.innerHTML = data.files.map(f => `
+                    <tr>
+                        <td>
+                            <div class="file-name">${escapeHtml(f.name)}</div>
+                        </td>
+                        <td>${formatSize(f.size)}</td>
+                        <td>${formatDate(f.uploadedAt)}</td>
+                        <td>
+                            <a href="${API_BASE}${f.downloadUrl}" class="btn btn-primary" download>다운로드</a>
+                            ${f.downloadCount > 0 ? `<span style="color:#666;font-size:0.8rem;margin-left:8px">(${f.downloadCount}회)</span>` : ''}
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" onclick="deleteFile('${f.id}', '${escapeHtml(f.name)}')">삭제</button>
+                        </td>
+                    </tr>
+                `).join('');
+                
+                renderPagination(data.pagination);
+                
+            } catch (e) {
+                loading.textContent = '파일 목록을 불러올 수 없습니다.';
+            }
+        }
+        
+        // Render pagination
+        function renderPagination(p) {
+            const container = document.getElementById('pagination');
+            let html = '';
+            
+            html += `<button ${p.page <= 1 ? 'disabled' : ''} onclick="goPage(${p.page - 1})">◀ 이전</button>`;
+            
+            for (let i = 1; i <= p.totalPages; i++) {
+                if (i === p.page) {
+                    html += `<button class="current">${i}</button>`;
+                } else if (i <= 3 || i > p.totalPages - 2 || Math.abs(i - p.page) <= 1) {
+                    html += `<button onclick="goPage(${i})">${i}</button>`;
+                } else if (i === 4 || i === p.totalPages - 2) {
+                    html += `<span style="color:#666">...</span>`;
+                }
+            }
+            
+            html += `<button ${p.page >= p.totalPages ? 'disabled' : ''} onclick="goPage(${p.page + 1})">다음 ▶</button>`;
+            
+            container.innerHTML = html;
+        }
+        
+        function goPage(page) {
+            currentPage = page;
+            loadFiles();
+        }
+        
+        // Delete file
+        async function deleteFile(id, name) {
+            if (!confirm(`"${name}" 파일을 삭제하시겠습니까?`)) return;
+            
+            try {
+                const res = await fetch(`${API_BASE}/files/${id}`, { method: 'DELETE' });
+                if (res.ok) {
+                    loadFiles();
+                    checkStatus();
+                } else {
+                    alert('삭제 실패');
+                }
+            } catch (e) {
+                alert('삭제 중 오류 발생');
+            }
+        }
+        
+        // Helpers
+        function formatSize(bytes) {
+            if (bytes < 1024) return bytes + ' B';
+            if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
+            if (bytes < 1024 * 1024 * 1024) return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+            return (bytes / (1024 * 1024 * 1024)).toFixed(2) + ' GB';
+        }
+        
+        function formatDate(iso) {
+            const d = new Date(iso);
+            return d.toLocaleDateString('ko-KR') + ' ' + d.toLocaleTimeString('ko-KR', {hour: '2-digit', minute:'2-digit'});
+        }
+        
+        function escapeHtml(str) {
+            return str.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]));
+        }
+        
+        // Init
+        checkStatus();
+        loadFiles();
+        setInterval(checkStatus, 30000);
+    </script>
 </body>
 </html>
