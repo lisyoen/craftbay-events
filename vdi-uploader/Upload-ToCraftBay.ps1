@@ -13,6 +13,40 @@ param(
     [string]$ServerUrl = "wss://upload.craftbay.io"
 )
 
+# Client version
+$CLIENT_VERSION = "2.0.0"
+$DOWNLOAD_PAGE = "https://events.craftbay.io/vdi-uploader/"
+
+# Check client version against server minimum
+function Test-ClientVersion {
+    param([string]$ServerUrl)
+
+    try {
+        $httpUrl = $ServerUrl -replace "^wss://", "https://"
+        $versionUrl = "$httpUrl/api/version"
+
+        $response = Invoke-RestMethod -Uri $versionUrl -TimeoutSec 10
+
+        if ($response.minClientVersion) {
+            $minVersion = [Version]$response.minClientVersion
+            $currentVersion = [Version]$CLIENT_VERSION
+
+            if ($currentVersion -lt $minVersion) {
+                Write-Host "[!] Client update required" -ForegroundColor Red
+                Write-Host "    Current: $CLIENT_VERSION / Minimum: $($response.minClientVersion)" -ForegroundColor Yellow
+                Write-Host "    Download: $DOWNLOAD_PAGE" -ForegroundColor Cyan
+                Start-Process $DOWNLOAD_PAGE
+                return $false
+            }
+        }
+        return $true
+    }
+    catch {
+        Write-Host "[!] Version check failed (continuing...)" -ForegroundColor Yellow
+        return $true
+    }
+}
+
 # Test WebSocket connection
 function Test-WebSocketConnection {
     param([string]$Url)
@@ -191,6 +225,12 @@ else {
     Write-Host "[FAIL] Cannot connect to server" -ForegroundColor Red
     Write-Host "   URL: $ServerUrl" -ForegroundColor Gray
     Read-Host "`nPress Enter to exit"
+    exit 1
+}
+
+# Version check
+if (-not (Test-ClientVersion -ServerUrl $ServerUrl)) {
+    Read-Host "Press Enter to exit"
     exit 1
 }
 
