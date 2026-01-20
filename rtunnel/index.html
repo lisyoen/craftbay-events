@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RTunnel Browser Script - Scripty 설치 가이드</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;
+      color: #e0e0e0;
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4fc3f7;
+      font-size: 2em;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    h2 {
+      color: #81d4fa;
+      margin-bottom: 16px;
+      font-size: 1.3em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .step {
+      background: #4fc3f7;
+      color: #1a1a2e;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9em;
+      font-weight: bold;
+    }
+    p {
+      margin-bottom: 12px;
+    }
+    a {
+      color: #4fc3f7;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .url-box {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .url-box code {
+      flex: 1;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 0.95em;
+      color: #58a6ff;
+      word-break: break-all;
+    }
+    .copy-btn {
+      background: #238636;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.2s;
+      white-space: nowrap;
+    }
+    .copy-btn:hover {
+      background: #2ea043;
+    }
+    .copy-btn.copied {
+      background: #1f6feb;
+    }
+    ul {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+    li {
+      margin-bottom: 8px;
+    }
+    .note {
+      background: rgba(255, 193, 7, 0.1);
+      border-left: 4px solid #ffc107;
+      padding: 12px 16px;
+      margin: 16px 0;
+      border-radius: 0 8px 8px 0;
+    }
+    .note strong {
+      color: #ffc107;
+    }
+    .commands {
+      background: #0d1117;
+      border-radius: 8px;
+      padding: 16px;
+      margin: 12px 0;
+    }
+    .commands code {
+      font-family: 'Consolas', 'Monaco', monospace;
+      color: #c9d1d9;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .commands code:last-child {
+      margin-bottom: 0;
+    }
+    .commands .comment {
+      color: #6e7681;
+    }
+    .badge {
+      display: inline-block;
+      background: #238636;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.8em;
+      margin-left: 8px;
+    }
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #6e7681;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>RTunnel Browser Script</h1>
+
+    <div class="card">
+      <h2><span class="step">1</span> Scripty 확장 설치</h2>
+      <p>먼저 브라우저에 Scripty 확장을 설치합니다:</p>
+      <ul>
+        <li><a href="https://chromewebstore.google.com/detail/scripty-javascript-inject/milkbiaeapddfnpenedfgbfdacpbcbam" target="_blank">Chrome Web Store - Scripty</a></li>
+        <li><a href="https://microsoftedge.microsoft.com/addons/detail/scripty-javascript-inject/ndgkjdlfgnlnfblnhgjgloiafkdempde" target="_blank">Edge Add-ons - Scripty</a></li>
+      </ul>
+      <p>Scripty는 웹페이지에 JavaScript를 주입하는 무료 확장 프로그램입니다.</p>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">2</span> 스크립트 URL 복사</h2>
+      <p>아래 URL을 복사합니다:</p>
+      <div class="url-box">
+        <code id="scriptUrl">https://events.craftbay.io/rtunnel/browser.js</code>
+        <button class="copy-btn" onclick="copyUrl()">복사</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">3</span> Scripty에 스크립트 추가</h2>
+      <ul>
+        <li>브라우저 툴바에서 Scripty 아이콘 클릭</li>
+        <li>"Add New Script" 또는 "+" 버튼 클릭</li>
+        <li><strong>Name:</strong> RTunnel</li>
+        <li><strong>URL Pattern:</strong> <code>*://*/*</code> (모든 사이트) 또는 특정 도메인 지정</li>
+        <li><strong>Script URL:</strong> 위에서 복사한 URL 붙여넣기</li>
+        <li>저장</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">4</span> hostname 설정</h2>
+      <p>스크립트가 처음 실행되면 hostname 입력 프롬프트가 나타납니다.</p>
+      <p>예시: <code>DESKTOP-OFFICE</code>, <code>LAPTOP-HOME</code></p>
+
+      <div class="note">
+        <strong>Tip:</strong> URL 파라미터로 미리 설정할 수도 있습니다:<br>
+        <code>https://example.com?rtunnel_hostname=MY-COMPUTER</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span class="step">5</span> 연결 확인</h2>
+      <p>브라우저 개발자 도구(F12) 콘솔에서 확인:</p>
+      <div class="commands">
+        <code><span class="comment">// 연결 상태 확인</span></code>
+        <code>window.rtunnel.getStatus()</code>
+        <code></code>
+        <code><span class="comment">// 수동 재연결</span></code>
+        <code>window.rtunnel.reconnect()</code>
+        <code></code>
+        <code><span class="comment">// hostname 변경</span></code>
+        <code>window.rtunnel.setHostname('NEW-NAME')</code>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>지원 기능 <span class="badge">Scripty Mode</span></h2>
+      <ul>
+        <li><code>click</code> - 요소 클릭</li>
+        <li><code>type</code> - 텍스트 입력</li>
+        <li><code>getText</code> / <code>getHTML</code> - 요소 내용 가져오기</li>
+        <li><code>selectAll</code> / <code>insertText</code> - 에디터 제어</li>
+        <li><code>navigate</code> - 페이지 이동</li>
+        <li><code>openTab</code> - 새 창 열기</li>
+        <li><code>eval</code> - JavaScript 실행</li>
+      </ul>
+      <div class="note">
+        <strong>참고:</strong> Scripty 모드에서는 Chrome Extension API를 사용할 수 없어
+        <code>listTabs</code>, <code>closeTab</code>, <code>activateTab</code> 등 탭 제어 기능이 제한됩니다.
+      </div>
+    </div>
+
+    <footer>
+      RTunnel v1.0.0 | <a href="https://github.com/sysmoon/reverse-tunnel" target="_blank">GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    function copyUrl() {
+      const url = document.getElementById('scriptUrl').textContent;
+      navigator.clipboard.writeText(url).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.textContent = '복사됨!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = '복사';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+</body>
+</html>
