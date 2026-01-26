@@ -1,20 +1,19 @@
 <#
 .SYNOPSIS
-    Upload files to CraftBay server via WebSocket
+    Upload files to CraftBay server via HTTP
 .DESCRIPTION
-    Bypasses HTTP POST restrictions using WebSocket protocol.
-    Files are stored with UUID names, original names preserved in DB.
+    HTTP multipart/form-data upload (WebSocket replaced for compatibility)
 .EXAMPLE
     powershell -ExecutionPolicy Bypass -File .\Upload-ToCraftBay.ps1
 #>
 
 param(
     [string[]]$FilePaths,
-    [string]$ServerUrl = "wss://upload.craftbay.io"
+    [string]$ServerUrl = "https://upload.craftbay.io"
 )
 
 # Client version
-$CLIENT_VERSION = "2.0.0"
+$CLIENT_VERSION = "3.0.0"
 $DOWNLOAD_PAGE = "https://events.craftbay.io/vdi-uploader/"
 
 # Check client version against server minimum
@@ -22,9 +21,7 @@ function Test-ClientVersion {
     param([string]$ServerUrl)
 
     try {
-        $httpUrl = $ServerUrl -replace "^wss://", "https://"
-        $versionUrl = "$httpUrl/api/version"
-
+        $versionUrl = "$ServerUrl/api/version"
         $response = Invoke-RestMethod -Uri $versionUrl -TimeoutSec 10
 
         if ($response.minClientVersion) {
@@ -47,42 +44,18 @@ function Test-ClientVersion {
     }
 }
 
-# Test WebSocket connection
-function Test-WebSocketConnection {
+# Test HTTP connection
+function Test-HttpConnection {
     param([string]$Url)
     
     try {
-        $ws = New-Object System.Net.WebSockets.ClientWebSocket
-        $cts = New-Object System.Threading.CancellationTokenSource
-        $cts.CancelAfter(10000)
-        
-        $uri = [System.Uri]::new($Url)
-        $connectTask = $ws.ConnectAsync($uri, $cts.Token)
-        $connectTask.Wait()
-        
-        if ($ws.State -eq [System.Net.WebSockets.WebSocketState]::Open) {
-            $pingMsg = '{"type":"ping"}'
-            $pingBytes = [System.Text.Encoding]::UTF8.GetBytes($pingMsg)
-            $segment = New-Object System.ArraySegment[byte] -ArgumentList @(,$pingBytes)
-            $ws.SendAsync($segment, [System.Net.WebSockets.WebSocketMessageType]::Text, $true, $cts.Token).Wait()
-            
-            $buffer = New-Object byte[] 1024
-            $receiveSegment = New-Object System.ArraySegment[byte] -ArgumentList @(,$buffer)
-            $receiveTask = $ws.ReceiveAsync($receiveSegment, $cts.Token)
-            $receiveTask.Wait()
-            
-            $response = [System.Text.Encoding]::UTF8.GetString($buffer, 0, $receiveTask.Result.Count)
-            $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, "", $cts.Token).Wait()
-            
-            return $response
-        }
+        $versionUrl = "$Url/api/version"
+        $response = Invoke-RestMethod -Uri $versionUrl -TimeoutSec 10
+        return $response
     }
-    catch { return $null }
-    finally {
-        if ($ws) { $ws.Dispose() }
-        if ($cts) { $cts.Dispose() }
+    catch {
+        return $null
     }
-    return $null
 }
 
 # File selection dialog (multi-select)
@@ -109,8 +82,8 @@ function Format-FileSize {
     return "$([math]::Round($Bytes/1GB, 2)) GB"
 }
 
-# Upload single file via WebSocket
-function Send-FileViaWebSocket {
+# Upload single file via HTTP multipart/form-data
+function Send-FileViaHttp {
     param(
         [string]$FilePath,
         [string]$ServerUrl
@@ -123,84 +96,56 @@ function Send-FileViaWebSocket {
     Write-Host "`n[>>] Upload: $fileName ($fileSizeStr)" -ForegroundColor Cyan
     
     try {
-        $ws = New-Object System.Net.WebSockets.ClientWebSocket
-        $cts = New-Object System.Threading.CancellationTokenSource
-        $cts.CancelAfter(1800000)  # 30 min
-        
-        $uri = [System.Uri]::new($ServerUrl)
-        Write-Host "[..] Connecting..." -ForegroundColor Yellow
-        $ws.ConnectAsync($uri, $cts.Token).Wait()
-        
-        if ($ws.State -ne [System.Net.WebSockets.WebSocketState]::Open) {
-            throw "Connection failed"
-        }
-        
-        Write-Host "[OK] Connected" -ForegroundColor Green
-        
-        # Send file info (no targetFolder - server handles it)
-        $fileInfo = @{
-            type = "file-start"
-            filename = $fileName
-            size = $fileSize
-            targetFolder = ""
-        } | ConvertTo-Json
-        
-        $infoBytes = [System.Text.Encoding]::UTF8.GetBytes($fileInfo)
-        $segment = New-Object System.ArraySegment[byte] -ArgumentList @(,$infoBytes)
-        $ws.SendAsync($segment, [System.Net.WebSockets.WebSocketMessageType]::Text, $true, $cts.Token).Wait()
-        
-        # Wait for ready
-        $buffer = New-Object byte[] 1024
-        $receiveSegment = New-Object System.ArraySegment[byte] -ArgumentList @(,$buffer)
-        $receiveTask = $ws.ReceiveAsync($receiveSegment, $cts.Token)
-        $receiveTask.Wait()
-        
-        # Send chunks
-        $chunkSize = 64KB
-        $fileStream = [System.IO.File]::OpenRead($FilePath)
-        $totalSent = 0
-        $chunkBuffer = New-Object byte[] $chunkSize
+        $uploadUrl = "$ServerUrl/api/upload"
         $startTime = Get-Date
         
-        Write-Host "[..] Sending..." -ForegroundColor Yellow
+        Write-Host "[..] Uploading..." -ForegroundColor Yellow
         
-        while ($true) {
-            $bytesRead = $fileStream.Read($chunkBuffer, 0, $chunkSize)
-            if ($bytesRead -eq 0) { break }
-            
-            $dataToSend = $chunkBuffer[0..($bytesRead-1)]
-            $dataSegment = New-Object System.ArraySegment[byte] -ArgumentList @(,$dataToSend)
-            $ws.SendAsync($dataSegment, [System.Net.WebSockets.WebSocketMessageType]::Binary, $true, $cts.Token).Wait()
-            
-            $totalSent += $bytesRead
-            $progress = [math]::Round(($totalSent / $fileSize) * 100)
-            $elapsed = (Get-Date) - $startTime
-            $speed = if ($elapsed.TotalSeconds -gt 0) { $totalSent / $elapsed.TotalSeconds } else { 0 }
-            $speedStr = Format-FileSize -Bytes $speed
-            
-            Write-Progress -Activity "Uploading $fileName" -Status "$progress% - $speedStr/s" -PercentComplete $progress
-        }
+        # Create multipart form data
+        Add-Type -AssemblyName System.Net.Http
+        
+        $httpClient = New-Object System.Net.Http.HttpClient
+        $httpClient.Timeout = [TimeSpan]::FromMinutes(30)
+        
+        $form = New-Object System.Net.Http.MultipartFormDataContent
+        
+        # Add file
+        $fileStream = [System.IO.File]::OpenRead($FilePath)
+        $fileContent = New-Object System.Net.Http.StreamContent($fileStream)
+        $fileContent.Headers.ContentType = [System.Net.Http.Headers.MediaTypeHeaderValue]::Parse("application/octet-stream")
+        $form.Add($fileContent, "file", $fileName)
+        
+        # Add project field (optional)
+        $projectContent = New-Object System.Net.Http.StringContent("vdi")
+        $form.Add($projectContent, "project")
+        
+        # Send request
+        $response = $httpClient.PostAsync($uploadUrl, $form).Result
+        $responseBody = $response.Content.ReadAsStringAsync().Result
         
         $fileStream.Close()
-        Write-Progress -Activity "Uploading" -Completed
+        $fileStream.Dispose()
+        $httpClient.Dispose()
         
         $elapsed = (Get-Date) - $startTime
-        $avgSpeed = if ($elapsed.TotalSeconds -gt 0) { $totalSent / $elapsed.TotalSeconds } else { 0 }
         
-        $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, "", $cts.Token).Wait()
-        
-        Write-Host "[OK] Complete! $(Format-FileSize -Bytes $totalSent) in $([math]::Round($elapsed.TotalSeconds, 1))s ($(Format-FileSize -Bytes $avgSpeed)/s)" -ForegroundColor Green
-        
-        return $true
+        if ($response.IsSuccessStatusCode) {
+            $result = $responseBody | ConvertFrom-Json
+            $avgSpeed = if ($elapsed.TotalSeconds -gt 0) { $fileSize / $elapsed.TotalSeconds } else { 0 }
+            
+            Write-Host "[OK] Complete! $fileSizeStr in $([math]::Round($elapsed.TotalSeconds, 1))s ($(Format-FileSize -Bytes $avgSpeed)/s)" -ForegroundColor Green
+            Write-Host "     Download: $ServerUrl$($result.downloadUrl)" -ForegroundColor Gray
+            return $true
+        }
+        else {
+            Write-Host "[FAIL] Server error: $($response.StatusCode)" -ForegroundColor Red
+            Write-Host "       $responseBody" -ForegroundColor Gray
+            return $false
+        }
     }
     catch {
         Write-Host "[FAIL] $($_.Exception.Message)" -ForegroundColor Red
         return $false
-    }
-    finally {
-        if ($fileStream) { $fileStream.Dispose() }
-        if ($ws) { $ws.Dispose() }
-        if ($cts) { $cts.Dispose() }
     }
 }
 
@@ -208,18 +153,18 @@ function Send-FileViaWebSocket {
 Write-Host @"
 
 +------------------------------------------+
-|     CraftBay File Uploader v2.0          |
-|     UUID-based file storage              |
+|     CraftBay File Uploader v3.0          |
+|     HTTP multipart upload                |
 +------------------------------------------+
 
 "@ -ForegroundColor Cyan
 
 # Connection test
 Write-Host "[..] Testing connection..." -ForegroundColor Yellow
-$testResult = Test-WebSocketConnection -Url $ServerUrl
+$testResult = Test-HttpConnection -Url $ServerUrl
 
 if ($testResult) {
-    Write-Host "[OK] Server connected!" -ForegroundColor Green
+    Write-Host "[OK] Server connected! (v$($testResult.version))" -ForegroundColor Green
 }
 else {
     Write-Host "[FAIL] Cannot connect to server" -ForegroundColor Red
@@ -272,13 +217,13 @@ for ($i = 0; $i -lt $FilePaths.Count; $i++) {
         continue
     }
     
-    if (Send-FileViaWebSocket -FilePath $filePath -ServerUrl $ServerUrl) {
+    if (Send-FileViaHttp -FilePath $filePath -ServerUrl $ServerUrl) {
         $successCount++
     } else {
         $failCount++
     }
     
-    if ($i -lt $FilePaths.Count - 1) { Start-Sleep -Seconds 1 }
+    if ($i -lt $FilePaths.Count - 1) { Start-Sleep -Milliseconds 500 }
 }
 
 # Summary
@@ -290,6 +235,6 @@ if ($failCount -gt 0) {
     Write-Host ""
 }
 Write-Host "========================================" -ForegroundColor White
-Write-Host "`nDownload files at: https://events.craftbay.io/vdi-uploader/" -ForegroundColor Cyan
+Write-Host "`nDownload files at: $ServerUrl" -ForegroundColor Cyan
 
 Read-Host "`nPress Enter to exit"
