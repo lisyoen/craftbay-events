@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>반짝 퀴즈!!</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-12-11 17:09:16</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">반짝 퀴즈!!</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><strong><font color="#ff0000" size="3">순수하게 기억력만으로 10초 이내에 맞춰보자!</font></strong><div>[문제] 5천원권에 새겨진 인물은?</div><div>* 정답은 아래 괄호 안을 드래그하면 볼 수 있다.</div>[정답]<div>[<span style="COLOR: #ffffff">율곡 이이. 정답을 맞추신 분은 리플에 '1' 을</span> ]</div><div>[<span style="COLOR: #ffffff">퇴계 이황을 떠올리신 분은 리플에 '2' 를</span> ]</div><div>[<span style="COLOR: #ffffff">기타 다른 인물을 떠올리신 분은 리플에 '3' 을 적어주세요</span>]</div><div><span style="COLOR: #ffffff">천원권 보다 무려 다섯배나 높은 고액권에 새겨져 있으면서도 지갑에 최대 한 장만 들어간다는 이유로 잊혀져간 율곡 선생을 추모하며...</span></div><div><span style="COLOR: #ffffff">현재 주변인들에게 질문해본 결과 5명 중 100%가 '퇴계 이황' 이라고 대답했음.</span></div><div>리플에 답을 남기는 것은 실례!!!</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

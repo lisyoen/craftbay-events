@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Skew Rotate</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-12-29 10:56:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Skew Rotate</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><br /><br><img src='./2224424/a0103766_496b81b071dae.png'><br /><br><br /><br>[Skew 를 이용한 Rotate 예제 - 30도 회전]</div><br><div>어떤 알고리즘들은 그 시도 자체가 놀랍다.</div><br><div>위 그림은 Skew(비스듬하게 기울이기)를 3회 이용한 이미지 Rotation(회전) 알고리즘이다.</div><br><div>이 회전 알고리즘의 특징은</div><br><div>1. 손실이 없다.</div><br><div>- 모든 점이 다른 위치의 한 점으로 이동한다.</div><br><div>2. 실수(Real number) 연산이 적다.</div><br><div>- 최초 회전에 필요한 sin, atan 값만 알고 있으면 된다. 회전중에는 삼각함수를 계산하지 않는다.</div><br><div>3. 회전 중심이 일정하지 않다.</div><br><div>- 중심점을 이용해 회전하지 않는다. 그대로 회전시키면 전체 위치가 이동된다. 계산을 통해 보정 가능.</div><br><div>이정도가 있다.</div><br><div>누가 기울이기 만으로 회전이 가능할꺼라고 생각했을까?</div><br><div>처음에는 소스코드를 보고도 그저 '적당히 유사한' 회전 이미지를 만들어내는 알고리즘 정도로 생각했다.</div><br><div>아무리 생각해도 기발하다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

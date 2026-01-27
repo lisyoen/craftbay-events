@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>번호표의 비밀</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-11-29 21:12:59</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">번호표의 비밀</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><br /><br><img src='./2224429/a0103766_496b81b13aa65.jpg'></div><br><div align="center">[누구나 한번쯤은 본 적 있는 은행 번호표. 뭔가 이상하다??]</div><br><div>언제 부턴가 은행에 들어가면 번호표 부터 뽑는다.</div><br><div>잘 만들어진 한줄서기 시스템이다.</div><br><div>번호표 기계에 가보면 뽑아가라고 번호표 한장이 주욱 나와서 기다리고 있다.</div><br><div>한장 뽑아서 내용을 보자. (두장 뽑아도 된다. 아무 일 안생긴다.)</div><br><div>1. 접수번호.. 이건 그냥 순서대로 나오는 번호지.</div><br><div>2. 대기인수.. 내 앞으로 몇명이 대기중인지 나오는거다. 처리중인 마지막 번호와 내 번호의 차이.</div><br><div>3. 발권일시.. 내가 번호표를 뽑은 시간.</div><br><div>자. 이렇게 세가지 정보가 담겨 있다.</div><br><div>어차피 표 뽑아서 가져오면 접수번호만 갖고도 뺄셈 한번만 하면 대기인수가 나오고 시계 한번만 보면 현재 시간은 알 수 있는데 말이다. 참 친절하기도 하지.</div><br><div>어라? 그런데 뭔가 이상하지 않은가?</div><br><div>이상하지 않다고?</div><br><div>정말로?</div><br><div>2번 대기인수와 3번 발권일시를 보라구!!</div><br><div>번호표 뽑는 기계에는 내가 뽑기 전에 이미 번호표가 나와 있었단 말이다!!</div><br><div>아직도 이해가 안된다면 차근차근 생각해보자.</div><br><div>내가 지금 뽑은 번호표가 도대체 언제 인쇄된걸까?</div><br><div>확실한건 내가 뽑는 순간은 아니라는 거다.</div><br><div>빙고.</div><br><div>그래. 내 앞사람이 번호표를 뽑고나서 곧장 인쇄된거지.</div><br><div>결국 거기 찍혀 있는 '현재 대기인수' 는 내 앞사람을 기준으로 계산한 대기인수이고 '발권일시' 는 내 앞사람이 표를 뽑아간 시간이라는거다.</div><br><div>만약 내 앞사람과 표를 뽑은 시간 차이가 좀 커진다면.</div><br><div>난 전혀 엉뚱한 정보를 받아보게된다.</div><br><div>그게 뭐가 어때서?</div><br><div>그냥... 기다리느라 심심했어. -_-..</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

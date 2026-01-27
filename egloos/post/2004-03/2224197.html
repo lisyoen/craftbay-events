@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>탄핵소추안 찬성의원 명단.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-03-12 14:53:23</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">탄핵소추안 찬성의원 명단.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224197/a0103766_496b8192a002a.jpg'><br /><br><img src='./2224197/a0103766_496b8192c011b.jpg'><br /><br><img src='./2224197/a0103766_496b8192db668.jpg'><br /></center><br><br /><br>이들의 잘잘못을 떠나서 누가 찬성했는지는 기억해두자.<br /><br>그리고 4월 15일. 그들을 평가하자.<br /><br><br /><br>오늘 투표에 참가한 195명 명단도 하루 빨리 공개되어야 한다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

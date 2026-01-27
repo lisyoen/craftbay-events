@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>박카스 지하철 광고 10년.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-09-04 22:17:58</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">박카스 지하철 광고 10년.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224332/a0103766_496b81a61ab3a.jpg'><br /><br>[사진은 본 게시물과 다소 관련이 없습니다]<br /></div><br><div>요즘들어.</div><br><div>지하철 노약자석에 나란히 앉아 웃고 떠드는 여학생들을 자주 보게 된다.</div><br><div>초등학생들과 중학생들이다.</div><br><div>박카스 지하철 광고 10년.</div><br><div>약빨이 떨어진건가...</div><br><div>- 사진은 모 블로그에서 퍼온 것을 편집한 것입니다. 저는 차마 사진은 찍지 못하겠더군요 -</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>시스템 트레이딩 API지원 증권사 현황 정리 C#중심</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-06-14 20:35:39</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">시스템 트레이딩 API지원 증권사 현황 정리 C#중심</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>출처: <a href="http://blog.naver.com/rudora?Redirect=Log&amp;logNo=30100447437">http://blog.naver.com/rudora?Redirect=Log&amp;logNo=30100447437</a><br><br>한번 만들어볼까 하는 사람은... 대강 이 순위에서 상위에 있는걸 고르는게 여러모로 좋을 것 같다.</p><p><br></p><p>1. 대신증권 싸이보스플러스 -거의모든언어지원 - 거의전부지원 주식선물 지원안함</p><p>대신증권 홈페이지에 공개되어 있다.</p><p>조금만 훑어보면 쉽게 만들 수 있다. 함수 꺼내쓰기도 쉽게 돼 있고</p><p>오류도 없다.</p><p>VB,COM환경을 위주로 지원해주는 유일한 증권사다.</p><p>C#을 특별히 잘 지원해주는건 아니지만 VBA예제를 보면 대강 비슷하니까...</p><p>설명서만 조금 손보면 더 편해질텐데... 아쉬움이 남긴한다.</p><p>수수료의 압박도 엄청난 단점...&nbsp;</p><p><br></p><p>2. 동양종금증권의 고수 - GOM - 대부분 언어지원하는듯-선물옵션상품선물주식선물전용</p><p>고수라고 동양종금증권 선물옵션 트레이딩 시스템 지원해주는 회사에서 만든 프로그램인데</p><p>거기서 COM환경 지원해주는게 GOM이라고 있다.</p><p>C#으로 만드는게 많이 쉽지는 않다. 좀 불편하다. 형변환을 해가지고 어쩌고 저쩌고... 해야되서 상당히 성가시다</p><p>다른분들이 올려준 샘플이 없었으면 손도 못댔을듯...</p><p>프로그램을 제작할때는 이렇게 하는게 더 편한걸까.. 서버에 부하가 덜가는걸까...;; 깊은건 모르겠지만 쓰는 입장에서는 끔찍하게 불편하다.&nbsp;</p><p><br></p><p>3. ETRADE XingApi - VisualStudio6 전용... C#에서 일부기능 먹통임.. 델파이 등 다른것가능&nbsp;</p><p>이트레이드 증권은 별로 인기는 없는듯... 나는 hts도 맘에 들고 해서 잘 썼는데 api지원해준데서....</p><p>C#으로 만들기는 그다지 편하지가 않다.</p><p>담당자는 아무리 쉬운걸 물어봐도 저는 C#몰라요~ 라는 답변만...</p><p>------c#은 끝인듯...</p><p>4. Goodi indi - VBA VB6 C++6</p><p>담당자에게 메일을 보내면 답변 잘 안해준다. 담당자가 이미 존재하지 않는듯... 관리도 안하는 것 같다. 2004년에 만들어졌다는 것 같은데 그상태 그대로... 몇 가지 메뉴가 맘에 들어서 데이터만 받는 용으로 쓰려고 하고 있다.</p><p>꼭 api활용을 안 해도 엑셀dde로 데이터를 수집하기도 좋다.</p><p>C#으로 하다가 포기하고 VB6으로 만들었다. 엑셀VBA도 64비트나 최신버전에서는 안되는 것 같다.</p><p>--며칠걸려서 담당자 메일을 받았는데 데이터 용량면에서는 다른 증권사보다 낫다는 것 같다.</p><p>Closed시스템이라고 한다. <span style="COLOR: rgb(255,0,0)">별도 계약필요</span></p><p><br></p><p>5. SK Wapi</p><p>C#샘플달라고 하니까 주긴 주던데... 에러난다. 덕분에 테스트도 못 해봤다.</p><p>시간날때 C++ mfc로 테스트 해봐야겠다.</p><p>대충 둘러보니... 지원되는 기능은 좀 많은 것 같기는 하다.</p><p>수수료나 속도가 좋다고 들은 것 같다. 쓰는사람도 은근히 많은 듯... 특히 업자들</p><p><br></p><p>6. TX Open Api&nbsp;</p><p>이름은 거창하게 오픈api라고 달고 나왔는데.. C++만 해준다.</p><p>이게 그렇게 어려운 기술인건가... 모르겠는데 ....</p><p>api기능도 다른 증권사에 비해 별로 없는 것 같다</p><p><br></p><p>7~12 우리선물, NH선물, 삼성선물, 하나대투, 대우BestEZ, 한화</p><p>내가 아는걸로는 이렇게 12개 증권사 및 선물사에서 api를 지원해준다.</p><p>단순히 시세만 받을 요량이라면 구글api도 된다는데 어떻게 쓰는건가 아직 안해봤다.</p><p><br></p><p>증권사에서 지원해주는 API....</p><p>전체적인 특징은... API는 벌써 공개까지 해 놓고서 이제와서 뭔 비밀이라고.... 꽁꽁숨겨놓고 있는 경우가 많다.</p><p>SK증권은 질문답변도 비공개로만 받는다. 다운로드 메뉴도 없고... 개인적으로 요청해야 보내준다.(어차피 줄거면서)</p><p>C#을 비롯한 COM환경을 지원해주는 증권사는 그다지 많지가 않다.</p><p>지원을 해 줘도 오류가 상당히 많이 난다. 최신 툴 VS2008 2010 등을 쓴다면특히 더 그렇다.</p><p>그냥 맘편히 C++ MFC로 하는게 제일 편할 것 같다.</p><p>시간이 나면 C#하고 연결해주는 프로그램을 만들어서 그걸통해서 쓰는게 더 나을 것 같다.</p><p>C#으로 하면 편할걸 C++로 하면 소스가 한트럭이니...</p><p><br></p><p>추가로 시간을 절약하기 위한 팁~</p><p>모르는건 혼자서 앓지 말고 바로 물어보자.</p><p>일단 검색 해 보고 질문 ㄱㄱㅆ</p><p>혼자서 해결할 수 없는 문제인 경우가 대부분이다.(프로그래밍을 잘못한게 아니고 그냥 지원이 안된다거나 이런거)</p><p>개인용 시스템으로 추천하는 증권사는 대신, 고수... 만들기 쉬우니까</p><p>좀 어렵더라도 안정적이고 빠른걸 원하면 goodi나 sk쪽이 낫지 않을까 싶다. 한화나 이쪽은 안써봐서 정확히 모르겠다.<br><br>출처: <a href="http://blog.naver.com/rudora?Redirect=Log&amp;logNo=30100447437">http://blog.naver.com/rudora?Redirect=Log&amp;logNo=30100447437</a><br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

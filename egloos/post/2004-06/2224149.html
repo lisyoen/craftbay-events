@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>구출해야 하는 이유</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-06-22 13:06:19</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">구출해야 하는 이유</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>영화를 보면 적에게 잡히거나 적진에 갇힌 한두명의 병사를 구출해 내기 위해 수십~수백명의 특공대가 위험을 무릅쓰고 출동하는 장면을 쉽게 볼 수 있다.</p><br><p>블랙호크다운, 애너미라인스, 라이언일병 구하기 등등 정말 많은 영화가 이런 설정을 갖고 있다.</p><br><p>분명히 더 많은 희생이 생길수도 있지만 그들은 출동한다. 실제로 영화에서도 많은 희생자가 발생하곤 한다. 영화 블랙호크다운에서는 추락한 헬리콥터에 타고 있던 두 병사를 구출하기 위해 전진 한복판으로 출동하여 아군과 적군을 통틀어 백여명의 사상자가 발생한다. 다른 영화들도 마찬가지다. (애너미라인스 에서는 단 한명의 부상자만 발생한다. 총알이 미제라서 그런지 미군은 피해간다.)</p><br><p>과연 이럴만한 가치가 있는 것일까?</p><br><p>이건 장기나 병정놀이가 아니다. 한 병사의 목숨과 수십 병사의 목숨을 저울질 하는게 아니라는 뜻이다.</p><br><p>수십, 수백의 희생을 치를 지라도 반드시 구출해 내야만 한다.</p><br><p>그래야만 모든 병사가 적에게 포로로 붙잡힐 것을 두려워 하지 않고 싸울 수 있기 때문이다.</p><br><p>김선일씨는 반드시 구출해 내야만 한다.</p><br><p>그래야만 모든 국민이 세계 어느 곳에서든 마음 편히 국위를 선양하며 일할 수 있기 때문이다.</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

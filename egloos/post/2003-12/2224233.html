@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>소프트웨어에 대한 오해 #2</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-17 10:57:14</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">소프트웨어에 대한 오해 #2</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224233/a0103766_496b819964b2a.gif'></center><br><br /><br>소프트웨어의 오해란 소프트웨어 개발에 관련해서 관리자, 고객, 개발자들이 가지고 있는 잘못된 생각을 말한다.<br /><br><br /><br>관리자란 개발자들을 관리하는 사람이다.<br /><br><br /><br>고객은 소프트웨어 개발을 의뢰한 사람이다.<br /><br><br /><br>개발자는 소프트웨어를 개발하는 사람이다.<br /><br><br /><br>셋 다 자기 중심적으로 잘못 판단하곤 한다.<br /><br><br /><br>그 예를 알아보자.<br /><br><br /><br>다음 글로...</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

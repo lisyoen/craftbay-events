@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>보안의 목적</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-10-30 17:34:12</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">보안의 목적</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">어떤 네트워크 시스템을 구축하려고 한다.<div>거기엔 온라인 결재를 이용한 사이버머니가 존재하고</div><div>사이버머니를 이용한 사용자들간의 거래가 존재한다.</div><div>이곳에 필요한 보안사항과 구현방법은 무엇일까?</div><div><br>생각의 순서.</div><div><br>1. Why?</div><div>: 어째서 보호해야 하는가?</div><div>- 신뢰성 있는 결재 및 거래를 보장해 금전의 유실을 막기 위해.</div><div><br>2. What?</div><div>: 무엇을 보호해야 하는가?</div><div>- 결재정보</div><div>- 결재의 무결성</div><div>- 거래정보</div><div>- 거래의 무결성</div><div><br>3. From who? Who is the eneny?</div><div>: 누구로 부터 보호해야 하는가? 적이 누구인가?</div><div>- 사용자의 결재 정보를 가로채려는 해커</div><div>- 결재를 위장/조작하려는 해커 또는 악성 사용자</div><div>- 사용자의 거래 정보를 가로채려는 해커</div><div>- 거래를 위장/조작하려는 해커 또는 악성 사용자</div><div><br>4. What is weakness?</div><div>: 무엇이 취약점인가?</div><div>- 해커가 시스템과 사용자간의 연결에 접근할 수 있음.</div><div>- 해커가 시스템과 연계 시스템(결재 시스템 등)의 연결에 접근할 수 있음.</div><div>- 해커가 서버 시스템에 접근할 수 있음.</div><div>- 해커가 사용자의 클라이언트 시스템에 접근할 수 있음.</div><div>- 해커와 정상 사용자를 구분할 수 없음.</div><div><br>5. From what? What is the enemy's weapon(Information)?</div><div>: 어떤 것으로부터 보호해야 하는가? 적의 무기(정보)가 무엇인가?</div><div>- 해커가 시스템과 사용자간의 연결에 접근하여 Intercept, Replay, Relay 공격</div><div>- 해커가 사용자의 컴퓨터에 접근하여 Key logging</div><div>- 해커가 클라이언트 시스템의 구조를 추측/분석하여 Encryption/Dectyption Logic 을 알아낼 수 있음.</div><div>- 악성 사용자가 자신의 개인 정보를 허위로 입력할 수 있음.</div><div>- 해커가 시스템과 사용자간의 연결을 임의로 중단시킬 수 있음.</div><div>- 악성 사용자가 시스템과 자신과의 연결을 임의로 중단시킬 수 있음.</div><div>- 해커가 시스템 관리자에게 거짓말을 할 수 있음.(Social engineering)</div><div>- 악성 사용자가 시스템 관리자에게 거짓말을 할 수 있음.(Social engineering)</div><div>- 해커가 사용자에게 거짓말을 할 수 있음.(Social engineering)</div><div><br>6. How to defense?</div><div>: 어떻게 막을까?</div><div><br>여기까지는 보안 중심적인 생각.</div><div>공격자의 입장에서 다시 생각해보면.</div><div><br>1. Why? What do I want?</div><div>: 왜 공격하는가? 무엇을 원하는가?</div><div><br>2. What is target?</div><div>: 무엇을 공격해야 하는가?</div><div><br>3. What is my waepon?</div><div>: 내가 가진 무기는 무엇인가?</div><div><br>4. How?</div><div>: 어떤 방법으로 공격해야 하는가?</div><div><br>생각 나면 더 적자.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

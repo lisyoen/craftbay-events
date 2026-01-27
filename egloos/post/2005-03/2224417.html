@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>진실을 말하는 사람은 없다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-03-08 11:42:13</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">진실을 말하는 사람은 없다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">짧게 말하자면.<br><div>이 세상에 진실을 말하는 사람은 없다.</div><br><div>인간의 작업 우선순위 (<a href="http://blog.empas.com/lisyoen/726191">http://blog.empas.com/lisyoen/726191</a>) 와 같은 맥락에서.</div><br><div>모든 사람은 자신이 '해야 하는 말' 혹은 '하고 싶은 말'을 한다.</div><br><div>결코 진실을 말하는것은 아니다.</div><br><div>만약 누군가가 진실을 말했다면 그것은 그 말이 진실이기 때문이 아니라</div><br><div>그 진실을 말해야 하거나 말하고 싶기 때문이다.</div><br><div>따라서.</div><br><div>누군가가 어떤 말을 했다면 그 말 자체의 진위여부는 알 수 없지만 한가지는 확실해진다.</div><br><div>그 사람은 그 말을 해야 하거나. 하고 싶어한다는것. 그 뿐이다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

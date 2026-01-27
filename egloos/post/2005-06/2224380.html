@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>인건비 계산</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-06-08 03:00:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">인건비 계산</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">초보 개발자들이 흔히 하는 실수가 자신의 인건비를 낮춰 계산하는 것이다.<br><div>-</div><br><div>프리랜서 개발자 A씨는 B씨로부터 특정 시스템의 설계와 제작을 의뢰받았다.</div><br><div>실력과 경험이 풍부한 A씨는 이 프로젝트가 4주 만에 완료될 것임을 예상하고 1일 20만원의 인건비를 계산하여 560만원을 청구했다. 유지보수 계약은 별도로 체결되었다.</div><br><div>프로젝트는 기간 내에 무사히 마쳤으며 A씨는 560만원의 소득을 올리게 되었고 유지보수 계약에 의해 추가 수입이 발생되었다.</div><br><div>-</div><br><div>1일 20만원의 인건비는 결코 작은 돈이 아니다.</div><br><div>하지만 하나의 프로젝트에 들어간 560만원 이라는 비용은 매우 작은 돈일 수 있다.</div><br><div>그 누가 고작 560만원으로 4주만에 말끔히 프로젝트를 완료할 수 있겠는가?</div><br><div>개발자 A씨의 실수는 자신의 업무시간에 대한 계산에서 비롯되었다.</div><br><div>자신의 노동을 '4주간의 작업' 으로만 제한 시킨것이 바로 그 실수다.</div><br><div>개발자 A씨는 이런 놀라운 실력과 경험을 쌓기 위해 4년의 전문 교육과정과 5년의 실무경력을 쌓아왔다.</div><br><div>만약 B씨가 직접 이 프로젝트를 수행하려고 했다면 그에게는 자그마치 9년의 시간이 필요했다는 얘기다.</div><br><div>9년의 시간에 비해 560만원이라는 금액이 충분히 적기 때문에 B씨는 A씨에게 이 돈을 지불할 수 있었던 것이다.</div><br><div>물론 이 프로젝트를 위해 9년을 투자했다는것은 비약이다. 이 9년의 투자는 지속적으로 '돈' 이라는 또 다른 가치로써 환원되어질 것이다.</div><br><div>마찬가지로 B씨가 9년을 투자해야 이 프로젝트를 완수할 수 있다는 것 또한 비약이다.</div><br><div>하지만 적어도 이 9년의 일부는 이 프로젝트의 비용으로 청구되어져야 하는 것이 옳다.</div><br><div>어느 항목으로 청구해야 할까?</div><br><div>'교육비' 다.</div><br><div>개발자 A씨. 프로젝트 진행을 위한 교육비로 200만원 추가 청구.</div><br><div>[마치며]-----------------------------------------------------------------</div><br><div>개발자 A씨는 200만원을 교육비 항목으로 넣는 대신 4주로 분할해 1일 7만1천500원의 인건비를 추가로 계산했습니다.</div><br><div>개발자 A씨의 1일 인건비 27만1천500원.</div><br><div>여전히 적습니다.</div><br><div>단독으로 프로젝트를 정확한 일정하에 완수하는 개발자를 고작 월 760만원으로 쓸 수 있다는건 말이 안됩니다. (물론 이런 개발자가 존재한다는것 자체가 말이 안됩니다.)</div><br><div>저도 어쩔 수 없는 초보 개발자인겁니다.</div><br><div>(이 내용은 픽션입니다)</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

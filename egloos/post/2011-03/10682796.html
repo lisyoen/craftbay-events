@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>디자인 패턴, design pattern</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-03-25 22:07:16</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">디자인 패턴, design pattern</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span class="Apple-style-span" style="font-family: GEORGIA, 굴림, sans-serif; line-height: 19px; font-size: 13px; "><div class="POST_HEAD" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); border-bottom-width: 1px; border-bottom-color: rgb(204, 204, 204); border-bottom-style: solid; margin-bottom: 15px; padding-bottom: 3px; "><table border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td width="80%" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); "><div class="POST_TTL" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); "><a name="1860316" title="디자인 패턴 정리">디자인 패턴 정리</a></div></td><td width="20%" align="RIGHT" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); "></td></tr></tbody></table></div><div class="POST_BODY" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); width: 1203px; text-align: left; margin-bottom: 30px; line-height: 19px; overflow-x: hidden; overflow-y: hidden; "><strong><span style="font-size: 13px; ">패턴</span></strong>이란 특정 컨텍스트(패턴이 적용되는 상황. 반복적으로 일어날 수 있는 상황) 내에서 주어진 문제(해당 컨텍스트 내에서 이루고자 하는 목적 또는 제약조건)에 대한 해결책(일련의 제약조건 내에서 목적을 달성할 수 있는 일반적인 디자인)이다.<br><br>"어떤 컨텍스트 내에서 일련의 제약조건에 의해 영향을 받을 수 있는 문제에 봉착했다면, 그 제약조건 내에서 목적을 달성하기 위한 해결책을 찾아낼 수 있는 디자인을 적용한다."<br><br><strong><span style="font-size: 13px; ">1. 범주별 분류</span></strong><br><br>■&nbsp;<strong>생성 관련 패턴</strong>(싱글턴, 추상 팩토리, 팩토리 메소드, 빌더, 프로토타입)<br><br>객체 인스턴스 생성을 위한 패턴으로, 클라이언트와 그 클라이언트에서 생성해야 할 객체 인스턴스 사이의 연결을 끊어주는 패턴.<br><br>■&nbsp;<strong>행동 관련 패턴</strong>(템플릿 메소드, 커맨드, 어터레이터, 옵저버, 스테이트, 스트래티지)<br><br>클래스와 객체들의 상호작용 하는 방법 및 역할을 분담하는 방법관 관련된 패턴.<br><br>■&nbsp;<strong>구조 관련 패턴</strong>(데코레이터, 컴포지트, 프록시, 퍼사드, 어댑터)<br><br>클래스 및 객체들을 구성을 통새허 더 큰 구조로 만들수 있게 해주는 것과 관련된 패턴.<br><br><strong><span style="font-size: 13px; ">2. 클래스, 객체 분류</span></strong><br><br>■&nbsp;&nbsp;<strong>클래스 패턴</strong>(템플릿 메소드, 팩토리 메소드, 어댑터)<br><br>클래스 사이의 관계가 상속을 통해서 어떤 식으로 정의되는지를 다룬다. 클래스 패턴에서는 컴파일시에 관계가 결정.<br><br>■&nbsp;&nbsp;<strong>객체 패턴</strong>(컴포지트, 데코레이터, 프록시, 스트래티지, 브리지, 퍼사드, 커맨드, 이터레이터, 옵저버, 프로토타입, 스테이트, 추상 팩토리, 싱글턴)<br><br>객체 사이의 관계를 다루며, 객체 사이의 관계는 보통 구성을 통새허 정의. 객체 패턴에서는 일반적으로 실행중에 관계가 생성되기 때문에 더 동적이고 유연함.<br><br><strong><span style="font-size: 13px; ">3. 패턴으로 생각하기</span></strong><br><br>■&nbsp;&nbsp;<strong>최대한 단순하게</strong><br><br>"이 문제에 어떤 패턴을 적용할까?"가 아닌 "어떻게 하면 단순하게 해결할 수 있을까?"에 초점.<br>가장 단순하고 유연한 디자인을 만들기 위해서 패턴을 사용해야 한다면 그때 패턴을 적용하면 된다.<br><br>■&nbsp;&nbsp;<strong>디자인 패턴은 만병 통치약이 아니다</strong><br><br>패턴을 사용할 때는 그 패턴을 사용했을 때 설계한 디자인의 다른 부분에 미칠수 있는 영향과 결과에 대해 주의 깊게 생각해 봐야 한다.<br><br>■&nbsp;&nbsp;<strong>패턴이 필요한 경우</strong><br><br>- 구상중인 디자인상에 적용이 적합하다 확신이 들 경우.<br>-&nbsp;시스템의 어떤 부분이 변경될 것이라고 예측할 수 있는 경우.<br><br>■&nbsp;&nbsp;<strong>리팩터링과 패턴</strong><br><br>행동이 아닌 구조를 개선하는데 목적.<br><br>■&nbsp;&nbsp;<strong>패턴 제거</strong><br><br>시스템이 점점 복잡해지면서 처음에 기대했던 유연성이 전혀 발휘되지 않게 되는 경우 패턴을 과감하게 제거해 버리는게 최선책일 수 있다. 즉, 패턴을 사용하지 않은 간단한 해결책이 더 나을 것 같다 싶을 때 패턴을 제거하면 된다.<br><br>■&nbsp;<strong>필요한 경우에만 적용하라</strong><br><br>지금 당장 변화에 대처하기 위한 디자인을 만들어야 한다면 패턴을 적용해서 그 변화에 적응해야 한다. 하지만 꼭 필요하지 않음에도 불구하고 괜히 패턴을 추가하는 것은 피해야 한다. 괜히 시스템만 복잡해지고 사용률도 현저히 낮거나 없을 수 있다.<br><br><strong><span style="font-size: 13px; ">4. 패턴을 대하는 마음가짐</span></strong><br><br><strong>초보자</strong>들은 언제나 패턴을 사용하는 경향이 있다. 그 과정에서 패턴을 쓰는 연습을 하면서 다양한 경험을 쌓을 수 있는 측면에서는 좋다. 하지만 그러다 보면 반드시 그렇지만은 않다는 것을 배우게 된다. 어떤 디자인이든 될 수 있으면 단순하게 만들어야 한다는 것을 터득하게 된다.<br>반드시 확장성이 필요한 경우에만 패턴을 써서 조금 복잡하게 만드는 것이 좋다.<br><br>경험이 늘어&nbsp;<strong>중급자</strong>&nbsp;수준에 오르게 되면 어떤 상황에서 패턴이 필요하고 어떤 상황에서 패턴이 필요하지 않은지를 파악할 수 있다. 여전히 잘 맞지 않는 패턴을 억지로 적용하려는 경향이 보이긴 하지만, 그 과정에서 정형적인 패턴이 적합하지 않은 상황에서는 패턴을 적당히 변형시켜서 써야 한다는 것을 깨닫게 된다.<br><br><strong>달인</strong>의 경지에 오르면 패턴을 자연스럽게 구사할 수 있다. 더 이상 패턴을 사용하는 것에 얽매이지 않는다. 문제를 가장 효과적으로 해결할 수 있는 해결책을 찾는데 주안점을 둘 뿐이다. 이는 객체지향 원칙들을 종합적으로 고려함이다. 자연스럽게 패턴이 필요한 상황에 이르면 패턴을 적당히 변형시켜서 적용한다. 그리고 달인들은 유사한 패턴 사이의 관계를 확실히 파악하여 관련된 패턴들의 용도 사이의 미묘한 차이점을 잘 이해하고 활용한다.<br>달인의 마음가짐은 초보자의 마음자짐이기도 하다. 디자인 과정에서 의사 결정을 할 때 패턴에 대한 지식이 그리 큰 영향을 끼치지 않기 때문이다.<br><br><strong>5. 주요 패턴 정리</strong></div><div class="POST_BODY" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); width: 1203px; text-align: left; margin-bottom: 30px; line-height: 19px; overflow-x: hidden; overflow-y: hidden; "><strong><img src='./10682796/a0103766_4d8c936797086.gif'></strong></div><div class="POST_BODY" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); width: 1203px; text-align: left; margin-bottom: 30px; line-height: 19px; overflow-x: hidden; overflow-y: hidden; "><strong><br></strong></div><div class="POST_BODY" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); width: 1203px; text-align: left; margin-bottom: 30px; line-height: 19px; overflow-x: hidden; overflow-y: hidden; "><b>출처:&nbsp;</b><span class="Apple-style-span" style="font-family: 굴림; line-height: 15px; font-size: 12px; "><a href="http://ingenuity.egloos.com/1860316">http://ingenuity.egloos.com/1860316</a></span></div><div class="POST_BODY" style="font: normal normal normal 10pt/150% GEORGIA, 굴림, sans-serif; color: rgb(0, 0, 0); width: 1203px; text-align: left; margin-bottom: 30px; line-height: 19px; overflow-x: hidden; overflow-y: hidden; "><br></div></span></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

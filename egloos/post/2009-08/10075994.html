@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>IP 할당 대역</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2009-08-23 14:22:34</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">IP 할당 대역</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>국내<a href="https://ip.nida.kr/ip_cate_stat/stat_05_04.act"><br>https://ip.nida.kr/ip_cate_stat/stat_05_04.act</a><br><br>ARIN (미국)<br><a href="https://www.arin.net/knowledge/ip_blocks.html">https://www.arin.net/knowledge/ip_blocks.html</a><br><br>ARIN&nbsp;으로 등록된 IP주소는 총 70개의 A Class 블럭이며 이 중 할당된 것은 31개이다.<br>RIR 에 등록되어있지 않으나 개별 회사나 단체/기관으로 등록되어진 주소는 A Class 38개+a 이며 <br>이 중에 A Class 26개와 일부 주소는 ARIN 이 관리하는것으로 보인다.<br>결과적으로 ARIN 이 관리하는 IP 주소는 A Class 96 개와 일부 주소이다.<br><br>세계<br><a href="http://www.iana.org/numbers/">http://www.iana.org/numbers/</a><br><a href="http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml">http://www.iana.org/assignments/ipv4-address-space/ipv4-address-space.xml</a><br><br>&nbsp;<br>&nbsp;IP주소/AS번호는 전 세계 인터넷주소자원의 총괄 관리기관인 IANA(Internet Assigned Names Authority)에서 관리하며, IANA에서는 각각의 대륙별 인터넷주소자원 관리기관인 RIR(Regional Internet Registry)에 주소를 분배합니다. <br>&nbsp; <br>&nbsp;RIR은 자신이 관할하는 대륙의 국가 인터넷주소자원 관리기관인 NIR (National Internet Registry) 또는 인터넷접속서비스제공자인 ISP(Internet Service Provider)에 주소를 분배합니다. <br>&nbsp; <br>&nbsp;국내에서는 1996년부터 한국인터넷정보센터(한국인터넷진흥원의 전신)가 국내 인터넷주소자원 관리기관으로 아·태평양지역의 대륙별 관리기관인 APNIC으로부터 IP주소를 확보하여 국내 IP주소 관리대행자(인터넷접속서비스제공자) 또는 독자적인 네트워크를 운영하는 일반기관에 할당하였습니다. 한국인터넷진흥원은 2004년 7월 인터넷주소자원에관한법률(법률제7142호)의 제정과 함께 IP주소에 대한 공공성을 인정받아 법정관리기관으로 IP주소/AS번호의 할당 · 관리 업무를 수행하고 있습니다 <br>&nbsp; <br>&nbsp; ※ 일반 인터넷 사용자는 인터넷접속서비스제공자(ISP)로부터 IP주소를 할당받아 사용합니다.&nbsp;<br>&nbsp;<br><br>최상위 Whois (도메인)</p><p><br>telnet whois.crsnic.net 43</p><p><br>Whois Server Version 2.0<br>Domain names in the .com and .net domains can now be registered<br>with many different competing registrars. Go to <a href="http://www.internic.net/">http://www.internic.net</a><br>for detailed information.<br>Domain Name: IPCHASE.COM<br>Registrar: INAMES CO., LTD.<br>Whois Server: whois.inames.co.kr<br>Referral URL: <a href="http://www.inames.co.kr/">http://www.inames.co.kr</a><br>Name Server: NS19.DNSEVER.COM<br>Name Server: NS42.DNSEVER.COM<br>Status: ok<br>Updated Date: 23-aug-2009<br>Creation Date: 23-aug-2009<br>Expiration Date: 23-aug-2010</p><p>&gt;&gt;&gt; Last update of whois database: Sun, 23 Aug 2009 09:49:43 UTC &lt;&lt;&lt;</p><p>NOTICE: The expiration date displayed in this record is the date the<br>registrar's sponsorship of the domain name registration in the registry i<br>...........<br><br><br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>고수 프로그래머와 초보 프로그래머</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-04-09 00:54:36</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">고수 프로그래머와 초보 프로그래머</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">고수 프로그래머는 "6개월 이상은 걸릴것 같습니다." 라고 말해서 관리자와 싸운다.<br /><br>"그때까지 회사가 남아 있을것 같아!?"<br /><br>"6개월 내에 완료하라고 하시면 회사를 나가겠습니다."<br /><br><br /><br>초보 프로그래머는 "2개월이면 충분합니다." 라고 말해서 관리자와 싸운다.<br /><br>"그런 가능성 없는 소리 집어치우고 확실히 가능한 일정을 말하라구!!"<br /><br>"2개월 내에 완료하지 못하면 회사를 나가겠습니다."<br /><br><br /><br>정말 다르다</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

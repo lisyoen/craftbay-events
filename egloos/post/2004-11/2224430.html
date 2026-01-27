@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>출제자의 의도를 파악하라?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-11-29 15:01:49</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">출제자의 의도를 파악하라?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><br /><br><img src='./2224430/a0103766_496b81b19e749.jpg'></div><br><div align="center">[한국 학생들이 시험을 치르는 장면. 무슨 용의자들 몸 수색 하는 분위기다]</div><br><br /><br>학창 시절에 종종 듣던 말이 있다.<br><div>'출제자의 의도를 파악해라'</div><br><div>문제의 내용이 모호해서 여러가지 해석이 가능할 때의 대처법이라고나 할까.</div><br><div>너무나 당연하게 들어왔던 이 말.</div><br><div>순 억지다.</div><br><div>문제는 수험생의 수준을 검증하기 위한 도구다.</div><br><div>출제위원과 수험생들간의 눈치싸움이 아니라는 뜻이다.</div><br><div>따라서.</div><br><div>문제는 명확해야 한다.<br /></div><br><div>문제 그 자체가 답을 갖고 있어야 한다.</div><br><div>시험 문제의 보기 항목이나 기존에 출제되었던 문제 유형으로부터 문제를 해석해야 하는것이 아니다.</div><br><div>출제자는 수험생들에게 오해의 소지가 없는 명확한 문제를 출제하기 위해 노력해야 한다.</div><br><div>애매한 문제를 출제해서 자신과 사고방식이 비슷한 사람들만 맞춰보라는 식의 사고는 버려야 한다.</div><br><div>출제자 위주의 시험 문제.</div><br><div>사라져야 한다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

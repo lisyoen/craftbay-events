@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>드라마를 봤다. (처음으로)</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-07-26 01:44:30</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">드라마를 봤다. (처음으로)</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224446/a0103766_496b81b42d47a.jpg'></div><br><div align="center"></div><br><div align="center">[내가 29년만에 처음으로 본 -보고있는- 드라마 '파리의 연인']</div><br><div>드라마가 한편에 30분 정도씩 하는줄만 알았다.</div><br><div>저녁시간에 방영되는 로보트 만화 정도로 생각했나보다.</div><br><div>매 편당 1시간.</div><br><div>이거 대략 만만치 않다.</div><br><div>녹화해둔걸 다운로드 받아서 첫편부터 보고 있는데 벌써 13편까지 나왔나보다.</div><br><div>13시간이라... 내가 한달간 TV를 13시간 정도 보던가?</div><br><div>아무튼 오늘 이 드라마를 보기 시작했다.</div><br><div>누가 재미있다고 해서 말이지.</div><br><div>내가 생각해도 나 자신이 좀 우습다. -_-..</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

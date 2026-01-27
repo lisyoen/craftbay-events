@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>사람의 가치</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2012-04-17 13:25:31</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">사람의 가치</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div id="id_4f8cf04ccb4151b74748035" class="text_exposed_root text_exposed"><img src='./10874237/a0103766_4f8cf0a34c4a0.jpg'><br>우리 어머니는 수입과 지출을 이자로 생각하신다.<br>이자로 생각하면 원금을 계산할 수 있다.<br>예를 들어, 매달 5만원씩 내는 휴대폰요금은 1년에 60만원을 내는거니까 현재 금리(약 5%)로 따져봤을때 1,200만원을 대출받은것과 동일한 요금이다.<br>따라서 휴대폰 사용에 들어간 자산은 1,200만원이라고 보는거다.<br>휴대폰을 사용하지 않았다면 내 통장에 1,200만원이 있는 것과 동일하는 뜻.<br><br><span class="text_exposed_hide">...</span><span class="text_exposed_show"> 마찬가지 방법으로 사람의 자산가치도 평가가 가능한데.<br>매년 5천만원을 벌어서 3천만원을 쓰는 사람이 있다면. 연 2천만원의 이자수입을 발생시키는것과 동일하기 때문에 4억원의 자산가치를 갖는 사람이 되는거다.<br><br>이 계산법은 모든 가치를 돈으로 환산한다는 의미에서 거부감을 줄 수도 있지만 매우 현실적인 방법임은 부정할 수 없다.<br>누구에게나 기준이 되는 가치는 존재하는 법이니까. <br>설령 그게 돈이 아닐지라도.<br></span></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

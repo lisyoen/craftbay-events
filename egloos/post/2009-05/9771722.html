@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>맞춤법</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2009-05-30 22:29:00</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">맞춤법</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">우리말 맞춤법은 그리 쉬운편이 아니다.<br>발음이 같은 글자나 단어가 매우 많기 때문이다.<br>(게다가 맞춤법 개정안과 통일안이 비교적 근래에 - 근래라고는&nbsp;하지만 벌써 20여년전이다 - 공표되었기 때문에 더욱 혼란스럽다)<br><br>그럼에도 불구하고 나는 맞춤법이 틀린 글에 매우 민감해서 아무리 좋은 내용이라도 맞춤법이 틀렸다면 눈쌀을 찌뿌리곤 한다.<br>심지어&nbsp;글의 내용을&nbsp;제대로 읽지&nbsp;않거나 작가의 전문성, 진실성을 의심하는 경우도 있다.<br><br>다듬어진 글이 아니라 즉흥적으로 씌어진 게시물, 리플, 채팅내용에서는 이런 잘못된 맞춤법을 더 빈번히 발견하게 된다.<br>물론 실수이거나 오타인 경우도 있겠지만 같은 단어를 반복적으로 틀리거나 다른 단어까지 마구잡이식으로 틀리게 되면 실수라고 생각하며 넘어가려는 노력도 쉽지 않게 된다.<br><br>종종 이곳저곳의 유머 게시판에 문법에 맞지 않는 문구의 간판, 안내문, 현수막등의 사진이 웃음꺼리로 게재되곤 한다.<br>분명 이렇게 맞춤법이 틀리는것을 부끄럽게 여기는 세상인데 어째서 하루에도 수없이 틀린 맞춤법을 마주치게 되는지 모르겠다.<br><br>정말 답답한것은. 사람들이 맞춤법을 틀리는게 아니라...<br>그 틀린 맞춤법에 신경쓰느라 정작 글의 내용에는 집중하지 못하는 내 자신이다.<br>(어차피 나도 수없이 틀리고 실수하는 인간이면서..)<br><br>그동안 참 무난한 사람이 되었다고 생각했는데 <br>이런 부분은 왜 아직도 이렇게 까칠한지 .. 모르겠다.<br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>앞서가는 사람을 알아보는 방법</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2012-10-25 04:24:43</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">앞서가는 사람을 알아보는 방법</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><b style="font-size: 9pt;">당신이 생각</b><span style="font-size: 9pt;">하기에.</span></div><div><b>누구라도 쉽게 생각할 수 있는 일반적인 생각</b>에 대해</div><div><br></div><div>당신과는 다른 생각을 갖고 있는 사람이 있다면.</div><div><br></div><div>그 사람은 당신보다 앞서가고 있을 <b>가능성이 높다</b>.</div><div><br></div><div><br></div><div>이유인즉슨</div><div><br></div><div><b>당신의 생각</b>대로라면&nbsp;</div><div><br></div><div>'<b>누구라도 쉽게 생각할 수 있는 일반적인 생각</b>' 은 그 사람도 이미 했을테니까.</div><div><br></div><div>그렇다면 당신이 그 생각에 멈춰 있을 때.</div><div><br></div><div>그 사람은 생각을 멈추지 않았다는거니까.</div><div><br></div><div><br></div><div>심지어 그 사람의 생각이 이해가 되지 않는다면</div><div><br></div><div>그 사람은 당신보다 한참 앞서가고 있을 <b>가능성이 높다</b>.</div><div><br></div><div>한 두 단계 앞서가는 생각은 쉽게 이해할 수 있지만 그 이상은 연결이 되지 않을 수도 있으니까.</div><div><br></div><div><br></div><div>이건 내가 우기는거나 주장하는게 아니라.</div><div><br></div><div><b>당신의 생각</b>으로부터 나오는 일반적인 추론일 뿐이다.</div><div><br></div><div>2018-07-16 아무리 생각해도 뻘글이라고 생각해서 비공개 처리함</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

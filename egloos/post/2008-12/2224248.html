@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>이해와 믿음</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-12-03 11:51:52</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">이해와 믿음</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">나는 한때 기독교 신자였다.<div><br>기독교의 교리와 성경에 대한 갖가지 의구심으로 똘똘 뭉쳐있던 나를</div><div>기독교인이 되게 만들었던 한마디.</div><div><br>"종교는 이해되서 믿는게 아니고 믿음으로써 이해되는겁니다"</div><div><br>종교의 근본은 분명 그렇다.</div><div>만약 충분히 이해되서 믿는거라면. 과학 법칙과 다를게 무언가?</div><div><br>종교란 닫혀있는 연산과 같다.</div><div>종교 안에서만 서로 증명할 수 있으면 되는 것이다.</div><div><br>인간이 이해할 수 없는것. 아니 이해할 수 없어야 하는 것.</div><div>그것이 종교다.</div><div><br>- 그러니 이해하려고 노력하지도. 이해시키려고 노력하지도 말자 -</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

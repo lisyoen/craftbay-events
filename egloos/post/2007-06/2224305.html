@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>선을 밟지 않습니까?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-06-18 10:58:23</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">선을 밟지 않습니까?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224305/a0103766_496b81a307c4c.jpg'></div><br><div align="center">[검은 판은 절대 밟으면 안될 것 같다]</div><br><div><strong>설문: 나는 보도블럭 이음면이나 각종 경계면을 밟지 않는다. (예/아니오)</strong></div><br><div>본인은&gt; 예. 나는 각종 경계면 뿐만 아니라 각 건물 모서리의 연장선, 전신주나 가로등/가로수 사이의 가상의 이음선, 자동차 타이어 축의 연장선 등 가상의 연장선이나 이음선도 밟지 않는다. 특히 계단 블록의 이음선은 절대 밟지 않는다.<br /></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>사장과 직원의 주인정신.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-04-12 19:52:57</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">사장과 직원의 주인정신.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">주인이라는 주인정신을 갖고 일해야 한다.<br><div>하지만 사장에게 주어지는 주인의식이 회사와 직원에 대한 권리와 책임이라면,<br /><br>직원에게 요구되는 주인의식은 회사와 사장에 대한 의무와 복종 뿐이다.</div><br><div>즉, 사장은 회사를 '내 재산이니까 아끼고 가꿔서 키워야겠다' 라는 실질적인 주인의식을 갖고 있는 반면<br /><br>직원에게 요구하는 주인의식은 '내 재산처럼 아끼고 가꿔서 키워야한다' 라는 자기최면일 뿐이다.</div><br><div>사장에게는 '주인' 이 직원에게는 '의식' 이 강조되는 셈이다.</div><br><div>이건 회사를 떠나 모든 단체에 적용되는 일반적인 사실이다.</div><br><div>내 생각에는.</div><br><div>회사가 주인의식 보다 가족정신을 강조해야 할 것 같다.</div><br><div>어차피 비현실 적이라는 점에선 매한가지 인가?</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

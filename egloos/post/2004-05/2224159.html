@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>내 이름을 검색해 보면?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-27 01:24:17</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">내 이름을 검색해 보면?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p align="center"><img src='./2224159/a0103766_496b818c17c3e.gif'><br /><br>[엠파스에서 '이창연' 으로 검색한 결과]</p><br><p>너무 평범한 이름이나 유명인과 같은 이름을 갖고 있는 사람을 인터넷에서 찾는건 정말 힘들다.</p><br><p>천만 다행히도 내 이름은 그다지 평범하지도 않고 유명인과 같지도 않다.</p><br><p>덕분에!</p><br><p>내 이름으로 검색하면 쉽게 나를 찾을 수 있다.</p><br><p>(하지만 검색되는 내 사이트는 현재 공사중이다. -_-...)</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

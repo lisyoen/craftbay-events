@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>답은 이미 그곳에 있다</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-02 04:04:08</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">답은 이미 그곳에 있다</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">곧잘 묻곤 한다.<br /><br><br /><br>"어느 것을 선택해야 할까요?"<br /><br><br /><br>하지만.<br /><br><br /><br>정답을 듣고 싶어 하는건 아니다.<br /><br>어차피 당신의 대답도 단지 하나의 의견일 뿐이니까.<br /><br><br /><br>난 궁금했던게 아니라.<br /><br><br /><br>내가 알고 있는 답을 선택할 용기가 없었을 뿐이다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

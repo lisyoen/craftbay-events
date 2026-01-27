@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>서울 지하철 휴지통 개방. 그 이후.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-09-01 10:33:35</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">서울 지하철 휴지통 개방. 그 이후.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">테러에 대한 대비책으로 시행된 서울 지하철 휴지통 폐쇄.<br><div>그 길지 않은 삽질의 여정이 시행 4개월여만인 어제 끝났다.</div><br><div>어떻게 달라졌을까?</div><br><div><br /><br><img src='./2224442/a0103766_496b81b3506cf.jpg'><br /></div><br><div><br /><br><img src='./2224442/a0103766_496b81b364c94.jpg'><br /></div><br><div>'신문지 수거함' 이라고 바뀐 채 여전히 입구는 막혀 있다.</div><br><div>그들의 꽉 막힌 마음처럼.</div><br><div>관련 게시물 : <a href="http://blog.empas.com/lisyoen/3347843" target="_self">http://blog.empas.com/lisyoen/3347843</a></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

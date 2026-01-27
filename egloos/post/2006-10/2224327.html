@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>초연? 둔감?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-10-10 14:59:17</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">초연? 둔감?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">북한이 핵실험을 했다.<br><div>그 소식이 퍼질 무렵</div><br><div>누구는 네이버 실시간 검색어 1위가 '문근영 미니스커트' 인 것을 보고 '개념없는 한국인들' 이라고 비꼬고</div><br><div>누구는 전국 대형 유통업체와 시장, 편의점이 평소와 다를 바 없었다며 (즉, '사재기'가 없었다며) '성숙한 시민의식' 이라고 칭찬한다.</div><br><div>초연한걸까?</div><br><div>둔감한걸까?</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>새로운 가치 발견</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2009-09-05 21:35:18</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">새로운 가치 발견</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">팬티를 한장 갖고 있을 때 추가되는 팬티 한장의 가치와.<br>팬티를 세장 갖고 있을 때 추가되는 팬티 한장의 가치,<br>팬티를 일곱장 갖고 있을 때 추가되는 팬티 한장의 가치는.<br>서로 다르다.<br><br>특히. 세번째 경우. 즉, 일곱장에서 한장 추가는 매우 큰 의미를 갖는다.<br>주말에만 빨래를 하면 되니까 생활의 질이 급격히 상승되는 것이다.<br>단순한 계산과는 달리 1/4 보다 1/8&nbsp;의&nbsp;가치가 더 높아지는 것이다.<br><br>팬티는 생활과 연관된 물건이라 생활주기에 따라 가치가 달라지지만<br>물건이 아닌 사람의 존재가치도 구성원에 따라 다르게 매겨진다.<br><br>다르게&nbsp;말하면.<br>지금 당장은 여덟장 중에 한 장일 뿐인 팬티지만. 네장중에 한 장보다 가치가 높다는 뜻이 된다.<br>지금 당장은 여덟명 중에 한 명일 뿐이지만. 그 사람이 빠졌을 땐&nbsp;네명중에 한 명보다 큰 차이를 느낄수도 있다는 뜻이 된다.<br>뭔가 역설적이지만 이게 바로 가치의 상대성이다. 단순히 1/n 이 아니란 말이지.<br><br>아무튼 그런 이유로&nbsp;내 팬티는 항상 8장 이상을 유지하고 있다.<br>이런.. 사생활이 공개되버렸네.<br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

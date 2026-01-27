@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Memory debug state</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-10-10 14:44:37</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Memory debug state</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">0xcccccccc -&gt; 지역변수. 초기화되지 않음.<br /><br>0xcdcdcdcd -&gt; 힙에 할당된 메모리. 초기화되지 않음.<br /><br>0xdddddddd or 0xfeeefeee -&gt; 힙에서 free된 메모리.<br /><br>0xfdfdfdfd -&gt; 힙에 할당된 메모리의 초과범위(할당된 메모리의 양쪽 끝)<br /></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

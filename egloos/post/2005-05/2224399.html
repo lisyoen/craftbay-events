@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>알리지 마라.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-05-23 02:38:00</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">알리지 마라.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">상대의 말에서 의도를 알아냈다면<br><div>절대로 내가 의도를 알아차렸다는 점을 눈치채게 해서는 안된다.</div><br><div>강조하지만.</div><br><div>상대가 모르는 것을 내가 알면 최상이고.</div><br><div>상대가 아는 것을 내가 알면 보통이고.</div><br><div>상대가 아는 것을 모르면 최악이다.</div><br><div>절대로 잊어선 안된다.</div><br><div>상대가 나를 아는 만큼 나는 당할 수 있다.</div><br><div>내가 상대를 아는 만큼 나는 피할 수 있다.</div><br><div>명심.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

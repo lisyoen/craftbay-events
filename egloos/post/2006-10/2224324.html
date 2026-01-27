@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>간단한 테스트</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-10-19 09:37:05</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">간단한 테스트</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><img src='./2224324/a0103766_496b81a54fd9a.gif'><br /><br><br /><br>네모난 검은 사각형의 갯수를 세는 겁니다. 모두 세는게 아니라 '가로줄' 만 셉니다.<br /><br><br /><br>정확한 결과를 위해 아래 네 가지 사항만 지켜주세요.<br /><br><br /><br>1. 손가락이나 마우스 포인터를 짚어서 세지 말고 '눈'으로만 세야 합니다. (확대도 안됨)<br /><br>2. 세는 시간을 초단위로 측정해주세요.<br /><br>3. 포기했더라도 일단 시도를 했다면 측정 결과는 반드시 리플로 적어주세요.<br /><br>4. 다른 사람의 결과를 미리 보지 마세요. 측정 후에 확인해주세요.<br /><br><br /><br>리플 적는 요령입니다.<br /><br><br /><br>성공시&gt; 세는데 걸린 시간과 자신만의 세는 방법을 적음<br /><br>: 시간(초), 갯수(개), 갯수를 세는 방법/요령, 세면서 생긴 정신적, 신체적 반응<br /><br>실패시&gt; 대략적으로 포기하는데 까지 걸린 시간과 포기 이유를 적음<br /><br>: 시간(분), 포기, 포기한 이유<br /><br><br /><br>예시1&gt; xx초, oo개, 그냥 순서대로, 눈이 아프고 어지러움/구토/망연자실/살인충동<br /><br>예시2&gt; 약2분, 포기, 헛것이 보임/눈을 깜빡였더니 도로 제자리/짜증남<br /><br><br /><br>---------------------------------------------------------------------------------------<br /><br>이 아래쪽은 측정 후에 읽으시는게 좋습니다.<br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br><br /><br>현재 10명을 상대로 측정한 결과 입니다.<br /><br>정확하게 대답: 3명, 25~31초<br /><br>근사치로 대답(오차 3개 이하): 1명, 15초<br /><br>큰 차이로 대답(오차 4개 이상): 2명, 11~34초<br /><br>포기: 4명, 1~3분<br /><br><br /><br>이 실험으로 무엇을 알 수 있을까요?<br /></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

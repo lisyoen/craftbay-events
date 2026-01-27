@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>거울은 좌우를 반대로 보이지 않는다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-15 01:13:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">거울은 좌우를 반대로 보이지 않는다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><center><img src='./2224238/a0103766_496b819a11ae9.gif'></center></center>흔히 거울은 좌우를 반대로 비춰보인다고 말한다. <br>하지만 이건 분명히 잘못된 말이다. <br><br>이제부터 내가 직접 그린 그림을 통해 그 사실을 설명해주겠다. <br><br>그림①을 보자. <br>졸라맨이 거울을 보고 서 있다. <br>거울 앞의 졸라맨은 오른손으로 머리를 긁고 있는데 거울 속의 졸라맨은 왼손으로 머리를 긁고 있다. <br><br>사실인가? <br>그렇다면 좌우가 반대로 보이는것이 맞지 않는가? <br><br>그림②를 보자. <br>빨간 공이 왼쪽에. 파란공이 오른쪽에 있다. <br>이건 거울 속에서도 마찬가지다. <br>빨간공이 왼쪽, 파란공이 오른쪽이다. 너무 당연한 모습이다. <br>뭐가 다른가? <br><br>사실 거울은 좌우를 바꾸는게 아니라 거리를 바꿔 보여준다. <br><br>그림③을 보자. <br>빨간공이 앞에 있고 파란공이 뒤에 있다. <br>거울 속에서는 파란공이 앞에 있고 빨간 공이 뒤에 있다. <br>거울의 원리를 생각한다면 이것이 바로 정답이다. <br><br>즉, 거울은 거울이 놓인 곳을 기준으로 거리를 반대로 보여준다. <br>좌우는 변함이 없다는 뜻이다. <br><br>거울이 좌우를 그대로 보여준다는 사실은 자동차의 룸미러나 사이드미러를 보면 확실히 알 수 있다. <br>거울 속에서 차가 오른쪽으로 이동하면 실제로도 그런 것이다. <br>머리속으로 복잡하게 생각할 필요도 없다. <br>보이는것이 실체다. <br><br>그렇다면 왜 거울이 좌우를 반대로 보여준다고 생각하게 되는 것일까? <br>그것은 일종의 본능이다. <br>일종의 감정 이입. 사상 이입이랄까? <br>거울 속의 '나'를 기준으로 생각하게 되는 것이다. <br><br>거울 속의 나. 그것은 실제의 나를 바라보고 있다. <br>거울 속의 내가 되어서 머리속에선 이미 좌우를 반대로 생각하는 것이다. <br>그래서 거울속의 나는 오른손에 시계를 차고 있다고 생각하게 된다. <br><br>이건 그냥 농담이 아니다. <br>말장난도 아니다. <br>그냥 사실이다. <br>당신도 알고 있는.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

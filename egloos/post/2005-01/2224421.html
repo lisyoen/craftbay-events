@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>울면 안되?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-01-03 21:10:30</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">울면 안되?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">우리가 '울면 안되' 라고 기억하는 크리스마스 캐롤송이 있다.<br><div>가사를 대충 훑어보면 다음과 같다.</div><br><div><br /><br>--</div><br><div>울면 안되. 울면 안되.</div><br><div>산타 할아버지는 우는 아이에겐 선물을 안주신대.</div><br><div>잠잘 때나 일어날 때 짜증낼 때 장난할 때도</div><br><div>산타 할아버지는 모든 것을 알고 계신대.</div><br><div>--</div><br><div>그렇다.</div><br><div>못된 짓을 하더라도, 짜증을 내더라도, 장난을 치더라도.</div><br><div>울지만 않으면 되는 것이다.</div><br><div>원곡인 'Santa Claus is coming to town' 을 들어봐도 같은 내용의 가사가 적혀 있다.</div><br><div>Santa Claus Is Coming to Town<br /><br>You better watch out<br /><br>You better not cry &lt;&lt;============ 여기다!!!<br /><br>Better not pout<br /><br>I'm telling you why<br /><br>Santa Claus is coming to town<br /><br><br /><br>He's making a list<br /><br>And checking it twice;<br /><br>Gonna find out Who's naughty and nice<br /><br>Santa Claus is coming to town<br /><br><br /><br>He sees you when you're sleeping<br /><br>He knows when you're awake<br /><br>He knows if you've been bad or good<br /><br>So be good for goodness sake!<br /><br>O! You better watch out!<br /><br>You better not cry &lt;&lt;============ 여기도!!<br /><br>Better not pout<br /><br>I'm telling you why<br /><br>Santa Claus is coming to town<br /><br>Santa Claus is coming to town</div><br><div><br /></div><br><div>그래도 번역된 우리말 노래보다는 좀 덜하다.</div><br><div>왜 이렇게 우는것에 민감한 것일까?</div><br><div>난 알 수 있다.</div><br><div>이 노래말을 지은 사람의 마음을..</div><br><div>이 노래말을 번역한 사람의 마음을...</div><br><div>아이들이 선택할 수 있는 최후의 무기.</div><br><div>어른들이 가장 견디기 힘든 그것..</div><br><div>어른들에게는 아이들이 나쁜짓을 하는것보다 떼쓰며 우는것이 더 싫은 거다.</div><br><div>100% 공감한다.</div><br><div><embed src="http://e3000.hallym.ac.kr/~jwkim/student/jhhong/s2.mid" type="audio/midi" autostart="0" /></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

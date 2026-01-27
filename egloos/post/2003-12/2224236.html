@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>난 Microsoft MVP 다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-15 01:52:04</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">난 Microsoft MVP 다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224236/a0103766_496b8199c6e90.jpg'></center><br><br /><br>난 2003 년도 Microsoft MVP 다.<br /><br><br /><br>여기서 MVP 란. Most Valuable Professional 의 약자로.<br /><br>MS 가 선정하는 활동적인 전문가 집단(?)을 뜻한다.<br /><br><br /><br>하여튼 MS 는 기존의 용어에 덮어씌우길 잘한다.<br /><br><br /><br>MVP 는 전 세계적으로 1800 여명이 활동중이며 국내에는 84명이 존재한다.<br /><br><br /><br>MVP 에 대해서는 다음 URL 을 참고하길 바란다.<br /><br>[2003년 현재 한국 MVP 명단]<br /><br>http://support.microsoft.com/default.aspx?scid=/directory/worldwide/ko/mvp/mvp_21.asp<br /><br>[MVP 사이트]<br /><br>http://mvp.support.microsoft.com/<br /><br>[2004년 1월 MVP 선발]<br /><br>http://support.microsoft.com/default.aspx?scid=/directory/worldwide/ko/mvp/mvp.asp<br /><br><br /><br>개인적으로 MVP 인것이 자랑스럽다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

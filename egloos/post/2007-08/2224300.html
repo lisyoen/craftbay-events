@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>어떻게 읽는거죠?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-08-13 11:35:02</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">어떻게 읽는거죠?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">&nbsp;<span class="engdic_title"><b>en·thu·si·as·tic</b></span>, <span class="engdic_title"><b>-ti·cal</b></span>&nbsp;a.<br><b><span class="exp_no">1</span></b> <b><a class="na" href="http://alldic.empas.com/search/endic.html?q=%BF%AD" target="_blank"><span style="COLOR: #0000ff">열</span></a>렬한</b>, <a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=204185" target="_blank"><span style="COLOR: #0000ff">열광</span></a>적인, <a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=204370" target="_blank"><span style="COLOR: #0000ff">열중</span></a>한 《<a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=551" target="_blank"><span style="COLOR: #0000ff">about</span></a>, <a class="na" href="http://alldic.empas.com/search/endic.html?q=over" target="_blank"><span style="COLOR: #0000ff">over</span></a>》<br><b><span class="exp_no">2</span></b> 《<a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=143572" target="_blank"><span style="COLOR: #0000ff">고어</span></a>》 <a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=146690" target="_blank"><span style="COLOR: #0000ff">광신</span></a>적인<br>▷ <a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=40580" target="_blank"><span style="COLOR: #0000ff">enthusiasm</span></a> n.;<a class="na" href="http://engdic.empas.com/dicsearch/view.html?i=40579" target="_blank"><span style="COLOR: #0000ff">enthuse</span></a> v.<div><br>참 읽기 어려운 단어다. 엔쓰지에스틱??</div><div><br>외국 영화를 보다보면 간혹 이런 장면을 목격한다.</div><div><br>A: 성함은요?</div><div>B: 디카프리오라고 합니다.</div><div>A: 철자가 어떻게 되시죠?</div><div>B: 디.카.프.리.오 -_-...</div><div><br>우리에겐 참 낯선 풍경이다. 이름을 말해줬는데 철자를 불러달라니.</div><div>또 이런 장면도 있다.</div><div><br>A: ... 이건 뭐라고 읽는거죠?</div><div>B: 디.카.프.리.오... -_-...</div><div><br>이 또한 낯설기 그지 없다. 씌어져 있는 글자를 읽지도 못하다니.</div><div><br>주로 영어권에서 보이는 문제지만 일본어, 중국어에서도 자주 발견된다.</div><div>일본어는 한자를 주로 사용하기 때문에 모르는 한자는 읽지 못한다. 중국어는... 한자만 사용하기 때문에 더욱 심하다.</div><div>물론 우리 말도 동음이기어(발음은 같지만 표기는 다르게 하는 말?, 다치다/닫히다)가 존재하긴 하지만 일상생활에서는 거의 마주치기 어렵다.</div><div><br>이건 우리 말의 특징이 아니라 우리 글, 한글의 특징이다.</div><div>바로 한글이 언문일체(말과 글을 1:1로 매핑시킴)의 원칙하에 설계되었기 때문이다.</div><div>마치 발음기호와도 같은 글자인 셈이다.</div><div><br>세계 공용어를 주창하며 등장했던 에스페란토(Esperanto)도 언문일체의 언어다. (에스페란토는 말과 글을 모두 포함한다)</div><div>이렇게 본다면 한글을 창제하신 그분은 엄청나게 미래적인 사고를 하셨던거다.</div><div>역시 만원권에 새겨질만한 인물이다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

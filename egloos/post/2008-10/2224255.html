@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>에러?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-10-15 15:35:04</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">에러?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><span style="FONT-FAMILY: 돋움체"><span style="COLOR: #0000ff">class TestClass<br></span>{<br><span style="COLOR: #0000ff">public</span>:<br><span style="COLOR: #0000ff">&nbsp; int</span> <span style="COLOR: #800000">TestFunc</span>( <span style="COLOR: #0000ff">int</span> <span style="COLOR: #808080">arg</span> ) { <span style="COLOR: #0000ff">return</span> ( <span style="COLOR: #808080">arg</span> * 2 ); }<br>};<br></span><div><span style="FONT-FAMILY: 돋움체"><span style="COLOR: #0000ff"><br>int</span> <span style="COLOR: #800000">main</span>( <span style="COLOR: #0000ff">int</span> <span style="COLOR: #808080">argc</span>, <span style="COLOR: #0000ff">char</span>* <span style="COLOR: #808080">argv</span>[] )<br>{<br><span style="COLOR: #0000ff">&nbsp; TestClass</span>* <span style="COLOR: #808080">pt</span> = <span style="COLOR: #800080">NULL</span>;<br><span style="COLOR: #0000ff">&nbsp; int</span> <span style="COLOR: #808080">ret</span> = <span style="COLOR: #808080">pt</span>-&gt;<span style="COLOR: #800000">TestFunc</span>( 4 );<br><span style="COLOR: #0000ff">&nbsp; return</span> <span style="COLOR: #808080">ret</span>;</span></div><div><span style="FONT-FAMILY: 돋움체">}</span></div><div><br>인스턴스 없이 NULL 을 대입한 클래스 포인터로 멤버함수를 호출하였다.</div><div>이 프로그램을 실행하면 어떤 결과가 나올까?</div><div>단, 최적화 옵션이 낮게 설정되어 있어서 TestFunc 는 inline 처리가 되지 않았다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

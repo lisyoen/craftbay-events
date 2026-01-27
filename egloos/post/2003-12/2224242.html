@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>대마초는 마약이 아니란다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-12 23:33:31</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">대마초는 마약이 아니란다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">친구 성환이랑 얘기하다가 이런 저런 얘기가 나왔는데.<br /><br>그중에 하나가 양귀비였다. 양귀비가 만병통치약이라는둥... 맞는 말이지.<br /><br><br /><br>생각나는김에 엠파스 지식검색에서 찾아보니 정보가 많다.<br /><br>양귀비가 아편의 원료라는건 익히 알던 사실인데 난 양귀비의 줄기에 상처를 내서 그 즙을 약에 쓴다는 말을 들어서 그걸 아편이라고 생각했거던. 근데 아편은 열매에 상처를 내서 나오는 즙으로 만들더군.<br /><br><br /><br>대마 뿌리를 달여 먹으면 복통에 좋다고 할머니께 들은적이 있다.<br /><br>대마초는 대마 잎을 말려서 태운 연기를 흡입하는 것을 말한다고 알고 있었고.<br /><br>근데 이 대마초가 마약이 아니더라고.<br /><br><br /><br>마약법에선 앵속, 아편, 코카잎과 거기서 나온것들을 마약으로 분류하더군.<br /><br>또 우리가 흔히 아는거 있지?<br /><br>향정신성의약품이란거. 뭐 본드나 진해거담제 처럼 많이 먹으면 환각증상 나타나고 그러는거 말야.<br /><br>대마초는 거기에도 포함되지 않더라고.<br /><br>이유는 아마도 금단증상이 없기 때문인것 같아.<br /><br>특이하지. 환각증상을 일으키지만 금단증상은 없대.<br /><br><br /><br>그래서 싸이는 그렇게 금방 연예계에 복귀했나봐.<br /><br>필로폰 맞은 현진영은 소식이 잠잠하고...</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

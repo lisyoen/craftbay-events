@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>누구를 위한 디지탈인가?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-12-07 10:19:30</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">누구를 위한 디지탈인가?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><br /><br><img src='./2224427/a0103766_496b81b0e070c.jpg'></div><br><div align="center">[지하철 노선도 일부분. 다소 선명하지 않은건 핸드폰 카메라 탓]<br /></div><br><div>아침 출근길에 무심코 지하철 노선도를 보게 되었다.</div><br><div>스티커로 수정된 '구로디지털단지' 역이 보인다.</div><br><div>'구로공단' 역에서 바뀐 이름이다.</div><br><div>1988년도 서울올림픽 이후 모든 역 명에는 영문과 한자가 병기되고 있다.</div><br><div>동서양 외국인에 대한 배려이다.</div><br><div>구로디지털단지도 영문과 한자를 병기해서... 앗!!</div><br><div>사진이 선명하지 않아서 잘 안보일지도 모르겠는데. 뭔가 어색하다.</div><br><div>그것은 다름아닌 "九老디지탈團地" !!</div><br><div>한글엔 '디지털' 로 되어 있고 한자엔 '디지탈' 로 되어있다!</div><br><div>...라는걸 지적하려는게 아니다.</div><br><div>이건 대체 누구를 위한 표기란 말인가?</div><br><div>올림픽 끝난지 오래되서 취지를 잊은건가....</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

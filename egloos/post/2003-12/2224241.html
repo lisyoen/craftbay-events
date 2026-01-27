@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>내 사진을 올려봤다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-13 00:06:05</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">내 사진을 올려봤다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224241/a0103766_496b819a8a7b7.jpg'></center><br><br /><br>뭐 별로 볼것은 없지만 내 사진을 올려봤다.<br /><br><br /><br>블로그 쓴지 한시간도 채 안됐는데 이거 슬슬 정드는 기분이군.<br /><br><br /><br>왜 이딴걸 하는지 알것도 같다.<br /><br><br /><br>실은 이 사진 올해 초에 찍은거고 지금은 수염을 좀 길렀다...<br /><br><br /><br>편집은 없다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

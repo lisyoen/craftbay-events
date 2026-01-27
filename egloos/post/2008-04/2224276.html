@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>효혐? 효험!</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-04-20 21:43:36</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">효혐? 효험!</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><dl><br><dt><a class="bl-uu01" href="http://krdic.naver.com/detail.nhn?docid=43527300" target="_blank"><font color="#0000FF"><font size="4">효험 <span class="nor">[效驗]</span></font></font></a></dt><br><dd><font size="2">[명사]일의 좋은 보람. 또는 어떤 작용의 결과. ≒효(效).</font></dd><br></dl><br><h3><span class="o01">'효혐'</span> 에 대한 검색결과가 없습니다.</h3><br><ul><br><li>단어의 철자가 정확한지 확인해 주세요.</li><br><li>검색어의 단어수를 줄이거나, 다른 검색어로 검색해 보세요.</li><br></ul><br><div>난 왜 <font size="4">'효혐'</font> 이라고 알고 있었던걸까??</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

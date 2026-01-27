@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>다르다고 틀린것은 아닙니다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-11-16 16:34:56</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">다르다고 틀린것은 아닙니다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>주변에서 많이 <span style="COLOR: #ff0000">틀리는</span> 용어가 있으니 바로<br>'<strong><span style="COLOR: #ff0000">틀리다</span></strong>' 라는 표현이다.<br><br>흔히 '<strong><span style="COLOR: #3366ff">다르다</span></strong>' 가 쓰여야 할 곳에서 잘못 사용되고 있다.<br>다들 인정하지만 너무 널리 통용되다 보니 딱히 고칠 필요는 느끼지 않는 것 같다.<br>하지만 이 차이에서 의견충돌이 발생하는 것을 종종 목격한다.<br><br>'그건 <span style="COLOR: #3366ff">다른</span>겁니다.' 라고 해야 할 부분에서 '그건 <span style="COLOR: #ff0000">틀린</span>겁니다.' 라고 해버리니 의미가 완전히 <span style="COLOR: #3366ff">달라져</span>버리는거다.<br><br>'<span style="COLOR: #ff0000">틀리다</span>'와 '<span style="COLOR: #3366ff">다르다</span>'<br><br>두 가지 표현은&nbsp;분명히 <span style="COLOR: #3366ff">다른</span>겁니다.<br><span style="COLOR: #ff0000">틀리지</span> 않도록 주의합시다.<br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

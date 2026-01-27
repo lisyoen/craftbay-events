@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>네이트 게시판 IP주소 변환 알고리즘 해독</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-09-16 20:22:49</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">네이트 게시판 IP주소 변환 알고리즘 해독</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><font face="Courier new" size="3"><font face="Courier New" size="3">- 샘플 -</font></font><br><div><font face="Courier new" size="3"><font face="Courier new" size="3">MDAyODQzZGU7, 002843de, 0.40.67.222<br /><br>MDAzYTVkN2Q4, 003a5d7d, 0.58.93.125<br /><br>MDAzMTNkNmE9, 00313d6a, 0.49.61.106<br /><br>MDAyY2Q4Nzk4, 002cd879, 0.44.216.121<br /><br>MDAzN2Q4NzM4<br /><br>MDAzYmM3MjU8<br /><br>MDAzYmM2ZmU9<br /><br>MDAzYjAwZGY0<br /><br>MDAzYmJkZTI7<br /><br>MDAyYjlhZWQ2<br /><br>MDAzYmM0MzI3<br /><br>MDAzYmMzNGQ4<br /><br>MDAzYmMyZWE5<br /><br>MDAzYjgzM2U5<br /><br>MDAzYmM0MTU4<br /><br>MDAzYWI5ZDg7<br /><br>MDAzMmU5NWE1<br /><br>MDAzMmU5NWE1<br /><br>MDAyZjhmMTM2<br /><br>MDAzYmMxZTQ3<br /><br>MDAzYmMxMjU2<br /><br>MDAzYmMxNTU0<br /><br>MDAzYWFjZjQ7<br /><br>MDAzYTJlM2U9<br /><br>MDAzN2Y0ZWE1<br /><br>MDAzYmMxMGY0<br /><br>MDAzN2Y0ZWE1<br /><br>MDAzOGE5OWQ0<br /><br>MDAyNjdjYzc4<br /><br>MDAzYmJmYWM5<br /><br>MDAzYmJmODU6<br /><br>MDAzYmJjODg1<br /><br>MDAzYjNlMTg3<br /><br>MDAzYmJjODg1<br /><br>MDAzYmJlZDY1<br /><br>MDAzYWFjZjQ7<br /><br>MDAzYWFjZjQ7<br /><br>MDAzYmMxYWQ8<br /><br>MDAzYmIyMzc0<br /><br>MDAzMDExZjE4<br /><br>MDAzYmJlM2U9<br /><br>MDAyY2EyNmM7<br /><br>MDAzOGYyY2Y8<br /><br>MDAzYjg3M2I6<br /><br>MDAyNzc5ZTE8<br /><br>MDAyODQzZGU7<br /><br>MDAzYmJiMGI0<br /><br>MDAzMDViN2Q2<br /><br>MDAzYmJhYjg7<br /><br>MDAzMzYyN2E9<br /><br>MDAyYmJhYWE7<br /><br>MDAzYjg2OTI7<br /><br>MDAyZWM5NzM0<br /><br>MDAzYmJhNmU3<br /><br>MDAzYmI2NGI4<br /><br>MDAzMDk4OTU2<br /><br>MDAzOTM5MTM6<br /><br>MDAzYTJjZmM7<br /><br>MDAzMjdhOWY4<br /><br>MDAzYmM0MzI3<br /><br>MDAzYmFkZmY0<br /></font></font></div><br><div><font size="+0"><font face="Courier new" size="3">-TTM01072923<br /><br>-TTM01733759<br /><br>-TTM01120087<br /></font></font></div><br><div>* arachne 님의 조언에 따라 base64 디코딩 값과 이를 4bytes 로 계산한 값을 일부 추가했다. *</div><br><div><font face="Courier new" size="3">위 문자열들은 네이트 게시판에서 사용하는 IP 주소 변환 문자열 샘플이다.</font></div><br><div><font face="Courier new" size="3">12글자로 구성되어 있으며 최초 2글자는 MDA로 고정되어 있다.</font></div><br><div><font face="Courier new" size="3">-TTM 으로 시작되는 경우는 전화번호 인증이나 모바일 접속을 한 경우라고 보여지며 이 경우 전화번호 앞자리 8자리가 이어진다.</font></div><br><div><font face="Courier new" size="3">IP주소는 4bytes 이므로 9bytes 로 사상될 경우 dummy data가 추가되거나 hash 되어 역변환이 불가능할 수도 있지만 이 경우 1byte당 노출되는 문자의 개수가 제한된 것으로 보여 1:1 변환의 가능성을 엿볼 수 있다.</font></div><br><div><font face="Courier new" size="3">사용된 문자를 영문 대/소문자와 숫자로 가정할 때 26 x 2 + 10 = 62 개의 문자이므로 최대 62 ^ 9 = 13,537,086,546,263,552 의 경우의 수를 갖게 되어 여전히 4bytes 의 경우의수 4,294,967,295 를 웃돌게 되지만 각 자리수 별로 등장하는 문자의 폭이 제한된 것으로 보여 다시한번 1:1 변환의 가능성을 고려할 수 있겠다.</font></div><br><div><font face="Courier new" size="3">각 자리의 특징을 열거하면 다음과 같다.</font></div><br><div><font face="Courier new" size="3">1 - M, 1</font></div><br><div><font face="Courier new" size="3">2 - D, 1</font></div><br><div><font face="Courier new" size="3">3 - A, 1</font></div><br><div><font face="Courier new" size="3">4 - [yz], 2</font></div><br><div><font face="Courier new" size="3">5 - [MNOYZ], 5</font></div><br><div><font face="Courier new" size="3">6 - [2jmzDGTW], 8</font></div><br><div><font face="Courier new" size="3">7 - [cdghklAEFIJMNQUVY], 17</font></div><br><div><font face="Courier new" size="3">8 - [02345hijklmwxyz], 15</font></div><br><div><font face="Courier new" size="3">9 - [NMOYZ], 5</font></div><br><div><font face="Courier New" size="3">10 - [2jmzDGTW], 8</font></div><br><div><font face="Courier new" size="3">11 - [cgkEIMQUY], 9</font></div><br><div><font face="Courier New" size="3">12 - [0123456789], 10</font></div><br><div><font face="Courier New" size="3">샘플이 충분하지 못해 누락된 값이 있을 수 있다.</font></div><br><div><font face="Courier New" size="3">현재까지 나온 값들로 경우의수를 산정해보면</font> <font face="Courier New" size="3">73,440,000 개.</font></div><br><div><font face="Courier New" size="3">누락된 값이 몇 개 정도 있다고 해도 IP주소 범위인 4,294,967,295 개에 훨씬 못미친다.</font></div><br><div><font face="Courier New" size="3">따라서 역변환이 가능할 가능성이 매우 높다.</font></div><br><div><font face="Courier New" size="3">눈치껏 볼 때 12번째 숫자는 일종의 패리티 혹은 해시값이다. 패리티나 해시는 검증용도로 사용되는데 이 문자열이 어째서 검증이 필요한지는 잘 모르겠다. 하지만 눈치껏 보면 패리티나 해시가 맞다.</font></div><br><div><font face="Courier New" size="3">5, 9번째 문자 집합과 6, 10번째 문자 집합이 동일한 것이 눈에 띈다.</font></div><br><div><font face="Courier New" size="3"><font face="Courier new" size="3">5 - [MNOYZ], 5</font></font></div><br><div><font face="Courier New" size="3"><font face="Courier new" size="3">9 - [NMOYZ], 5</font></font></div><br><div><font face="Courier New" size="3"><font face="Courier new" size="3">6 - [2jmzDGTW], 8</font></font></div><br><div><font face="Courier New" size="3"><font face="Courier New" size="3">10 - [2jmzDGTW], 8</font></font></div><br><div><font face="Courier New" size="3">11번은 7번의 부분집합이다. 샘플이 충분하다면 두 집합도 동일하지 않을까 생각된다.</font></div><br><div><font face="Courier new" size="3">7 - [cdghklAEFIJMNQUVY], 17</font></div><br><div><font face="Courier New" size="3"><font face="Courier new" size="3">11 - [cgkEIMQUY], 9</font></font></div><br><div><font face="Courier New" size="3">합집합 - [cdghkl AEFIJMNQUVY], 17</font></div><br><div><font face="Courier New" size="3">게다가 연속적인 문자 그룹이 있는것 같다.</font></div><br><div><font face="Courier New" size="3">예상 - [<font color="#FF0000">ab</font>cd<font color="#FF0000">ef</font>ghkl A<font color="#FF0000">BCD</font>EF<font color="#FF0000">GH</font>IJ<font color="#FF0000">KL</font>MN<font color="#FF0000">OP</font>Q<font color="#FF0000">RST</font>UV<font color="#FF0000">WX</font>Y<font color="#FF0000">Z</font>], 36</font></div><br><div><font face="Courier New" size="3">왠지 [a-z|A-Z] 인것 같기도 하다.</font></div><br><div><font face="Courier New" size="3">8번은 연속된 6개의 문자가 3개의 그룹으로 이루어진것 같다. 샘플이 충분하다면 몇개의 문자를 추가적으로 발견할 수 있을것 같다.</font></div><br><div><font face="Courier new" size="3">8 - [02345hijklmwxyz], 15</font></div><br><div><font face="Courier New" size="3">예상 - [0<font color="#FF0000">1</font>2345 hijklm <font color="#FF0000">u</font><font color="#FF0000">v</font>wxyz], 18</font></div><br><div><font face="Courier New" size="3">나머지는 집에 가서 분석해봐야겠다.</font></div><br><div><font face="Courier New" size="3">샘플도 좀 더 구하고..</font></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

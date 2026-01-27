@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>이해 못하는 사람에게는.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-05-24 00:59:46</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">이해 못하는 사람에게는.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">내 말을 이해 못하는 사람에게는.<br><div>이해시켜줄 필요가 없다.</div><br><div>그의 말을 끝까지 들어준다.</div><br><div>인정하지 않더라도 끝까지 들어준다.</div><br><div>그가 잘못 이해했거나 이해하지 못했다는게 확실해지고</div><br><div>제대로 이해하고 싶어하는게 확인되면.</div><br><div>그때부터 다시 설명하자.</div><br><div>내 설명 방법이 항상 옳을 순 없다.</div><br><div>때론 생각할 시간을 주는게 더 좋은 설명 방법일 수도 있다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

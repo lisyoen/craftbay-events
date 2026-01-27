@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>재미있는 주석 처리</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-11 12:29:43</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">재미있는 주석 처리</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>C++ 에는 /* */ 스타일과 // 스타일의 두가지 주석을 지원한다.</p><br><p>이 두가지를 혼용하면 편리한 주석 스위치가 가능하다.</p><br><p>다음 소스를 보자.</p><br><hr /><br><font face="굴림체"><font color="#339966"><font color="#008000">//*/</font><br /></font><font color="#0000FF">int</font> a = 10;<br /></font><font face="굴림체" color="#008000">/*/<br /><br>int a = 20;<br /><br>//*/</font><br><hr /><br><p><font color="#000000">여기서 맨 앞에 있는 / 를 삭제하면 다음과 같이 된다.</font></p><br><hr /><br><font face="굴림체" color="#008000">/*/<br /><br>int a = 10;<br /></font><font face="굴림체" color="#008000"><font color="#008000">/*/<br /></font><font color="#000000"><font color="#0000FF">int</font> a = 20;<br /></font>//*/</font><br><hr /><br><p><font color="#000000">주석 블럭이 스위치 되었다.</font></p><br><p>/*/ 을 더 많이 넣을 수도 있다. 그렇게 되면 홀수, 짝수 블럭이 동시에 교체된다.</p><br><p>개인적으로 매우 쓸모있는 팁이라고 생각한다.</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

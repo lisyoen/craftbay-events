@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>내 사진 #2</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-15 01:35:06</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">내 사진 #2</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224237/a0103766_496b8199e17d8.jpg'></center><br><br /><br>이건 좀 오래된 사진이지만 올려본다.<br /><br><br /><br>2001년도 사진이다.<br /><br><br /><br>당시엔 머리색이 좀 특이했다.<br /><br>저 머리카락이 자그마치 20만원 짜린데 설명하자면 좀 길다.<br /><br><br /><br>먼저 머리 끝 2cm 는 검은색이다. 그리고 곧장 노랗게 탈색되서 머리 뿌리로 갈 수록 탈색 정도가 옅어지면서 검어진다.<br /><br>흔히 털옷들 보면 털 끝만 짙게 검거나 갈색인것을 볼 수 있는데 그것과 매우 유사하다.<br /><br>바로 거기에서 착안해서 만든 머리인데 자그마치 7 시간이나 걸려서 만들었다.<br /><br>미용실에서 점심까지 먹어가면서 작업(?)했는데 머리 감은 횟수도 6~7 번은 되었던걸로 기억한다.<br /><br>그리고 집에 가서 머리 끝을 몇올씩 모아서 검은 색으로 다시 염색했다. 이건 어머니가 해주셨는데 이것도 두시간 가량 소요됐다.<br /><br><br /><br>사진에선 별로 보기 좋지 않지만 실제로 햇빛 아래에서 보면 만화 같은 윤기가 나는 모습이다. 저 머리에 상당한 자부심을 갖고 있었는데 결국 작년에 머리 손질하면서 다 잘려 나갔다.<br /><br><br /><br>그 후로는 미용실에 가본적이 없다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

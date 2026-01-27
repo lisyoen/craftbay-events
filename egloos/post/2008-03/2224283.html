@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>[퍼온글] 경영자와 엔지니어</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-03-18 16:00:07</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">[퍼온글] 경영자와 엔지니어</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">A man is flying in a hot air balloon and realizes that he is<br>lost. He reduces height and spots a man down below.<br>He lowers the balloon further and shouts, "Excuse me.<br>Can you help me? I promised a friend I would meet him<br>half an hour ago, but I don't know where I am."<div>The man below says, "Yes. You are in a hot air balloon,<br>hovering approximately 30 feet above this field. You are<br>between 40 and 42 degrees north latitude, and between<br>58 and 60 degrees west longitude.</div><div>"You must be an engineer" says the balloonist.</div><div>"I am", replies the man. "How did you know?"</div><div>"Well..." says the balloonist. "Everything you told be was<br>technically correct, but I have no idea what to make of<br>your information and the fact is I am still lost."</div><div>The man below says, "You must be a Manager"</div><div>"I am", replies the balloonist. "How did you know?"</div><div>"Well..." says the man. "You don't know where you are,<br>or where you are going. You made a promise which you<br>have no idea how to keep, and you expect me to solve<br>your problem. The fact is you are in the exact same<br>position you were in before we met but now it is somehow<br>my fault."</div><div><br>&gt;&gt; 해석</div><div><br>한 남자가 열기구를 타고 가다가, 그가 길을 잃어 버렸다는 걸 알게 되었다.<br>그는 고도를 낮추고, 밑에 한 사람이 있는 걸 보았다.<br>그는 기구를 더 낮추고 외쳤다.</div><div><br>"실례합니다. 말씀 좀 묻겠습니다.<br>전 30분전에 제 친구와 만나기로 했습니다만, 전 제가 어디 있는지도<br>모르겠습니다."</div><div><br>밑에 있는 남자가 말했다.</div><div>"네, 당신은 열기구에 타고 있고, 땅에서 약 30피트 위에 떠 있습니다.</div><div>당신은 북위 40도에서 42도 정도, 경도 58도에서 60도 정도에 있습니다."<br><br>기구에 타고 있는 사람이 말했다.</div><div>"당신은 아마 엔지니어가 틀림없겠군요."</div><div><br>"맞아요." <br><br>그가 말했다. <br>"어떻게 아셨죠?"</div><div><br>"음..." <br><br>기구에 타고 있는 사람이 말했다.</div><div>"당신이 말한 모든 것은 기술적으로 정확해요.<br>하지만 전 아직도 당신이 준 정보를 어떻게 이용해야 하는지 모르겠어요.<br>그리고 전 아직도 제가 어디 있는지 모르구요."</div><div><br>밑에 있는 남자가 말했다. <br>"당신은 경영자죠?"</div><div><br>"맞아요." <br><br>기구에 타고 있는 사람이 말했다. <br>"어떻게 알았죠?"</div><div><br>"음..." <br><br>그가 말했다.</div><div>"당신은 당신이 어디 있는지도 모르고, 어디로 가고 있는지도 몰라요<br>지키지도 못할 약속을 했고, 그걸 제가 해결해주길 바라죠.<br>결국 당신은 우리가 만나기 전과 상황이 하나도 변하지 않았지만,<br>이제는 어쨌든 그건 제 잘못이 되어버렸기 때문이죠."<br><br>출처 - 주경민님의 싸이월드(<a href="http://www.cyworld.com/amos0" target="_blank">http://www.cyworld.com/amos0</a>)<br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

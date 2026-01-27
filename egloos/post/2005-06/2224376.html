@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>배치파일 \NUL</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-06-22 14:52:33</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">배치파일 \NUL</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">test.bat 의 내용이다.<br><div>if exist %1NUL goto ex1<br /><br>goto end</div><br><div>:ex1<br /><br>echo ex1<br /><br>goto end</div><br><div>:end<br /></div><br><div>여기서 NUL 은 %1 이 디렉토리인지 파일인지 구분할 수 있게 해준다.</div><br><div>디렉토리이면 goto ex1. 아니면 goto end</div><br><div>만약 NUL 이 없다면 디렉토리든 파일이든 존재하기만 하면 goto ex1</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

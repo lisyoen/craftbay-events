@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>개발자의 오해</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-17 12:15:37</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">개발자의 오해</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224229/a0103766_496b8198abc6e.gif'></center><br><br /><br>개발자의 오해는 너무나도 실감나는 말들 뿐이다.<br /><br>아무리 잊지 않으려고 노력해도. 심지어 이 말들을 잊지 않고 있을 때에도 놓치는 실수가 허다하다.<br /><br><br /><br>이 오해들을 간파하고 있는 것이 바로 아마추어와 프로의 차이점이기도 하다.<br /><br><br /><br>○오해: 일단 프로그램이 만들어지고 작동하면 우리의 임무는 끝난다.<br /><br><br /><br>현실:<br /><br>- 사용자에게 '배달' 되고 '사용' 되어져야 한다.<br /><br>- 개발시간보다 장기간의 유지보수가 필요하다.<br /><br>- 소프트웨어가 배달되서 사용되기 시작하는것은 새로운 임무의 시작이다.<br /><br><br /><br>○오해: 시스템을 작동시켜 보기 전까지는 품질을 평가할 방법이 없다.<br /><br><br /><br>현실:<br /><br>- 소프트웨어 개발 공정마다 기술 검토를 통해 품질 평가가 이루어진다.<br /><br>- 요구사항 명세서의 기능들이 착실히 구현되고 있는가가 평가의 대상이 된다.<br /><br>- 개발 과정에서의 품질 평가 없이는 완성품의 품질 보증이 어렵다.<br /><br><br /><br>○오해: 프로젝트의 결과는 작동되는 프로그램 뿐이다.<br /><br><br /><br>현실:<br /><br>- 작동되는 프로그램은 프로젝트 결과물중의 하나일 뿐이다.<br /><br>- 개발 단계에서 나오는 문서가 중요한 결과물이 된다.<br /><br>- 문서는 단계의 완수 및 다음 단계의 착수를 위해 필요하며 궁극적으로 유지보수를 위해 없어서는 안될 중요 요수이다.<br /><br>- 소프트웨어의 생명력은 유지보수에 달려 있다. (문서의 개발이 중요하다.)</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

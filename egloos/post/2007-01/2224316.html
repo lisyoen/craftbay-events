@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Nagle 알고리즘</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-01-25 15:42:46</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Nagle 알고리즘</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">사방에서 퍼온 자료<br /><br><br /><br><br /><br><br /><br>1)<br /><br><br /><br>TCP 기반의 네트워크에서 사용하는 사실상 두 개의 개별적인 통신 폭주 제어 알고리즘. 한 알고리즘은 송신 윈도우(디스플레이의 표시화면)을 줄이는 것이고, 다른 한 알고리즘은 작은 데이터그램을 제한하는 것이다<br /><br><br /><br><br /><br><br /><br>2)<br /><br><br /><br>배경 : 작은 패킷은 저속의 WAN에서 혼잡에 영향을 줄 수 있다.<br /><br><br /><br>방법 : 작은 양의 데이터가 TCP에 의해 모아져 확인응답이 도착할 때에 보낸다<br /><br><br /><br>장점 : 자기 클럭조정(self-clocking). Ack가 빨리 돌아오면 데이터도 빨리 보내게 된다<br /><br><br /><br><br /><br><br /><br>3)<br /><br><br /><br>silly 윈도우 신드롬(흐름제어 적용)<br /><br><br /><br>전송/수신응용 프로그램이 데이터를 천천히 생성하거나 천천히 처리할 때 발생<br /><br><br /><br>예: 1byte 데이터 + 20 byte TCP 헤더 + 20 byte IP 헤더<br /><br><br /><br><br /><br><br /><br><br /><br>송신측에서 발생한 신드롬<br /><br><br /><br>가능한 한 바이트 데이터를 전송하지 못하게 함<br /><br><br /><br>데이터를 취합하여 큰 블록 데이터로 만들어 전송<br /><br><br /><br>Nagle 알고리즘 적용 : 송신 TCP에서 실행하는 알고리즘<br /><br><br /><br><br /><br><br /><br><br /><br>수신측에서 발생하는 신드롬<br /><br><br /><br>silly 윈도우 신드롬이 발생하는 상황에서 한 바이트 수신 처리 후에 윈도우 크기를 통보하게 되는 경우<br /><br><br /><br>clark 해결방법: 충분한 공간이 생기거나 적어도 버퍼가 반 이상 비었을 때까지 윈도우 크기를 0으로 통일<br /><br><br /><br>확인 응답 송신 지연: 수신버퍼가 충분한 공간이 생길때까지 확인 응답 보류<br /><br><br /><br><br /><br><br /><br><br /><br>4)<br /><br><br /><br>우리가 추측 했을 때, Nagle 알고리즘을 불가능하게 만들어 놔도 아무런 문제가 없었다. 그것은 기본적인 버퍼링 수단이다. 거기엔 작고의 문제가 아니라 모든 패킷에 대하여 혼합된 오버헤드가 발생된다. 그러므로 Nagle알고리즘은 작은 패킷을 모으고( 기껏해야 0.2초정도의 딜레이발생) 그러므로 전송하는 것에 대한 오버헤드를 줄이게 된다. 이 접근방식은 rcp에 대해서 잘 작동 한다. 예를 들어 0.2초 딜레이는 인간에게는 별로 못느끼는 시간이다. 그리고 다중 사용자 환경에서 사용자들은 자신의 패킷을 보다 효율적으로 전송할 수 있다. 대학교 같은 대부분의 일반 사용자가 표준툴, 예를 들어 rcp나 ftp나 telnet, 그런것들을 사용 하는데서는 도움을 줄 수 있을 것이다.<br /><br><br /><br><br /><br><br /><br><br /><br>그러나 Nagle알고리즘은 리얼타임시스템에서의 제어와 특히나 인터렉티브한 키 입력을 하는 어플리케이션에서는 안좋은 영 향을 미친다. 선택적으로 Nagle알고리즘을 통과하는 한가지 방법은 Out-of-bind메시지 시스템을 쓰는 것이다. 그러나 이것은 내 용물에 제약이 있고 또 다른 문제(순서의 상실:loss of sequentiality)를 일으킬 수 있다.<br /><br><br /><br><br /><br><br /><br><br /><br>16. TCP_NODELAY를 사용하는 방법은?<br /><br><br /><br><br /><br><br /><br><br /><br>우선, 처음부터 이것을 써야 하는지에 대해 먼저 생각해 봐라. 이것은 Nagle알고리즘을 못쓰게 만들어 버릴 것이다.(2.11의 소켓 버퍼에 있는 내용을 강제로 전달 할 수 있는 방법은 없나? 부분을 읽어봐라) 이것은 작은 패킷들을 양산하여 네트웍 트래픽 을 높일 수 있다. 또한 내가 말해줄 수 있는 것은 속도 증가는 미미하다는 것이다. 그러므로 일단은 TCP_NODELAY를 먼저 고려해 보고 그래도 안되면 써야 한다.<br /><br><br /><br>TCP_NODELAY는 Nagle 버퍼링 알고리즘을 중지시킬 특별한 목적으로 사용된다. 이것은 전송은 작은 단위로 자주 이루어 지지만 즉각적인 응답은 필요 없는 어플리케이션에서만 사용 되어야 한다.(마우스 움직임 같은)</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

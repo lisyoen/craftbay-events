@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>좀 특별한 단축키 소개</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-07-14 12:57:48</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">좀 특별한 단축키 소개</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">이걸 단축키라고 불러야 하는지 잘 모르겠지만.<div>오래전부터 알고 있던. 그러나 딱히 누군가에게도 알려준적이 없던 단축키를 하나 소개한다.</div><div>(숨기려고 했던게 아니라 별로 알려줄 꺼리가 아니었다)</div><div>바로 Asterisk (별표, *) 다.<br></div><div>그냥 별표(*)가 아니고 숫자키패드(키보드 우측의 숫자 키 모음)에 있는 별표(*)다.<br></div><div>기능 및 용도는 '하위 폴더 모두 확장' 이다.<br></div><div>아래와 같이 www 폴더를 선택하고 별표(*)를 누르면.</div><div><img src='./2224267/a0103766_496b819d3d8c9.jpg'></div><div>아래와 같이 확장된다.</div><div><img src='./2224267/a0103766_496b819d57cc1.jpg'></div><div>주의해야 할 점은.<br></div><div>하위폴더가 너무 많을 땐 탐색기가 반쯤 죽는다는거다.<br></div><div>이 단축키는 탐색기의 폴더뿐 아니라 각종 Tree 컨트롤에서도 적용된다.<br></div><div>또다른 주의사항으로. 반대 기능을 하는 단축키는 없다는거.<br></div><div>주의사항 맞나?<br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

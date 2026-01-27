@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>찻잔</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2012-01-12 16:53:08</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">찻잔</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div style="TEXT-ALIGN: left"></div><div style="TEXT-ALIGN: left"></div><div style="TEXT-ALIGN: center"></div><div style="TEXT-ALIGN: center"><img src='./10832210/a0103766_4f0e8f9ec8172.jpg'>[사진은 내용과 무관한 찻잔입니다. 이미지에 포함된 블로그에서 양해없이 퍼왔습니다.]<br><br><br><br><div style="TEXT-ALIGN: left"><br>2년전의 일이다.<br><br>작은아버지댁에 방문했다가&nbsp;뜻하지 않던&nbsp;선물을 받게 되었다.<br><br>작은아버지는 잘 포장된 박스를 여시고는 화려하게 금장된 찻잔 세트를 보여주셨다.<br><br>&nbsp; '내가 몇년전에 선물받은건데. 네가 가져가서 쓰거라.'<br><br>그러고는 이런 말씀을 하셨다.<br><br>&nbsp; '좋은게 생기면 모셔두지 말고 써야한다.<br>&nbsp;&nbsp;&nbsp;날 보렴. 결국 아껴두고 쓰지 못해서 너에게 선물하잖니?'<br><br>감사하다는 말씀을 남기고 찻잔을 집으로 가져왔다.<br><br><br>그리고 얼마전. <br><br>찻잔 세트는 이사를 도와주러 온 동생에게 건네졌다.<br><br>작은아버지께서 해주신 말씀과 함께.<br><br><br><br>누군가는 꼭 써주길 바라며.<br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

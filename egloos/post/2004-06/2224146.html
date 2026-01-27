@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>절대 진리는 존재하는가?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-06-25 11:39:55</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">절대 진리는 존재하는가?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">그 어느것도 불변할 수 없고, 그 어느것도 완벽할 수 없다.<div>시간과 공간을 초월해서 항상 참인 절대 진리가 존재할까?</div><div>일단 이를 다음과 같은 명제로 정의하자.</div><div><br>"절대 진리는 존재한다"</div><div><br>이것을 증명하기 위해서 역명제를 구한다.</div><div><br>"절대 진리는 존재하지 않는다"</div><div><br>역은 원명제와 정확히 반대의 논리를 갖는다. 따라서 역명제가 거짓이라면 원명제는 참이 된다.</div><div>여기서 "절대 진리는 존재하지 않는다" 라는 명제는 모순이다. 이 명제가 참이기 위해서는 자기 자신도 '절대 진리' 가 되어서는 안되기 때문이다.</div><div><br>마치 영화에서 흔히 등장하는 '아무도 믿지 마라' 라는 말과 같다. 그 말도 믿지 말아야 할 것인가?</div><div>결론적으로 "절대 진리는 존재하지 않는다" 라는 명제는 거짓이 되며 이의 원명제인 "절대 진리는 존재한다" 라는 명제는 참이 된다.</div><div>그렇다면 그 절대 진리는 과연 무엇일까?</div><div><br>바로 "절대 진리는 존재한다" 라는 명제. 자신이다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

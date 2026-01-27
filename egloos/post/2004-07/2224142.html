@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>커뮤니케이션</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-07-22 02:59:57</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">커뮤니케이션</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224142/a0103766_496b818969e6e.jpg'></div><div align="center"><br><img src='./2224142/a0103766_496b81897b885.jpg'><br>[관리자와 실무자의 잘못된 커뮤니케이션은 프로젝트 일정에 악영향을 미친다]</div><div><br>나는 Microsoft MVP 다.</div><div><br>이름은 거창하지만 사실 누군가 물어볼 때 잘 대답해주는 사람이라는 뜻이다.</div><div>그래서 항상 수 많은 사람들의 질문들을 헤집고 다니며 내가 대답해 줄 수 있는 것들을 찾곤 한다.</div><div><br>간혹 질문들 중에는 최초의 목적을 잊은 채 최종적인 결론만을 묻는 내용들을 볼 수 있다.</div><div>예를 들어 c:\ 에 있는 파일들의 목록을 얻고자 하는데 당장 생각나는게 도스 명령어 DIR 밖에 없다.</div><div>DIR 을 수행하면 도스창이 뜨면서 화면에 파일 목록이 출력되는데 이 화면에 출력되는걸 내가 가로채면 될것 같다.</div><div>그래서 질문하기를</div><div><br>"도스 화면을 내가 만든 프로그램에서 가로챌 수 있는 방법을 알려주세요"</div><div><br>얻을 수 있는 대답은 프로세스를 생성하면서 표준 IO 를 리디렉션하라는 내용일 것이다.</div><div>이건 마치 콩쥐가 부러진 호미로 밭을 갈고 있는걸 황소가 도와준다고 나서서 호미만 고치고 있는 격이다. 문제는 콩쥐가 '밭을 갈아줘' 라고 부탁한게 아니라 '호미가 망가져서 일을 할 수가 없어..' 라고 말한것이다. 황소탓은 아니다.</div><div><br>파일의 목록을 얻기 위해서는 findFile API 를 사용하면 된다.</div><div>원하는 경로의 파일들의 정보를 순차적으로 얻어올 수 있다.</div><div>이 해답을 얻기 위해서는 귀찮더라도 장황한 배경 설명이 필요하다.</div><div><br>"제가 c:\ 에 있는 파일 목록을 얻어와서 작업해야 하는데 도스 명령어 DIR 을 사용하려고 하거든요. DIR 을 실행시키는것 까지는 되는데 이게 화면에 출력되더라구요. 이걸 제 프로그램에서 읽어와서 분석하면 될것 같은데 무슨 방법이 없을까요?"</div><div><br>이렇게 질문했다면 반드시 이런 답변을 얻을 수 있다.</div><div><br>"파일 목록을 얻기 위해 도스의 DIR 명령을 사용하실 필요는 없습니다. findFile API 를 사용하시면 쉽게 원하는 경로의 파일 정보를 얻을 수 있습니다. 사용방법은... &lt;후략&gt;"</div><div><br>몰라서 묻는거니까 어디서부터 물어봐야 할지도 잘 모르는게 태반이다.</div><div>그렇다면 최대한 많이 알려주면 되는것 아닌가.</div><div><br>내가 질문글을 쓰는데 10분 더 투자하면 원하는 답변을 24시간 빨리 얻을 수 있다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

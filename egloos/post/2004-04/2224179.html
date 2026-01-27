@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>서버 프로그래머는...</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-04-09 04:49:28</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">서버 프로그래머는...</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">서버 프로그래머는.<br /><br><br /><br>메모리를 우습게 생각한다.<br /><br>아니. 우습게 생각해야 한다.<br /><br><br /><br>수KB 의 메모리를 아끼기 위해 CPU 한 클럭(clock)을 소모해야 한다면 생각할 겨를도 없이 메모리를 포기한다. 아니 포기해야 한다.<br /><br><br /><br><br /><br>서버 프로그래머는.<br /><br><br /><br>아티스트(Artist)가 아닌 엔지니어(Engineer) 여야 한다. 아무리 예술적인 작품을 만들 수 있더라도 설계도와 달라선 안된다.<br /><br><br /><br><br /><br>서버 프로그래머는.<br /><br><br /><br>공격수가 아니라 골키퍼다.<br /><br>마케팅팀과 운영팀이 클라이언트 프로그램으로 싸울 때 그들의 뒤를 지켜봐야 한다.<br /><br>위기가 없으면 칭찬받을 일도 없다. 잘해야 본전이다.<br /><br><br /><br><br /><br>서버 프로그래머는.<br /><br><br /><br>후... 참으로 힘든 일이다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

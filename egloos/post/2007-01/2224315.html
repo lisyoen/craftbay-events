@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>RAID 레벨 정리</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-01-25 15:44:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">RAID 레벨 정리</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">RAID 레벨 정리<br /><br><br /><br><br /><br><br /><br>RAID-0 : 이 방식은 스트라이프를 가지고는 있지만 데이터를 중복해서 기록하지 않는다. 따라서, 가장 높은 성능을 기대할 수 있지만, 고장대비 능력이 전혀 없으므로 이 방식은 진정한 RAID라고 하기 어렵다.<br /><br>RAID-1 : 이 형식은 흔히 디스크 미러링이라고도 하는데, 중복 저장된 데이터를 가진 적어도 두 개의 드라이브로 구성된다. 스트라이프는 없으며, 각 드라이브를 동시에 읽을 수 있으므로 읽기 성능은 향상된다. 쓰기 성능은 단일 디스크 드라이브의 경우와 정확히 같다. RAID-1은 다중 사용자 시스템에서 최고의 성능과 최고의 고장대비 능력을 발휘한다.<br /><br>RAID-2 : 이 형식은 디스크들간에 스트라이프를 사용하며, 몇몇 디스크들은 에러를 감지하고 수정하는데 사용되는 ECC 정보가 저장되어 있다. 이 방식은 RAID-3에 비해 장점이 없다.<br /><br>RAID-3 : 이 형식은 스트라이프를 사용하며, 패리티 정보를 저장하기 위해 별도의 드라이브 한 개를 쓴다. 내장된 ECC 정보가 에러를 감지하는데 사용된다. 데이터 복구는 다른 드라이브에 기록된 정보의 XOR를 계산하여 수행된다. 입출력 작업이 동시에 모든 드라이브에 대해 이루어지므로, RAID-3은 입출력을 겹치게 할 수 없다. 이런 이유로 RAID-3는 대형 레코드가 많이 사용되는 업무에서 단일 사용자시스템에 적합하다.<br /><br>RAID-4 : 이 형식은 대형 스트라이프를 사용하며, 이는 사용자가 어떤 단일 드라이브로부터라도 레코드를 읽을 수 있다는 것을 의미한다. 이것은 데이터를 읽을 때 중첩 입출력의 장점을 취할 수 있도록 한다. 모든 쓰기 작업은 패리티 드라이브를 갱신해야하므로, 입출력의 중첩은 불가능하다. RAID-4는 RAID-5에 비해 장점이 없다.<br /><br>RAID-5 : 이 형식은 회전식 패리티 어레이를 포함한다. 그러므로 RAID-4에서의 쓰기 제한을 주소 지정한다. 그러므로 모든 읽기/쓰기 동작은 중첩될 수 있다. RAID-5는 패리티 정보를 저장하지만 데이터를 중복저장하지는 않는다 (그러나 패리티 정보는 데이터를 재구성하는데 사용될 수 있다). RAID-5는 보통 3 ~ 5개의 디스크를 어레이로 요구한다. RAID-5는 성능이 그리 중요하지 않고 쓰기 작업이 많지 않은 다중 사용자시스템에 적합하다.<br /><br>RAID-6 : 이 형식은 RAID-5와 비슷하지만, 다른 드라이브들 간에 분포되어 있는 2차 패리티 구성을 포함함으로써 매우 높은 고장대비 능력을 제공한다. 현재로서는 RAID-6의 상용 모델은 거의 없다.<br /><br>RAID-7 : 이 형식은 컨트롤러로서 내장되어 있는 실시간 운영체계를 사용하며, 속도가 빠른 버스를 통한 캐시, 독자적인 컴퓨터의 여러 가지 특성들을 포함하고 있다. 현재 단 하나의 업체만이 이 시스템을 제공한다.<br /><br>RAID-10 : 이 형식은 각 스트라이프는 RAID-1 드라이브 어레이인 스트라이프 어레이를 제공한다. 이 방식은 RAID-1보다 높은 성능을 제공하지만, 값이 더 비싸다.<br /><br>RAID-53 : 이 형식은 각 스트라이프는 RAID-3 디스크 에레이인 스트라이프 어레이를 제공한다. 이 방식은 RAID-3보다 높은 성능을 제공하지만, 값이 더 비싸다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

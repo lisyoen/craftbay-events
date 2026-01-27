@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>필요악(必要惡) 이란?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-21 00:24:02</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">필요악(必要惡) 이란?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">필요악은 '필요' 와 '악' 으로 상반되는 대표적인 역설법이다.<br /><br><br /><br>그렇다면 필요악 이라는 말은 '필요' 와 '악' 중에 어느것이 더 강조되는 말일까?<br /><br><br /><br>'필요하지만 나쁜 것이다'<br /><br><br /><br>'나쁘지만 필요한 것이다'<br /><br><br /><br>당연히.<br /><br><br /><br>'필요'다.<br /><br><br /><br>과연 이것이 MS 의 독점을 정당화 시켜줄 수 있을까?</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

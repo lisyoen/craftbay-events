@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>이해의 끝에서 인정하다</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-12-22 16:17:56</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">이해의 끝에서 인정하다</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">서로 다른 문화와 환경에서 살아온 사람들을 이해한다는건 쉬운 일이 아니다.<br><br>같은 공간에서 태어나 자라왔더라도 판단의 기준이 다르고 이해관계가 다르다.<br><br>이렇게 서로 같을 수 없는 사람들을 이해하려고 노력하다가 얻은 결론은&nbsp;'인정' 이다.<br><br>상대를 '나와 다른 판단기준을 가진 사람' 이라고 인정하는 것이다.<br><br><br>이렇게 이해되지 않는 사람들과 이해되지 않는 사건들을 인정하며 살다보니 <br><br>차마 인정할 수 없는 진실과 맞부딛히게 되었다.<br><br><br>서로 다르다는것을 인정하다가 만난 인정의 끝에서.<br><br>나는 내가 모든 사람을 인정할 수 없다는 사실 또한 인정하게 되었다.<br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

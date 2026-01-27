@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>겸손함의 처세술</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-11-05 16:36:40</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">겸손함의 처세술</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">흔히.<br><br>할 수 있으면서 못하는 척.<br>알고 있으면서 모르는 척.<br><br>이런걸 '겸손함' 의 표현으로 생각하곤 한다.<br><br>하지만 대부분의 경우. 이건 그냥 '처세술' 이다.<br><br>마치 범죄현장을 목격했지만 괜한 시간 뺏기기 싫어서 못본척 하는것과 같다.<br><br><br>사전을 찾아보면&nbsp;'겸손'이란 '남을 존중하고 나를 내세우지 않는 태도가 있음' 이라고 나온다.<br><br>할 수 있으면 하고.<br>알고 있으면 알려주자.<br><br>겸손의 핵심은 겉으로 드러나는 행동이 아니라 상대를 존중하는 마음가짐이다.<br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

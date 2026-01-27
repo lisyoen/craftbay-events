@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>오주희</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2013-11-18 14:22:17</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">오주희</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div><ul style="font-family: Tahoma; line-height: normal; orphans: 2; text-align: -webkit-auto; widows: 2; font-size: medium;"><li>2013-03-12 ~ 2013-04-11</li><li>생년월일 1988/05/21</li><li>혈액형 O형</li><li>010-7330-3079</li><li><img src="file:///C:/Users/lisyoen/AppData/Local/Temp/enhtmlclip/entodo_unchecked.png" />남산 가기 (계단으로)</li><li>미니 푸들 3마리<ul><li>뽀미, 미미, 별이</li></ul></li><li>치과 근무 (장안동)<ul><li>장평교 건너</li><li>연세흰돌치과<ul><li><a>02-2215-9507</a></li><li><a>서울특별시 동대문구 장안2동 331-4 신성빌딩 2층</a></li></ul></li></ul></li><li>음식<ul><li>초콜렛</li><li>새콤달콤</li><li>이오</li><li>버거킹<ul><li>치즈와퍼</li></ul></li><li>치킨<ul><li>KFC</li><li>호식이 치킨<ul><li>양념, 후라이드</li></ul></li></ul></li><li><br></li></ul></li><li>면목동 한신아파트 6동 305호</li><li>교회<ul><li>강남구청 근처</li><li>금요일 청년부 모임(11-12시 끝남)</li></ul></li><li>떡볶이, 치킨, 피자</li><li>파티공구 남양주시 일패동 722-1</li><li><img src="file:///C:/Users/lisyoen/AppData/Local/Temp/enhtmlclip/entodo_checked.png" />손편지 쓰기</li></ul><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

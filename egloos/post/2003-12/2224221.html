@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>아놀드파마</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-30 18:45:34</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">아놀드파마</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224221/a0103766_496b819724bfc.jpg'></center><br><br /><br>고등학교때 일이다.<br /><br><br /><br>친구 성환이네 집에 갔는데 아놀드 파마 운동화 박스를 봤다.<br /><br>그런데 자세히 보니<br /><br><br /><br>"ARNOLD PALMER"<br /><br><br /><br>푸하하. 아놀드 팔머다. 아놀드파마 짝퉁!<br /><br><br /><br>성환이랑 다른 짝퉁 메이커 얘기를 주고 받으면서 한참을 웃었다.<br /><br><br /><br>나중에서야 알았다...<br /><br>PALMER 의 'L' 이 묵음이란걸...<br /><br><br /><br>ARNOLD PALMER. 오리지널 메이커 네임이다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

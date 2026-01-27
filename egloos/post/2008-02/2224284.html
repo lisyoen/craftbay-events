@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>Prime number</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-02-28 18:17:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">Prime number</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">소수(Prime number)는 자기 자신과 1 이외의 자연수로 나누어 떨어지지 않는 자연수를 말한다.<div>예를 들자면 2, 3, 5, 7, 11, 13.. 등이 있다.</div><div><br></div><div><strong>[문제] 자연수 N이 소수인지 아닌지를 판별하는 알고리즘을 시간복잡도 O( sqr(N) ) 이하로 기술하시오.</strong></div><div><br></div><div>흔히들 학교에서 배우는 O(N) 알고리즘은 이렇게 기술할 수 있겠습니다.</div><div>'N을 2부터 N-1 까지의 자연수로 나누어 나머지가 0이 되는 값이 존재하면 소수가 아니다'</div><div>수도코드(Pseudocode)로 나타내면 다음과 같습니다.</div><div><br><table bgcolor="#EEEEEE"><tbody><tr><td><div>c 를 2 부터 N-1 까지 1 씩 증가시키며 순환</div><div>{</div><div>&nbsp;&nbsp; &nbsp;N/c 의 나머지가 0 이면 N 은 소수가 아님. 끝.</div><div>}</div><div>N 은 소수임. 끝.</div></td></tr></tbody></table><div><br></div><div>뜬금없는 문제 죄송합니다.</div><div>어떤 형식이라도 좋으니 기술해보세요.</div><div><br></div><div>혹시 O( sqr(N) ) 미만의 시간 복잡도로 풀 수 있을까요?</div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

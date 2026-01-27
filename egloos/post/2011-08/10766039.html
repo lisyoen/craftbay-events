@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>즐겨찾기</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-08-24 00:07:04</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">즐겨찾기</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div>[성인]</div><div><a href="http://one2days.com/" target="_blank">http://one2days.com</a> - 서울/수도권 안마,오피,건마 업소 제휴 사이트&nbsp;(수퍼소닉)</div><div><div><br></div><div>http://www.ya-hs4.com/ - 야행성, 서울/수도권 안마,오피,건마 업소 제휴 사이트 (수퍼소닉)</div><div>http://www.abam5.com/ - 아찔한밤,&nbsp;<span style="font-size: 9pt;">서울/수도권 안마,오피,건마 업소 제휴 사이트 (수퍼쏘닉)</span></div><div><a href="http://zltang.net/"><br>http://zltang.net</a>&nbsp;- 안마,오피,건마 업소 제휴 사이트&nbsp;(수퍼소닉)<br></div><div><u><span style="COLOR: #0066cc"><a href="http://zzltang.net/">http://zzltang.net</a></span></u></div><div><u><a href="http://zzltang.net/"></a></u><font color="#0066cc"><u>http://www.playter4.com/<br></u></font><br><a href="http://www.jumuler.com/" target="_blank">http://www.jumuler.com</a>&nbsp;- 마사지 제휴 사이트&nbsp;(수퍼소닉)</div></div><div><a href="http://sinfuler.com/">http://sinfuler.com</a>&nbsp;- 통합 사이트 (수퍼소닉)</div><div><a href="http://freeyt.org/">http://freeyt.org</a>&nbsp;- 여탑 (수퍼마인드)</div><div><a href="http://tangdori.net/">http://tangdori.net</a>&nbsp;- 탕도리 (수퍼소닉)</div><div>http://www.ramboda2.com</div><div><br></div><div>http://anmayam.com 안마야</div><div>http://www.mysasu11.com 사랑과 수다 (사수)</div><div><br></div><div>http://bamgi.com/ 밤문화 기행기 (밤기)</div><div>http://jjzoa9.com/jj/main.php 제이제이</div><div><br></div><div>http://star393.kr/ 나비야</div><div>https://www.bamdae.com 밤대</div><div><br></div><div>http://wip124.com/ 거래처</div><div><br></div><div>820830-1051217</div><div><br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

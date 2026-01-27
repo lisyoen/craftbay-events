@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>진보와 보수 #2</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-06-18 11:11:18</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">진보와 보수 #2</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">진보/보수와 관련해 세상에는 크게 네 부류의 사람들이 있다.<div><br>1. 진보적인 사람.</div><div>2. 자신이 진보인줄 알지만 보수적인 사람.</div><div>3. 보수적인 사람.</div><div>4. 자신이 보수인줄 알지만 진보적인 사람.</div><div><br>[진보적인 사람]은 앞에 나가 자기 할 일을 한다.</div><div>[보수적인 사람]은 자기 자리에서 자기 할 일을 한다.</div><div>[진보인줄 알지만 보수적인 사람]은 자기 자리에서 일하면서 앞에 나간 사람들의 방향이 잘못됐다고 욕한다.</div><div>[보수인줄 알지만 진보적인 사람]은 앞에 나가 일하면서 앞에 나온 다른 사람들의 방향이 잘못됐다고 욕한다.</div><div><br>나는 결코 '진보 == 보수세력을 욕하는 사람들' 이라고 생각하지 않는다.</div><div>오히려 '보수세력을 욕하는 것' 은 그들의 성향을 전혀 반영하지 않는다고 생각한다.</div><div>그들의 성향을 반영하는 것은 명백히 '어디에 서 있는가' 일 뿐이다.</div><div>그것은 '착한사람 == 나쁜사람을 욕하는 사람' 이 아닌것과 마찬가지다.</div><div><br>'나쁜 사람을 욕하는 것' 은 그 사람의 성향을 반영하지 않는다.</div><div>그들의 성향을 반영하는 것은 명백히 '어떤 일을 하는가' 일 뿐이다.<br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

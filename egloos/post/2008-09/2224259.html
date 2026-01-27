@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>MD5, SHA-1 격파..</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-09-28 04:07:32</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">MD5, SHA-1 격파..</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">뉴스가 아니고.<div>2005년 3월 얘기다. 올드 이슈라고 해야하나...</div><div>내가 이리도 관심이 없었던건지.</div><div>이제야 알았다.<br></div><div><br>맙소사.. MD5 도 모자라서 SHA-1 이 격파되다니.. (중국 무섭군...)</div><div>어차피 해시라는게 사용 용도가 넓어서 Collision 이 가능한 공식을 찾았다는것 만으로 쓰레기가 되는건 아니지만.</div><div>마치 맥가이버칼의 제일 긴 칼이 부러진것 같은 기분이랄까?</div><div><br>원문 기사</div><div><a href="http://www.jabo.co.kr/sub_read.html?uid=10076&amp;section=section4&amp;wdate=1112251408" target="_blank">http://www.jabo.co.kr/sub_read.html?uid=10076&amp;section=section4&amp;wdate=1112251408</a></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

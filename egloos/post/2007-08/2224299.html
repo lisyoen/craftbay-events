@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>이제는 널 지우려고 해</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-08-13 15:46:10</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">이제는 널 지우려고 해</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">null 을 delete 해버리면 어떻게 될까?<div><span style="COLOR: #0000ff"><br>if</span> (pData) <span style="COLOR: #0000ff">delete</span> pData;</div><div><br>이 얼마나 숱하게 써온 구문이던가.</div><div>그런데 null 을 delete 하면 에러가 발생한다고 적혀 있는 책을 본 적이 있는가?</div><div>아니면 그렇게 가르치는 선생님, 교수님을 본 적이 있는가?</div><div><br>C++ 표준에 의하면 delete 는 null 을 처리할 수 있도록 (하지만 아무것도 '처리' 하지 않도록) 정의되어 있다.</div><div>하지만 나는 항상 null 이 들어가지 않도록 하기 위해 수 없이 if 구문을 쳐대거나</div><div>SAFE_DELETE 따위의 매크로를 만들어서 써댔다.</div><div><br>정말. 모르면 손발이 고생한다는 말이 정확히 들어맞는 상황인것 같다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

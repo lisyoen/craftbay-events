@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>쓰레기 지식인</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-04-03 11:14:44</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">쓰레기 지식인</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224279/a0103766_496b819ee1b6d.jpg'><br>[네이버 지식검색 '설탕 포화 소금' 검색 결과]<br></div><div><strong><br></strong></div><div><strong>소금 포화용액에 설탕을 넣으면? (혹은 '설탕 포화용액에 소금을 넣으면?')</strong></div><div><br></div><div>이 질문에 대해 채택된 7건의 답변을 분류해보면 다음과 같다.</div><div>(상반된 의견이 복수채택된 경우도 있음. 채택되지 않은 답변들도 대체로 아래 분류에 속한다)</div><div><br></div><div>1. 용해도 독립설. - <strong>3건</strong></div><div>용해도는 용질마다 독립적으로 작용하므로 <font color="#FF0000">소금으로 포화된 용액이라도 설탕이 포화량만큼 용해된다</font>.</div><div><br></div><div>2. 분자 크기 영향설. - <strong>2건</strong></div><div>자갈 틈새에 모래가 끼어들어가듯이 큰 분자의 포화용액에는 작은 분자의 용질이 용해된다. (단, 포화량만큼 용해되지는 않는다)</div><div>즉, <font color="#FF0000">소금으로 포화된 용액이라도 설탕이 포화량보다 적게 용해된다.</font></div><div><br></div><div>3. 용해도 공유-석출설. - <strong>1건</strong></div><div>용해도는 용질에 구분없이 공유되므로 <font color="#FF0000">소금으로 포화된 용액에 설탕을 용해시키면 일정량의 소금이 석출된다.</font></div><div><br></div><div>4. 용해도 공유-불용해설. - <strong>1건</strong></div><div>용해도는 용질의 구분없이 공유되므로 <font color="#FF0000">소금으로 포화된 용액에 설탕을 용해시키면 용해되지 않는다.</font></div><div><br></div><div>* 이 외에도 '잘 안녹는 쪽이 석출될것 같다. 정확한건 실험을 해봐야 알 수 있다' 라는 <strike>쓰레기</strike> 답변 1건이 채택되었음.</div><div>정녕 이들이 같은 교육을 받은 사람들이란 말인가???</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

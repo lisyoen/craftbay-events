@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>칭찬의 역효과</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-12-14 15:11:26</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">칭찬의 역효과</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">우연히 보게된 '칭찬의 역효과' 라는 포스팅.<br><br>EBS 다큐 프라임의 내용을 캡쳐한 것이다.<br>다큐 프라임 자주 봤는데 이 중요한걸 놓쳤었군.<br><br>원문: <br><a href="http://www.parkoz.com/zboard/view.php?id=images2&amp;page=1&amp;page_num=50&amp;select_arrange=headnum&amp;desc=asc&amp;sn=off&amp;ss=on&amp;sc=off&amp;divpage=19&amp;keyword=&amp;no=92867&amp;category=&amp;show=all"><br>http://www.parkoz.com/zboard/view.php?id=images2&amp;page=1&amp;page_num=50&amp;select_arrange=headnum&amp;desc=asc&amp;sn=off&amp;ss=on&amp;sc=off&amp;divpage=19&amp;keyword=&amp;no=92867&amp;category=&amp;show=all</a><br><br>칭찬이라는 마약은 적절히 사용하면 고통을 없애주고 지친이들에게 활력을 불어넣어주지만.<br>그것에 중독되면 인생의 목표를 잃고 칭찬만을 위해 살게된다.<br><br>학창시절의 노력과 끈기가 사회에서까지 이어지지 않는건.<br>부모님으로부터 받던 칭찬의 금단증상 때문이 아닐까?</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

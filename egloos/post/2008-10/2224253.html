@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>비어 있어도 0은 아니다.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-10-17 14:45:55</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">비어 있어도 0은 아니다.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><font color="#0000FF">class</font> <font color="#0000FF">MyBase</font><br /><br>{<br><div>&nbsp;&nbsp;&nbsp; <font color="#008000">// 멤버 변수가 없는 클래스.<br /></font>};<br /><br><font color="#0000FF">class MyDerived : public MyBase<br /></font>{<br /><br>&nbsp;&nbsp;&nbsp; <font color="#0000FF">short</font>&nbsp;&nbsp; <font color="#808080">m_nVar1</font>;<br /><br>};<br /></div><br><div><font color="#0000FF">int</font> <font color="#800000">main</font>( <font color="#0000FF">int</font> <font color="#808080">argc</font>, <font color="#0000FF">char</font>* <font color="#808080">argv</font>[] )<br /><br>{<br /><br>&nbsp;&nbsp;&nbsp; <font color="#800000">printf</font>( "MyBase size = %d\n", <font color="#0000FF">sizeof</font>( <font color="#0000FF">MyBase</font> ) );<br /><br>&nbsp;&nbsp;&nbsp; <font color="#800000">printf</font>( "MyDerived size = %d\n", <font color="#0000FF">sizeof</font>( <font color="#0000FF">MyDerived</font> ) );<br /><br>&nbsp;&nbsp;&nbsp; <font color="#0000FF">return</font> 0;</div><br><div>}</div><br><div>&nbsp;</div><br><div>결과는 아래와 같다.</div><br><div>&nbsp;</div><br><div>MyBase size = 1</div><br><div>MyDerived size = 2</div><br><div>&nbsp;</div><br><div>테스트 환경은 Windows XP, Visual Studio 2003 C++ Complier, 기본 정렬 (정렬 옵션과 무관하게 1,2 가 출력됨)</div><br><div>&nbsp;</div><br><div>컴파일러 종류에 따라 다른 값이 나올 것이다. 구 버전의 VC++ 컴파일러에서는 Derived size 가 3 이 나오는 것을 봤다.</div><br><div>특이한것은 멤버 변수가 전혀 없는 클래스라도 크기가 1 이라는 점이다.</div><br><div>&nbsp;</div><br><div>만약 크기가 0이라면 new MyBase 는 아무 주소나 반환해도 될 것이다.</div><br><div>어차피 그 주소로부터 0바이트라는 의미니까.</div><br><div>&nbsp;</div><br><div>크기가 없다면 데이터라고 부를수나 있을까?</div><br><div>질량이 없다면 물체라고 부를 수 없는것 처럼.</div><br><div>&nbsp;</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

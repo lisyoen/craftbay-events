@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>김민경</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2009-10-21 03:25:05</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">김민경</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">◆ 이름: 김민경 (2009/03 개명, 본명 김기정)<div>◆ 성별: 여</div><div>◆ 생년월일: 1979/11/30(양), 1979/10/14(음) 축시 태생</div><div>◆ 주민등록번호: 791203-2907116</div><div>◆ 거주지/거주형태: 역삼동 선릉역 근처 빌라. 여동생 둘과 동거.<br>-&gt; 송파구 방이동 131-2 다솔주택 202호에 나와 함께 동거 (2010/06/31)</div><div>◆ 직장정보: (주)에시즈글로벌 (현석이네 회사)</div><div>◆ 근무형태:&nbsp;정직원</div><div>◆ 전화번호: 010-2488-6878 -&gt; 010-5545-1014 (2010/10/18)</div><div>◆ 이메일: </div><div>◆ 홈페이지: http://www.cyworld.com/love-3 </div><div>◆ 취미생활: 등산, 영화보기, 드라마보기</div><div>◆ 특기: </div><div>◆ 혈액형: A형</div><div>◆ 신장/체중:</div><div>◆ 특이사항:</div><div>◆ 가족관계: 부, 모, 삼녀중 장녀. </div><div>◆ 기타 개인 정보:<br>경남대 미술교육학 전공. 초등학교 미술교사, 미술관 큐레이터, 작사가, 고등학교 미술교사, 아시아나 비서실 근무, The Sting 바 근무(2009.8.10~2010.3)</div><div>◆ 주변 인물 정보: <br></div><div>김연승(1980) 첫째 여동생, 괴생명체<br>김선숙(1983) 둘째 여동생, 별명:추파춥스(얼굴이 둥글고 몸이 마름)<br>◆ 보안사항: <div>◆ 기타: <br>2009/09/24 넥슨 퇴사 송별회에서 The Sting Bar 에 가면서 처음 만남.<br>2009/10/21 뭔가 기분이 좋다.<br>2009/10/24 연애 시작.<br>2010/8/23 결혼<br><br></div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

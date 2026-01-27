@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>옹호 화술</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-02-26 14:30:28</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">옹호 화술</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p><img src='./2224200/a0103766_496b81936a3cd.jpg'></p><br><p>살다보면 누군가를 미워하게 되고 누군가를 감싸줘야 할 때가 있다.</p><br><p>대화 상대가 싫어하는 누군가를 옹호해줘야 할때.</p><br><p>결코 그 누군가가 옆에 있다고 생각해서는 안된다.</p><br><p>그리고 그 누군가와 일대일로 사용하는 호칭을 사용하는것은 좋지 않다.</p><br><p>예를 들면 이렇다.</p><br><p>[상황1] 지난 수업에 수학선생님의 오해로 매맞은 친구를 달래줄 때.</p><br><p>안 좋은 말: "... 그때 <font color="#FF0000"><strong>선생님께서</strong></font> 너를 <strong><font color="#FF0000">보셨으니까</font></strong> 네가 조는 줄 알았던거지..."<br /><br>권장되는 말: "... 그때 <strong><font color="#0000FF">그 사람이</font></strong> 너를 <font color="#0000FF"><strong>봤으니까</strong></font> 네가 조는 줄 알았던거지..."</p><br><p>[상황2] 처음 소개한 남자친구를 부모가 못마땅해 할 때.</p><br><p>안 좋은 말: "... <strong><font color="#FF0000">지석씨</font></strong>가 당황해서 그렇지 원래 그런 사람은 아녜요 엄마."<br /><br>권장되는 말: "... <strong><font color="#0000FF">그 사람</font></strong>이 당황해서 그렇지 원래 그런 사람은 아녜요 엄마."</p><br><p>옹호하려는 대상과의 친밀도를 높게 보일 수록 대화 상대는 거부감을 느끼게 될 것이다.</p><br><p>대화의 흐름은 말 속에 담긴 의미와 논리보다 상대에게 주는 감정에 의해 좌우되는 경우가 많다.</p><br><p>이것을 잘 컨트롤 할 수 있다면 누구에게나 기분좋은 대화로 기분 좋은 결론을 낼 수 있지 않을까?</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

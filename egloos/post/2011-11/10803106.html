@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>애들은 가라.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-11-09 03:10:01</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">애들은 가라.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div style="TEXT-ALIGN: center"><img src='./10803106/a0103766_4eb970372f7ee.gif'><br><strike>어차피 읽는 사람도 없었지만</strike><br>이제 여기다가 욕도 할꺼고&nbsp;비판도 할꺼다.<br><br>순수함이 살아있는 애들은 가라.<br>괜히 읽어보고나서 방향성없는 정의감으로&nbsp;재잘대지말고.<br><br>욕한거 읽으면 괜히 지가 욕먹은거 같아서 기분 틀어지는 꼬맹이들 말이다.<br>너희는 아직 모르겠지만 이 사회는 욕먹어도 싼놈들이 존재하는 곳이란다.<br><br>안타깝게도 너희가 커서&nbsp;그걸&nbsp;알게된다는 보장은 없단다.<br>독재정권하에서 TV만 보고 산다면 말야.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

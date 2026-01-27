@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>구간 주석(/*  */) 주의사항</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-10-11 13:36:54</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">구간 주석(/*  */) 주의사항</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div>* 이 게시물은 이글루로 옮겨오면서 손상되었습니다. 주석 표시가 되지 않는군요.</div><div><br></div>* 흔히 알고 있는 내용이지만 정리도 할겸 참고삼아 적습니다.<div>구간 주석(/- 으로 시작해서 *- 으로 끝나는)은 오류 발생 가능성이 있어서 사용에 주의가 필요하다.</div><div>구간 주석은 중첩 사용할 경우 오류를 발생시킨다.</div><div><br>원본 소스다.<div><hr></div><span style="FONT-FAMILY: 굴림체"><span style="COLOR: #0000ff"><span style="COLOR: #969696">01</span> int <span style="COLOR: #000000">a = 10;</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">02</span> /- 원래의 주석 블록</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">03</span> int b = 20;</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #008000"><span style="COLOR: #969696">04</span> *-</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #969696">05</span> int</span> <span style="COLOR: #000000">c = 30;</span><br></span><hr><br><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #000000">주석을 중첩시키면 아래와 같이 된다.</span></span><div><hr></div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">01</span> /- 추가된 주석 블록</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #000000"><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">02</span> int a = 10;</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">03</span> /-</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">04</span> int b = 20;</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #008000"><span style="COLOR: #969696">05</span> *-</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #969696">06</span> int</span> <span style="COLOR: #000000">c = 30;</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">07</span> <span style="COLOR: #000000">*-</span></span><hr></div><div>원래 의도와는 다르게 06번 라인은 주석에서 제외되었으며 07번 라인에서는 문법에러가 발생한다.</div><div>그래도 문법에러가 발생하는건 다행이다.</div><div>필자의 주석 방식대로라면 문법에러도 발생하지 않는다.<div><hr></div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">01</span> /- 추가된 주석 블록</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #000000"><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">02</span> int a = 10;</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">03</span> /-</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">04</span> int b = 20;</span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #008000"><span style="COLOR: #969696">05</span> //-/</span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #969696">06</span> int</span> <span style="COLOR: #000000">c = 30;</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">07</span> //-/ 이게 필자의 주석 닫는 방식이다</span><hr></div><div>보기 좋게 예외 상황이 발생했다.</div><div>이런 경우를 막기 위해서 구간 주석 보다는 전처리 구문인 #if 나 #ifdef 를 사용한다.<div><hr></div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">01</span> <span style="COLOR: #0000ff">#if</span> <span style="COLOR: #000000">0</span> <span style="COLOR: #008000">// 추가된 주석 블록</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #000000"><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">02</span> <span style="COLOR: #0000ff">int</span> <span style="COLOR: #000000">a = 10;</span></span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">03</span> <span style="COLOR: #0000ff">#if</span> <span style="COLOR: #000000">0</span> <span style="COLOR: #008000">// 원래의 주석 블록</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">04</span> <span style="COLOR: #0000ff">int</span> <span style="COLOR: #000000">b = 20;</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #008000"><span style="COLOR: #969696">05</span> <span style="COLOR: #0000ff">#endif</span></span></span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #0000ff"><span style="COLOR: #969696">06</span> int</span> <span style="COLOR: #000000">c = 30;</span></span></div><div><span style="FONT-FAMILY: 굴림체; COLOR: #008000"><span style="COLOR: #969696">07</span> <span style="COLOR: #0000ff">#endif</span></span><hr></div><div>단, 이 경우에 VC++ 편집기는 전처리 구문을 주석으로 표시하지 않는다. (녹색으로 표시하지 않는다)</div><div>일부 편집기들은 전처리 구문으로 제외시킨 코드를 별도의 색으로 표시해주기도 한다.</div><div>각각 장단점이 있으므로 필요에 맞춰 사용하는 것이 중요하겠다.</div><div><br>* 사실 주석도 전처리 구문이다. 즉, 전처리기(Preprocessor)를 통과하면 소스에서 사라진다. 보통 #이 붙은 것만을 전처리 구문으로 부르고 있기 때문에 여기서는 별도로 구분했다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

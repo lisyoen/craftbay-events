@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>무법자의 천국</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-03-22 11:00:23</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">무법자의 천국</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">대한민국은 범법자의 천국이다.<div>법을 어긴 다수가 큰 소리를 내서 법을 뜯어 고치기도 하고</div><div>범법자의 편의를 위해 무고한 준법자(?)들의 권리를 침해하는 규정을 만든다.</div><div>4년전. 전국적으로 시행된 '교통법규위반 신고보상금 제도'(일명 카파라치 제도)는 시행 2년만에 '국민간의 위화감을 조성한다' 라는 등의 이유로 폐지되었다.</div><div><br>그리고 오늘.</div><div>서초구는 불법주정차로 인한 견인이 과도하다는 시민들의 민원에 따라 불법주정차 차량을 견인하지 않고 바퀴에 잠금쇠를 설치한 뒤 차주가 과태료를 부과하면 풀어주는 방식을 도입하기로 결정했다.</div><div><br>대체.</div><div>카파라치 제도를 시행한 이유는 무엇이었는지 기억이나 하는걸까?</div><div>또 불법주정차 차량을 견인했던 이유는 무엇이었던가?</div><div>그 제도를 시행했던 궁극적인 이유는 어디로 가고 제도에 걸려든 사람들의 원성만 남아 있단 말인가.</div><div><br>[마치며]</div><div>* 카파라치 제도가 폐지된 2003년은 카파라치 제도가 시행되기 이전인 2001년보다 교통법규 위반 건수가 증가했다. (1대당 위반건수 기준, 약3% 증가, 2001 년전 까지는 매년 비슷한 수준이었음)</div><div>* 카파라치 제도가 시행되던 첫 해에는 신고자가 급증하여 교통법규 위반 건수가 크게 증가했으나 시행 이듬해인 2002년에는 신고자의 꾸준한 증가에도 불구하고 1대당 위반건수가 10% 가량 감소했다.</div><div>* 카파라치 제도는 아직도 일부 지방 자치 단체에 의해 시행중이다.</div><div>* 새로운 불법주정차 단속방법에 대한 자료는 현재 아무것도 없다. 얼마나 지속될 지도 예측하기 어렵다. 하지만 퇴근후 집 앞에서 잠금쇠가 채워진 채 내 주차장에, 혹은 대문 앞에 세워져 있는 누군가의 차량을 발견하게 된다면 이 제도가 그리 오래 갈 수 없다는 것을 쉽게 예상할 수 있을 것이다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>김소연</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-06-30 17:50:58</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">김소연</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">◆ 이름: 김소연<br><div>◆ 성별: 여</div><br><div>◆ 생년월일: 1980/09/26</div><br><div>◆ 거주지/거주형태: 문정동 삼성 래미안 아파트</div><br><div>◆ 직장정보:</div><br><div>◆ 근무형태: 인턴 (2006/7 중 퇴사 예정)</div><br><div>◆ 전화번호: 016-9244-9883</div><br><div>◆ 이메일:</div><br><div>◆ 홈페이지: <a href="http://www.cyworld.com/kimsoyon"><font color="#333333">http://www.cyworld.com/kimsoyon</font></a></div><br><div>◆ 취미생활: 게임(와우)</div><br><div>◆ 특기: 노래(대학교에서 락밴드 보컬이었음)</div><br><div>◆ 혈액형: A</div><br><div>◆ 신장/체중: 162/44 (추정치)</div><br><div>◆ 특이사항: 외대 정보통신 공학과 -&gt; 고대 건축학과로 편입</div><br><div>◆ 가족관계: 부모님 여동생</div><br><div>◆ 기타 개인 정보:</div><br><div>고대에서 사귀던 남자친구가 있다고 함.</div><br><div>2006/7 현재 아직 남자친구는 학생이라고 함.</div><br><div>디제이 학원을 다녔음.</div><br><div>2006/8/6 컬러리스트 시험</div><br><div>플라워리스트 시험을 보고 싶어함.</div><br><div>◆ 주변 인물 정보:</div><br><div>◆ 기타:</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

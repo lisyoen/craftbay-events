@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>nslookup 도움말</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2009-01-13 03:46:36</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">nslookup 도움말</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div class="itemContent"><div>Mail Exchange server 찾는건 nslookup -type=MX &lt;domain&gt;</div><div>&nbsp;</div><div>그만좀 까먹자.</div><div>&nbsp;</div><div>Commands:&nbsp;&nbsp; (identifiers are shown in uppercase, [] means optional)<br>NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - print info about the host/domain NAME using default server<br>NAME1 NAME2&nbsp;&nbsp;&nbsp;&nbsp; - as above, but use NAME2 as server<br>help or ?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - print info on common commands<br>set OPTION&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set an option<br>&nbsp;&nbsp;&nbsp; all&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - print options, current server and host<br>&nbsp;&nbsp;&nbsp; [no]debug&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - print debugging information<br>&nbsp;&nbsp;&nbsp; [no]d2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - print exhaustive debugging information<br>&nbsp;&nbsp;&nbsp; [no]defname&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - append domain name to each query<br>&nbsp;&nbsp;&nbsp; [no]recurse&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - ask for recursive answer to query<br>&nbsp;&nbsp;&nbsp; [no]search&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - use domain search list<br>&nbsp;&nbsp;&nbsp; [no]vc&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - always use a virtual circuit<br>&nbsp;&nbsp;&nbsp; domain=NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set default domain name to NAME<br>&nbsp;&nbsp;&nbsp; srchlist=N1[/N2/.../N6] - set domain to N1 and search list to N1,N2, etc.<br>&nbsp;&nbsp;&nbsp; root=NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set root server to NAME<br>&nbsp;&nbsp;&nbsp; retry=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set number of retries to X<br>&nbsp;&nbsp;&nbsp; timeout=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set initial time-out interval to X seconds<br>&nbsp;&nbsp;&nbsp; type=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set query type (ex. A,ANY,CNAME,MX,NS,PTR,SOA,SRV)<br>&nbsp;&nbsp;&nbsp; querytype=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - same as type<br>&nbsp;&nbsp;&nbsp; class=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set query class (ex. IN (Internet), ANY)<br>&nbsp;&nbsp;&nbsp; [no]msxfr&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - use MS fast zone transfer<br>&nbsp;&nbsp;&nbsp; ixfrver=X&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - current version to use in IXFR transfer request<br>server NAME&nbsp;&nbsp;&nbsp;&nbsp; - set default server to NAME, using current default server<br>lserver NAME&nbsp;&nbsp;&nbsp; - set default server to NAME, using initial server<br>finger [USER]&nbsp;&nbsp; - finger the optional NAME at the current default host<br>root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - set current default server to the root<br>ls [opt] DOMAIN [&gt; FILE] - list addresses in DOMAIN (optional: output to FILE)<br>&nbsp;&nbsp;&nbsp; -a&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; list canonical names and aliases<br>&nbsp;&nbsp;&nbsp; -d&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; list all records<br>&nbsp;&nbsp;&nbsp; -t TYPE&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; list records of the given type (e.g. A,CNAME,MX,NS,PTR etc.)<br>view FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - sort an 'ls' output file and view it with pg<br>exit&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; - exit the program</div></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

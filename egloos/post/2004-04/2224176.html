@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>피타고라스의 정리는 잊어버려!</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-04-20 13:25:25</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">피타고라스의 정리는 잊어버려!</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224176/a0103766_496b818f48446.gif'><br /><br>[초등학교 5학년 탐구생활 마지막 문제]</div><br>내가 대학교 다닐때의 일이다.<br><div>당시 초등학교 5학년이던 사촌 여동생이 방학숙제로 나온 '탐구생활' 을 들고와서 나에게 물었다.</div><br><div>바로 위 그림이 그 문제다.</div><br><div>"철수의 집은 학교와 강 건너편에 있다. 철수의 집에서 학교까지 직선 거리가 몇 걸음인지 구하는 방법을 설명하시오."</div><br><div>물론 원래 문제는 좀 더 초등학생적 용어와 어투였을 것이다.</div><br><div>초등학교 5학년은 이 문제를 어떻게 풀 수 있을까?<br /><br>(아래쪽을 드래그 하면 정답 후보 두개가 보입니다)</div><br><div><font color="#FFFFFF"><font style="BACKGROUND-COLOR: #ffffff" color="#000000">[정답후보1]<br /></font>수 많은 정답이 있겠지만 그 중 한가지는 '그림을 그려서 자로 잰다' 입니다.<br /><br>집-다리, 다리-학교 사이의 거리는 직접 걸어가면서 걸음거리를 잽니다.<br /><br>하지만 이 방법은 자칫 잘못하면 비례식으로 풀게 됩니다.</font></div><br><div><font color="#FFFFFF"><font color="#000000">[정답후보2]</font><br /><br>집-다리, 다리-학교 사이의 거리를 직접 걸어가면서 재고 다리에서 학교 반대방향으로 다리-학교 만큼 걸어간 다음 똑바로 집까지 걸어오면서 걸음거리를 잽니다.<br /><br>하지만 이 방법은 집 근처에 장애물이 없어야 가능합니다.</font></div><br><div><font color="#FFFFFF">과연 초등학교 5학년은 이 문제를 어떻게 풀까요?</font></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

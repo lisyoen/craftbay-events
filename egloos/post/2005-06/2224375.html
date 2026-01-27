@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>const 와 pointer</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-06-22 16:44:17</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">const 와 pointer</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">void encode(const int* src)<br><div>{</div><br><div>src++; // OK</div><br><div>(*src)++; // Error</div><br><div>}</div><br><div>결국 const 인 것은 src 가 아니라 *src 인 셈이다.</div><br><div>이로 미루어 볼 때 int* src 의 의미는.</div><br><div>int* src; // src 변수는 int 형의 포인터 이다.</div><br><div>가 아니라</div><br><div>int *src; // src 라는 포인터는 int 형이다.</div><br><div>라고 볼 수 있다.</div><br><div>이것은</div><br><div>int * a, b;</div><br><div>에서 a 만 포인터인 것과 일맥상통한다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>C# DES, RSA, MD5</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-09-28 03:45:21</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">C# DES, RSA, MD5</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">crypt-9352-bugsoda.cs최상단의 const string desKey는 DES암호화에 필요한 키데이터이고 이 키 값은 임의로 정의해서 쓰시면 됩니다. 이 키값은 암호화와 복호화에 쓰이게 되므로 유출될 시에 문제가 발생할 수 있겠죠.<br><div>출처는.. 데브피아 같은데 까먹었습니다 -_- (죄송합니다.)<br /><br>원본소스를 조금 수정한 버전이라 다를수도 있겠네요.</div><br><div>C#으로 작성된 소스이며, VS.NET에서는 기본적으로 암호화 함수를 지원하고 있습니다. 아래 코드는 이 암호화함수들을 사용하는 셈플이지요.</div><br><div>using System;<br /><br>using System.Security;<br /><br>using System.Security.Cryptography;<br /><br>using System.Text;<br /><br>using System.IO;</div><br><div>namespace Utility<br /><br>{<br /><br>/// &lt;summary&gt;<br /><br>/// Crypt에 대한 요약 설명입니다.<br /><br>/// &lt;/summary&gt;<br /><br>public class Crypt<br /><br>{<br /><br>// 암호화 키<br /><br>private const string desKey="......";</div><br><div>public Crypt()<br /><br>{<br /><br>//<br /><br>// TODO: 여기에 생성자 논리를 추가합니다.<br /><br>//<br /><br>}</div><br><div>//------------------------------------------------------------------------<br /><br>#region MD5 Hash</div><br><div>public static string MD5HashCrypt(string val)<br /><br>{<br /><br>byte[] data = Convert.FromBase64String(val);<br /><br>// This is one implementation of the abstract class MD5.<br /><br>MD5 md5 = new MD5CryptoServiceProvider();<br /><br>byte[] result = md5.ComputeHash(data);</div><br><div>return Convert.ToBase64String(result);<br /><br>}</div><br><div>#endregion //MD5 Hash</div><br><div>//------------------------------------------------------------------------<br /><br>#region DES암복호화</div><br><div>// Public Function<br /><br>public static string DESEncrypt(string inStr)<br /><br>{<br /><br>return DesEncrypt(inStr,desKey);<br /><br>}</div><br><div>//문자열 암호화<br /><br>private static string DesEncrypt(string str,string key)<br /><br>{<br /><br>//키 유효성 검사<br /><br>byte[] btKey = ConvertStringToByteArrayA(key);</div><br><div>//키가 8Byte가 아니면 예외발생<br /><br>if(btKey.Length!=8)<br /><br>{<br /><br>throw (new Exception("Invalid key. Key length must be 8 byte."));<br /><br>}</div><br><div>//소스 문자열<br /><br>byte[] btSrc = ConvertStringToByteArray(str);<br /><br>DESCryptoServiceProvider des = new DESCryptoServiceProvider();<br /><br><br /><br>des.Key = btKey;<br /><br>des.IV = btKey;</div><br><div>ICryptoTransform desencrypt = des.CreateEncryptor();</div><br><div>MemoryStream ms = new MemoryStream();</div><br><div>CryptoStream cs = new CryptoStream(ms, desencrypt,<br /><br>CryptoStreamMode.Write);</div><br><div>cs.Write(btSrc, 0, btSrc.Length);<br /><br>cs.FlushFinalBlock();</div><br><div><br /><br>byte[] btEncData = ms.ToArray();</div><br><div>return (ConvertByteArrayToStringB(btEncData));<br /><br>}//end of func DesEncrypt</div><br><div>// Public Function<br /><br>public static string DESDecrypt(string inStr) // 복호화<br /><br>{<br /><br>return DesDecrypt(inStr,desKey);<br /><br>}</div><br><div>//문자열 복호화<br /><br>private static string DesDecrypt(string str,string key)<br /><br>{<br /><br>//키 유효성 검사<br /><br>byte[] btKey = ConvertStringToByteArrayA(key);</div><br><div>//키가 8Byte가 아니면 예외발생<br /><br>if(btKey.Length!=8)<br /><br>{<br /><br>throw (new Exception("Invalid key. Key length must be 8 byte."));<br /><br>}</div><br><div><br /><br>byte[] btEncData = ConvertStringToByteArrayB(str);<br /><br>DESCryptoServiceProvider des = new DESCryptoServiceProvider();<br /><br><br /><br>des.Key = btKey;<br /><br>des.IV = btKey;</div><br><div>ICryptoTransform desdecrypt = des.CreateDecryptor();</div><br><div>MemoryStream ms = new MemoryStream();</div><br><div>CryptoStream cs = new CryptoStream(ms, desdecrypt,<br /><br>CryptoStreamMode.Write);</div><br><div>cs.Write(btEncData, 0, btEncData.Length);</div><br><div>cs.FlushFinalBlock();</div><br><div>byte[] btSrc = ms.ToArray();</div><br><div><br /><br>return (ConvertByteArrayToString(btSrc));<br /><br><br /><br>}//end of func DesDecrypt</div><br><div>//문자열-&gt;유니코드 바이트 배열<br /><br>private static Byte[] ConvertStringToByteArray(String s)<br /><br>{<br /><br>return (new UnicodeEncoding()).GetBytes(s);<br /><br>}</div><br><div>//유니코드 바이트 배열-&gt;문자열<br /><br>private static string ConvertByteArrayToString(byte[] b)<br /><br>{<br /><br>return (new UnicodeEncoding()).GetString(b, 0, b.Length);<br /><br>}</div><br><div>//문자열-&gt;안시 바이트 배열<br /><br>private static Byte[] ConvertStringToByteArrayA(String s)<br /><br>{<br /><br>return (new ASCIIEncoding()).GetBytes(s);<br /><br>}</div><br><div>//안시 바이트 배열-&gt;문자열<br /><br>private static string ConvertByteArrayToStringA(byte[] b)<br /><br>{<br /><br>return (new ASCIIEncoding()).GetString(b, 0, b.Length);<br /><br>}</div><br><div>//문자열-&gt;Base64 바이트 배열<br /><br>private static Byte[] ConvertStringToByteArrayB(String s)<br /><br>{<br /><br>return Convert.FromBase64String(s);<br /><br>}</div><br><div>//Base64 바이트 배열-&gt;문자열<br /><br>private static string ConvertByteArrayToStringB(byte[] b)<br /><br>{<br /><br>return Convert.ToBase64String(b);<br /><br>}</div><br><div>#endregion //DES암복호화</div><br><div>//------------------------------------------------------------------------<br /><br>#region RSA암복호화<br /><br>//RSA 암호화<br /><br>public static string RSAEncrypt(string sValue,string sPubKey)<br /><br>{<br /><br>//공개키 생성<br /><br>byte [] keybuf = Convert.FromBase64String(sPubKey);<br /><br>sPubKey = (new UTF8Encoding()).GetString(keybuf);<br /><br>System.Security.Cryptography.RSACryptoServiceProvider oEnc = new RSACryptoServiceProvider(); //암호화</div><br><div><br /><br>oEnc.FromXmlString(sPubKey);</div><br><div>//암호화할 문자열을 UFT8인코딩<br /><br>byte [] inbuf = (new UTF8Encoding()).GetBytes(sValue);<br /><br>//암호화<br /><br>byte [] encbuf = oEnc.Encrypt(inbuf, false);<br /><br><br /><br>//암호화된 문자열 Base64인코딩<br /><br>return Convert.ToBase64String(encbuf);<br /><br>}<br /><br>//RSA 복호화<br /><br>public static string RSADecrypt(string sValue,string sPrvKey)<br /><br>{<br /><br>//개인키 생성<br /><br>byte [] inbuf = Convert.FromBase64String(sPrvKey);<br /><br>sPrvKey = (new UTF8Encoding()).GetString(inbuf);</div><br><div>//RSA객체생성<br /><br>System.Security.Cryptography.RSACryptoServiceProvider oDec = new RSACryptoServiceProvider(); //복호화<br /><br>//개인키로 활성화<br /><br>oDec.FromXmlString(sPrvKey);</div><br><div>//sValue문자열을 바이트배열로 변환<br /><br>byte [] srcbuf = Convert.FromBase64String(sValue);</div><br><div>//바이트배열 복호화<br /><br>byte [] decbuf = oDec.Decrypt(srcbuf, false);</div><br><div>//복호화 바이트배열을 문자열로 변환<br /><br>string sDec = (new UTF8Encoding()).GetString(decbuf,0,decbuf.Length);<br /><br>return sDec;<br /><br>}</div><br><div>#endregion</div><br><div>}<br /><br>}<br /></div><br><div>출처</div><br><div><a href="http://choiwonwoo.egloos.com/669096" target="_blank">http://choiwonwoo.egloos.com/669096</a></div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

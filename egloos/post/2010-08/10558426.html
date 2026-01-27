@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>2bits parity check. for 32 bits data</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-08-20 02:27:32</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">2bits parity check. for 32 bits data</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>오늘 문뜩 32bits 데이터의 2bits 짝수 패리티 체크 함수를 만들다가.<br><br>번쩍!<br><br>// 2bits even parity check<br>bool CheckParity(unsigned long uData)<br>{<br>&nbsp;&nbsp;&nbsp; uData ^= (uData &gt;&gt; 16);<br>&nbsp;&nbsp;&nbsp; uData ^= (uData &gt;&gt; 8);<br>&nbsp;&nbsp;&nbsp; uData ^= (uData &gt;&gt; 4);<br>&nbsp;&nbsp;&nbsp; uData ^= (uData &gt;&gt; 2);<br>&nbsp;&nbsp;&nbsp; return ((uData &amp; 0x3) == 0);<br>}<br><br>근데 결국 사용하지 않게 되었다.<br>에러 체크 방법이 패리티가 아니더라고... 췟.<br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

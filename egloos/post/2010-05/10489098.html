@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>윈도우 공유폴더 로그 설정</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-05-18 14:35:42</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">윈도우 공유폴더 로그 설정</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>윈도우 2000에서 현재 접속자 확인은 <br>관리도구 - 공유폴더 - 세션 을 통해 확인 할 수 있습니다.<br><br>관리를 통해서 로그분석이 중요한데, 이 세션에 관한 로그(누가, 언제 접속했는지에 관한 로그)는 보안정책을 편집하여, 누가 해당 폴더에 접근했을때 수동으로 로그 기록에 남기도록 하게 만들어 관리 할 수 있습니다.<br><br>세션 자체의 기록은 로그온/로그오프 이벤트로 볼 수 있지만, 폴더와 연관된 기록은 보안정책의 편집말고는 확인이 불가능 합니다.<br><br>그러므로, 보안정책에서 감사정책을 사용하도록 설정한 후, 해당 폴더의 보안 - 고급 탭에서 감사설정을 해놓으면, 어떤 사용자가 액션을 취할 때 이벤트를 남기게 됩니다.</p><p>&nbsp;</p><p>※ 그러나 로그가 별로 맘에 들지 않는다. 알아보기 어렵다 ㅡㅡ <div class="autosourcing-stub"><p style="PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-WEIGHT: normal; FONT-SIZE: 12px; PADDING-BOTTOM: 0px; MARGIN: 11px 0px 7px; PADDING-TOP: 0px; FONT-STYLE: normal; FONT-FAMILY: Dotum"><strong style="PADDING-RIGHT: 7px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px">[출처]</strong> <a href="http://blog.naver.com/ships95/120050283616" target="_blank">윈도우 공유 폴더 기록 로그 남기기.</a><span style="PADDING-RIGHT: 7px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px">|</span><strong style="PADDING-RIGHT: 7px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; PADDING-TOP: 0px">작성자</strong> <a href="http://blog.naver.com/ships95" target="_blank">비우꺼</a></p></div><p></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

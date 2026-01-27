@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>구글 애드센스 수표 추심수수료(기업은행)</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2010-02-17 16:11:13</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">구글 애드센스 수표 추심수수료(기업은행)</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>다음은 기업은행의 외화수표 매입시 추심수수료입니다.<br>(2010/02/17 기업은행 교대역 지점에서 확인)<br><br>300$ 이하 : 5,000원<br>300~500$ : 7,500원<br>500~1000$ : 10,000원<br>1000$ 초과 : 20,000원<br><br>추가적으로 환가료가 부가됩니다.<br>환가료는 50만원에 360원 정도 부가되었으니 무시해도 좋을 정도입니다.<br><br>구글 애드센스 외화수표 추심/매입 하시는 분들 참고하세요.<br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

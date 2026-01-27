@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>프로그래머의 연산 우선순위?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-15 12:15:49</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">프로그래머의 연산 우선순위?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224166/a0103766_496b818cc14e2.jpg'></center><br><center><br /><br>[사진은 내용과 별 상관 없습니다]</center><br>출근길에 라디오에서 스승의날에 관련된 사연을 소개해주고 있었다.<br /><br><br /><br>내용은 대학원생들이 각자 25만원씩 각출해서 교수님 4분에게 상품권을 선물해 드리기로 했다는것. 대학원생은 8명이라고 했다.<br /><br>사연의 요점은 이 상품권이 선물이냐 뇌물이냐였다. 25만원이면 가히 큰 돈임이 분명하다. 게다가 올해 스승의 날은 토요일이라 대표가 혼자 상품권을 전달해 드리기로 했다는 것이다. 얼핏 들어도 선물이라기 보다는 뇌물 관행으로 밖에 보이지 않는다.<br /><br><br /><br>사연에서 이것을 계산하기를. "8명의 대학원생이 각각 25만원씩을 냈으니까 총 200만원의 돈이 모이는데 이걸 교수님 4분께 나눠드리면 한분당 50만원어치의 상품권을 드리게 된다" 라고 했다.<br /><br><br /><br>교수님 한분께 드리는 금액을 계산하기 위해서 일반인들은 다음과 같은 연산을 하는 것이다.<br /><br><br /><br>(8 x 25) / 4 = 50<br /><br>8명이 25만원씩 모아서 200만원을 만들고 교수님 4분께 나눠드린다<br /><br><br /><br>프로그래머라면 이렇게 계산할 것이다.<br /><br><br /><br>(8 / 4) x 25 = 50<br /><br>8명이 4명의 교수님을 2명당 1분씩 맡고 각각 25만원씩을 모아 드린다.<br /><br><br /><br>사실 이 연산은 어떻게 하든 상관없다. 하지만 문제를 작은 단위로 나누어 처리하는것이 프로그래머의 작업 우선순위가 아닐까?<br /><br><br /><br>물론 모든 프로그래머가 이에 동의할 리는 없다.<br /><br>각자의 분야에 따라 다른 우선순위가 필요할 것이기 때문이다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

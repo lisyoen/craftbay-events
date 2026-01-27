@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>크리스마스 캐롤</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-12-25 11:58:42</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">크리스마스 캐롤</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">스크루지(Scrooged)로 유명한 소설.<br><div>소설은 돈 많은 구두쇠 스크루지가 자신의 과거, 현재, 미래를</div><br><div>통해 개과천선 하는 내용을 다루고 있다.</div><br><div>사실 이 소설은 돈에 대한 내용이 아니다.</div><br><div>스크루지는 돈에 대한 구두쇠를 표현한 인물이 아니라</div><br><div>마음에 대한 구두쇠인 우리 대다수의 사람들을 대변하고 있다.</div><br><div>마음에 대한 구두쇠.</div><br><div>마음은 많지만 남에게 주기를 꺼려하고 남의 마음을 받기만</div><br><div>좋아하는 그런 사람이다.</div><br><div>자신의 마음이 남에게 내비쳐질까봐 언제나 조심하면서</div><br><div>남의 마음은 꺼내 보여주길 요구하는 사람이다.</div><br><div>소설에서는 이런 구두쇠 스크루지에게 과거, 현재, 미래를</div><br><div>보여줌으로써 자신을 돌아보게 하는 계기를 마련해주고 있다.</div><br><div>--</div><br><div>스크루지에게 시간을 넘나들며 무엇을 보여줬나?</div><br><div>바로 제 3자의 시선이다.</div><br><div>눈앞에서는 자신에게 복종하고 따르던 사람이 실제로는</div><br><div>어떤 마음을 갖고 있는지 보여준 것이다.</div><br><div>만약에 구두쇠 스크루지에게 유령이 나타나지 않았다면?</div><br><div>스크루지는 본인만의 세상에서 올바르게(?) 살아가다가</div><br><div>생을 마감했을 것이다.</div><br><div>본인은 남의 미움을 받는것도 몰랐을 것이고 죽은 후에도</div><br><div>묘비에 침이 쏟아지는 것을 알 수 없었을 것이다.</div><br><div>어찌보면 이 소설은 3자의 평가로부터 자유롭지 못한</div><br><div>인간들의 모습을 보여주는 것인지도 모른다.</div><br><div>자신의 세상에서는 충분히 행복했던 스크루지.</div><br><div>소설은 스크루지에게 행복에 대한 사회적인 잣대를 들이댔다.</div><br><div>--</div><br><div>같은 소설에 대한 다른 평가.</div><br><div>한 사람의 인생에 대한 다른 평가.</div><br><div>무엇이 옳고 그른지를 판단하기 전에</div><br><div>자신의 기준이 무엇인지를 생각해보자.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

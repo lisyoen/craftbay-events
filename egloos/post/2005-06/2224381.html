@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>갑과 을</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-06-08 02:37:06</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">갑과 을</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">갑은 돈으로 노동력을 사는 사람.<div>을은 노동력을 돈받고 파는 사람.<br><br></div><div>갑이 말한다.</div><div>'이번 일은 매우 쉽습니다. 당신이라면 간단하게 해결할 수 있겠군요.'</div><div><br>을이 말한다.</div><div>'매우 어려운 문제 같군요. 해결하는데 시간이 상당한 시간이 걸릴것 같아요.'</div><div><br>갑은 자신이 하지도 않을 일에 대해 '난이도' 를 말할 필요가 없다. 그가 말하는 '쉽고 간단한 일' 이란건 '돈을 적게 줘도 되는 일' 이라는 뜻이다.</div><div><br>을은 시작도 하지 않은 일에 대해 '일정의 지연' 을 말할 이유가 없다. 그가 말하는 '상당한 시간' 이란건 '더 많은 보수' 라는 뜻이다.</div><div><br>사실 갑은 이렇게 말했다.</div><div>'이번 일에는 많은 돈을 지불하기 싫습니다. 싼 값에 일을 해주세요.'</div><div><br>을도 역시 이렇게 말했다.</div><div>'돈을 많이 주셔야겠습니다. 이건 상당히 비싼 일이예요.'</div><div><br>-</div><div><br>이 말뜻을 이해하지 못하면 서로 쓸데없는 대화를 하게 된다.</div><div>당신의 능력이라면 분명히 쉬운일 이라던지... 자신은 일정 내에 일을 끝낼 자신이 없다는 등..</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

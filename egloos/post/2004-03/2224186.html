@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>다윗왕의 반지</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-03-29 16:46:10</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">다윗왕의 반지</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p align="center"><img src='./2224186/a0103766_496b819121993.jpg'><br /><br>[본 사진은 글의 내용과 다소 관계가 없습니다]</p><br><p>고대 이스라엘의 다윗 왕이 어느날 궁중의 세공장을 불러 자신을 기리는 아름다운 반지를 하나 만들라고 지시하며 “반지에는 내가 큰 승리를 거둬 기쁨을 억제하지 못할 때 스스로를 자제할 수 있고, 반면 큰 절망에 빠졌을 때 좌절하지 않고 용기를 얻을 수있는 글귀를 새겨넣도록 해라”고 주문했다.</p><br><p>반지를 만들어놓고도 적합한 글귀가 생각나지 않아 며칠을 끙끙대던 세공장은 지혜롭기로 소문난 솔로몬 왕자를 찾아갔다.</p><br><p>세공장의 고민을 들은솔로몬은 잠시 생각한 뒤 말했다.</p><br><p>"이것 또한 곧 지나가리라"</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

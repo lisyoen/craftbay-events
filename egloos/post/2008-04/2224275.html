@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>&#39;역지사지(易地思之)의 한계</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2008-04-25 12:56:47</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">&#39;역지사지(易地思之)의 한계</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">누군가를 이해하기 위해 흔히 사용하는 방법으로 '역지사지(易地思之)'가 있다.<br><div>즉, 입장을 바꿔 생각해 본다는 거다.</div><br><div>가장 손쉽게 누군가를 이해할 수 있는(?) 방법이다.</div><br><div>하지만 입장을 바꿔 생각하는 것 만으로 모든 것을 다 이해할 수는 없다.</div><br><div>그 입장이 실제로 되어봐야 알 수 있는 (외부에서는 볼 수 없는) 수 많은 사실과 경험들</div><br><div>그 사람이 갖고 있는 과거, 정보, 경험들.</div><br><div>그 순간에 발생했던 특별한 사건.</div><br><div>이렇게 당신이 알 수 없는 수 많은 정보가 여전히 변수인 것이다.</div><br><div>따라서.</div><br><div>'역지사지'로 누군가를 이해할 수 있다고 생각하는 것 자체가 교만이고 억지다.</div><br><div>운 좋게 당신이 '이해했다' 라는 생각이 들더라도. 결코 자만하지 말자.</div><br><div>그저 당신이 세상을 너무 쉽게 바라보는 것 뿐일지도 모른다.</div><br><div>타인의 행동에 대한 당신이 취할 수 있는 마음자세는</div><br><div>그를 '인정' 하는것 뿐이다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

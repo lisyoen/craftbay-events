@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>지진</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-01-20 21:32:01</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">지진</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224317/a0103766_496b81a483de1.gif'></center><br><br /><br>사무실에서 지진을 느꼈다.<br /><br><br /><br>강릉 서쪽 23km 부근에 진도 4.8 규모의 지진이 발생했다고 한다.<br /><br><br /><br>재난 방재청에서 여진에 대비하라는 긴급문자가 날아오고<br /><br><br /><br>강원도 휘닉스파크에 있는 동생이 안부전화를 걸어왔다.<br /><br><br /><br>짧은 시간이었지만.<br /><br><br /><br>"내가 죽으면 어떻게 될까?"<br /><br><br /><br>라는 생각을 해봤다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

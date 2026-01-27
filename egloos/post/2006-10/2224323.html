@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>디버그 경보</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-10-25 17:39:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">디버그 경보</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224323/a0103766_496b81a533b8b.jpg'><br>[경보 종류와 신호 방법]<br></div><div align="left"><br></div><div align="left">훌륭한 경보 체계를 갖고 있더라도 사람들이 알지 못하면 아무 소용이 없다.</div><div align="left"></div><div align="left">다음은 메모리관련 오류를 디버깅하기 위해 Visual C++ 이 제공하는 메모리 상태값들이다.</div><div align="left"></div><div align="left"><br></div><div align="left">0xcccccccc -&gt; 지역변수. 초기화되지 않음.<br>0xcdcdcdcd -&gt; 힙에 할당된 메모리. 초기화되지 않음.<br>0xdddddddd or 0xfeeefeee -&gt; 힙에서 free된 메모리.<br>0xfdfdfdfd -&gt; 힙에 할당된 메모리의 초과범위(할당된 메모리의 양쪽 끝)</div><div align="left"></div><div align="left"><br></div><div align="left">이 값들은 디버그 모드로 동작할 때에만 설정된다.</div><div align="left">확실히 기억해서 공습에 대비하자.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

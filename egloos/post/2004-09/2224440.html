@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>두 수의 평균 구하기</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-09-21 17:25:12</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">두 수의 평균 구하기</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">흔히 알고 있는 두 숫자의 평균을 구하는 방법은 다음과 같다.<br><div>'두 숫자를 더해서 2로 나눈다'</div><br><div>이것을 C/C++ 코드로 보면 다음과 같다.</div><br><div>int a = 10;</div><br><div>int b = 20;</div><br><div>int c = (a + b) 2;</div><br><div>이 방법은 a 와 b 의 값이 매우 크거나 매우 작은 경우 (매우 작은 경우는 매우 큰 경우에 -1 을 곱하면 된다) 에는 적용할 수 없다.</div><br><div>다음 코드를 실행해 보자.</div><br><div>int a = 1000000000;<br /><br>int b = 2000000000;<br /><br>int c = (a + b) / 2;<br /></div><br><div>c 에 들어가는 값은 1500000000 이 아닌 -647483648 와 같은 엉뚱한 값이 된다.</div><br><div>분명히 a 의 값도, b 의 값도, 그리고 계산 결과인 c 의 값도 int 의 범위에 들어간다. 하지만 a + b 는 3000000000 (30억)이 되어 int 의 범위를 넘어서게 된다. (int 의 표현 범위는 대략 ±21억이다)</div><br><div>여기서 발생되는 오버플로우가 이처럼 엉뚱한 결과를 가져다 주는 것이다.</div><br><div>이와 같은 오류를 방지하기 위해서는 다음과 같이 평균을 구해야 한다.</div><br><div>int a = 1000000000;<br /><br>int b = 2000000000;<br /><br>int c = (a &gt; b ? (a - b) / 2 + b : (b - a) / 2 + a);</div><br><div>?: 연산자가 익숙하지 않은 분들을 위해 풀어쓰면 다음과 같다.</div><br><div>int a = 1000000000;<br /><br>int b = 2000000000;</div><br><div>int c;</div><br><div>if (a &gt; b)</div><br><div>c = (a - b) / 2 + b;</div><br><div>else</div><br><div>c = (b - a) / 2 + a;</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>아이스바 만드는법</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-06-28 12:34:22</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">아이스바 만드는법</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p align="center"><img src='./2224145/a0103766_496b818a1c487.jpg'></p><br><p align="center">[아이스바]</p><br><p>요즘 회사에서 아이스바를 만들어 먹고 있다.</p><br><p>재료는 다음과 같다.</p><br><p>1. 아이스바 틀</p><br><p>2. 전지분유 (혹은 탈지분유)</p><br><p>3. 물엿 (요리당이나 올리고당 같은 제품도 좋다)</p><br><p>4. 설탕 (백설탕이든 흑설탕이든)</p><br><p>5. 딸기/초코 시럽 (시럽이 없으면 밀크 아이스크림이 된다)</p><br><p>6. 물</p><br><p>모두 대형 할인마트에 가면 손쉽게 구할 수 있는 것들이다.</p><br><p>혼합 비율은 말 그대로 '적당히' 다. 그냥 만들다보면 조금씩 감이 온다.</p><br><p>내가 만들어 먹는 딸기바는 대충 이렇다.</p><br><p>전지분유 : 올리고당 : 백설탕 : 딸기시럽 = 10 : 3 : 5 : 1</p><br><p>사실 그냥 감으로 퍼 넣는거라 정확히는 모른다. 그래도 맛있다!</p><br><p>우유나 연유를 넣어도 맛있다.</p><br><p>아이스바를 더 쉽게 만드는법은 바나나에 나무젓가락을 꿰고 랩에 싸서 냉동실에 얼리는 방법이다.</p><br><p>여름을 시원하고 재미나게 나는 방법.</p><br><p>아이스크림 만들어 먹기. 강력 추천!!</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

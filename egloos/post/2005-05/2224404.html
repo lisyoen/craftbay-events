@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>우리 말에 없는 발음 한가지</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-05-04 16:57:26</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">우리 말에 없는 발음 한가지</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">한글의 모음은 단모음과 장모음으로 나뉜다.<br><div>단모음이란 시작부터 끝까지 같은 소리를 내는 모음을 말한다.</div><br><div>예를 들면 'ㅏ,ㅓ,ㅗ,ㅜ,ㅔ,ㅐ,ㅡ,ㅣ' 등이 있다. (우리가 제대로 발음 하지 못하는 'ㅚ,ㅟ,ㅢ' 와 같은 단모음도 있다)</div><br><div>당연히 장모음은 시작과 끝소리가 다른 모음이다.</div><br><div>'ㅑ,ㅕ,ㅛ,ㅠ,ㅙ,ㅞ' 등이 있다.</div><br><div>장모음중에 'ㅑ,ㅕ,ㅛ,ㅠ,ㅒ,ㅖ' 는 단모음 'ㅏ,ㅓ,ㅗ,ㅜ,ㅐ,ㅔ' 앞에 'ㅣ' 발음이 결합된 것이다.</div><br><div>'야' 는 '이아' 를 결합시킨 발음이다. '이' 로 시작해서 '아' 로 끝난다.</div><br><div>ㅣ+ㅏ = ㅑ</div><br><div>ㅣ+ㅓ = ㅕ</div><br><div>ㅣ+ㅗ = ㅛ</div><br><div>ㅣ+ㅠ = ㅠ</div><br><div>ㅣ+ㅔ = ㅖ</div><br><div>ㅣ+ㅐ = ㅒ</div><br><div>잘 보면 한가지 조합이 더 가능하다.</div><br><div>바로 'ㅣ + ㅡ' 가 그것이다.</div><br><div>읽어본다면 '이으' 가 된다.</div><br><div>이 발음은 실제로 '이응감' 에서 사용되고 있다. 현재는 표기법이 존재하지 않아 '영감', '영감탱이' 로 적고 있는 단어다. (여기서 '영감탱이' 는 '할망구' 의 반댓말 격이다...)</div><br><div>분명히 사용되고 있었지만 마땅한 표기법이 존재하지 않아 사장되고 있는 모음. '이으'</div><br><div>복원시켜야 하지 않을까?</div><br><div>-</div><br><div>농담입니다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

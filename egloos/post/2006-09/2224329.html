@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>불가능은 없다. - 모순은 어디에? -</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2006-09-20 21:09:29</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">불가능은 없다. - 모순은 어디에? -</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">모순되는 말 때문에 그 상황이 모순되지는 않는다.<div>모순은 논리일 뿐. 현실에선 존재하지 않기 때문이다.</div><div><br>모순이라는 말 자체의 어원으로 이를 풀이해보자.</div><div><br>무엇이든 뚫을 수 있는 창과 그 어떤것으로도 뚫지 못하는 방패라고 말하는 상인에게</div><div>'그 창으로 그 방패를 찌르면 어떻게 되오?' 라고 물었다.</div><div><br>상당히 곤란한 상황이지만 현실은 매우 단순한다.</div><div>뚫리거나. 혹은 뚫리지 않는다.</div><div><br>내가 아는 한 이 세상 어느곳에도 '모순'은 실재하지 않는다.</div><div>다시 말해 모든 모순은 마음 속에만 존재한다.</div><div><br>비슷한 논리로 불가능한 일은 세상에 일어나지 않는다.</div><div>불가능한 일 역시 마음 속에만 존재하는 것이다.</div><div>여러분이 마음만 먹는다면 못할 것이 무엇이겠는가?</div><div>행여 이 글이 모순이라도 그 모순조차 우리의 마음 속에만 있는것을.</div><div><br>- 말장난 죄송합니다. 심심해서. -<br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

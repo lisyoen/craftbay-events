@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>배부른 소크라테스는 없다?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-05-13 13:28:47</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">배부른 소크라테스는 없다?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224168/a0103766_496b818d0550f.jpg'><br>[그리스의 철학자 소크라테스]<br><br></div><div>"배부른 돼지보다 배고픈 소크라테스가 되는게 낫다"<br></div><div><span style="FONT-SIZE: 100%"><br>100여년전 영국의 철학자 존 스튜어트 밀이 했던 말이다.</span></div><div><span style="FONT-SIZE: 100%">사람들은 흔히 이 말을 (배부른) &amp;&amp; (돼지) 와 (배고픈) &amp;&amp; (소크라테스) 의 양자택일로 생각한다. (&amp;&amp; 는 And 기호이다) 즉, 4가지 조건으로 보는 것이다. 그래서 혹자는 조건들을 다시 조합해서 "나는 배부른 소크라테스가 되고 싶다" 라고 말하기도 한다.</span></div><div><span style="FONT-SIZE: 100%"><br>하지만 내 친구 조군의 생각은 다르다.</span></div><div><span style="FONT-SIZE: 100%"><br>"배부르면 누구나 돼지가 되고 배고프면 누구나 소크라테스가 되는거야"</span></div><div><span style="FONT-SIZE: 100%"><br>조군의 말에 따르면 비교 조건은 단 두가지. (배고픈) 과 (배부른) 뿐이다. (돼지) 와 (소크라테스)는 단지 선택에 따르는 결과일 뿐인 것이다.</span></div><div><span style="FONT-SIZE: 100%"><br>뭔가 그럴싸하다고 생각되지 않는가?</span></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

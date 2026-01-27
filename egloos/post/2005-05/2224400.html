@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>내 관심사는.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-05-17 13:00:44</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">내 관심사는.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224400/a0103766_496b81ad02838.jpg'></div><div align="center">[우리가 살고 있는 곳]<br></div>종교에 대한 내 관심사는 단 하나다.<div><br></div><div>그것은 바로</div><div><br></div><div>'무슨 일이 있었는가?'</div><div><br></div><div>나에게는 종교도 하나의 역사다.</div><div>우리와는 다른 존재가 우리의 세상에 개입했던 역사.</div><div>현재도 개입하고 있다는 말은 내게는 여전히 가설일 뿐이다.</div><div><br></div><div>나는 인간의 해석에는 관심이 없다.</div><div>해석은 인간의 판단과 의지, 현실의 반영, 희망사항 등이 스며들어 있다.</div><div>해석보다는 그 존재의 의지가 궁금하다.</div><div><br></div><div>교리에도 관심이 없다.</div><div>오히려 그 존재가 실제로 들려줬던 말이 궁금하다.</div><div><br></div><div>내세가 있는지. 종말이 오는지도 관심 없다.</div><div>그보다는 그들이 지금 어디에 있는지. 그들은 어디에서 왔는지가 궁금하다.</div><div><br></div><div>해답은 이 우주 어딘가에 있다.</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

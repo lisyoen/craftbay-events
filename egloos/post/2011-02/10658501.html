@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>모르면 고생하는 VC++ 팁</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-02-07 21:43:34</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">모르면 고생하는 VC++ 팁</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div class="chanik"><b><span style="COLOR: #0000ff">스레드를 사용하는 프로그램 디버그시 OS가 멈추는 현상</span></b><br><br>XP에서 스레드를 사용하는 프로그램을 디버깅하다 보면 자주&nbsp;OS가 멈춰버려서 리부팅까지 해야 되는 상황이 자주 발생합니다. 이 때문에 98이나 2000 에서 디버깅을 하기도 했는데 VC++ 6.0과 XP가 충돌하는 것으로도 의심을 했었지만 VC++2005 에서도 동일한 문제가 생긴다고 합니다.<br>그래서 검색을 해보니 원인은 IME 쪽 버그라고 합니다. <br>해결방법은 <b>제어판</b> --&gt; <b>국가 및 언어 옵션</b> --&gt; <b>언어 탭</b> --&gt; <b>자세히...</b> --&gt; <b>고급</b> --&gt; <b>고급 텍스트 서비스 사용 안 함</b> 을 체크하고 리부팅을 합니다.<br>&nbsp;<br><b><span style="COLOR: #0000ff">VC++의 메모리 누수 (Memory Leak) 탐지 기능 사용하기</span></b><br><br>보통 디버깅을 하다보면 메모리 릭이 발생했다는 메시지가 출력되지만 어디에서 현상이 발생했는지는 표시해 주지 않습니다. 다른 유틸리티를 사용해 보기도 했지만 가끔 프로그램에 충돌이 생겨 디버깅을 할 수 없었습니다.<br>이런 경우에 VC++에 내장된 메모리 누수 탐지 기능을 사용해서 현상이 발생된 소스 파일의 위치를 표시하도록 할 수 있습니다. 원리는 new 나 malloc 등의 함수를 새로 정의해 메모리를 할당할 때 소스 파일의 위치를 기억해 두었다가 프로그램 종료시 해제되지 않은 메모리의 위치를 표시하도록 하는 것입니다.<br>소스 파일명을 나타내는 마크로 __FILE__와 라인 번호를 나타내는 마크로 __LINE__ 가 사용됩니다.<br><br>(1) MFC를 사용하는 경우<br><br>먼저 stdafx.h 파일에서 다른&nbsp;include 문 보다 제일 상위에 다음 선언문을 추가 합니다.<br><br>#ifdef _DEBUG<br><br><b>#define _CRTDBG_MAP_ALLOC</b> // include Microsoft memory leak detection procedures<br>#define _INC_MALLOC &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// exclude standard memory alloc procedures<br>#endif <p>_CRTDBG_MAP_ALLOC 은 crtdbg.h 파일에서 new 등을 새로 정의하도록 사용됩니다.<br><br>그리고 프로그램 초기에 아래 함수를 추가합니다.<br><br>#ifdef _DEBUG<br>_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF|_CRTDBG_LEAK_CHECK_DF);<br>#endif<br><br>stdafx.h 파일을 사용하지 않는 소스 파일의 경우 (Pre compiled header 기능을 사용하지 않는 경우)는 기존 메모리 할당 함수를 사용하게 되므로 이 기능이 지원되지 않게 됩니다.<br><br>(2) MFC를 사용하지 않는 경우<br><br>crtdbg.h 파일이 자동으로 추가 되지 않으므로 소스 파일에 crtdbg.h 를 추가해야 합니다.<br>#ifdef _DEBUG<br>#define _CRTDBG_MAP_ALLOC<br>#include [crtdbg.h] &lt;-- 수정 필요 :-)<br>#endif<br><br>마찬가지로 프로그램 초기에 아래 함수를 추가 합니다.<br><br>#ifdef _DEBUG<br>_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF|_CRTDBG_LEAK_CHECK_DF);<br>#endif<br><br>(3) 링크에러가 발생하는 경우<br><br>nafxcwd.lib(afxmem.obj) : error LNK2005: "void * __cdecl operator new(unsigned int)" (??2@YAPAXI@Z) already defined in StdAfx.obj<br><br>위와 같은 링크 에러가 발생하게 되면 임시 방편으로 아래와 같이 강제로 링크하도록 합니다.<br><br><b>Project Settings</b> --&gt; <b>Link</b> --&gt; <b>Customize</b> --&gt; <b>Force file output</b> 항목 체크<br>(* 주: 이것은 항구적인 해결책은 아닙니다. 다른 링크에러도 무시되므로... )<br>이는 Project options에 /FORCE 플래그를 추가 하는 것과 동일 합니다.<br><br><b><span style="COLOR: #0000ff">static 라이브러리 작성시 주의사항</span></b><br><br>static 라이브러리를 작성해 application에 링크하려다 보면 LIBCD.lib 등의 링크 에러가 발생합니다. 이것은 static library 위저드와 application 위저드가 Code Generation 옵션을 서로 다르게 생성하기 때문입니다.<br>해결 방법은 <b>Project Settings</b> --&gt; <b>C/C++</b> --&gt; <b>Code Generation</b> --&gt; <b>Use run-time library</b> --&gt; <b>Debug Multithreaded XXX </b>식으로 application에 사용된 속성과 맞춰줘야 합니다.<br><br><b><span style="COLOR: #0000ff">디버그시 변수값 보기</span></b><br><br>사용자 지정 구조체등의 값이 표시되지 않을 때나 크기가 아주 큰 변수의 경우 메모리 뷰를 띄워서 볼 수도 있지만 불편하다. 이 경우 변수, 10 (앞의 10 바이트만 표시) 형식으로 입력하면 된다.<br>원하는 데이터 형으로 보고 싶은 경우에는 (형변환자)변수 형식으로 입력한다.<br><br><b><span style="COLOR: #0000ff">텍스트를 컬럼으로 선택하기</span></b><br><br>- 텍스트를 라인으로 선택하지 않고 컬럼으로 선택하려면 ALT + 마우스 드래그, 또는 ALT+SHIFT+방향키를 사용한다.<br>칸을 맞춰놓은 경우 중간에 불필요한 것을 삭제하거나 끼워 넣을 경우 일일히 타이핑하지 않아도 되므로 편리하다. <br><br><b><span style="COLOR: #0000ff">무료 윈도우 컴파일러 사용하기</span></b><br><br>- 코드프로젝트의 다음 기사를 참고하여 VC++ 2005 Express 버전을 설치하고 MFC대신에 WTL을 개발 프레임워크로 사용한다.<br><a href="http://www.codeproject.com/KB/wtl/WTLExpress.aspx" target="_blank"><b><span style="COLOR: #d69f36">Using WTL with Visual C++ 2005 Express Edition</span></b></a><br>- 무료 리소스 편집기로는 아직 버그가 많지만 간단한 리소스의 경우 <a href="http://www.resedit.net/" target="_blank"><b><span style="COLOR: #d69f36">ResEdit</span></b></a> 을 추천한다.<br>- VC++ 2005 Express에 리소스편집기 등록 방법: RC파일을 선택하고 팝업메뉴에서 Open With...를 클릭한다. [Add...] 버튼으로 리소스 편집 프로그램을 등록 후 [Set as Default]를 클릭한다. <br><br><br><b><span style="COLOR: #0000ff">들여쓰기 자동 정렬하기</span></b><br><br>- 입수한 소스가 들여쓰기가 제대로 안돼 있어서 읽기 불편한 경우 다음과 같은 방법으로 자동정렬 할 수 있다.<br>우선 정렬할 부분을 선택하고 SHIFT + TAB 키를 몇 번 눌러 불필요한 불필요한 공백 문자를 제거한다.<br>그리고 ALT+F8 을 누르면 자동으로 들여쓰기를 맞춰준다. <br><br><b><span style="COLOR: #0000ff">추가된 클래스가 클래스위저드에서 보이지 않을 때</span></b><br><br>보통은 클래스위저드 파일(.clw)을 삭제하고 갱신해 준다.<br>이렇게 해도 클래스가 보이지 않으면 다음 내용이 소스파일에 있는지 확인하고 없으면 추가해 준다.<br>헤더 파일에는 다음 내용이 들어 있어야 한다.<br><pre>// ClassWizard generated virtual function overrides<br>//{{AFX_VIRTUAL(CMyWnd)<br>//}}AFX_VIRTUAL<br>// Generated message map functionsprotected:<br>//{{AFX_MSG(CMyWnd)<br>//}}AFX_MSG<br>DECLARE_MESSAGE_MAP()</pre><br>그리고 소스 파일에는 다음 내용이 있어야 한다.<br><pre>BEGIN_MESSAGE_MAP(CMyWnd, CWnd)<br>//{{AFX_MSG_MAP(CMyWnd)<br>//}}AFX_MSG_MAP<br>END_MESSAGE_MAP()</pre><!-- 본문보기 (+동영상/ 첨부파일 View 포함) END --></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

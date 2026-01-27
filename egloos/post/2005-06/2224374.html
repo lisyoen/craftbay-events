@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>프로그래머인가 프로그래머가 아닌가.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-06-27 22:48:49</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">프로그래머인가 프로그래머가 아닌가.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224374/a0103766_496b81aa8c127.jpg'> <img src='./2224374/a0103766_496b81aa99a17.jpg'></div><div align="center">[장마가 시작되었다]</div><div align="left"></div><div align="left">[상황]</div><div align="left">8명의 친구들이 길을 걷다가 폭우를 만나 발이 묶이게 되었다.</div><div align="left"></div><div align="left"><br></div><div align="left">[조건]</div><div align="left">1.목적지 까지는 왕복 2시간. (즉, 편도 1시간)</div><div align="left">2.우산은 단 한개뿐.</div><div align="left">3.우산 한 개로는 최대 2명이 비를 피할 수 있다.</div><div align="left">4.목적지에 도착하면 우산은 충분히 구할 수 있다.</div><div align="left">5.최종적으로 8명 모두 목적지에 도착해 있어야 한다.</div><div align="left"></div><div align="left"><br></div><div align="left">[문제]</div><div align="left">이들이 모두 목적지에 도착하는데 걸리는 최소 시간을 구하시오.</div><div align="left"></div><div align="left"></div><div align="left"><br></div><div align="left">* 결정적인 힌트는 다음 괄호 사이를 마우스로 긁으면 나타납니다.</div><div align="left">반드시 정답을 생각한 후에 확인하시오.</div><div align="left">[<font color="#FFFFFF">규칙에 찌들은</font> <font color="#FFFFFF">프로그래머는 이 문제를 맞출 수 없다. 하지만 힌트를 봤다면 분명히 맞출 수 있다.</font>]</div><div align="left"></div><div align="left"><br></div><div align="left">* 답은 아래 괄호 사이를 마우스로 긁으면 나타납니다.</div><div align="left">반드시 정답을 생각한 후에 확인하시오.</div><div align="left">[<font color="#FFFFFF">아주 꽉 막힌 프로그래머라면 문제가 잘못되었다고 탓한다</font>]</div><div align="left">[<font color="#FFFFFF">없는 규칙 만들어서 스스로를 옭아매는 프로그래머라면 5시간</font>]</div><div align="left">[<font color="#FFFFFF">적당히 융통성을 지닌 프로그래머나 일반인이라면 3시간</font>]</div><div align="left">[<font color="#FFFFFF">자유 분방한 사고를 갖고 있다면 1시간</font>]</div><div align="left"></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

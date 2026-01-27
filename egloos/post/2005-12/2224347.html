@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>황우석 교수의 줄기세포 파문을 보며</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2005-12-16 09:51:41</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">황우석 교수의 줄기세포 파문을 보며</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">황우석 교수와 줄기세포 파문.<br><div>벌써 수주간 다뤄지고 있는 국내 최대의 이슈다.</div><br><div>그동안 주변 사람들로부터 이 문제에 대한 언급을 유혹당했지만 끝내 다루지 않던건</div><br><div>이 문제가 하나의 사실을 두고 벌이는 여러가지 추측과 모함, 음모로 구성되어 있기 때문이다.</div><br><div>사실은 하나뿐인데 이에 대해 이럴것이다 저럴것이다 왈가왈가 해봐야 달라지는건 없다는 뜻이다.</div><br><div>음모 이론을 즐기는 편이지만 이렇게 사실이 쉽게 증명될 수 있는 음모는 도무지 흥미가 없다.</div><br><div>이런 것들은 그저 발빠른 추측에 지나지 않는다.</div><br><div>마치 수능시험이 끝나고 이번 시험이 쉬웠는지 어려웠는지에 대한 논쟁 따위라고나 할까?</div><br><div>어차피 성적은 곧 발표되고 논쟁은 사라질 것이다.</div><br><div>황우석 교수의 공식 해명</div><br><div>수능 성적 발표</div><br><div>오늘이다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

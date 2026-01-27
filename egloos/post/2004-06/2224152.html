@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>진보와 보수 #1</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-06-18 10:54:35</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">진보와 보수 #1</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">요즘 분위기가 '보수' 는 '퇴보' 를, '진보' 는 '발전' 을 상징하는 것처럼 보인다.<div>분명히 잘못된 얘기다.</div><div><br>진보가 황무지를 비옥한 토양으로 바꾸는 개척자들이라면</div><div>보수는 그 땅에서 농작물을 수확하는 농부다.</div><div><br>개척자와 농부라는 표현에서 차이를 생각하지 말자.</div><div>둘의 차이는 '새 땅을 갈아 엎는가' 와 '헌 땅을 갈아 엎는가' 뿐이다.</div><div>누가 더 어렵고 누가 더 쉬운것도 아니다. 다만 그들의 타고난 성향이 결정해준 것이다.</div><div><br>진보와 보수의 균형은 특별하다.</div><div>사회의 균형을 위해 필요한 진보가 최대 1% 라면, 보수는 최소 90% 라고 할 수 있다.</div><div>진보는 없어도 그만이지만 보수는 90% 보다 적으면 혼란이 온다는거다.</div><div><br>신약 개발자가 진보라면 의사와 약사는 보수다.</div><div>신기술 개발자가 진보라면 현업 개발자는 보수다.</div><div>학자가 진보라면 교사는 보수다.</div><div>세상을 유지시켜주는건 바로 보수다.</div><div><br>혹시 자신이 진보라고 오해하고 있지는 않았는지,</div><div>진보의 반대는 퇴보라고 생각하지는 않았는지 되짚어보자.<br></div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

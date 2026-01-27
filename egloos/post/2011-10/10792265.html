@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>국민의 눈높이?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-10-18 00:33:36</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">국민의 눈높이?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div style="TEXT-ALIGN: center"></div><div style="TEXT-ALIGN: center"><p>【서울=뉴시스】박세준 기자 = 10·26 서울시장 보궐선거에 출마한 한나라당 나경원 후보는 17일 이명박 대통령의 서초구 내곡동 사저 건립 백지화 결정과 관련, "국민의 눈높이에 맞는 조치라고 생각한다"고 밝혔다.&nbsp;</p><br>[또 나왔다. 국민의 눈높이에 맞추는 짓]</div><p><br><br>출처: <a href="http://news.nate.com/view/20111017n21227?mid=n0207">http://news.nate.com/view/20111017n21227?mid=n0207</a><br><br>아놔... 내가 정말 웬만해선 이런말 안하는데.<br><br>너희가&nbsp;얼마나 잘났다고 매번 국민의 눈높이에 맞추는거냐?<br><br>한&nbsp;번만 더 눈높이 타령 하면 내가 휴가내고 국회 앞에서 1인시위 한다.<br><br>국민을 우러러볼 줄 알아야 하는 정치인들이 어쩌면 이렇게도 국민을 내려다보기만 하는것이냐...<br><br><br>아.. 정말 재수없네. 이딴 개념없는 것들이랑 한 시대를 살아야 하다니...<br></p></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

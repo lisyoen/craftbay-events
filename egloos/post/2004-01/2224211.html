@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>아이들의 장래희망</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-01-19 12:47:01</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">아이들의 장래희망</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224211/a0103766_496b8194eee34.jpg'></center><br><br /><br><img src="http://i.blog.empas.com/lisyoen/image.php?i=300889:200:198:jpg" border="0" align="left" /> 미국 어린이들의 장래희망 1순위는 '소방관' 이라고 한다.<br /><br><br /><br>그만큼 미국에서 소방관이 존경받는다는거다.<br /><br><br /><br>우리나라 어린이들의 장래희망 1순위는.<br /><br><br /><br>1998년 게임 프로그래머<br /><br>2000년 프로게이머<br /><br>2003년 연예인, 가수<br /><br><br /><br>어린이들의 꿈과 희망이 우리의 미래를 좌우한다.<br /><br><br /><br>다소 암울하군. 우리의 미래는...</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

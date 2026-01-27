@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>&#39;순수&#39; 의 반대말은?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2004-03-24 16:45:35</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">&#39;순수&#39; 의 반대말은?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><p>잠시 머리를 비우고 '순수' 의 반대말이 무엇인지 생각해보자.</p><br><p>사전이나 인터넷을 검색해 보라는게 아니다.</p><br><p>자기 자신이 알고 있는 범위 내에서 '순수' 의 반대말을 떠올려보자.</p><br><p>충분한 시간을 갖고 생각해보자.</p><br><p><br /><br>마음을 정했다면 다음 괄호 안을 마우스로 드래그 해보자.<br /><br><br /><br>[ <font style="BACKGROUND-COLOR: #ffffff" color="#FFFFFF">그 단어는 자기 자신에 대한 양심의 평가일 수 있다</font> ]<br /><br><br /></p><br><p>물론 이건 단지 내 의견일 뿐이다.</p><br><p>동의 하는가?</p><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

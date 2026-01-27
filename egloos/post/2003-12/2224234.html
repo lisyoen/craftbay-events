@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>소프트웨어에 대한 오해 #1</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-17 10:52:40</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">소프트웨어에 대한 오해 #1</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224234/a0103766_496b81997f0e3.gif'></center><br><br /><br>소프트웨어 개발 방법론에 대해 말해보고자 한다.<br /><br><br /><br>초기 국내 소프트웨어 개발자들은 독학한 사람들이 대부분이었다.<br /><br>그 때문에 주먹구구식 개발과 독단적인 판단이 개발의 중심에 자리잡고 있었다.<br /><br>나도 예외라고 할 순 없겠다.<br /><br><br /><br>근래에는 전산 전문 인력이 대량으로 배출되고 있지만 이들 역시 소프트웨어 개발 방법론에는 회의적이다.<br /><br>그나마 학과 과정으로 배우기라도 했으니 그 목적과 필요성을 '알고'는 있지만 대형 프로젝트에 참여해본 경험이 없기 때문에 '느끼지'는 못하는 것이다.<br /><br><br /><br>심지어 실무에 나와서도 몇몇 대기업을 제외하고는 여전히 주먹구구식 개발에 자신들의 생계를 내걸고 있다.<br /><br><br /><br>여기서는 소프트웨어 개발 방법론에서 거론되는 '소프트웨어에 대한 오해'에 대해 생각해보도록 하자.<br /><br>'개발 방법론'이라는 메인 타이틀과는 다르게 제법 재미있는(적어도 내 생각에는...) 내용이다.<br /><br><br /><br>'소프트웨어에 대한 오해'란 과연 무엇일까?<br /><br><br /><br>다음 글에서 계속...</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

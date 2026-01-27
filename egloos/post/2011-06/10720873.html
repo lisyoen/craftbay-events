@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>책상위에 벽지를 붙여?</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2011-06-03 11:02:58</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">책상위에 벽지를 붙여?</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div>'윈도우(Windows) 바탕화면(Desktop)에 배경화면(Wallpaper)을 지정해두었다.'</div><div><br></div><div>우리말로 번역하면 좀 낫지만</div><div><br></div><div>영문으로 본다면 참 특이한 구성이다.</div><div><br></div><div>창들(Windows)이야 그냥 OS 이름이니 그렇다치고.</div><div><br></div><div>책상위(Desktop)에 벽지(Wallpaper)를 붙이는거다.</div><div><br></div><div><br></div><div>그래서 궁금해진건데.</div><div><br></div><div>이노무 바탕화면은 눕혀져 있는건가? 아니면 세워져 있는건가?</div><div><br></div><div>윈도우 기획자는 어떤 생각으로 바탕화면을 기획했을까?</div><div><br></div><div>(미국에서는 바닥에도 벽지를 바르나?)</div></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

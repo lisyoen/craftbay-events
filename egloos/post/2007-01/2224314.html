@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>_WIN32_WINNT 매크로</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-01-25 15:48:39</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">_WIN32_WINNT 매크로</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content">간혹 Win32 프로그래밍을 하면 "윈도우즈 NT 3.5이상"과 같은 조건이 붙는 함수들이 있다.<br><div>아무리해도 컴파일 되지 않는 경우, 다음 한 문장을 빼먹는 경우가 많다.</div><br><pre class="code"><br><font face="돋움">#define _WIN32_WINNT 0x0400<br /></font><font face="돋움">#include &lt;windows.h&gt;</font><br></pre><br><pre class="code"><br>예를 들면, "윈도우즈 2000이상에서만 돌아간다"라는 것을 정할려면,<br></pre><br><pre class="code"><br><font face="돋움">#define _WIN32_WINNT 0x0500<br /><br>#include &lt;windows.h&gt;</font><br></pre><br><div>라고 적어야한다.</div><br><div>주의할 점은 <b>"Windows.h"보다 위쪽에 선언되어야 한다는 것</b>이다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

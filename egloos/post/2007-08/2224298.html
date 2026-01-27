@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>전선 위의 새</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2007-08-20 17:23:52</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">전선 위의 새</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><div align="center"><img src='./2224298/a0103766_496b81a208226.jpg'><br /><br>[다리는 안보인다]</div><br><br /><br>중학교 때인가.<br><div>전기와 전류에 대해 배우면서 선생님에게 이런 얘길 들었다.</div><br><div>'전선 위의 참새가 감전되지 않는 이유는 새들이 한 다리로 앉아있기 때문이다.'</div><br><div>뭔가 그럴싸 하긴 한데. 어린 나로써도 의아한 부분이 많았다.</div><br><div>물론. 이 말은 사실이 아니다.</div><br><div>전선 위의 새는 두 발로 전선을 붙들고 있다. (아쉽게도 사진에선 보이지 않는다.)</div><br><div>나는 새가 감전되지 않는 이유를 말하려는게 아니다.</div><br><div>선생님은 왜 아이들에게 그렇게 설명해주셨을까?</div><br><div>그것이 궁금하다.</div><br></div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>

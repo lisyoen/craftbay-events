@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../../css/result.css">
+
+        <title>눈을 깜빡이자.</title>
+    </head>
+    <body>
+        <section id="wrap">
+            <header>
+                <h1 class="logo-title">
+                    <span class="main"><img src="../../images/logo_egloos.png" width="105" height="34" alt="이글루스"></span>
+                </h1>
+                <div class="user-info">
+                    <strong class="name">이창연</strong> 님 (<strong class="name">lisyoen@empas.com</strong>)
+                </div>
+            </header>
+            <main>
+                <article class="post-wrap">
+                    <!-- 게시물 정보 : 날짜 -->
+                    <div class="post-info">
+                        <span class="time">2003-12-13 00:14:09</span>
+                    </div>
+                    <!-- 게시물 제목 -->
+                    <h2 class="post-title">눈을 깜빡이자.</h2>
+                    <!-- 게시물 본문 -->
+                    <div class="post-body">
+                        <div class="content"><center><img src='./2224240/a0103766_496b819a6dd9f.jpg'></center><br><br /><br>난 프로그래머다.<br /><br>하루의 대부분을 컴퓨터 앞에 앉아 있는다.<br /><br>출근하면 사무실에 내 컴퓨터 두대(개발용, 서버용)가 윙윙<br /><br>퇴근하면 집에서 내 애물단지가 윙윙거리고 있다.<br /><br><br /><br>대충 계산해 봤는데 하루에 모니터를 보고 있는 시간이 10~12시간 정도 된다.<br /><br>TV 를 이렇게 보고 있으면 머리도 눈도 돌아가버린다.<br /><br>모니터는 85Hz 이상으로 깜빡이도록 셋팅해둬서 그나마 나은거다.<br /><br><br /><br>티비에 보니 컴퓨터에 집중하고 있는 사람은 눈을 깜빡이지 않는다고 한다.<br /><br>그래서 눈이 금새 피로하게 되고 오래 지속되면 안구건조증이 생긴다는거다.<br /><br>구체적으로 안구건조증이 어떻게 고통스러운지는 잘 모르겠는데 암튼 아픈건 확실하다.<br /><br>예방하는법도 의외로 간단하다.<br /><br>그냥 가끔 눈을 깜빡거리면 된다.<br /><br><br /><br>옛 어른들은 눈을 자주 깜빡이면 불안해보인다고 머라 하셨다지만 요즘은 애들 눈 함부로 쳐다보지도 못한다. 마주치면 피하지...<br /><br><br /><br>암튼 생각나는 김에 지금 눈을 몇번 깜빡여보자.<br /><br>내 덕분에 몇명은 눈의 고통에서 다소 멀어졌을지도 모른다.</div>
+                        <div class="post-footer">
+                            <button class="btn" onclick="button_click();">목록</button>
+                        </div>
+                    </div>
+                </article>
+            </main>
+        </section>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+        <script>
+            function button_click() {
+                if(history.length > 1) {
+                    history.back();
+                } else {
+                    document.location.href = "../../블로그포스트목록.html";
+                }
+            }
+        </script>
+    </body>
+</html>
