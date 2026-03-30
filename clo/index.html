@@ -184,8 +184,9 @@
   
   <div class="stats">
     <div class="stat">
-      <div class="num">54</div>
+      <div class="num" id="updays"></div>
       <div class="label">가동일</div>
+      <script>document.getElementById('updays').textContent=Math.floor((Date.now()-new Date('2026-02-03').getTime())/864e5);</script>
     </div>
     <div class="stat">
       <div class="num">24/7</div>
